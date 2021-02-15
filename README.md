@@ -1,5 +1,5 @@
 # Africa Electrication Platform
-Description to come...
+Description to come.
 
 ## Installation and Usage
 The steps below will walk you through setting up your own instance of the project.
