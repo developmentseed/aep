@@ -1,3 +1,6 @@
+# This workflow performs basic checks:
+#   1. run a preparation step to install and cache node modules
+#   2. once prep succeeds, run lint, test and build in parallel
 name: Checks
 
 on:
@@ -34,7 +37,7 @@ jobs:
         id: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
 
       - name: Install
         run: yarn install
@@ -57,10 +60,9 @@ jobs:
         id: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
 
       - name: Install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Lint
@@ -84,10 +86,9 @@ jobs:
         id: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
 
       - name: Install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Test
@@ -111,10 +112,9 @@ jobs:
         id: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
 
       - name: Install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Build
