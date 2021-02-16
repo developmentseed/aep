@@ -1,10 +1,10 @@
 {
-  "name": "project-seed",
-  "version": "4.0.0",
-  "description": "Starter application by Development Seed",
+  "name": "aep-frontend",
+  "version": "1.0.0",
+  "description": "Africa Electrification Platform",
   "repository": {
     "type": "git",
-    "url": "https://github.com/developmentseed/project-seed.git"
+    "url": "https://github.com/developmentseed/aep.git"
   },
   "author": {
     "name": "Development Seed",
@@ -12,9 +12,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/developmentseed/project-seed/issues"
+    "url": "https://github.com/developmentseed/aep/issues"
   },
-  "homepage": "https://github.com/developmentseed/project-seed",
+  "homepage": "https://github.com/developmentseed/aep",
   "scripts": {
     "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo \"'use strict';\n\nexport default {\n  environment: 'development'\n};\" > app/assets/scripts/config/local.js",
     "serve": "NODE_ENV=development gulp serve",
