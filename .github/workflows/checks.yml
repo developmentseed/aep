@@ -9,7 +9,8 @@ on: push
 
 env:
   NODE: 14
-  PROD_BUCKET: tmp-frontend-test-aep-olaf
+  DEPLOY_BRANCH: main
+  DEPLOY_BUCKET: tmp-frontend-test-aep-olaf
 
 jobs:
   prep:
@@ -141,7 +142,7 @@ jobs:
       - name: Download cached ./dist
         uses: actions/download-artifact@v2
         with:
-          name: my-artifact
+          name: dist
           
       - name: Display structure of downloaded files
         run: ls -R
@@ -151,7 +152,6 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: ${{ env.PROD_BUCKET }}
+          AWS_S3_BUCKET: ${{ env.DEPLOY_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: ./dist
