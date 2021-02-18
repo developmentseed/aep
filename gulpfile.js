@@ -12,8 +12,6 @@ const errorify = require('errorify');
 const historyApiFallback = require('connect-history-api-fallback');
 const through2 = require('through2');
 
-const { compile: collecticonsCompile } = require('collecticons-processor');
-
 const {
   appTitle,
   appDescription
@@ -83,28 +81,18 @@ function serve() {
   });
 
   // watch for changes
-  gulp.watch(
-    [
-      'app/*.html',
-      'app/assets/graphics/**/*',
-      '!app/assets/icons/collecticons/**/*'
-    ],
-    bs.reload
-  );
+  gulp.watch(['app/*.html', 'app/assets/graphics/**/*'], bs.reload);
 
-  gulp.watch('app/assets/icons/collecticons/**', collecticons);
   gulp.watch('package.json', vendorScripts);
 }
 
 module.exports.clean = clean;
 module.exports.serve = gulp.series(
-  collecticons,
   gulp.parallel(vendorScripts, javascript),
   serve
 );
 module.exports.default = gulp.series(
   clean,
-  collecticons,
   gulp.parallel(vendorScripts, javascript),
   gulp.parallel(html, imagesImagemin),
   copyFiles,
@@ -192,23 +180,6 @@ function vendorScripts() {
   }
 
   return vb.pipe(gulp.dest('.tmp/assets/scripts/')).pipe(bs.stream());
-}
-
-// /////////////////////////////////////////////////////////////////////////////
-// ------------------------- Collecticon tasks -------------------------------//
-// --------------------- (Font generation related) ---------------------------//
-// ---------------------------------------------------------------------------//
-function collecticons() {
-  return collecticonsCompile({
-    dirPath: 'app/assets/icons/collecticons/',
-    fontName: 'Collecticons',
-    authorName: 'Development Seed',
-    authorUrl: 'https://developmentseed.org/',
-    catalogDest: 'app/assets/scripts/styles/collecticons/',
-    preview: false,
-    experimentalFontOnCatalog: true,
-    experimentalDisableStyles: true
-  });
 }
 
 // //////////////////////////////////////////////////////////////////////////////
