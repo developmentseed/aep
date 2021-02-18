@@ -1,18 +1,28 @@
 import React from 'react';
-import { PropTypes as T } from 'prop-types';
+import T from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 import config from '../../config';
-const { environment, baseUrl, appTitle } = config;
+const { baseUrl, appTitle } = config;
 
 function MetaTags({ title, description, children }) {
   return (
     <Helmet>
       <title>{title}</title>
       {description ? <meta name='description' content={description} /> : null}
+      <meta name='theme-color' content='' />
 
       {/* Twitter */}
       <meta name='twitter:card' content='summary' />
+      <meta name='twitter:creator' content='author' />
+      <meta name='twitter:title' content={title} />
+      {description ? (
+        <meta name='twitter:description' content={description} />
+      ) : null}
+      <meta
+        name='twitter:image'
+        content={`${baseUrl}/assets/graphics/meta/default-meta-image.png`}
+      />
 
       {/* Open Graph */}
       <meta property='og:type' content='website' />
@@ -33,12 +43,10 @@ function MetaTags({ title, description, children }) {
   );
 }
 
-if (environment !== 'production') {
-  MetaTags.propTypes = {
-    title: T.string,
-    description: T.string,
-    children: T.node
-  };
-}
+MetaTags.propTypes = {
+  title: T.string,
+  description: T.string,
+  children: T.node
+};
 
 export default MetaTags;
