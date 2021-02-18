@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import App from '../common/app';
-
-import Button from '@devseed-ui/button';
+import { Button } from '@devseed-ui/button';
 import { media, themeVal } from '@devseed-ui/theme-provider';
+
+import App from '../common/app';
 
 import {
   Inpage,
@@ -35,9 +35,11 @@ const HomeInpage = styled(Inpage)`
 
   ${media.mediumUp`
     padding-top: 12vh;
-    p,${Button} {
+
+    p, ${Button} {
       margin-top: 4rem;
     }
+
     ${InpageBodyInner} {
       max-width: 40rem;
     }
@@ -50,6 +52,7 @@ const HomeTitle = styled(InpageTitle)`
     text-transform: uppercase;
     display: block;
   }
+
   ${media.mediumUp`
     font-size: 3.5rem;
     line-height: 4rem;
@@ -66,11 +69,14 @@ const PartnerLogos = styled.ul`
   flex-flow: row nowrap;
   list-style: none;
   margin-top: 4rem;
+
   li {
     margin-right: 2rem;
   }
+
   img {
     height: 2rem;
+
     ${media.smallUp`
       height: 2.5rem;
     `}

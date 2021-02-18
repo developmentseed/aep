@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import App from '../common/app';
 
 import { media, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
+
+import App from '../common/app';
 
 import {
   Inpage,

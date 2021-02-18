@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 
 import {
   truncated,
-  multiply,
   themeVal,
-  visuallyHidden
+  visuallyHidden,
+  glsp
 } from '@devseed-ui/theme-provider';
 
 export const Inpage = styled.article`
@@ -15,7 +15,7 @@ export const Inpage = styled.article`
   /**
    * Make Inpage map-centric
    *
-   * Vizually hides inpageHeader and sets the grid layout to a single row.
+   * Visually hides inpageHeader and sets the grid layout to a single row.
    * The latter is needed so that inpageBody can be displayed in full height.
    */
 
@@ -42,10 +42,7 @@ export const InpageHeaderInner = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
-  padding: ${multiply(themeVal('layout.space'), 4)}
-    ${multiply(themeVal('layout.space'), 4)}
-    ${multiply(themeVal('layout.space'), 2)}
-    ${multiply(themeVal('layout.space'), 4)};
+  padding: ${glsp(4, 4, 2, 4)};
   margin: 0 auto;
 `;
 
@@ -63,7 +60,7 @@ export const InpageToolbar = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  padding-left: ${multiply(themeVal('layout.space'), 2)};
+  padding-left: ${glsp(2)};
   margin-left: auto;
 `;
 
@@ -71,7 +68,7 @@ export const InpageTitleWrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
   min-width: 0;
-  margin-bottom: ${multiply(themeVal('layout.space'), 1.5)};
+  margin-bottom: ${glsp(1.5)};
 `;
 
 export const InpageTitle = styled.h1`
@@ -86,8 +83,6 @@ export const InpageBody = styled.div`
 `;
 
 export const InpageBodyInner = styled.div`
-  padding: 0 ${multiply(themeVal('layout.space'), 4)}
-    ${multiply(themeVal('layout.space'), 4)}
-    ${multiply(themeVal('layout.space'), 4)};
+  padding: ${glsp(0, 4, 4, 4)};
   max-width: ${themeVal('layout.max')};
 `;

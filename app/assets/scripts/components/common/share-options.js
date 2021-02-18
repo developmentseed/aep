@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { PropTypes as T } from 'prop-types';
+import T from 'prop-types';
 import styled from 'styled-components';
 import Clipboard from 'clipboard';
 import { useLocation } from 'react-router';

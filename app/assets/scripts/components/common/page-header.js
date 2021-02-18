@@ -1,28 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import config from '../../config';
-
 import { Link, NavLink } from 'react-router-dom';
 
 import {
   glsp,
   media,
-  stylizeFunction,
   themeVal,
-  visuallyHidden
+  visuallyHidden,
+  rgba
 } from '@devseed-ui/theme-provider';
 import collecticon from '@devseed-ui/collecticons';
+import { Button } from '@devseed-ui/button';
 
-import { filterComponentProps } from '../../styles/utils/general';
-
+import config from '../../config';
 import ShareOptions from './share-options';
 
-import { rgba } from 'polished';
-
-const _rgba = stylizeFunction(rgba);
-
-const { appTitle, appShortTitle } = config;
+const { appTitle } = config;
 
 const PageHead = styled.header`
   background-color: ${themeVal('color.primary')};
@@ -33,6 +26,7 @@ const PageHead = styled.header`
   left: 0;
   right: 0;
   height: 4rem;
+
   ${media.mediumUp`
     top: 0;
     left: 0;
@@ -47,6 +41,8 @@ const PageHeadInner = styled.div`
   align-items: center;
   margin: 0 auto;
   height: 100%;
+  padding: ${glsp(0, 1, 0, 0)};
+
   ${media.mediumUp`
     flex-flow: column nowrap;
     padding: ${glsp(1, 0, 1.5, 0)};
@@ -57,6 +53,7 @@ const PageNav = styled.nav`
   display: flex;
   flex-flow: row nowrap;
   flex: 1;
+
   ${media.mediumUp`
     flex-flow: column nowrap;
   `}
@@ -70,55 +67,67 @@ const GlobalMenu = styled.ul`
   align-items: center;
   margin: 0;
   list-style: none;
+
   > * {
     margin: 0;
   }
+
   > *:first-child {
     margin-right: auto;
   }
+
   > *:last-child > * {
     width: 3rem;
     height: 3rem;
     text-align: center;
   }
+
   ${media.mediumUp`
     flex-flow: column nowrap;
     justify-content: center;
   `}
+
   ${media.mediumUp`
     > *:first-child {
       margin: 0;
     }
+  
     > *:last-child {
       margin-top: auto;
     }
   `}
 `;
 
-const HomeLink = styled.a`
+const HomeLink = styled(Link)`
   position: relative;
   display: block;
   width: 4rem;
   height: 3rem;
+  line-height: 3rem;
   text-align: center;
   transition: all 0.24s ease 0s;
   font-weight: ${themeVal('type.heading.bold')};
   font-size: 1.5rem;
+
   ${media.mediumUp`
     margin-bottom: ${glsp(6)};
   `}
+
   &,
   &:visited {
     color: inherit;
   }
+
   &.active {
     color: ${themeVal('color.baseLight')};
     opacity: 1;
-    background: ${_rgba(themeVal('color.baseLight'), 0.08)};
+    background: ${rgba(themeVal('color.baseLight'), 0.08)};
   }
+
   span {
     ${visuallyHidden()}
   }
+
   ::before {
     ${collecticon('brand-development-seed')}
   }
@@ -215,7 +224,5 @@ function PageHeader() {
     </PageHead>
   );
 }
-
-PageHeader.propTypes = {};
 
 export default PageHeader;

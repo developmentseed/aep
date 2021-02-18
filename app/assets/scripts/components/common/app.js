@@ -17,6 +17,7 @@ const Page = styled.div`
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: minmax(4rem, max-content) auto 0;
+
   ${media.mediumUp`
     grid-template-columns: minmax(4rem, max-content) auto 0;
   `}
