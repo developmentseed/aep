@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
-
 import {
   glsp,
   media,
@@ -13,6 +12,8 @@ import collecticon from '@devseed-ui/collecticons';
 import { Button } from '@devseed-ui/button';
 
 import config from '../../config';
+import { filterComponentProps } from '../../styles/utils/general';
+
 import ShareOptions from './share-options';
 
 const { appTitle } = config;
@@ -133,47 +134,30 @@ const HomeLink = styled(Link)`
   }
 `;
 
-const GlobalMenuLink = styled.a`
-  position: relative;
-  display: block;
+const GlobalMenuLink = styled(Button)`
   width: 3rem;
   height: 3rem;
   line-height: 3rem;
+  padding: 0;
   text-align: center;
-  border-radius: ${themeVal('shape.rounded')};
-  transition: all 0.24s ease 0s;
   margin-right: ${glsp(0.5)};
+
   ${media.mediumUp`
     margin-right: 0;
     margin-bottom: ${glsp(0.5)};
   `}
-  &::before {
-    ${({ useIcon }) => collecticon(useIcon)}
-    font-size: 1.125rem
-  }
-  &,
-  &:visited {
-    color: inherit;
-  }
-
-  &:hover {
-    opacity: 1;
-    background: ${_rgba(themeVal('color.baseLight'), 0.08)};
-  }
-  &.active {
-    color: ${themeVal('color.baseLight')};
-    opacity: 1;
-    background: ${_rgba(themeVal('color.baseLight'), 0.16)};
-  }
-  span {
-    ${visuallyHidden()}
-  }
 `;
 
 // See documentation of filterComponentProp as to why this is
-const propsToFilter = ['variation', 'size', 'hideText', 'useIcon', 'active'];
+const propsToFilter = [
+  'variation',
+  'size',
+  'hideText',
+  'useIcon',
+  'active',
+  'visuallyDisabled'
+];
 const StyledNavLink = filterComponentProps(NavLink, propsToFilter);
-const StyledLink = filterComponentProps(Link, propsToFilter);
 
 function PageHeader() {
   return (
@@ -182,37 +166,36 @@ function PageHeader() {
         <PageNav role='navigation'>
           <GlobalMenu>
             <li>
-              <HomeLink
-                as={StyledLink}
-                to='/'
-                title='Visit the home page'
-                data-tip={appTitle}
-              >
-                <span>{appShortTitle}</span>
+              <HomeLink to='/' title='Visit the home page' data-tip={appTitle}>
+                <span>{appTitle}</span>
               </HomeLink>
             </li>
             <li>
               <GlobalMenuLink
-                as={StyledNavLink}
-                exact
+                forwardedAs={StyledNavLink}
                 to='/'
+                exact
+                variation='achromic-plain'
                 useIcon='house'
+                hideText
                 title='Visit the home page'
                 data-tip={appTitle}
               >
-                <span>{appTitle}</span>
+                {appTitle}
               </GlobalMenuLink>
             </li>
             <li>
               <GlobalMenuLink
-                as={StyledNavLink}
-                exact
+                forwardedAs={StyledNavLink}
                 to='/about'
+                exact
+                variation='achromic-plain'
                 useIcon='circle-information'
+                hideText
                 data-tip='About'
                 title='View About page'
               >
-                <span>About</span>
+                About
               </GlobalMenuLink>
             </li>
             <li>

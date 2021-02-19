@@ -13,9 +13,9 @@ import React from 'react';
  * ```
  *
  * This commonly happens when an element is impersonating another with the
- * `as` prop:
+ * `as` or `forwardedAs` prop:
  *
- *     <Button hideText as={Link}>Home</Button>
+ *     <Button hideText forwardedAs={Link}>Home</Button>
  *
  * Because of a bug, all the props passed to `Button` are passed to `Link`
  * without being filtered before rendering, causing the aforementioned error.
@@ -24,7 +24,7 @@ import React from 'react';
  * safely used as an impersonator.
  *
  *     const CleanLink = filterComponentProps(Link, ['hideText'])
- *     <Button hideText as={CleanLink}>Home</Button>
+ *     <Button hideText forwardedAs={CleanLink}>Home</Button>
  *
  * Issue tracking the bug: https://github.com/styled-components/styled-components/issues/2131
  *
