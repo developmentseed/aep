@@ -1,11 +1,10 @@
-import React from 'react';
-import { PropTypes as T } from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
+import T from 'prop-types';
 import styled from 'styled-components';
-// import { withRouter } from 'react-router-dom';
 import Clipboard from 'clipboard';
+import { useLocation } from 'react-router';
 
 import { Button } from '@devseed-ui/button';
-import collecticon from '@devseed-ui/collecticons';
 import Dropdown, {
   DropTitle,
   DropMenu,
@@ -14,15 +13,13 @@ import Dropdown, {
 } from '@devseed-ui/dropdown';
 import { Form, FormInput } from '@devseed-ui/form';
 
-const ShareIconMenu = styled(DropMenuItem)`
-  :before {
-    ${({ useIcon }) => collecticon(useIcon)}
-  }
-`;
-
 const FormInputGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
+
+  ${FormInput} {
+    min-width: 0;
+  }
 
   > :first-child:not(:last-child) {
     border-top-right-radius: 0;
@@ -36,11 +33,16 @@ const FormInputGroup = styled.div`
 `;
 
 function ShareOptions() {
+  // Ensure refresh on location change.
+  useLocation();
+
+  // Get url from window since it is easier.
   const url = window.location.toString();
+
   return (
     <Dropdown
-      alignment='right'
-      direction='down'
+      alignment='bottom'
+      direction='right'
       triggerElement={(props) => (
         <Button
           variation='achromic-plain'
@@ -49,31 +51,33 @@ function ShareOptions() {
           useIcon='share'
           {...props}
         >
-          <span>Share</span>
+          Share
         </Button>
       )}
     >
       <DropTitle>Share</DropTitle>
       <DropMenu role='menu' iconified>
         <li>
-          <ShareIconMenu
+          <Button
+            forwardedAs={DropMenuItem}
             useIcon='brand-facebook'
             href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
             title='Share on Facebook'
             target='_blank'
           >
-            <span>Facebook</span>
-          </ShareIconMenu>
+            Facebook
+          </Button>
         </li>
         <li>
-          <ShareIconMenu
+          <Button
+            forwardedAs={DropMenuItem}
             useIcon='brand-twitter'
             href={`https://twitter.com/intent/tweet?url=${url}`}
             title='Share on Twitter'
             target='_blank'
           >
-            <span>Twitter</span>
-          </ShareIconMenu>
+            Twitter
+          </Button>
         </li>
       </DropMenu>
       <DropInset>
@@ -87,63 +91,55 @@ export default ShareOptions;
 
 // This needs to be a separate class because of the mount and unmount methods.
 // The dropdown unmounts when closed and the refs would be lost otherwise.
-class CopyField extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      copiedMsg: false
-    };
-    this.triggerEl = null;
-    this.copiedMsgTimeout = null;
-  }
+function CopyField(props) {
+  const { value } = props;
 
-  componentDidMount() {
-    this.clipboard = new Clipboard(this.triggerEl, {
-      text: () => this.props.value
+  const [showCopiedMsg, setShowCopiedMsg] = useState(false);
+  const triggerElement = useRef(null);
+
+  useEffect(() => {
+    let copiedMsgTimeout = null;
+    const clipboard = new Clipboard(triggerElement.current, {
+      text: () => value
     });
 
-    this.clipboard.on('success', () => {
-      this.setState({ copiedMsg: true });
-      this.copiedMsgTimeout = setTimeout(() => {
-        this.setState({ copiedMsg: false });
+    clipboard.on('success', () => {
+      setShowCopiedMsg(true);
+      copiedMsgTimeout = setTimeout(() => {
+        setShowCopiedMsg(false);
       }, 2000);
     });
-  }
 
-  componentWillUnmount() {
-    this.clipboard.destroy();
-    if (this.copiedMsgTimeout) clearTimeout(this.copiedMsgTimeout);
-  }
+    return () => {
+      clipboard.destroy();
+      if (copiedMsgTimeout) clearTimeout(copiedMsgTimeout);
+    };
+  }, [value]);
 
-  render() {
-    const val = this.state.copiedMsg ? 'Copied!' : this.props.value;
-    return (
-      <Form action='#' className='form'>
-        <FormInputGroup>
-          <FormInput
-            id='site-url'
-            name='site-url'
-            className='form__control'
-            type='text'
-            readOnly
-            value={val}
-          />
-          <Button
-            variation='primary-raised-dark'
-            hideText
-            useIcon='clipboard'
-            type='button'
-            title='Copy to clipboard'
-            ref={(el) => {
-              this.triggerEl = el;
-            }}
-          >
-            <span>Copy to clipboard</span>
-          </Button>
-        </FormInputGroup>
-      </Form>
-    );
-  }
+  const val = showCopiedMsg ? 'Copied!' : value;
+
+  return (
+    <Form action='#'>
+      <FormInputGroup>
+        <FormInput
+          id='site-url'
+          name='site-url'
+          type='text'
+          readOnly
+          value={val}
+        />
+        <Button
+          variation='primary-raised-dark'
+          hideText
+          useIcon='clipboard'
+          title='Copy to clipboard'
+          ref={triggerElement}
+        >
+          Copy to clipboard
+        </Button>
+      </FormInputGroup>
+    </Form>
+  );
 }
 
 CopyField.propTypes = {

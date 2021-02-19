@@ -1,4 +1,3 @@
-'use strict';
 // We will need to access history from outside components.
 // The only way to do this is create our own history and pass it to the router.
 // eslint-disable-next-line inclusive-language/use-inclusive-words

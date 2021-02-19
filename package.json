@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/developmentseed/aep",
   "scripts": {
-    "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo \"'use strict';\n\nexport default {\n  environment: 'development'\n};\" > app/assets/scripts/config/local.js",
+    "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo \"export default {\n  environment: 'development'\n};\" > app/assets/scripts/config/local.js",
     "serve": "NODE_ENV=development gulp serve",
     "build": "NODE_ENV=production gulp",
     "stage": "NODE_ENV=staging gulp",
@@ -57,7 +57,6 @@
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.14",
     "browserify": "^17.0.0",
-    "collecticons-processor": "^4.1.0",
     "del": "^6.0.0",
     "envify": "^4.1.0",
     "errorify": "^0.3.1",
