@@ -91,7 +91,7 @@ export default ShareOptions;
 
 // This needs to be a separate class because of the mount and unmount methods.
 // The dropdown unmounts when closed and the refs would be lost otherwise.
-function CopyField (props) {
+function CopyField(props) {
   const { value } = props;
 
   const [showCopiedMsg, setShowCopiedMsg] = useState(false);
@@ -103,7 +103,7 @@ function CopyField (props) {
       text: () => value
     });
 
-    clipboard.on('success', (e) => {
+    clipboard.on('success', () => {
       setShowCopiedMsg(true);
       copiedMsgTimeout = setTimeout(() => {
         setShowCopiedMsg(false);
