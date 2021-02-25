@@ -37,8 +37,6 @@
 #
 ################################################
 
-app/assets/scripts/config/local.js
-app/assets/scripts/styles/collecticons/catalog.json
 
 ################################################
 # Dependencies
@@ -112,3 +110,5 @@ temp
 tmp
 .tmp
 dist
+public
+.cache
