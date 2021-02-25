@@ -34,7 +34,7 @@ const FormInputGroup = styled.div`
 function ShareOptions() {
   // Get url from window since it is easier.
   // Gatsby ensures the location refresh.
-  const url = window.location.toString();
+  const url = typeof window !== 'undefined' ? window.location.toString() : '';
 
   return (
     <Dropdown
