@@ -1,4 +1,4 @@
-# Africa Electrication Platform
+# Africa Electrification Platform
 Description to come.
 
 ## Installation and Usage
@@ -26,27 +26,6 @@ yarn install
 
 ### Usage
 
-#### Config files
-All the config files can be found in `app/assets/scripts/config`.
-After installing the projects there will be 3 main files:
-  - `local.js` - Used only for local development. On production this file should not exist or be empty.
-  - `staging.js`
-  - `production.js`
-
-The `production.js` file serves as base and the other 2 will override it as needed:
-  - `staging.js` will be loaded whenever the env variable `DS_ENV` is set to staging.
-  - `local.js` will be loaded if it exists.
-
-The following options must be set: (The used file will depend on the context):
-  - `value` - Description
-
-Example:
-```
-module.exports = {
-  value: 'some-value'
-};
-```
-
 #### Starting the app
 
 ```
@@ -62,9 +41,5 @@ To prepare the app for deployment run:
 ```
 yarn build
 ```
-or
-```
-yarn stage
-```
-This will package the app and place all the contents in the `dist` directory.
+This will package the app and place all the contents in the `public` directory.
 The app can then be run by any web server.
