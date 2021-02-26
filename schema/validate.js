@@ -2,7 +2,7 @@ const validateSchema = require('yaml-schema-validator');
 const fs = require('fs');
 const path = require('path');
 
-(async function main() {
+(function main() {
   try {
     const ymlFiles = fs.readdirSync(
       path.join(__dirname, '../content/study/posts/')
