@@ -43,7 +43,8 @@
     "fs-extra": "^9.1.0",
     "prettier": "^2.2.1",
     "stylelint": "^13.11.0",
-    "stylelint-config-recommended": "^3.0.0"
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1"
   },
   "dependencies": {
     "@devseed-ui/button": "^3.0.0",
@@ -67,6 +68,7 @@
     "gulp-replace": "^1.0.0",
     "lodash.defaultsdeep": "^4.6.1",
     "lodash.kebabcase": "^4.1.1",
+    "mapbox-gl": "1.13.1",
     "polished": "^4.1.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

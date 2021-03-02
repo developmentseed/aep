@@ -1,5 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
+import { graphql } from 'gatsby';
 
 import Layout from '../../components/layout';
 import {
@@ -10,10 +11,10 @@ import {
   InpageBody,
   InpageBodyInner
 } from '../../styles/inpage';
-import { graphql } from 'gatsby';
+import MbMap from '../../components/study-map/mb-map';
 
 function StudySingle({ data }) {
-  const { title, capital } = data.postsYaml;
+  const { title, capital, layers } = data.postsYaml;
 
   return (
     <Layout title='Study'>
@@ -26,6 +27,7 @@ function StudySingle({ data }) {
         <InpageBody>
           <InpageBodyInner>
             <p>Capital: {capital}</p>
+            <MbMap layers={layers} />
           </InpageBodyInner>
         </InpageBody>
       </Inpage>
@@ -44,6 +46,10 @@ export const pageQuery = graphql`
     postsYaml(id: { eq: $id }) {
       title
       capital
+      layers {
+        id
+        tiles
+      }
     }
   }
 `;
