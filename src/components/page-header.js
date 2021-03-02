@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  glsp,
-  media,
-  themeVal,
-  visuallyHidden,
-  rgba
-} from '@devseed-ui/theme-provider';
-import collecticon from '@devseed-ui/collecticons';
+import { glsp, themeVal } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
 
 import { filterComponentProps } from '../styles/utils/general';
@@ -24,13 +17,6 @@ const PageHead = styled.header`
   left: 0;
   right: 0;
   height: 4rem;
-
-  ${media.mediumUp`
-    top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100vh;
-  `}
 `;
 
 const PageHeadInner = styled.div`
@@ -39,22 +25,13 @@ const PageHeadInner = styled.div`
   align-items: center;
   margin: 0 auto;
   height: 100%;
-  padding: ${glsp(0, 1, 0, 0)};
-
-  ${media.mediumUp`
-    flex-flow: column nowrap;
-    padding: ${glsp(1, 0, 1.5, 0)};
-  `}
+  padding: ${glsp(0, 1)};
 `;
 
 const PageNav = styled.nav`
   display: flex;
   flex-flow: row nowrap;
-  flex: 1;
-
-  ${media.mediumUp`
-    flex-flow: column nowrap;
-  `}
+  margin-left: auto;
 `;
 
 const GlobalMenu = styled.ul`
@@ -63,15 +40,11 @@ const GlobalMenu = styled.ul`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  margin: 0;
   list-style: none;
+  margin: 0;
 
   > * {
     margin: 0;
-  }
-
-  > *:first-child {
-    margin-right: auto;
   }
 
   > *:last-child > * {
@@ -79,55 +52,19 @@ const GlobalMenu = styled.ul`
     height: 3rem;
     text-align: center;
   }
-
-  ${media.mediumUp`
-    flex-flow: column nowrap;
-    justify-content: center;
-  `}
-
-  ${media.mediumUp`
-    > *:first-child {
-      margin: 0;
-    }
-  
-    > *:last-child {
-      margin-top: auto;
-    }
-  `}
 `;
 
-const HomeLink = styled(Link)`
-  position: relative;
-  display: block;
-  width: 4rem;
-  height: 3rem;
-  line-height: 3rem;
-  text-align: center;
-  transition: all 0.24s ease 0s;
-  font-weight: ${themeVal('type.heading.bold')};
+const PageHeadHeadline = styled.div``;
+
+const PageHeadTitle = styled.h1`
   font-size: 1.5rem;
-
-  ${media.mediumUp`
-    margin-bottom: ${glsp(6)};
-  `}
-
-  &,
-  &:visited {
+  line-height: 1;
+  a {
+    display: block;
+  }
+  a,
+  a:visited {
     color: inherit;
-  }
-
-  &.active {
-    color: ${themeVal('color.baseLight')};
-    opacity: 1;
-    background: ${rgba(themeVal('color.baseLight'), 0.08)};
-  }
-
-  span {
-    ${visuallyHidden()}
-  }
-
-  ::before {
-    ${collecticon('brand-development-seed')}
   }
 `;
 
@@ -138,11 +75,6 @@ const GlobalMenuLink = styled(Button)`
   padding: 0;
   text-align: center;
   margin-right: ${glsp(0.5)};
-
-  ${media.mediumUp`
-    margin-right: 0;
-    margin-bottom: ${glsp(0.5)};
-  `}
 `;
 
 // See documentation of filterComponentProp as to why this is
@@ -172,13 +104,15 @@ function PageHeader() {
   return (
     <PageHead role='banner'>
       <PageHeadInner>
+        <PageHeadHeadline>
+          <PageHeadTitle>
+            <Link to='/' title='Visit the home page' data-tip={title}>
+              <span>AEP</span>
+            </Link>
+          </PageHeadTitle>
+        </PageHeadHeadline>
         <PageNav role='navigation'>
           <GlobalMenu>
-            <li>
-              <HomeLink to='/' title='Visit the home page' data-tip={title}>
-                <span>{title}</span>
-              </HomeLink>
-            </li>
             <li>
               <GlobalMenuLink
                 forwardedAs={StyledNavLink}
@@ -197,27 +131,27 @@ function PageHeader() {
               <GlobalMenuLink
                 forwardedAs={StyledNavLink}
                 activeClassName='active'
-                to='/about'
+                partiallyActive
+                to='/studies'
                 variation='achromic-plain'
-                useIcon='circle-information'
+                useIcon='compass'
                 hideText
-                data-tip='About'
-                title='View About page'
+                data-tip='Studies'
+                title='View Studies page'
               >
-                About
+                Studies
               </GlobalMenuLink>
             </li>
             <li>
               <GlobalMenuLink
                 forwardedAs={StyledNavLink}
                 activeClassName='active'
-                partiallyActive
-                to='/studies'
+                to='/about'
                 variation='achromic-plain'
-                useIcon='book'
+                useIcon='circle-information'
                 hideText
-                data-tip='Studies'
-                title='View Studies page'
+                data-tip='About'
+                title='View About page'
               >
                 About
               </GlobalMenuLink>
