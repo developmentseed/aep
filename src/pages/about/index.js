@@ -13,8 +13,8 @@ import {
 } from '../../styles/inpage';
 import Dl from '../../styles/type/definition-list';
 
-import logoEsmapUrl from '../../media/content/logos/logo-esmap--white.png';
-import logoWbUrl from '../../media/content/logos/logo-wb--white.png';
+import logoEsmapUrl from '../../media/content/logos/logo-esmap.png';
+import logoWbUrl from '../../media/content/logos/logo-wbg.png';
 import logoDevseedUrl from '../../media/content/logos/logo-devseed.png';
 import logoDerilinxUrl from '../../media/content/logos/logo-derilinx.png';
 

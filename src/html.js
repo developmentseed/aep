@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DSLogo from './media/layout/ds-logo-pos.svg';
-
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -54,14 +52,6 @@ export default function HTML(props) {
           <div>
             {/* To avoid an abrupt transition when the app loads, this banner is
               transitioned out. */}
-            <h1>
-              <img
-                src={DSLogo}
-                alt='Development Seed logotype'
-                width='188'
-                height='32'
-              />
-            </h1>
             <p>Loading...</p>
           </div>
         </div>

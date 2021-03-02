@@ -22,7 +22,7 @@ import logoWbUrl from '../media/content/logos/logo-wb--white.png';
 
 const HomeInpage = styled(Inpage)`
   background: ${themeVal('color.secondary')};
-  color: ${themeVal('color.background')};
+  color: #ffffff;
   padding-top: 8vh;
   position: relative;
 

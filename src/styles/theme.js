@@ -1,6 +1,11 @@
 const theme = (uiTheme) => {
   return {
-    ...uiTheme
+    ...uiTheme,
+    color: {
+      ...uiTheme.color,
+      primary: uiTheme.color.baseDark,
+      secondary: '#6A6262'
+    }
   };
 };
 
