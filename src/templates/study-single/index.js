@@ -14,7 +14,7 @@ import {
 import MbMap from '../../components/study-map/mb-map';
 
 function StudySingle({ data }) {
-  const { title, layers } = data.postsYaml;
+  const { title, bbox, layers } = data.postsYaml;
   const { mapConfig } = data.site.siteMetadata;
 
   return (
@@ -27,7 +27,7 @@ function StudySingle({ data }) {
         </InpageHeader>
         <InpageBody>
           <InpageBodyInner>
-            <MbMap mapConfig={mapConfig} layers={layers} />
+            <MbMap mapConfig={mapConfig} bbox={bbox} layers={layers} />
           </InpageBodyInner>
         </InpageBody>
       </Inpage>
@@ -45,6 +45,7 @@ export const pageQuery = graphql`
   query StudyById($id: String!) {
     postsYaml(id: { eq: $id }) {
       title
+      bbox
       layers {
         id
         tiles

@@ -1,4 +1,13 @@
 {
   "title": { "type": "string" },
-  "capital": { "type": "string" }
+  "bbox": [
+    [{ "type": "number" }, { "type": "number" }],
+    [{ "type": "number" }, { "type": "number" }]
+  ],
+  "layers": [
+    {
+      "id": { "type": "string" },
+      "tiles": { "type": "string" }
+    }
+  ]
 }

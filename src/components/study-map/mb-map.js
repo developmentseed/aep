@@ -10,7 +10,7 @@ const MapContainer = styled.div`
 `;
 
 export default function MbMap(props) {
-  const { mapConfig, layers } = props;
+  const { mapConfig, bbox, layers } = props;
 
   mapboxgl.accessToken = mapConfig.mbToken;
 
@@ -23,6 +23,7 @@ export default function MbMap(props) {
   useEffect(() => {
     const mbMap = new mapboxgl.Map({
       attributionControl: false,
+      bounds: bbox,
       container: mapContainer.current,
       style: mapConfig.basemap,
       logoPosition: 'bottom-right',
@@ -52,7 +53,7 @@ export default function MbMap(props) {
     return () => {
       mbMap.remove();
     };
-  }, [mapConfig]);
+  }, [bbox, mapConfig]);
 
   useEffect(() => {
     if (!theMap) return;
@@ -105,5 +106,6 @@ export default function MbMap(props) {
 
 MbMap.propTypes = {
   mapConfig: T.object,
+  bbox: T.array,
   layers: T.array
 };
