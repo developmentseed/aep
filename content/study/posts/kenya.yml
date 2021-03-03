@@ -1,5 +1,7 @@
 title: Kenya
 bbox: [[ 33.893,-4.676],[41.855,5.506 ]]
 layers:
-  - id: main-pt
-    tiles: https://8ib71h0627.execute-api.us-east-1.amazonaws.com/v1/{z}/{x}/{y}@1x?url=s3://covid-eo-data/agriculture-cropmonitor/CropMonitor_202008.tif&resampling_method=nearest&bidx=1&color_map=custom_cropmonitor
+  - id: 11kv
+    type: line
+    sourceLayer: data_layer
+    tiles:  http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/11kv/{z}/{x}/{y}.pbf

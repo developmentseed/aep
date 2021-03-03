@@ -48,6 +48,8 @@ export const pageQuery = graphql`
       bbox
       layers {
         id
+        type
+        sourceLayer
         tiles
       }
     }

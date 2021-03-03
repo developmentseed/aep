@@ -83,14 +83,18 @@ export default function MbMap(props) {
     toAdd.forEach((layer) => {
       if (!theMap.getSource(layer.id)) {
         theMap.addSource(layer.id, {
-          type: 'raster',
+          type: 'vector',
           tiles: [layer.tiles]
         });
         theMap.addLayer(
           {
             id: layer.id,
-            type: 'raster',
-            source: layer.id
+            type: layer.type,
+            'source-layer': layer.sourceLayer || 'data_layer',
+            source: layer.id,
+            paint: {
+              'line-color': '#ffdb00'
+            }
           },
           'admin-0-boundary-bg'
         );
