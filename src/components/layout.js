@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import T from 'prop-types';
-import { DevseedUiThemeProvider, media } from '@devseed-ui/theme-provider';
+import { DevseedUiThemeProvider } from '@devseed-ui/theme-provider';
 import { CollecticonsGlobalStyle } from '@devseed-ui/collecticons';
 import { reveal } from '@devseed-ui/animation';
 
@@ -17,10 +17,6 @@ const Page = styled.div`
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: minmax(4rem, max-content) auto 0;
-
-  ${media.mediumUp`
-    grid-template-columns: minmax(4rem, max-content) auto 0;
-  `}
 `;
 
 const PageBody = styled.main`
