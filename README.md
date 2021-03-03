@@ -35,7 +35,7 @@ Compiles the javascript and launches the server making the site available at `ht
 The system will watch files and execute tasks whenever one of them changes.
 The site will automatically refresh since it is bundled with livereload.
 
-# Deployment
+## Deployment
 To prepare the app for deployment run:
 
 ```
@@ -43,3 +43,10 @@ yarn build
 ```
 This will package the app and place all the contents in the `public` directory.
 The app can then be run by any web server.
+
+## Content validation
+The yml files with study configuration can be validated using:
+
+```
+yarn validate
+```
