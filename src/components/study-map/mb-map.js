@@ -3,9 +3,6 @@ import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q';
-
 const MapContainer = styled.div`
   position: relative;
   width: 100%;
@@ -13,7 +10,9 @@ const MapContainer = styled.div`
 `;
 
 export default function MbMap(props) {
-  const { layers } = props;
+  const { mapConfig, layers } = props;
+
+  mapboxgl.accessToken = mapConfig.mbToken;
 
   const mapContainer = useRef(null);
   const [theMap, setMap] = useState(null);
@@ -25,7 +24,7 @@ export default function MbMap(props) {
     const mbMap = new mapboxgl.Map({
       attributionControl: false,
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/dark-v10',
+      style: mapConfig.basemap,
       logoPosition: 'bottom-right',
       pitchWithRotate: false,
       dragRotate: false
@@ -53,7 +52,7 @@ export default function MbMap(props) {
     return () => {
       mbMap.remove();
     };
-  }, []);
+  }, [mapConfig]);
 
   useEffect(() => {
     if (!theMap) return;
@@ -99,11 +98,12 @@ export default function MbMap(props) {
 
     // Store new current layers.
     currentMapLayers.current = [...toKeep, ...toAdd];
-  }, [theMap, layers]);
+  }, [theMap, mapConfig, layers]);
 
   return <MapContainer ref={mapContainer} />;
 }
 
 MbMap.propTypes = {
+  mapConfig: T.object,
   layers: T.array
 };
