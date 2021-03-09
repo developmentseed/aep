@@ -9,7 +9,7 @@ mapboxgl.accessToken =
 const MapContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 40rem;
+  height: 100%;
 `;
 
 export default function MbMap(props) {

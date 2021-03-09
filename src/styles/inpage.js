@@ -39,11 +39,12 @@ export const InpageHeader = styled.header`
 `;
 
 export const InpageHeaderInner = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-end;
-  padding: ${glsp(4, 4, 2, 4)};
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: ${glsp(1, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(themeVal('layout.gap.xsmall'))};
+  align-items: end;
+  background: ${themeVal('color.baseAlphaC')};
 `;
 
 export const InpageHeadline = styled.div`
@@ -73,8 +74,14 @@ export const InpageTitleWrapper = styled.div`
 
 export const InpageTitle = styled.h1`
   ${truncated()}
-  font-size: 2rem;
-  line-height: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 0;
+`;
+
+export const InpageSubtitle = styled.p`
+  font-size: 1rem;
+  line-height: 1.5rem;
   margin: 0;
 `;
 
@@ -83,6 +90,5 @@ export const InpageBody = styled.div`
 `;
 
 export const InpageBodyInner = styled.div`
-  padding: ${glsp(0, 4, 4, 4)};
-  max-width: ${themeVal('layout.max')};
+  height: 100%;
 `;
