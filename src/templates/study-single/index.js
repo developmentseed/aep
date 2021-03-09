@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
+import { Accordion } from '@devseed-ui/accordion';
 
 import Layout from '../../components/layout';
 import {
@@ -35,6 +36,7 @@ import {
   PanelGroupBody
 } from '../../styles/panel';
 import MbMap from '../../components/study-map/mb-map';
+import PanelLayer from './panel-layer';
 
 const Carto = styled.div`
   display: grid;
@@ -62,7 +64,7 @@ const ViewMenu = styled.ul`
 const ViewMenuLink = styled(Button)``;
 
 function StudySingle({ data }) {
-  const { title, bbox, mapConfig } = data.postsYaml;
+  const { title, bbox, mapConfig, layers = [] } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
 
   return (
@@ -124,7 +126,26 @@ function StudySingle({ data }) {
                           <PanelGroupTitle>Results</PanelGroupTitle>
                         </PanelGroupHeader>
                         <PanelGroupBody>
-                          <p>Layer 1</p>
+                          <Accordion>
+                            {({ checkExpanded, setExpanded }) => (
+                              <ol>
+                                {layers.map((l, idx) => (
+                                  <li key={l.mbLayer}>
+                                    <PanelLayer
+                                      id={l.mbLayer}
+                                      label={l.name}
+                                      // active={l.visible}
+                                      info={l.info}
+                                      // legend={l.legend}
+                                      isExpanded={checkExpanded(idx)}
+                                      setExpanded={(v) => setExpanded(idx, v)}
+                                      // onToggleClick={() => onAction('layer.toggle', l)}
+                                    />
+                                  </li>
+                                ))}
+                              </ol>
+                            )}
+                          </Accordion>
                         </PanelGroupBody>
                       </PanelGroup>
                       <PanelGroup>
@@ -165,6 +186,16 @@ export const pageQuery = graphql`
       title
       bbox
       mapConfig
+      layers {
+        name
+        category
+        mbLayer
+        info
+        source {
+          name
+          url
+        }
+      }
     }
     site {
       siteMetadata {

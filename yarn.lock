@@ -982,6 +982,15 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@devseed-ui/accordion@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@devseed-ui/accordion/-/accordion-3.0.1.tgz#c4d3ed92509945a6e09f26993140b7c88dc1876c"
+  integrity sha512-Q4yCBVP15xx3M7RiTYywUHBwIm1ygWC5Lot/DpAtP7ICCB6LWa92xW4QWt3L1s6OFNaoCDmsOqWiENnWyfaiCw==
+  dependencies:
+    "@devseed-ui/button" "3.0.1"
+    "@devseed-ui/collecticons" "2.0.0"
+    "@devseed-ui/theme-provider" "3.0.0"
+
 "@devseed-ui/animation@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@devseed-ui/animation/-/animation-3.0.0.tgz#b4e846072c61dc8b4e46d0f4ca65534c64ba9446"
@@ -1022,7 +1031,7 @@
     "@devseed-ui/theme-provider" "^3.0.0"
     "@devseed-ui/typography" "1.0.0"
 
-"@devseed-ui/theme-provider@^3.0.0":
+"@devseed-ui/theme-provider@3.0.0", "@devseed-ui/theme-provider@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@devseed-ui/theme-provider/-/theme-provider-3.0.0.tgz#13b22818f5ab3dc11d99b82d21e11afbde3ff487"
   integrity sha512-/l5hVfWSGJe91m0NjO0tUNgoqCsCpr32VwCPhugc37qgvi/1tF54vwSl2hEz4CA4VPpbtCpxKrmb8234vhd7lw==

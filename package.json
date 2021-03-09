@@ -52,6 +52,7 @@
     "validate": "^5.1.0"
   },
   "dependencies": {
+    "@devseed-ui/accordion": "^3.0.1",
     "@devseed-ui/button": "^3.0.0",
     "@devseed-ui/collecticons": "^2.0.0",
     "@devseed-ui/dropdown": "^2.0.0",
