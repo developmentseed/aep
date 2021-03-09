@@ -40,14 +40,16 @@ export const InpageHeader = styled.header`
 
 export const InpageHeaderInner = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   grid-gap: ${glsp(1, themeVal('layout.gap.xsmall'))};
   padding: ${glsp(themeVal('layout.gap.xsmall'))};
   align-items: end;
-  background: ${themeVal('color.baseAlphaC')};
+  background-color: ${themeVal('color.primary')};
+  color: ${themeVal('color.baseLight')};
 `;
 
 export const InpageHeadline = styled.div`
+  grid-column: 1 / span 6;
   display: flex;
   flex-flow: column;
   min-width: 0;
@@ -63,6 +65,11 @@ export const InpageToolbar = styled.div`
   align-items: center;
   padding-left: ${glsp(2)};
   margin-left: auto;
+`;
+
+export const InpageNav = styled.nav`
+  grid-column: 7 / span 6;
+  text-align: right;
 `;
 
 export const InpageTitleWrapper = styled.div`
