@@ -3827,7 +3827,7 @@ command-exists@^1.2.4:
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.9.tgz#c50725af3808c8ab0260fd60b01fbfa25b954f69"
   integrity sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==
 
-commander@^2.16.0, commander@^2.20.0, commander@^2.20.3, commander@^2.8.1:
+commander@^2.20.0, commander@^2.20.3, commander@^2.8.1:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
@@ -8477,7 +8477,7 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@^3.12.0, js-yaml@^3.13.1:
+js-yaml@^3.13.1:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
   integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
@@ -14130,10 +14130,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-validate@^4.4.1:
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/validate/-/validate-4.5.1.tgz#ba36b8450b4bad4ccf52d666ba80abb2c01cace2"
-  integrity sha512-ZdfYYgJDVrx4oxamyW0ynIoW8jIAoAeb8/pSu9XF+WCZueGogUMU7cGYHVUiWAJDc7RO3QR/EBhhkP46Wn9Hng==
+validate@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/validate/-/validate-5.1.0.tgz#12d685e346067646cba491b27994ad98b6319fce"
+  integrity sha512-Y+vJv+xR3XsaQM8W1rQvwc6is/sgCUBv3lvNKc2DZ1HcVcEWAaHVSFB5uoxkQnw2riUq77Rg5nv1u8YuuSu/Zw==
   dependencies:
     component-type "1.2.1"
     eivindfjeldstad-dot "0.0.1"
@@ -14571,16 +14571,6 @@ yaml-loader@^0.6.0:
   dependencies:
     loader-utils "^1.4.0"
     yaml "^1.8.3"
-
-yaml-schema-validator@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/yaml-schema-validator/-/yaml-schema-validator-1.2.2.tgz#48d85ccda92fed3acc51cdf706530c2927e09807"
-  integrity sha512-mIAsiZgrdsWsVLek8f4bi27BQRfPb+aP95RDDplK1UIQchZX8ZtJrIDHTar7yoFIJKfPWmmyL+OugrLzITMW1g==
-  dependencies:
-    chalk "^2.4.1"
-    commander "^2.16.0"
-    js-yaml "^3.12.0"
-    validate "^4.4.1"
 
 yaml@^1.10.0, yaml@^1.7.2, yaml@^1.8.3:
   version "1.10.0"

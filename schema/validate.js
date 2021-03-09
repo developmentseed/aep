@@ -4,8 +4,25 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const mbValidator = require('@mapbox/mapbox-gl-style-spec');
-const studySchema = require('./study-schema.json');
-const validateSchema = require('yaml-schema-validator');
+const Schema = require('validate');
+const yml = require('js-yaml');
+
+const fileExists = (val) => {
+  return fs.existsSync(path.join(__dirname, '../content/study/posts/', val));
+};
+
+const studySchema = new Schema({
+  title: { type: String, required: true },
+  bbox: [
+    [{ type: Number }, { type: Number }],
+    [{ type: Number }, { type: Number }]
+  ],
+  mapConfig: { type: String, use: { fileExists } }
+});
+
+studySchema.message({
+  fileExists: (path) => `${path} must point to a file that exists`
+});
 
 function printResult(fn, fileErrors) {
   if (fileErrors.length) {
@@ -46,10 +63,8 @@ function printResult(fn, fileErrors) {
 
     console.log('\nValidating YML\n===');
     ymlFiles.forEach((fn) => {
-      const fileErrors = validateSchema(fn, {
-        schema: studySchema,
-        logLevel: 'none'
-      });
+      const fileContent = yml.load(fs.readFileSync(fn));
+      const fileErrors = studySchema.validate(fileContent);
 
       if (fileErrors.length) {
         errors = true;

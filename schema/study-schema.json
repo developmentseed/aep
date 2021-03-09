@@ -1,8 +1,0 @@
-{
-  "title": { "type": "string", "required": true },
-  "bbox": [
-    [{ "type": "number" }, { "type": "number" }],
-    [{ "type": "number" }, { "type": "number" }]
-  ],
-  "mapConfig": { "type": "string" }
-}
