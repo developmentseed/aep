@@ -97,7 +97,7 @@ jobs:
       - name: Test
         run: yarn test
 
-  validateYml:
+  validateConfig:
     needs: prep
     runs-on: ubuntu-latest
 
@@ -120,5 +120,5 @@ jobs:
       - name: Install
         run: yarn install
 
-      - name: Validate YML
+      - name: Validate YML and MB Style Configuration
         run: yarn validate

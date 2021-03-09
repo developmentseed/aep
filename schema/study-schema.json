@@ -3,5 +3,6 @@
   "bbox": [
     [{ "type": "number" }, { "type": "number" }],
     [{ "type": "number" }, { "type": "number" }]
-  ]
+  ],
+  "mapConfig": { "type": "string" }
 }
