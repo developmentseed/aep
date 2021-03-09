@@ -62,7 +62,8 @@ const ViewMenu = styled.ul`
 const ViewMenuLink = styled(Button)``;
 
 function StudySingle({ data }) {
-  const { title, capital, layers } = data.postsYaml;
+  const { title, bbox, mapConfig } = data.postsYaml;
+  const { mapConfig: globalMapConfig } = data.site.siteMetadata;
 
   return (
     <Layout title='Study'>
@@ -109,7 +110,6 @@ function StudySingle({ data }) {
               <Panel>
                 <CartoPanelHeader>
                   <PanelTitle>Study panel</PanelTitle>
-                  <p>Capital: {capital}</p>
                 </CartoPanelHeader>
                 <PanelBody>
                   <PanelSection>
@@ -139,7 +139,12 @@ function StudySingle({ data }) {
                   </PanelSection>
                 </PanelBody>
               </Panel>
-              <MbMap layers={layers} />
+              <MbMap
+                token={globalMapConfig.mbToken}
+                basemap={globalMapConfig.basemap}
+                bbox={bbox}
+                mapConfig={mapConfig}
+              />
             </Carto>
           </InpageBodyInner>
         </InpageBody>
@@ -158,10 +163,15 @@ export const pageQuery = graphql`
   query StudyById($id: String!) {
     postsYaml(id: { eq: $id }) {
       title
-      capital
-      layers {
-        id
-        tiles
+      bbox
+      mapConfig
+    }
+    site {
+      siteMetadata {
+        mapConfig {
+          basemap
+          mbToken
+        }
       }
     }
   }

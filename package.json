@@ -33,7 +33,9 @@
     "@babel/plugin-transform-spread": "^7.13.0",
     "@babel/preset-env": "^7.13.5",
     "@babel/preset-react": "^7.12.13",
+    "@mapbox/mapbox-gl-style-spec": "^13.19.0",
     "babel-eslint": "^10.1.0",
+    "chalk": "^4.1.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-react-app": "^6.0.0",
@@ -42,11 +44,12 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "fs-extra": "^9.1.0",
+    "js-yaml": "^4.0.0",
     "prettier": "^2.2.1",
     "stylelint": "^13.11.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "yaml-schema-validator": "^1.2.2"
+    "validate": "^5.1.0"
   },
   "dependencies": {
     "@devseed-ui/button": "^3.0.0",

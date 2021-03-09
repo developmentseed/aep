@@ -1,28 +1,81 @@
-const validateSchema = require('yaml-schema-validator');
-const fs = require('fs');
+/* eslint-disable no-console */
+const chalk = require('chalk');
+const fs = require('fs-extra');
 const path = require('path');
 
-(function main() {
+const mbValidator = require('@mapbox/mapbox-gl-style-spec');
+const Schema = require('validate');
+const yml = require('js-yaml');
+
+const fileExists = (val) => {
+  return fs.existsSync(path.join(__dirname, '../content/study/posts/', val));
+};
+
+const studySchema = new Schema({
+  title: { type: String, required: true },
+  bbox: [
+    [{ type: Number }, { type: Number }],
+    [{ type: Number }, { type: Number }]
+  ],
+  mapConfig: { type: String, use: { fileExists } }
+});
+
+studySchema.message({
+  fileExists: (path) => `${path} must point to a file that exists`
+});
+
+function printResult(fn, fileErrors) {
+  if (fileErrors.length) {
+    console.log(chalk.red(`✖ ${fn}`));
+    fileErrors.forEach((err) => console.log(`    ${err.message}`));
+  } else {
+    console.log(chalk.green(`✔ ${fn}`));
+  }
+}
+
+(async function main() {
   try {
-    const ymlFiles = fs.readdirSync(
+    const studyFiles = fs.readdirSync(
       path.join(__dirname, '../content/study/posts/')
     );
 
-    const errors = ymlFiles.reduce((errors, ymlFn) => {
-      console.log(`\nValidating ${ymlFn}`);
-      const error = validateSchema(
-        path.join(__dirname, `../content/study/posts/${ymlFn}`),
-        {
-          schemaPath: path.join(__dirname, './study-schema.json')
-        }
-      );
-      if (error.length) return [...errors, error];
-      return errors;
-    }, []);
+    const ymlFiles = studyFiles
+      .filter((fn) => path.extname(fn) === '.yml')
+      .map((fn) => path.join(__dirname, `../content/study/posts/${fn}`));
 
-    if (errors.length) throw new Error(errors);
+    const mbStyleFiles = studyFiles
+      .filter((fn) => path.extname(fn) === '.json')
+      .map((fn) => path.join(__dirname, `../content/study/posts/${fn}`));
+
+    let errors = false;
+
+    console.log('\nValidating MB Styles\n===');
+    mbStyleFiles.forEach((fn) => {
+      const fileContent = fs.readJSONSync(fn);
+      const fileErrors = mbValidator.validate(fileContent);
+
+      if (fileErrors.length) {
+        errors = true;
+      }
+
+      printResult(fn, fileErrors);
+    });
+
+    console.log('\nValidating YML\n===');
+    ymlFiles.forEach((fn) => {
+      const fileContent = yml.load(fs.readFileSync(fn));
+      const fileErrors = studySchema.validate(fileContent);
+
+      if (fileErrors.length) {
+        errors = true;
+      }
+
+      printResult(fn, fileErrors);
+    });
+
+    if (errors) throw new Error();
     process.exit(0);
   } catch (error) {
     process.exit(1);
   }
-}());
+})();
