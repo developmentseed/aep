@@ -1,7 +1,2 @@
 title: Kenya
 bbox: [[ 33.893,-4.676],[41.855,5.506 ]]
-layers:
-  - id: 11kv
-    type: line
-    sourceLayer: data_layer
-    tiles:  http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/11kv/{z}/{x}/{y}.pbf
