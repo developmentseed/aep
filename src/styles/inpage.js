@@ -10,7 +10,7 @@ import {
 export const Inpage = styled.article`
   display: grid;
   height: 100%;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: min-content 1fr;
 
   /**
    * Make Inpage map-centric
