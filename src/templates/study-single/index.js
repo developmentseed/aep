@@ -3,7 +3,8 @@ import T from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { visuallyHidden } from '@devseed-ui/theme-provider';
+import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
+import { Button } from '@devseed-ui/button';
 
 import Layout from '../../components/layout';
 import {
@@ -13,6 +14,7 @@ import {
   InpageHeadline,
   InpageTitle,
   InpageSubtitle,
+  InpageNav,
   InpageBody,
   InpageBodyInner
 } from '../../styles/inpage';
@@ -48,6 +50,17 @@ const CartoPanelHeader = styled(PanelHeader)`
   ${visuallyHidden()}
 `;
 
+const ViewMenu = styled.ul`
+  display: inline-grid;
+  grid-gap: ${glsp(0, themeVal('layout.gap.xsmall'))};
+
+  > * {
+    grid-row: 1;
+  }
+`;
+
+const ViewMenuLink = styled(Button)``;
+
 function StudySingle({ data }) {
   const { title, capital, layers } = data.postsYaml;
 
@@ -60,6 +73,34 @@ function StudySingle({ data }) {
               <InpageSubtitle>Study</InpageSubtitle>
               <InpageTitle>{title}</InpageTitle>
             </InpageHeadline>
+            <InpageNav>
+              <ViewMenu>
+                <li>
+                  <ViewMenuLink
+                    activeClassName='active'
+                    partiallyActive
+                    to='/'
+                    variation='achromic-plain'
+                    useIcon='map'
+                    title='Map view'
+                  >
+                    Map
+                  </ViewMenuLink>
+                </li>
+                <li>
+                  <ViewMenuLink
+                    activeClassName='active'
+                    partiallyActive
+                    to='/'
+                    variation='achromic-plain'
+                    useIcon='text-block'
+                    title='Summary view'
+                  >
+                    Summary
+                  </ViewMenuLink>
+                </li>
+              </ViewMenu>
+            </InpageNav>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>

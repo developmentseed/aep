@@ -8,6 +8,7 @@ import {
   InpageHeader,
   InpageHeaderInner,
   InpageTitle,
+  InpageHeadline,
   InpageBody,
   InpageBodyInner
 } from '../../styles/inpage';
@@ -94,7 +95,11 @@ function About() {
       <Inpage>
         <InpageHeader>
           <InpageHeaderInner>
-            <InpageTitle>About the Africa Electrification Platform</InpageTitle>
+            <InpageHeadline>
+              <InpageTitle>
+                About the Africa Electrification Platform
+              </InpageTitle>
+            </InpageHeadline>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>

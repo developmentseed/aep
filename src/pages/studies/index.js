@@ -7,6 +7,7 @@ import {
   Inpage,
   InpageHeader,
   InpageHeaderInner,
+  InpageHeadline,
   InpageTitle,
   InpageBody,
   InpageBodyInner
@@ -20,7 +21,9 @@ function Studies({ data }) {
       <Inpage>
         <InpageHeader>
           <InpageHeaderInner>
-            <InpageTitle>Studies</InpageTitle>
+            <InpageHeadline>
+              <InpageTitle>Studies</InpageTitle>
+            </InpageHeadline>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>

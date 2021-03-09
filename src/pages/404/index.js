@@ -6,6 +6,7 @@ import {
   Inpage,
   InpageHeader,
   InpageHeaderInner,
+  InpageHeadline,
   InpageTitle,
   InpageBody,
   InpageBodyInner
@@ -18,7 +19,9 @@ function UhOh() {
       <Inpage>
         <InpageHeader>
           <InpageHeaderInner>
-            <InpageTitle>Page not found</InpageTitle>
+            <InpageHeadline>
+              <InpageTitle>Page not found</InpageTitle>
+            </InpageHeadline>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
