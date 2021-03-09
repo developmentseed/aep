@@ -12,7 +12,7 @@ import {
   InpageBody,
   InpageBodyInner
 } from '../../styles/inpage';
-import Dl from '../../styles/type/definition-list';
+import Dl from '../../styles/typography/definition-list';
 
 import logoEsmapUrl from '../../media/content/logos/logo-esmap.png';
 import logoWbUrl from '../../media/content/logos/logo-wbg.png';

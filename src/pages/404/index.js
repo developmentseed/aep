@@ -11,7 +11,7 @@ import {
   InpageBody,
   InpageBodyInner
 } from '../../styles/inpage';
-import Prose from '../../styles/type/prose';
+import Prose from '../../styles/typography/prose';
 
 function UhOh() {
   return (
