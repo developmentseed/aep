@@ -10,7 +10,7 @@ import {
 export const Inpage = styled.article`
   display: grid;
   height: 100%;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: min-content 1fr;
 
   /**
    * Make Inpage map-centric
@@ -39,14 +39,17 @@ export const InpageHeader = styled.header`
 `;
 
 export const InpageHeaderInner = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-end;
-  padding: ${glsp(4, 4, 2, 4)};
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: ${glsp(1, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(themeVal('layout.gap.xsmall'))};
+  align-items: end;
+  background-color: ${themeVal('color.primary')};
+  color: ${themeVal('color.baseLight')};
 `;
 
 export const InpageHeadline = styled.div`
+  grid-column: 1 / span 6;
   display: flex;
   flex-flow: column;
   min-width: 0;
@@ -64,6 +67,11 @@ export const InpageToolbar = styled.div`
   margin-left: auto;
 `;
 
+export const InpageNav = styled.nav`
+  grid-column: 7 / span 6;
+  text-align: right;
+`;
+
 export const InpageTitleWrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
@@ -73,8 +81,14 @@ export const InpageTitleWrapper = styled.div`
 
 export const InpageTitle = styled.h1`
   ${truncated()}
-  font-size: 2rem;
-  line-height: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 0;
+`;
+
+export const InpageSubtitle = styled.p`
+  font-size: 1rem;
+  line-height: 1.5rem;
   margin: 0;
 `;
 
@@ -83,6 +97,5 @@ export const InpageBody = styled.div`
 `;
 
 export const InpageBodyInner = styled.div`
-  padding: ${glsp(0, 4, 4, 4)};
-  max-width: ${themeVal('layout.max')};
+  height: 100%;
 `;

@@ -6,11 +6,12 @@ import {
   Inpage,
   InpageHeader,
   InpageHeaderInner,
+  InpageHeadline,
   InpageTitle,
   InpageBody,
   InpageBodyInner
 } from '../../styles/inpage';
-import Prose from '../../styles/type/prose';
+import Prose from '../../styles/typography/prose';
 
 function UhOh() {
   return (
@@ -18,7 +19,9 @@ function UhOh() {
       <Inpage>
         <InpageHeader>
           <InpageHeaderInner>
-            <InpageTitle>Page not found</InpageTitle>
+            <InpageHeadline>
+              <InpageTitle>Page not found</InpageTitle>
+            </InpageHeadline>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>

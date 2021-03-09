@@ -8,10 +8,11 @@ import {
   InpageHeader,
   InpageHeaderInner,
   InpageTitle,
+  InpageHeadline,
   InpageBody,
   InpageBodyInner
 } from '../../styles/inpage';
-import Dl from '../../styles/type/definition-list';
+import Dl from '../../styles/typography/definition-list';
 
 import logoEsmapUrl from '../../media/content/logos/logo-esmap.png';
 import logoWbUrl from '../../media/content/logos/logo-wbg.png';
@@ -94,7 +95,11 @@ function About() {
       <Inpage>
         <InpageHeader>
           <InpageHeaderInner>
-            <InpageTitle>About the Africa Electrification Platform</InpageTitle>
+            <InpageHeadline>
+              <InpageTitle>
+                About the Africa Electrification Platform
+              </InpageTitle>
+            </InpageHeadline>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
