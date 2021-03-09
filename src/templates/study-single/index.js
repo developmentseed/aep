@@ -15,7 +15,6 @@ import MbMap from '../../components/study-map/mb-map';
 
 function StudySingle({ data }) {
   const { title, bbox, mapConfig } = data.postsYaml;
-  console.log("🚀 ~ file: index.js ~ line 18 ~ StudySingle ~ mapConfig", mapConfig)
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
 
   return (
@@ -28,7 +27,12 @@ function StudySingle({ data }) {
         </InpageHeader>
         <InpageBody>
           <InpageBodyInner>
-            <MbMap mapConfig={globalMapConfig} bbox={bbox} />
+            <MbMap
+              token={globalMapConfig.mbToken}
+              basemap={globalMapConfig.basemap}
+              bbox={bbox}
+              mapConfig={mapConfig}
+            />
           </InpageBodyInner>
         </InpageBody>
       </Inpage>
