@@ -10,7 +10,7 @@ const MapContainer = styled.div`
 `;
 
 export default function MbMap(props) {
-  const { mapConfig, bbox, layers } = props;
+  const { mapConfig, bbox, layers = [] } = props;
 
   mapboxgl.accessToken = mapConfig.mbToken;
 
