@@ -18,6 +18,8 @@ import logoEsmapUrl from '../../media/content/logos/logo-esmap.png';
 import logoWbUrl from '../../media/content/logos/logo-wbg.png';
 import logoDevseedUrl from '../../media/content/logos/logo-devseed.png';
 import logoDerilinxUrl from '../../media/content/logos/logo-derilinx.png';
+import { ContentBlock } from '../../styles/content-block';
+import Prose from '../../styles/typography/prose';
 
 const AboutPageBodyInner = styled(InpageBodyInner)`
   max-width: 60rem;
@@ -29,6 +31,7 @@ const AboutPageBodyInner = styled(InpageBodyInner)`
 `;
 
 const LogoList = styled(Dl)`
+  grid-column: content-3 / content-11;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 0 1rem;
@@ -96,17 +99,15 @@ function About() {
         <InpageHeader>
           <InpageHeaderInner>
             <InpageHeadline>
-              <InpageTitle>
-                About the Africa Electrification Platform
-              </InpageTitle>
+              <InpageTitle>About</InpageTitle>
             </InpageHeadline>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
-          <AboutPageBodyInner>
-            <p>Content to be provided.</p>
-          </AboutPageBodyInner>
-          <InpageBodyInner>
+          <ContentBlock>
+            <Prose>
+              <p>Content to be provided.</p>
+            </Prose>
             <LogoList>
               <dt>Partners</dt>
               <dd>
@@ -160,7 +161,7 @@ function About() {
                 </a>
               </dd>
             </LogoList>
-          </InpageBodyInner>
+          </ContentBlock>
         </InpageBody>
       </Inpage>
     </Layout>
