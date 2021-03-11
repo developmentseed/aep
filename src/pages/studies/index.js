@@ -3,7 +3,7 @@ import T from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { themeVal, media, glsp } from '@devseed-ui/theme-provider';
+import { themeVal, glsp } from '@devseed-ui/theme-provider';
 import Layout from '../../components/layout';
 import UniversalGridder from '../../styles/universal-gridder';
 
