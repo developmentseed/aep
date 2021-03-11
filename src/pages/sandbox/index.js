@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import Layout from '../../components/layout';
 import {
@@ -9,8 +8,7 @@ import {
   InpageHeadline,
   InpageTitle,
   InpageSubtitle,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../../styles/inpage';
 import { ContentBlock } from '../../styles/content-block';
 import Prose from '../../styles/typography/prose';

@@ -15,8 +15,7 @@ import {
   InpageTitle,
   InpageSubtitle,
   InpageNav,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../../styles/inpage';
 
 import {
@@ -105,48 +104,46 @@ function StudySingle({ data }) {
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
-          <InpageBodyInner>
-            <Carto>
-              <Panel>
-                <CartoPanelHeader>
-                  <PanelTitle>Study panel</PanelTitle>
-                </CartoPanelHeader>
-                <PanelBody>
-                  <PanelSection>
-                    <PanelSectionHeader>
-                      <PanelSectionHeadline>
-                        <PanelSectionTitle>Layers</PanelSectionTitle>
-                      </PanelSectionHeadline>
-                    </PanelSectionHeader>
-                    <PanelSectionBody>
-                      <PanelGroup>
-                        <PanelGroupHeader>
-                          <PanelGroupTitle>Results</PanelGroupTitle>
-                        </PanelGroupHeader>
-                        <PanelGroupBody>
-                          <p>Layer 1</p>
-                        </PanelGroupBody>
-                      </PanelGroup>
-                      <PanelGroup>
-                        <PanelGroupHeader>
-                          <PanelGroupTitle>Contextual</PanelGroupTitle>
-                        </PanelGroupHeader>
-                        <PanelGroupBody>
-                          <p>Layer 1</p>
-                        </PanelGroupBody>
-                      </PanelGroup>
-                    </PanelSectionBody>
-                  </PanelSection>
-                </PanelBody>
-              </Panel>
-              <MbMap
-                token={globalMapConfig.mbToken}
-                basemap={globalMapConfig.basemap}
-                bbox={bbox}
-                mapConfig={mapConfig}
-              />
-            </Carto>
-          </InpageBodyInner>
+          <Carto>
+            <Panel>
+              <CartoPanelHeader>
+                <PanelTitle>Study panel</PanelTitle>
+              </CartoPanelHeader>
+              <PanelBody>
+                <PanelSection>
+                  <PanelSectionHeader>
+                    <PanelSectionHeadline>
+                      <PanelSectionTitle>Layers</PanelSectionTitle>
+                    </PanelSectionHeadline>
+                  </PanelSectionHeader>
+                  <PanelSectionBody>
+                    <PanelGroup>
+                      <PanelGroupHeader>
+                        <PanelGroupTitle>Results</PanelGroupTitle>
+                      </PanelGroupHeader>
+                      <PanelGroupBody>
+                        <p>Layer 1</p>
+                      </PanelGroupBody>
+                    </PanelGroup>
+                    <PanelGroup>
+                      <PanelGroupHeader>
+                        <PanelGroupTitle>Contextual</PanelGroupTitle>
+                      </PanelGroupHeader>
+                      <PanelGroupBody>
+                        <p>Layer 1</p>
+                      </PanelGroupBody>
+                    </PanelGroup>
+                  </PanelSectionBody>
+                </PanelSection>
+              </PanelBody>
+            </Panel>
+            <MbMap
+              token={globalMapConfig.mbToken}
+              basemap={globalMapConfig.basemap}
+              bbox={bbox}
+              mapConfig={mapConfig}
+            />
+          </Carto>
         </InpageBody>
       </Inpage>
     </Layout>

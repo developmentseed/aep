@@ -3,7 +3,7 @@ import T from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { themeVal, glsp } from '@devseed-ui/theme-provider';
+import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
 import Layout from '../../components/layout';
 import UniversalGridder from '../../styles/universal-gridder';
 
@@ -13,8 +13,7 @@ import {
   InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../../styles/inpage';
 
 const StudiesSection = styled(UniversalGridder).attrs({
@@ -30,6 +29,7 @@ const StudiesSection = styled(UniversalGridder).attrs({
 `;
 
 export const StudiesTitle = styled.h1`
+  ${visuallyHidden()}
   grid-column: content-start / content-end;
   margin: 0;
 `;
@@ -62,20 +62,18 @@ function Studies({ data }) {
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
-          <InpageBodyInner>
-            <StudiesSection>
-              <StudiesTitle>List</StudiesTitle>
-              <StudiesList>
-                {studies.map((node) => (
-                  <li key={node.id}>
-                    <Study to={`/studies/${node.fields.slug}`}>
-                      {node.title}
-                    </Study>
-                  </li>
-                ))}
-              </StudiesList>
-            </StudiesSection>
-          </InpageBodyInner>
+          <StudiesSection>
+            <StudiesTitle>List of studies</StudiesTitle>
+            <StudiesList>
+              {studies.map((node) => (
+                <li key={node.id}>
+                  <Study to={`/studies/${node.fields.slug}`}>
+                    {node.title}
+                  </Study>
+                </li>
+              ))}
+            </StudiesList>
+          </StudiesSection>
         </InpageBody>
       </Inpage>
     </Layout>

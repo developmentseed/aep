@@ -32,6 +32,14 @@ export const ContentBlock = styled(UniversalGridder).attrs({
   `}
 
   > ${Prose} {
-    grid-column: content-3 / content-11;
+    grid-column: content-start / content-end;
+
+    ${media.largeUp`
+      grid-column: content-2 / content-12;
+    `}
+
+    ${media.xlargeUp`
+      grid-column: content-3 / content-11;
+    `}
   }
 `;

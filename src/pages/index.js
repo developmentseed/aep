@@ -88,23 +88,21 @@ const Home = ({ data, location }) => {
           </InpageHeaderInner>
         </HomeInpageHeader>
         <InpageBody>
-          <InpageBodyInner>
-            <Intro>
-              <IntroTitle size='large'>
-                <span>Welcome to the</span>
-                {title}
-              </IntroTitle>
-              <IntroLead>Tagline...</IntroLead>
-              <PartnerLogos>
-                <li>
-                  <img src={logoEsmapUrl} alt='Esmap logo' />
-                </li>
-                <li>
-                  <img src={logoWbUrl} alt='WB logo' />
-                </li>
-              </PartnerLogos>
-            </Intro>
-          </InpageBodyInner>
+          <Intro>
+            <IntroTitle size='large'>
+              <span>Welcome to the</span>
+              {title}
+            </IntroTitle>
+            <IntroLead>Tagline...</IntroLead>
+            <PartnerLogos>
+              <li>
+                <img src={logoEsmapUrl} alt='Esmap logo' />
+              </li>
+              <li>
+                <img src={logoWbUrl} alt='WB logo' />
+              </li>
+            </PartnerLogos>
+          </Intro>
         </InpageBody>
       </HomeInpage>
     </Layout>
