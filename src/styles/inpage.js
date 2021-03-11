@@ -107,9 +107,11 @@ export const InpageTitle = styled.h1`
 `;
 
 export const InpageSubtitle = styled.p`
+  position: absolute;
   font-size: 1rem;
   line-height: 1.5rem;
   margin: 0;
+  transform: translate(0, calc(-100% + 0.25rem));
 `;
 
 export const InpageBody = styled.div`
