@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
 
 import {
-  truncated,
+  glsp,
+  media,
   themeVal,
-  visuallyHidden,
-  glsp
+  truncated,
+  visuallyHidden
 } from '@devseed-ui/theme-provider';
 
 export const Inpage = styled.article`
@@ -40,36 +41,55 @@ export const InpageHeader = styled.header`
 
 export const InpageHeaderInner = styled.div`
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: ${glsp(1, themeVal('layout.gap.xsmall'))};
-  padding: ${glsp(themeVal('layout.gap.xsmall'))};
   align-items: end;
+  padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
   background-color: ${themeVal('color.primary')};
   color: ${themeVal('color.baseLight')};
+
+  ${media.mediumUp`
+    grid-template-columns: repeat(8, 1fr);
+    padding: ${glsp(1, themeVal('layout.gap.medium'))};
+    grid-gap: ${glsp(1, themeVal('layout.gap.medium'))};
+  `}
+
+  ${media.largeUp`
+    grid-template-columns: repeat(12, 1fr);
+    grid-column: content-2 / content-12;
+  `}
 `;
 
 export const InpageHeadline = styled.div`
-  grid-column: 1 / span 6;
+  grid-column: 1 / span 4;
   display: flex;
   flex-flow: column;
   min-width: 0;
+
+  ${media.mediumUp`
+    grid-column: 1 / span 4;
+  `}
+
+  ${media.largeUp`
+    grid-column: 1 / span 8;
+  `}
 
   > *:last-child {
     margin-bottom: 0;
   }
 `;
 
-export const InpageToolbar = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  padding-left: ${glsp(2)};
-  margin-left: auto;
-`;
-
 export const InpageNav = styled.nav`
-  grid-column: 7 / span 6;
-  text-align: right;
+  grid-column: 1 / span 4;
+
+  ${media.mediumUp`
+    grid-column: 5 / span 4;
+    text-align: right;
+  `}
+
+  ${media.largeUp`
+    grid-column: 9 / span 4;
+  `}
 `;
 
 export const InpageTitleWrapper = styled.div`
@@ -94,8 +114,4 @@ export const InpageSubtitle = styled.p`
 
 export const InpageBody = styled.div`
   background: transparent;
-`;
-
-export const InpageBodyInner = styled.div`
-  height: 100%;
 `;

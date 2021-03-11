@@ -3,7 +3,12 @@ import T from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
+import {
+  glsp,
+  media,
+  themeVal,
+  visuallyHidden
+} from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
 
 import Layout from '../../components/layout';
@@ -56,6 +61,14 @@ const ViewMenu = styled.ul`
   > * {
     grid-row: 1;
   }
+`;
+
+const ItemPlaceholder = styled.p`
+  padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+  `}
 `;
 
 const ViewMenuLink = styled(Button)``;
@@ -122,7 +135,9 @@ function StudySingle({ data }) {
                         <PanelGroupTitle>Results</PanelGroupTitle>
                       </PanelGroupHeader>
                       <PanelGroupBody>
-                        <p>Layer 1</p>
+                        <ItemPlaceholder>
+                          <p>Layer 1</p>
+                        </ItemPlaceholder>
                       </PanelGroupBody>
                     </PanelGroup>
                     <PanelGroup>
@@ -130,7 +145,9 @@ function StudySingle({ data }) {
                         <PanelGroupTitle>Contextual</PanelGroupTitle>
                       </PanelGroupHeader>
                       <PanelGroupBody>
-                        <p>Layer 1</p>
+                        <ItemPlaceholder>
+                          <p>Layer 1</p>
+                        </ItemPlaceholder>
                       </PanelGroupBody>
                     </PanelGroup>
                   </PanelSectionBody>

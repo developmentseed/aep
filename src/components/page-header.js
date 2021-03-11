@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { glsp, themeVal } from '@devseed-ui/theme-provider';
+import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
 
 import { filterComponentProps } from '../styles/utils/general';
@@ -25,7 +25,11 @@ const PageHeadInner = styled.div`
   align-items: center;
   margin: 0 auto;
   height: 100%;
-  padding: ${glsp(0, 1)};
+  padding: ${glsp(0, themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(0, themeVal('layout.gap.medium'))};
+  `}
 `;
 
 const PageNav = styled.nav`

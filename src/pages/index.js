@@ -35,6 +35,10 @@ const Intro = styled.section`
   justify-content: center;
   padding: ${glsp(themeVal('layout.gap.xsmall'))};
   height: 100%;
+
+  ${media.mediumUp`
+    padding: ${glsp(themeVal('layout.gap.medium'))};
+  `}
 `;
 
 const IntroTitle = styled.h1`

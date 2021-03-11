@@ -3,7 +3,12 @@ import T from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
+import {
+  glsp,
+  media,
+  themeVal,
+  visuallyHidden
+} from '@devseed-ui/theme-provider';
 import Layout from '../../components/layout';
 import UniversalGridder from '../../styles/universal-gridder';
 
@@ -24,8 +29,13 @@ const StudiesSection = styled(UniversalGridder).attrs({
     largeUp: ['full-start', 'full-end']
   }
 })`
-  padding: ${glsp(2, 0)};
+  padding: ${glsp(themeVal('layout.gap.xsmall'), 0)};
   grid-row-gap: ${glsp(themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(themeVal('layout.gap.medium'), 0)};
+    grid-row-gap: ${glsp(themeVal('layout.gap.medium'))};
+  `}
 `;
 
 export const StudiesTitle = styled.h1`
@@ -37,8 +47,21 @@ export const StudiesTitle = styled.h1`
 export const StudiesList = styled.ul`
   grid-column: content-start / content-end;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: ${glsp(themeVal('layout.gap.xsmall'))};
+
+  ${media.smallUp`
+    grid-template-columns: repeat(2, 1fr);
+  `}
+
+  ${media.mediumUp`
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: ${glsp(themeVal('layout.gap.medium'))};
+  `}
+
+  ${media.largeUp`
+    grid-template-columns: repeat(3, 1fr);
+  `}
 `;
 
 export const Study = styled(Link)`
