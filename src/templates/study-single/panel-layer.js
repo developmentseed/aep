@@ -69,17 +69,7 @@ const LayerBodyInner = styled(Prose)`
 `;
 
 function PanelLayer(props) {
-  const {
-    label,
-    disabled,
-    active,
-    info,
-    onToggleClick,
-    dataOrder,
-    legend,
-    isExpanded,
-    setExpanded
-  } = props;
+  const { label, active, info, onToggleClick, isExpanded, setExpanded } = props;
 
   return (
     <LayerSelf
@@ -135,11 +125,8 @@ function PanelLayer(props) {
 
 PanelLayer.propTypes = {
   label: T.string,
-  disabled: T.bool,
   active: T.bool,
-  dataOrder: T.string,
   info: T.node,
-  legend: T.object,
   onToggleClick: T.func,
   isExpanded: T.bool,
   setExpanded: T.func

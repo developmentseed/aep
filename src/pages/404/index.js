@@ -8,8 +8,7 @@ import {
   InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../../styles/inpage';
 import Prose from '../../styles/typography/prose';
 import { ContentBlock } from '../../styles/content-block';
