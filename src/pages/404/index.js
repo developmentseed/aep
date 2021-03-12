@@ -12,10 +12,11 @@ import {
   InpageBodyInner
 } from '../../styles/inpage';
 import Prose from '../../styles/typography/prose';
+import { ContentBlock } from '../../styles/content-block';
 
 function UhOh() {
   return (
-    <Layout title='Not found'>
+    <Layout title='Page not found'>
       <Inpage>
         <InpageHeader>
           <InpageHeaderInner>
@@ -25,8 +26,9 @@ function UhOh() {
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
-          <InpageBodyInner>
+          <ContentBlock>
             <Prose>
+              <h2>Oh!</h2>
               <p>
                 We were not able to find the page you are looking for. It may
                 have been archived or removed.
@@ -51,7 +53,7 @@ function UhOh() {
                 </Link>
               </p>
             </Prose>
-          </InpageBodyInner>
+          </ContentBlock>
         </InpageBody>
       </Inpage>
     </Layout>

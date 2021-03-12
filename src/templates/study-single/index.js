@@ -17,8 +17,7 @@ import {
   InpageTitle,
   InpageSubtitle,
   InpageNav,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../../styles/inpage';
 
 import StudySingleCarto from './carto';
