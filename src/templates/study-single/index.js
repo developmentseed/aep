@@ -61,8 +61,9 @@ const buildUrl = (data) => {
 };
 
 function StudySingle({ data }) {
-  const { title, bbox, mapConfig, layers = [] } = data.postsYaml;
+  const { title, bbox, mapConfig } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
+  const layers = data.postsYaml.layers || [];
 
   const useQsState = useQsStateCreator();
 
@@ -151,19 +152,17 @@ function StudySingle({ data }) {
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
-          <InpageBodyInner>
-            {view === 'map' && (
-              <StudySingleCarto
-                onAction={onAction}
-                mbToken={globalMapConfig.mbToken}
-                basemap={globalMapConfig.basemap}
-                bbox={bbox}
-                panelLayers={panelLayers}
-                mapConfig={mapConfig}
-              />
-            )}
-            {view === 'summary' && <StudySingleSummary />}
-          </InpageBodyInner>
+          {view === 'map' && (
+            <StudySingleCarto
+              onAction={onAction}
+              mbToken={globalMapConfig.mbToken}
+              basemap={globalMapConfig.basemap}
+              bbox={bbox}
+              panelLayers={panelLayers}
+              mapConfig={mapConfig}
+            />
+          )}
+          {view === 'summary' && <StudySingleSummary />}
         </InpageBody>
       </Inpage>
     </Layout>

@@ -38,13 +38,13 @@ const StudiesSection = styled(UniversalGridder).attrs({
   `}
 `;
 
-export const StudiesTitle = styled.h1`
+const StudiesTitle = styled.h1`
   ${visuallyHidden()}
   grid-column: content-start / content-end;
   margin: 0;
 `;
 
-export const StudiesList = styled.ul`
+const StudiesList = styled.ul`
   grid-column: content-start / content-end;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -64,14 +64,14 @@ export const StudiesList = styled.ul`
   `}
 `;
 
-export const Study = styled(Link)`
+const Study = styled(Link)`
   display: block;
   padding: ${glsp(2)};
   border-radius: ${themeVal('shape.rounded')};
   box-shadow: inset 0 0 0 1px ${themeVal('color.baseAlphaC')};
 `;
 
-function Studies({ data }) {
+export default function Studies({ data }) {
   const studies = data.allPostsYaml.nodes;
 
   return (
@@ -106,8 +106,6 @@ function Studies({ data }) {
 Studies.propTypes = {
   data: T.object
 };
-
-export default Studies;
 
 export const pageQuery = graphql`
   query Studies {
