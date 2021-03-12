@@ -107,9 +107,10 @@ function PanelLayer(props) {
             <Button
               variation='base-plain'
               size='small'
-              useIcon='eye'
+              useIcon={active ? 'eye' : 'eye-disabled'}
               title='Enable/disable layer'
               hideText
+              onClick={onToggleClick}
             >
               Enable layer
             </Button>

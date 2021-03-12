@@ -2,17 +2,27 @@ title: Kenya
 bbox: [[ 33.893,-4.676],[41.855,5.506 ]]
 mapConfig: ./kenya-mb.json
 layers:
-  - name: Kilo volts
+  - id: r-kv
+    name: Kilo volts
     category: result
     mbLayer: kv
     info: Layer info for drawer
     source:
       name:
       url:
-  - name: Nitrogen dioxyde
+  - id: r-no2
+    name: Another layer
+    category: result
+    mbLayer: no2
+    info: Layer info for drawer of Another layer
+    source:
+      name:
+      url:
+  - id: c-no2
+    name: Nitrogen dioxyde
     category: contextual
     mbLayer: no2
-    info: Layer info for drawer
+    info: Layer info for drawer of Nitrogen dioxyde
     source:
       name:
       url:

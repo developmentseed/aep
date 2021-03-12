@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import T from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
-import { Accordion } from '@devseed-ui/accordion';
 
 import Layout from '../../components/layout';
 import {
@@ -29,14 +28,10 @@ import {
   PanelSectionHeader,
   PanelSectionHeadline,
   PanelSectionTitle,
-  PanelSectionBody,
-  PanelGroup,
-  PanelGroupHeader,
-  PanelGroupTitle,
-  PanelGroupBody
+  PanelSectionBody
 } from '../../styles/panel';
 import MbMap from '../../components/study-map/mb-map';
-import PanelLayer from './panel-layer';
+import PanelLayersGroup from './panel-layers-group';
 
 const Carto = styled.div`
   display: grid;
@@ -63,9 +58,77 @@ const ViewMenu = styled.ul`
 
 const ViewMenuLink = styled(Button)``;
 
+const prepLayers = (layers) =>
+  layers.map((l) => ({ ...l, visible: l.visible || false }));
+
+const usePanelLayers = (layers) => {
+  // The panel layers are stored in state to track their visibility.
+  const [panelLayers, setPanelLayers] = useState(prepLayers(layers));
+  // If input layers change, update state.
+  useEffect(() => setPanelLayers(prepLayers(layers)), [layers]);
+
+  const setLayerVisibility = useCallback(
+    (layerId, visible) => {
+      setPanelLayers(
+        panelLayers.map((l) => {
+          if (l.id === layerId) {
+            return {
+              ...l,
+              visible
+            };
+          }
+          return l;
+        })
+      );
+    },
+    [panelLayers]
+  );
+
+  // Group panel layers by their category.
+  const {
+    result: panelResultLayers,
+    contextual: panelContextualLayers
+  } = useMemo(
+    () =>
+      panelLayers.reduce((acc, layer) => {
+        const c = layer.category || 'n/a';
+        return {
+          ...acc,
+          [c]: [...(acc[c] || []), layer]
+        };
+      }, {}),
+    [panelLayers]
+  );
+
+  return {
+    setLayerVisibility,
+    panelLayers,
+    panelResultLayers,
+    panelContextualLayers
+  };
+};
+
 function StudySingle({ data }) {
   const { title, bbox, mapConfig, layers = [] } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
+
+  const {
+    setLayerVisibility,
+    panelLayers,
+    panelResultLayers,
+    panelContextualLayers
+  } = usePanelLayers(layers);
+
+  const onLayerAction = useCallback(
+    (action, layer) => {
+      switch (action) {
+        case 'layer.toggle':
+          setLayerVisibility(layer.id, !layer.visible);
+          break;
+      }
+    },
+    [setLayerVisibility]
+  );
 
   return (
     <Layout title='Study'>
@@ -121,41 +184,16 @@ function StudySingle({ data }) {
                       </PanelSectionHeadline>
                     </PanelSectionHeader>
                     <PanelSectionBody>
-                      <PanelGroup>
-                        <PanelGroupHeader>
-                          <PanelGroupTitle>Results</PanelGroupTitle>
-                        </PanelGroupHeader>
-                        <PanelGroupBody>
-                          <Accordion>
-                            {({ checkExpanded, setExpanded }) => (
-                              <ol>
-                                {layers.map((l, idx) => (
-                                  <li key={l.mbLayer}>
-                                    <PanelLayer
-                                      id={l.mbLayer}
-                                      label={l.name}
-                                      // active={l.visible}
-                                      info={l.info}
-                                      // legend={l.legend}
-                                      isExpanded={checkExpanded(idx)}
-                                      setExpanded={(v) => setExpanded(idx, v)}
-                                      // onToggleClick={() => onAction('layer.toggle', l)}
-                                    />
-                                  </li>
-                                ))}
-                              </ol>
-                            )}
-                          </Accordion>
-                        </PanelGroupBody>
-                      </PanelGroup>
-                      <PanelGroup>
-                        <PanelGroupHeader>
-                          <PanelGroupTitle>Contextual</PanelGroupTitle>
-                        </PanelGroupHeader>
-                        <PanelGroupBody>
-                          <p>Layer 1</p>
-                        </PanelGroupBody>
-                      </PanelGroup>
+                      <PanelLayersGroup
+                        title='Results'
+                        layers={panelResultLayers}
+                        onAction={onLayerAction}
+                      />
+                      <PanelLayersGroup
+                        title='Contextual'
+                        layers={panelContextualLayers}
+                        onAction={onLayerAction}
+                      />
                     </PanelSectionBody>
                   </PanelSection>
                 </PanelBody>
@@ -164,6 +202,7 @@ function StudySingle({ data }) {
                 token={globalMapConfig.mbToken}
                 basemap={globalMapConfig.basemap}
                 bbox={bbox}
+                layersState={panelLayers}
                 mapConfig={mapConfig}
               />
             </Carto>
@@ -187,6 +226,7 @@ export const pageQuery = graphql`
       bbox
       mapConfig
       layers {
+        id
         name
         category
         mbLayer
