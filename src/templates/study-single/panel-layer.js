@@ -2,7 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
 // import ReactTooltip from 'react-tooltip';
-import { themeVal, glsp, truncated } from '@devseed-ui/theme-provider';
+import { glsp, media, themeVal, truncated } from '@devseed-ui/theme-provider';
 import { AccordionFold } from '@devseed-ui/accordion';
 import { Button } from '@devseed-ui/button';
 
@@ -17,8 +17,12 @@ const LayerSelf = styled(AccordionFold)`
 const LayerHeader = styled.header`
   display: grid;
   grid-auto-columns: 1fr min-content;
-  padding: ${glsp(0.5)} ${glsp()};
   grid-gap: ${glsp(0.5)};
+  padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+  `}
 `;
 
 const LayerHeadline = styled.div`
@@ -60,7 +64,11 @@ const LayerBodyInner = styled(Prose)`
   font-size: 0.875rem;
   line-height: 1.25rem;
   backdrop-filter: saturate(48%);
-  padding: ${glsp()};
+  padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(1, themeVal('layout.gap.medium'))};
+  `}
 
   /* stylelint-disable-next-line no-descending-specificity */
   > * {
