@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import T from 'prop-types';
-import { graphql } from 'gatsby';
+import qs from 'qs';
+import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import useQsStateCreator from 'qs-state-hook';
 
-import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
+import { glsp, themeVal } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
 
 import Layout from '../../components/layout';
@@ -19,33 +21,9 @@ import {
   InpageBodyInner
 } from '../../styles/inpage';
 
-import {
-  Panel,
-  PanelHeader,
-  PanelTitle,
-  PanelBody,
-  PanelSection,
-  PanelSectionHeader,
-  PanelSectionHeadline,
-  PanelSectionTitle,
-  PanelSectionBody
-} from '../../styles/panel';
-import MbMap from '../../components/study-map/mb-map';
-import PanelLayersGroup from './panel-layers-group';
-
-const Carto = styled.div`
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  height: 100%;
-
-  > * {
-    grid-row: 1;
-  }
-`;
-
-const CartoPanelHeader = styled(PanelHeader)`
-  ${visuallyHidden()}
-`;
+import StudySingleCarto from './carto';
+import StudySingleSummary from './summary';
+import { filterComponentProps } from '../../styles/utils/general';
 
 const ViewMenu = styled.ul`
   display: inline-grid;
@@ -56,79 +34,83 @@ const ViewMenu = styled.ul`
   }
 `;
 
-const ViewMenuLink = styled(Button)``;
+// See documentation of filterComponentProp as to why this is
+const propsToFilter = [
+  'variation',
+  'size',
+  'hideText',
+  'useIcon',
+  'active',
+  'visuallyDisabled'
+];
+const StyledLink = filterComponentProps(Link, propsToFilter);
 
-const prepLayers = (layers) =>
-  layers.map((l) => ({ ...l, visible: l.visible || false }));
+const buildUrl = (data) => {
+  if (typeof window === 'undefined') return '';
 
-const usePanelLayers = (layers) => {
-  // The panel layers are stored in state to track their visibility.
-  const [panelLayers, setPanelLayers] = useState(prepLayers(layers));
-  // If input layers change, update state.
-  useEffect(() => setPanelLayers(prepLayers(layers)), [layers]);
+  const parsedQS = qs.parse(window.location.search, {
+    ignoreQueryPrefix: true
+  });
 
-  const setLayerVisibility = useCallback(
-    (layerId, visible) => {
-      setPanelLayers(
-        panelLayers.map((l) => {
-          if (l.id === layerId) {
-            return {
-              ...l,
-              visible
-            };
-          }
-          return l;
-        })
-      );
+  return `?${qs.stringify(
+    {
+      ...parsedQS,
+      ...data
     },
-    [panelLayers]
-  );
-
-  // Group panel layers by their category.
-  const {
-    result: panelResultLayers,
-    contextual: panelContextualLayers
-  } = useMemo(
-    () =>
-      panelLayers.reduce((acc, layer) => {
-        const c = layer.category || 'n/a';
-        return {
-          ...acc,
-          [c]: [...(acc[c] || []), layer]
-        };
-      }, {}),
-    [panelLayers]
-  );
-
-  return {
-    setLayerVisibility,
-    panelLayers,
-    panelResultLayers,
-    panelContextualLayers
-  };
+    { skipNulls: true }
+  )}`;
 };
 
 function StudySingle({ data }) {
   const { title, bbox, mapConfig, layers = [] } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
 
-  const {
-    setLayerVisibility,
-    panelLayers,
-    panelResultLayers,
-    panelContextualLayers
-  } = usePanelLayers(layers);
+  const useQsState = useQsStateCreator();
 
-  const onLayerAction = useCallback(
-    (action, layer) => {
-      switch (action) {
-        case 'layer.toggle':
-          setLayerVisibility(layer.id, !layer.visible);
-          break;
-      }
-    },
-    [setLayerVisibility]
+  const [view] = useQsState(
+    useMemo(
+      () => ({
+        key: 'view',
+        default: 'map',
+        validator: ['map', 'summary']
+      }),
+      []
+    )
   );
+
+  // TODO: Store in url with useQsState - Bug fix pending
+  const [visiblePanelLayers, setVisiblePanelLayers] = useState(
+    layers.filter((l) => l.visible).map((l) => l.id)
+  );
+  // const [visiblePanelLayers, setVisiblePanelLayers] = useQsState(
+  //   useMemo(
+  //     () => ({
+  //       key: 'layers',
+  //       default: layers.filter((l) => l.visible).map((l) => l.id),
+  //       validator: (v) => !!v,
+  //       hydrator: (v) => (!v ? null : v.split('|')),
+  //       dehydrator: (v) => v.join('|')
+  //     }),
+  //     [layers]
+  //   )
+  // );
+
+  const panelLayers = layers.map((l) => ({
+    ...l,
+    visible: visiblePanelLayers.includes(l.id)
+  }));
+
+  const onAction = (action, layer) => {
+    switch (action) {
+      case 'layer.toggle':
+        setVisiblePanelLayers(
+          layer.visible
+            ? visiblePanelLayers.filter((id) => id !== layer.id)
+            : visiblePanelLayers.concat(layer.id)
+        );
+        break;
+    }
+  };
 
   return (
     <Layout title='Study'>
@@ -142,28 +124,28 @@ function StudySingle({ data }) {
             <InpageNav>
               <ViewMenu>
                 <li>
-                  <ViewMenuLink
-                    activeClassName='active'
-                    partiallyActive
-                    to='/'
+                  <Button
+                    forwardedAs={StyledLink}
+                    to={buildUrl({ view: 'map' })}
                     variation='achromic-plain'
                     useIcon='map'
                     title='Map view'
+                    active={view === 'map'}
                   >
                     Map
-                  </ViewMenuLink>
+                  </Button>
                 </li>
                 <li>
-                  <ViewMenuLink
-                    activeClassName='active'
-                    partiallyActive
-                    to='/'
+                  <Button
+                    forwardedAs={StyledLink}
+                    to={buildUrl({ view: 'summary' })}
                     variation='achromic-plain'
                     useIcon='text-block'
                     title='Summary view'
+                    active={view === 'summary'}
                   >
                     Summary
-                  </ViewMenuLink>
+                  </Button>
                 </li>
               </ViewMenu>
             </InpageNav>
@@ -171,41 +153,17 @@ function StudySingle({ data }) {
         </InpageHeader>
         <InpageBody>
           <InpageBodyInner>
-            <Carto>
-              <Panel>
-                <CartoPanelHeader>
-                  <PanelTitle>Study panel</PanelTitle>
-                </CartoPanelHeader>
-                <PanelBody>
-                  <PanelSection>
-                    <PanelSectionHeader>
-                      <PanelSectionHeadline>
-                        <PanelSectionTitle>Layers</PanelSectionTitle>
-                      </PanelSectionHeadline>
-                    </PanelSectionHeader>
-                    <PanelSectionBody>
-                      <PanelLayersGroup
-                        title='Results'
-                        layers={panelResultLayers}
-                        onAction={onLayerAction}
-                      />
-                      <PanelLayersGroup
-                        title='Contextual'
-                        layers={panelContextualLayers}
-                        onAction={onLayerAction}
-                      />
-                    </PanelSectionBody>
-                  </PanelSection>
-                </PanelBody>
-              </Panel>
-              <MbMap
-                token={globalMapConfig.mbToken}
+            {view === 'map' && (
+              <StudySingleCarto
+                onAction={onAction}
+                mbToken={globalMapConfig.mbToken}
                 basemap={globalMapConfig.basemap}
                 bbox={bbox}
-                layersState={panelLayers}
+                panelLayers={panelLayers}
                 mapConfig={mapConfig}
               />
-            </Carto>
+            )}
+            {view === 'summary' && <StudySingleSummary />}
           </InpageBodyInner>
         </InpageBody>
       </Inpage>

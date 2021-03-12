@@ -3,7 +3,7 @@ import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
 
-import { diffArrayByFn, diffArrayById } from '../../utils/array';
+import { diffArrayById } from '../../utils/array';
 
 const MapContainer = styled.div`
   position: relative;

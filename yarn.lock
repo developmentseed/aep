@@ -996,7 +996,7 @@
   resolved "https://registry.yarnpkg.com/@devseed-ui/animation/-/animation-3.0.0.tgz#b4e846072c61dc8b4e46d0f4ca65534c64ba9446"
   integrity sha512-ykV0jszdKJ8MFy0pVxyuE5egGKgdaum2CAmGwO3lvWrqU4DsbZmcqMwsLNz3kyHQmAd+XHJ/yyQ71gRS+9l7tA==
 
-"@devseed-ui/button@3.0.1", "@devseed-ui/button@^3.0.0":
+"@devseed-ui/button@3.0.1", "@devseed-ui/button@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@devseed-ui/button/-/button-3.0.1.tgz#67de5a7610ae7a1c232467faba5941b7e3d3dd63"
   integrity sha512-B9e9VpLu/8CTa0b55+biZtvYArW4Se/zn074zVb4pR6qOGFqxWsPw5a+5D5KzQTuElY1gdJoER3BJOAIJXMxbg==
@@ -1009,7 +1009,7 @@
   resolved "https://registry.yarnpkg.com/@devseed-ui/collecticons/-/collecticons-2.0.0.tgz#206ea7c6770a4a8bf903e361f95d0acd3c05a02a"
   integrity sha512-irjrk8tBR4dXglFXGaFUgkSxsvkn1M6i29/DSPevcFEGxRPa1oTxQs/yC5hxyDGykGnK93oMO88efwFqDAMj3w==
 
-"@devseed-ui/dropdown@^2.0.0":
+"@devseed-ui/dropdown@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@devseed-ui/dropdown/-/dropdown-2.0.1.tgz#858cc75f5e8e5d7b45df90dc63f69a53df141b6d"
   integrity sha512-Lrfenee2+uAA4BhLFe9up3Z2Y3PqzjXYgHJDMnnQqIQPDpsk+Q3EFb9bszqGf63OJyIq2a1dxW9KREIa5TiE3g==
@@ -1021,7 +1021,7 @@
     react-tether "^2.0.7"
     react-transition-group "^4.3.0"
 
-"@devseed-ui/form@^1.0.1":
+"@devseed-ui/form@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@devseed-ui/form/-/form-1.0.2.tgz#0c2affa280749d6621f6932bc468bdd824129ba2"
   integrity sha512-VFw/2u7zRYdkb3HlFgsvgyL1fJKbQQVXmS9loZo+3+0tWp5Abgg/fd9Nkwz8I6ddhvTwwDeLoComAPuolM4yFw==
@@ -3693,10 +3693,10 @@ cli-width@^3.0.0:
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-3.0.0.tgz#a2f48437a2caa9a22436e794bf071ec9e61cedf6"
   integrity sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==
 
-clipboard@^2.0.6:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.7.tgz#da927f817b1859426df39212ac81feb07dbaeadc"
-  integrity sha512-8M8WEZcIvs0hgOma+wAPkrUxpv0PMY1L6VsAJh/2DOKARIMpyWe6ZLcEoe1qktl6/ced5ceYHs+oGedSbgZ3sg==
+clipboard@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.8.tgz#ffc6c103dd2967a83005f3f61976aa4655a4cdba"
+  integrity sha512-Y6WO0unAIQp5bLmk1zdThRhgJt/x3ks6f30s3oE3H1mgIEU33XyQjEf8gsf6DxC7NPX8Y1SsNWjUjL/ywLnnbQ==
   dependencies:
     good-listener "^1.2.2"
     select "^1.1.2"
@@ -5449,7 +5449,7 @@ eslint@^6.8.0:
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
 
-eslint@^7.20.0:
+eslint@^7.21.0:
   version "7.21.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.21.0.tgz#4ecd5b8c5b44f5dedc9b8a110b01bbfeb15d1c83"
   integrity sha512-W2aJbXpMNofUp0ztQaF40fveSsJBjlSCSWpy//gzfTvwC+USs/nceBrKmlJOiM8r1bLwP2EuYkCqArn/6QTIgg==
@@ -11318,12 +11318,20 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qs-state-hook@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/qs-state-hook/-/qs-state-hook-1.0.3.tgz#610cebcb13d613e106d448b51942a97473102183"
+  integrity sha512-ceBFZOllGSXqrVZv6532a3Av2uzEmcFUAfc5VTd+aKUlKLtoCv0a+XXhErpzX/PuU6zRxUyE2sks2TxpmOUC4g==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    qs "^6.9.6"
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@^6.9.4:
+qs@^6.9.4, qs@^6.9.6:
   version "6.9.6"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.6.tgz#26ed3c8243a431b2924aca84cc90471f35d5a0ee"
   integrity sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==
@@ -13150,7 +13158,7 @@ stylelint-config-styled-components@^0.1.1:
   resolved "https://registry.yarnpkg.com/stylelint-config-styled-components/-/stylelint-config-styled-components-0.1.1.tgz#b408388d7c687833ab4be4c4e6522d97d2827ede"
   integrity sha512-z5Xz/9GmvxO6e/DLzBMwkB85zHxEEjN6K7Cj80Bi+o/9vR9eS3GX3E9VuMnX9WLFYulqbqLtTapGGY28JBiy9Q==
 
-stylelint@^13.11.0:
+stylelint@^13.12.0:
   version "13.12.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.12.0.tgz#cceb922be0d0c7b7b6926271eea2b90cb924733e"
   integrity sha512-P8O1xDy41B7O7iXaSlW+UuFbE5+ZWQDb61ndGDxKIt36fMH50DtlQTbwLpFLf8DikceTAb3r6nPrRv30wBlzXw==
