@@ -3,6 +3,8 @@ import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
 
+import { diffArrayById } from '../../utils/array';
+
 const MapContainer = styled.div`
   position: relative;
   width: 100%;
@@ -10,7 +12,7 @@ const MapContainer = styled.div`
 `;
 
 export default function MbMap(props) {
-  const { token, basemap, bbox, mapConfig } = props;
+  const { token, basemap, bbox, mapConfig, layersState } = props;
   mapboxgl.accessToken = token;
 
   const mapSources = useMemo(() => {
@@ -66,8 +68,9 @@ export default function MbMap(props) {
   }, [bbox, basemap]);
 
   useSources(theMap, mapSources);
-
   useLayers(theMap, mapLayers);
+
+  useLayersState(theMap, mapLayers, layersState);
 
   return <MapContainer ref={mapContainer} />;
 }
@@ -77,36 +80,7 @@ MbMap.propTypes = {
   basemap: T.string,
   mapConfig: T.object,
   bbox: T.array,
-  layers: T.array
-};
-
-/**
- * Compare current and incoming array by each object's id and return the items
- * removed, added, shared by both arrays.
- *
- * @param {array} current Current array
- * @param {array} incoming New array
- *
- * @return object
- *  removed: {array} Items removed in incoming.
- *  added: {array} Items added on incoming.
- *  shared: {array} Items that did not change.
- */
-const diffArrayById = (current, incoming) => {
-  const [removed, shared] = current.reduce(
-    (acc, c) => {
-      const found = !!incoming.find((n) => n.id === c.id);
-      return found ? [acc[0], acc[1].concat(c)] : [acc[0].concat(c), acc[1]];
-    },
-    [[], []]
-  );
-
-  const added = incoming.filter((n) => !current.find((c) => c.id === n.id));
-  return {
-    removed,
-    shared,
-    added
-  };
+  layersState: T.array
 };
 
 const useSources = (theMap, sources) => {
@@ -161,4 +135,37 @@ const useLayers = (theMap, layers) => {
     // Store new current layers.
     currentLayers.current = [...shared, ...added];
   }, [theMap, layers]);
+};
+
+const useLayersState = (theMap, layers, layersState) => {
+  useEffect(() => {
+    if (!theMap || !layersState) return;
+
+    // Reconcile layer visibility
+    // Start by splitting the mb layers to hide/show based on visibility.
+    let [mbLayersToHide, mbLayersToShow] = layersState.reduce(
+      ([hide, show], l) => {
+        return l.visible
+          ? [hide, [...show, l.mbLayer]]
+          : [[...hide, l.mbLayer], show];
+      },
+      [[], []]
+    );
+
+    // A layer will want to be visible. If a layer later in the array is
+    // visible it show stay visible, even if a previous one hid it.
+    mbLayersToHide = mbLayersToHide.filter((l) => !mbLayersToShow.includes(l));
+
+    mbLayersToShow.forEach((layer) => {
+      if (theMap.getLayer(layer)) {
+        theMap.setLayoutProperty(layer, 'visibility', 'visible');
+      }
+    });
+
+    mbLayersToHide.forEach((layer) => {
+      if (theMap.getLayer(layer)) {
+        theMap.setLayoutProperty(layer, 'visibility', 'none');
+      }
+    });
+  }, [theMap, layers, layersState]);
 };

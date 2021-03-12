@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import T from 'prop-types';
-import { graphql } from 'gatsby';
+import qs from 'qs';
+import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import useQsStateCreator from 'qs-state-hook';
 
-import { glsp, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
+import { glsp, themeVal } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
 
 import Layout from '../../components/layout';
@@ -15,40 +17,12 @@ import {
   InpageTitle,
   InpageSubtitle,
   InpageNav,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../../styles/inpage';
 
-import {
-  Panel,
-  PanelHeader,
-  PanelTitle,
-  PanelBody,
-  PanelSection,
-  PanelSectionHeader,
-  PanelSectionHeadline,
-  PanelSectionTitle,
-  PanelSectionBody,
-  PanelGroup,
-  PanelGroupHeader,
-  PanelGroupTitle,
-  PanelGroupBody
-} from '../../styles/panel';
-import MbMap from '../../components/study-map/mb-map';
-
-const Carto = styled.div`
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  height: 100%;
-
-  > * {
-    grid-row: 1;
-  }
-`;
-
-const CartoPanelHeader = styled(PanelHeader)`
-  ${visuallyHidden()}
-`;
+import StudySingleCarto from './carto';
+import StudySingleSummary from './summary';
+import { filterComponentProps } from '../../styles/utils/general';
 
 const ViewMenu = styled.ul`
   display: inline-grid;
@@ -59,11 +33,84 @@ const ViewMenu = styled.ul`
   }
 `;
 
-const ViewMenuLink = styled(Button)``;
+// See documentation of filterComponentProp as to why this is
+const propsToFilter = [
+  'variation',
+  'size',
+  'hideText',
+  'useIcon',
+  'active',
+  'visuallyDisabled'
+];
+const StyledLink = filterComponentProps(Link, propsToFilter);
+
+const buildUrl = (data) => {
+  if (typeof window === 'undefined') return '';
+
+  const parsedQS = qs.parse(window.location.search, {
+    ignoreQueryPrefix: true
+  });
+
+  return `?${qs.stringify(
+    {
+      ...parsedQS,
+      ...data
+    },
+    { skipNulls: true }
+  )}`;
+};
 
 function StudySingle({ data }) {
   const { title, bbox, mapConfig } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
+  const layers = data.postsYaml.layers || [];
+
+  const useQsState = useQsStateCreator();
+
+  const [view] = useQsState(
+    useMemo(
+      () => ({
+        key: 'view',
+        default: 'map',
+        validator: ['map', 'summary']
+      }),
+      []
+    )
+  );
+
+  // TODO: Store in url with useQsState - Bug fix pending
+  const [visiblePanelLayers, setVisiblePanelLayers] = useState(
+    layers.filter((l) => l.visible).map((l) => l.id)
+  );
+  // const [visiblePanelLayers, setVisiblePanelLayers] = useQsState(
+  //   useMemo(
+  //     () => ({
+  //       key: 'layers',
+  //       default: layers.filter((l) => l.visible).map((l) => l.id),
+  //       validator: (v) => !!v,
+  //       hydrator: (v) => (!v ? null : v.split('|')),
+  //       dehydrator: (v) => v.join('|')
+  //     }),
+  //     [layers]
+  //   )
+  // );
+
+  const panelLayers = layers.map((l) => ({
+    ...l,
+    visible: visiblePanelLayers.includes(l.id)
+  }));
+
+  const onAction = (action, layer) => {
+    switch (action) {
+      case 'layer.toggle':
+        setVisiblePanelLayers(
+          layer.visible
+            ? visiblePanelLayers.filter((id) => id !== layer.id)
+            : visiblePanelLayers.concat(layer.id)
+        );
+        break;
+    }
+  };
 
   return (
     <Layout title='Study'>
@@ -77,76 +124,45 @@ function StudySingle({ data }) {
             <InpageNav>
               <ViewMenu>
                 <li>
-                  <ViewMenuLink
-                    activeClassName='active'
-                    partiallyActive
-                    to='/'
+                  <Button
+                    forwardedAs={StyledLink}
+                    to={buildUrl({ view: 'map' })}
                     variation='achromic-plain'
                     useIcon='map'
                     title='Map view'
+                    active={view === 'map'}
                   >
                     Map
-                  </ViewMenuLink>
+                  </Button>
                 </li>
                 <li>
-                  <ViewMenuLink
-                    activeClassName='active'
-                    partiallyActive
-                    to='/'
+                  <Button
+                    forwardedAs={StyledLink}
+                    to={buildUrl({ view: 'summary' })}
                     variation='achromic-plain'
                     useIcon='text-block'
                     title='Summary view'
+                    active={view === 'summary'}
                   >
                     Summary
-                  </ViewMenuLink>
+                  </Button>
                 </li>
               </ViewMenu>
             </InpageNav>
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
-          <InpageBodyInner>
-            <Carto>
-              <Panel>
-                <CartoPanelHeader>
-                  <PanelTitle>Study panel</PanelTitle>
-                </CartoPanelHeader>
-                <PanelBody>
-                  <PanelSection>
-                    <PanelSectionHeader>
-                      <PanelSectionHeadline>
-                        <PanelSectionTitle>Layers</PanelSectionTitle>
-                      </PanelSectionHeadline>
-                    </PanelSectionHeader>
-                    <PanelSectionBody>
-                      <PanelGroup>
-                        <PanelGroupHeader>
-                          <PanelGroupTitle>Results</PanelGroupTitle>
-                        </PanelGroupHeader>
-                        <PanelGroupBody>
-                          <p>Layer 1</p>
-                        </PanelGroupBody>
-                      </PanelGroup>
-                      <PanelGroup>
-                        <PanelGroupHeader>
-                          <PanelGroupTitle>Contextual</PanelGroupTitle>
-                        </PanelGroupHeader>
-                        <PanelGroupBody>
-                          <p>Layer 1</p>
-                        </PanelGroupBody>
-                      </PanelGroup>
-                    </PanelSectionBody>
-                  </PanelSection>
-                </PanelBody>
-              </Panel>
-              <MbMap
-                token={globalMapConfig.mbToken}
-                basemap={globalMapConfig.basemap}
-                bbox={bbox}
-                mapConfig={mapConfig}
-              />
-            </Carto>
-          </InpageBodyInner>
+          {view === 'map' && (
+            <StudySingleCarto
+              onAction={onAction}
+              mbToken={globalMapConfig.mbToken}
+              basemap={globalMapConfig.basemap}
+              bbox={bbox}
+              panelLayers={panelLayers}
+              mapConfig={mapConfig}
+            />
+          )}
+          {view === 'summary' && <StudySingleSummary />}
         </InpageBody>
       </Inpage>
     </Layout>
@@ -165,6 +181,17 @@ export const pageQuery = graphql`
       title
       bbox
       mapConfig
+      layers {
+        id
+        name
+        category
+        mbLayer
+        info
+        source {
+          name
+          url
+        }
+      }
     }
     site {
       siteMetadata {

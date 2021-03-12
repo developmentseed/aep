@@ -1,24 +1,99 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { tint } from 'polished';
 
-import { glsp, multiply, themeVal } from '@devseed-ui/theme-provider';
+import {
+  themeVal,
+  glsp,
+  media,
+  stylizeFunction
+} from '@devseed-ui/theme-provider';
 
-// Extract fn to avoid complaints by the linter.
-const numColumnsFn = ({ numColumns }) =>
-  numColumns &&
-  css`
-    column-count: ${numColumns};
-    column-gap: ${glsp(2)};
-  `;
+const _tint = stylizeFunction(tint);
 
 const Prose = styled.div`
-  font-size: ${({ size }) =>
-    size === 'small' ? '0.875rem' : themeVal('type.base.size')}; /* 16px */
+  font-size: 1rem;
+  line-height: 1.5;
 
-  line-height: ${({ size }) =>
-    size === 'small' ? '1.25rem' : themeVal('type.base.line')}; /* 16px */
-  ${numColumnsFn}
+  ${media.mediumUp`
+    font-size: 1.25rem;
+    line-height: 1.6;
+  `}
 
-  ul, ol, dl {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${themeVal('type.heading.family')};
+    text-transform: ${themeVal('type.heading.case')};
+    font-weight: ${themeVal('type.heading.weight')};
+    font-style: ${themeVal('type.heading.style')};
+    font-variation-settings: ${themeVal('type.heading.settings')};
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+
+    ${media.mediumUp`
+      font-size: 2.75rem;
+      line-height: 3.25rem;
+    `}
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+
+    ${media.mediumUp`
+      font-size: 2.5rem;
+      line-height: 3rem;
+    `}
+  }
+
+  h3 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+
+    ${media.mediumUp`
+      font-size: 2.25rem;
+      line-height: 2.75rem;
+    `}
+  }
+
+  h4 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+
+    ${media.mediumUp`
+      font-size: 2rem;
+      line-height: 2.5rem;
+    `}
+  }
+
+  h5 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+
+    ${media.mediumUp`
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+    `}
+  }
+
+  h6 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+
+    ${media.mediumUp`
+      font-size: 1.5rem;
+      line-height: 2rem;
+    `}
+  }
+
+  ol,
+  dl {
     padding: 0;
   }
 
@@ -43,11 +118,59 @@ const Prose = styled.div`
     margin-bottom: 0;
   }
 
+  dt {
+    font-weight: ${themeVal('type.base.bold')};
+  }
+
+  figure > figcaption {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+    color: ${_tint(0.32, themeVal('color.base'))};
+    padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
+    width: 100%;
+    max-width: 52rem;
+    margin: 0 auto;
+
+    ${media.smallUp`
+      padding: ${glsp(1, themeVal('layout.gap.small'))};
+    `}
+
+    ${media.mediumUp`
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding: ${glsp(2, themeVal('layout.gap.medium'))};
+    `}
+
+    ${media.largeUp`
+      padding: ${glsp(2, themeVal('layout.gap.large'))};
+    `}
+
+    ${media.xlargeUp`
+      padding: ${glsp(2, themeVal('layout.gap.xlarge'))};
+    `}
+  }
+
+  figure img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  > img {
+    display: block;
+  }
+
   > * {
-    margin-bottom: ${({ size }) =>
-      size === 'small'
-        ? '1rem'
-        : multiply(themeVal('type.base.size'), themeVal('type.base.line'))};
+    margin-bottom: ${glsp(1.5)};
+
+    ${media.mediumUp`
+      margin-bottom: ${glsp(2)};
+    `}
   }
 
   > *:last-child {

@@ -6,7 +6,7 @@ import {
   media,
   divide,
   subtract,
-  val2px,
+  val2px
 } from '@devseed-ui/theme-provider';
 
 // Grid:
@@ -74,7 +74,7 @@ function makeGrid(columns, mdQuery) {
         name: `content-${i + 2}`,
         value: css`
           [content-${i + 2}] minmax(0, ${contentColWidth})
-        `,
+        `
       }));
 
     // Create an array with all the columns definitions. It will be used to
@@ -84,11 +84,11 @@ function makeGrid(columns, mdQuery) {
       { name: 'full-start', value: css`[full-start] minmax(0, 1fr)` },
       {
         name: 'content-start',
-        value: css`[content-start] minmax(0, ${contentColWidth})`,
+        value: css`[content-start] minmax(0, ${contentColWidth})`
       },
       ...contentColumns,
       { name: 'content-end', value: css`[content-end] minmax(0, 1fr)` },
-      { name: 'full-end', value: '[full-end]' },
+      { name: 'full-end', value: '[full-end]' }
     ];
 
     let gridTemplateColumns = null;
@@ -99,14 +99,14 @@ function makeGrid(columns, mdQuery) {
       gridColumn = css`
         grid-column: ${start} / ${end};
       `;
-      const startIdx = columnTemplate.findIndex(col => col.name === start);
-      const endIdx = columnTemplate.findIndex(col => col.name === end);
+      const startIdx = columnTemplate.findIndex((col) => col.name === start);
+      const endIdx = columnTemplate.findIndex((col) => col.name === end);
       const lastColumn = columnTemplate[endIdx];
       gridTemplateColumns = [
         ...columnTemplate.slice(startIdx, endIdx),
         // Add the name of the last column without a size so we can use it for
         // naming purposes.
-        { name: lastColumn.name, value: `[${lastColumn.name}]` },
+        { name: lastColumn.name, value: `[${lastColumn.name}]` }
       ];
     } else {
       gridTemplateColumns = columnTemplate;
@@ -126,7 +126,7 @@ function makeGrid(columns, mdQuery) {
     return css`
       ${gridColumn}
       grid-gap: ${gapRem};
-      grid-template-columns: ${gridTemplateColumns.map(col => col.value)};
+      grid-template-columns: ${gridTemplateColumns.map((col) => col.value)};
     `;
   };
 }
