@@ -10,7 +10,7 @@ import {
   InpageSubtitle,
   InpageBody
 } from '../../styles/inpage';
-import { ContentBlock } from '../../styles/content-block';
+import { ContentBlock, Aside } from '../../styles/content-block';
 import Prose from '../../styles/typography/prose';
 
 function Sandbox() {
@@ -26,7 +26,7 @@ function Sandbox() {
           </InpageHeaderInner>
         </InpageHeader>
         <InpageBody>
-          <ContentBlock>
+          <ContentBlock layout='asided'>
             <Prose>
               <h2>Summary</h2>
               <p>
@@ -69,6 +69,25 @@ function Sandbox() {
                 interdum ac.
               </p>
             </Prose>
+            <Aside>
+              <Prose>
+                <h2>Graphs</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <img
+                  src='https://via.placeholder.com/1440/CCCCCC'
+                  width='1440'
+                  height='1440'
+                  alt='A placeholder image'
+                />
+                <p>Lorem ipsum dolor sit amet.</p>
+                <img
+                  src='https://via.placeholder.com/1440/CCCCCC'
+                  width='1440'
+                  height='1440'
+                  alt='A placeholder image'
+                />
+              </Prose>
+            </Aside>
           </ContentBlock>
         </InpageBody>
       </Inpage>

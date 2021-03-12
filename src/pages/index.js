@@ -11,8 +11,7 @@ import {
   InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../styles/inpage';
 import Prose from '../styles/typography/prose';
 
@@ -82,7 +81,7 @@ const Home = ({ data, location }) => {
   const { title } = data.site.siteMetadata;
 
   return (
-    <Layout location={location} title='Home'>
+    <Layout location={location} title='Welcome'>
       <HomeInpage>
         <HomeInpageHeader>
           <InpageHeaderInner>

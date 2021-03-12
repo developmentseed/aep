@@ -1,9 +1,43 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 
 import UniversalGridder from './universal-gridder';
 import Prose from './typography/prose';
+
+const renderContentBlockLayout = ({ layout }) => {
+  switch (layout) {
+    case 'asided':
+      return css`
+        > ${Prose} {
+          grid-column: content-start / content-end;
+
+          ${media.largeUp`
+            grid-column: content-start / span 8;
+          `}
+
+          ${media.xlargeUp`
+            grid-column: content-start / span 7;
+          `}
+        }
+      `;
+    // Default: single column
+    default:
+      return css`
+        > ${Prose} {
+          grid-column: content-start / content-end;
+
+          ${media.largeUp`
+            grid-column: content-2 / span 8;
+          `}
+
+          ${media.xlargeUp`
+            grid-column: content-3 / span 8;
+          `}
+        }
+      `;
+  }
+};
 
 export const ContentBlock = styled(UniversalGridder).attrs({
   as: 'div',
@@ -31,15 +65,17 @@ export const ContentBlock = styled(UniversalGridder).attrs({
     grid-row-gap: ${glsp(themeVal('layout.gap.xlarge'))};
   `}
 
-  > ${Prose} {
-    grid-column: content-start / content-end;
+  ${renderContentBlockLayout}
+`;
 
-    ${media.largeUp`
-      grid-column: content-2 / content-12;
-    `}
+export const Aside = styled.aside`
+  grid-column: content-start / content-end;
 
-    ${media.xlargeUp`
-      grid-column: content-3 / content-11;
-    `}
-  }
+  ${media.largeUp`
+    grid-column: content-9 / span 4;
+  `}
+
+  ${media.xlargeUp`
+    grid-column: content-9 / span 4;
+  `}
 `;
