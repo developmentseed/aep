@@ -1,15 +1,29 @@
 import styled from 'styled-components';
 
-import { themeVal, glsp } from '@devseed-ui/theme-provider';
+import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { SupHeading } from './typography/supheading';
 
 export const Panel = styled.section`
   display: flex;
   flex-flow: column nowrap;
   width: 18rem;
+
+  ${media.mediumUp`
+    width: 20rem;
+  `}
+
+  ${media.xlargeUp`
+    width: 22rem;
+  `}
 `;
 
-export const PanelHeader = styled.header``;
+export const PanelHeader = styled.header`
+  padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+  `}
+`;
 
 export const PanelTitle = styled.h1``;
 
@@ -27,6 +41,10 @@ export const PanelSection = styled.section`
 
 export const PanelSectionHeader = styled.header`
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+  `}
 `;
 
 export const PanelSectionHeadline = styled.div``;
@@ -50,8 +68,12 @@ export const PanelGroup = styled.section`
 `;
 
 export const PanelGroupHeader = styled.header`
-  padding: ${glsp(0.25, themeVal('layout.gap.xsmall'))};
   background: ${themeVal('color.baseAlphaC')};
+  padding: ${glsp(0.25, themeVal('layout.gap.xsmall'))};
+
+  ${media.mediumUp`
+    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+  `}
 `;
 
 export const PanelGroupTitle = styled(SupHeading).attrs({

@@ -4,49 +4,66 @@ const path = require('path');
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
 
-  const typeDefs = schema.buildObjectType({
-    name: 'PostsYaml',
-    fields: {
-      mapConfig: {
-        type: 'JSON',
-        resolve: async (source, args, context) => {
-          if (!source.mapConfig) return null;
+  const typeDefs = [
+    `
+      type PanelLayerSource {
+        name: String
+        url: String
+      }
 
-          // Find the parent File which we'll use to get the directory.
-          const parentFileNode = context.nodeModel.findRootNodeAncestor(
-            source,
-            (node) => node.internal && node.internal.type === `File`
-          );
-          // Resolve the full path to the map config.
-          const mapConfigPath = path.resolve(
-            parentFileNode.dir,
-            source.mapConfig
-          );
+      type PanelLayer {
+        name: String
+        category: String
+        mbLayer: String
+        info: String
+        source: PanelLayerSource
+      }
+    `,
+    schema.buildObjectType({
+      name: 'PostsYaml',
+      fields: {
+        layers: '[PanelLayer]',
+        mapConfig: {
+          type: 'JSON',
+          resolve: async (source, args, context) => {
+            if (!source.mapConfig) return null;
 
-          // Check if the file is inside the current directory. This prevents
-          // access to other system paths.
-          const relative = path.relative(__dirname, mapConfigPath);
-          const isSafe =
-            relative &&
-            !relative.startsWith('..') &&
-            !path.isAbsolute(relative);
+            // Find the parent File which we'll use to get the directory.
+            const parentFileNode = context.nodeModel.findRootNodeAncestor(
+              source,
+              (node) => node.internal && node.internal.type === `File`
+            );
+            // Resolve the full path to the map config.
+            const mapConfigPath = path.resolve(
+              parentFileNode.dir,
+              source.mapConfig
+            );
 
-          if (!isSafe) {
-            return null;
-          }
+            // Check if the file is inside the current directory. This prevents
+            // access to other system paths.
+            const relative = path.relative(__dirname, mapConfigPath);
+            const isSafe =
+              relative &&
+              !relative.startsWith('..') &&
+              !path.isAbsolute(relative);
 
-          try {
-            return fs.readJSON(mapConfigPath);
-          } catch (error) {
-            /* eslint-disable-next-line no-console */
-            console.log('Error reading map config', error);
-            return null;
+            if (!isSafe) {
+              return null;
+            }
+
+            try {
+              return fs.readJSON(mapConfigPath);
+            } catch (error) {
+              /* eslint-disable-next-line no-console */
+              console.log('Error reading map config', error);
+              return null;
+            }
           }
         }
-      }
-    },
-    interfaces: ['Node']
-  });
+      },
+      interfaces: ['Node']
+    })
+  ];
 
   createTypes(typeDefs);
 };

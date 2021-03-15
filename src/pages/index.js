@@ -11,8 +11,7 @@ import {
   InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
-  InpageBody,
-  InpageBodyInner
+  InpageBody
 } from '../styles/inpage';
 import Prose from '../styles/typography/prose';
 
@@ -35,6 +34,10 @@ const Intro = styled.section`
   justify-content: center;
   padding: ${glsp(themeVal('layout.gap.xsmall'))};
   height: 100%;
+
+  ${media.mediumUp`
+    padding: ${glsp(themeVal('layout.gap.medium'))};
+  `}
 `;
 
 const IntroTitle = styled.h1`
@@ -78,7 +81,7 @@ const Home = ({ data, location }) => {
   const { title } = data.site.siteMetadata;
 
   return (
-    <Layout location={location} title='Home'>
+    <Layout location={location} title='Welcome'>
       <HomeInpage>
         <HomeInpageHeader>
           <InpageHeaderInner>
@@ -88,23 +91,21 @@ const Home = ({ data, location }) => {
           </InpageHeaderInner>
         </HomeInpageHeader>
         <InpageBody>
-          <InpageBodyInner>
-            <Intro>
-              <IntroTitle size='large'>
-                <span>Welcome to the</span>
-                {title}
-              </IntroTitle>
-              <IntroLead>Tagline...</IntroLead>
-              <PartnerLogos>
-                <li>
-                  <img src={logoEsmapUrl} alt='Esmap logo' />
-                </li>
-                <li>
-                  <img src={logoWbUrl} alt='WB logo' />
-                </li>
-              </PartnerLogos>
-            </Intro>
-          </InpageBodyInner>
+          <Intro>
+            <IntroTitle size='large'>
+              <span>Welcome to the</span>
+              {title}
+            </IntroTitle>
+            <IntroLead>Tagline...</IntroLead>
+            <PartnerLogos>
+              <li>
+                <img src={logoEsmapUrl} alt='Esmap logo' />
+              </li>
+              <li>
+                <img src={logoWbUrl} alt='WB logo' />
+              </li>
+            </PartnerLogos>
+          </Intro>
         </InpageBody>
       </HomeInpage>
     </Layout>
