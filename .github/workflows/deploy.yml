@@ -9,7 +9,7 @@ on:
 
 env:
   NODE: 14
-  PROD_BUCKET: tmp-frontend-test-aep-olaf
+  PROD_BUCKET: aep-frontend-public
 
 jobs:
   build:
