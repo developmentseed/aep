@@ -3,60 +3,60 @@
   "sources": {
     "11kv": {
       "tiles": [
-        "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/11kv/{z}/{x}/{y}.pbf"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/11kv/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     },
     "33kv": {
       "tiles": [
-        "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/33kv/{z}/{x}/{y}.pbf"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/33kv/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     },
     "66kv": {
-      "data": "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/geojson/ke/transmission-lines-66kv-wgs84.json",
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/transmission-lines-66kv-wgs84.json",
       "type": "geojson"
     },
     "132kv": {
-      "data": "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/geojson/ke/transmission-lines-132kv-wgs84.json",
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/transmission-lines-132kv-wgs84.json",
       "type": "geojson"
     },
     "220kv": {
-      "data": "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/geojson/ke/transmission-lines-220kv-wgs84.json",
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/transmission-lines-220kv-wgs84.json",
       "type": "geojson"
     },
     "transformers": {
       "tiles": [
-        "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/distribution_transformers/{z}/{x}/{y}.pbf"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/distribution_transformers/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     },
     "roads": {
       "tiles": [
-        "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/roads/{z}/{x}/{y}.pbf"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/roads/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     },
     "schools": {
       "tiles": [
-        "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/schools/{z}/{x}/{y}.pbf"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/schools/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     },
     "minigrid-existing": {
-      "data": "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/geojson/ke/existing_minigrids-wgs84.json",
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/existing_minigrids-wgs84.json",
       "type": "geojson"
     },
     "minigrid-proposed": {
-      "data": "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/geojson/ke/proposed_kosap_minigrid-wgs84.json",
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/proposed_kosap_minigrid-wgs84.json",
       "type": "geojson"
     },
     "substation": {
-      "data": "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/geojson/ke/primary_substations-wgs84.json",
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/primary_substations-wgs84.json",
       "type": "geojson"
     },
     "minigrid": {
-      "data": "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/geojson/ke/proposed_shs_market-wgs84.json",
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/proposed_shs_market-wgs84.json",
       "type": "geojson"
     }
   },
