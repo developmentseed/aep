@@ -36,6 +36,7 @@ const studySchema = new Schema({
   },
   layers: [
     {
+      id: { type: String, required: true },
       name: { type: String, required: true },
       category: {
         type: String,
