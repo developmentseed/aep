@@ -27,6 +27,7 @@ function PanelLayersGroup(props) {
                   <PanelLayer
                     id={l.mbLayer}
                     label={l.name}
+                    disabled={l.disabled}
                     active={l.visible}
                     info={l.info}
                     // legend={l.legend}

@@ -77,7 +77,15 @@ const LayerBodyInner = styled(Prose)`
 `;
 
 function PanelLayer(props) {
-  const { label, active, info, onToggleClick, isExpanded, setExpanded } = props;
+  const {
+    label,
+    active,
+    disabled = false,
+    info,
+    onToggleClick,
+    isExpanded,
+    setExpanded
+  } = props;
 
   return (
     <LayerSelf
@@ -106,6 +114,7 @@ function PanelLayer(props) {
               variation='base-plain'
               size='small'
               useIcon={active ? 'eye' : 'eye-disabled'}
+              disabled={disabled}
               title='Enable/disable layer'
               hideText
               onClick={onToggleClick}
@@ -134,6 +143,7 @@ function PanelLayer(props) {
 PanelLayer.propTypes = {
   label: T.string,
   active: T.bool,
+  disabled: T.bool,
   info: T.node,
   onToggleClick: T.func,
   isExpanded: T.bool,
