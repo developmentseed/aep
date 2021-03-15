@@ -3,7 +3,7 @@
   "sources": {
     "kv": {
       "tiles": [
-        "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/11kv/{z}/{x}/{y}.pbf"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/11kv/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     },
