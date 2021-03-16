@@ -1,5 +1,6 @@
 title: Kenya Universal Access
 bbox: [[ 33.893,-4.676],[41.855,5.506 ]]
+minMaxZoom: [ 6, 12 ]
 mapConfig: ./kenya-mb.json
 study:
   consultant: NRECA
