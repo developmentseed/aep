@@ -12,9 +12,8 @@ const MapContainer = styled.div`
 `;
 
 export default function MbMap(props) {
-  const { token, basemap, bbox, mapConfig, layersState } = props;
+  const { token, basemap, topLayer, bbox, mapConfig, layersState } = props;
   mapboxgl.accessToken = token;
-
   const mapSources = useMemo(() => {
     if (mapConfig && mapConfig.sources) {
       // Convert sources to array to be more easily managed.
@@ -68,7 +67,7 @@ export default function MbMap(props) {
   }, [bbox, basemap]);
 
   useSources(theMap, mapSources);
-  useLayers(theMap, mapLayers);
+  useLayers(theMap, mapLayers, topLayer);
 
   useLayersState(theMap, mapLayers, layersState);
 
@@ -78,6 +77,7 @@ export default function MbMap(props) {
 MbMap.propTypes = {
   token: T.string,
   basemap: T.string,
+  topLayer: T.string,
   mapConfig: T.object,
   bbox: T.array,
   layersState: T.array
@@ -110,7 +110,7 @@ const useSources = (theMap, sources) => {
   }, [theMap, sources]);
 };
 
-const useLayers = (theMap, layers) => {
+const useLayers = (theMap, layers, topLayer) => {
   const currentLayers = useRef([]);
 
   useEffect(() => {
@@ -128,13 +128,13 @@ const useLayers = (theMap, layers) => {
 
     added.forEach((layer) => {
       if (!theMap.getLayer(layer.id)) {
-        theMap.addLayer(layer);
+        theMap.addLayer(layer, topLayer);
       }
     });
 
     // Store new current layers.
     currentLayers.current = [...shared, ...added];
-  }, [theMap, layers]);
+  }, [theMap, layers, topLayer]);
 };
 
 const useLayersState = (theMap, layers, layersState) => {

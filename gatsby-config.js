@@ -19,8 +19,10 @@ module.exports = {
       twitter: ''
     },
     mapConfig: {
-      basemap: 'mapbox://styles/mapbox/dark-v10',
-      mbToken: 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
+      basemap: 'mapbox://styles/derilinx/ck3yqjovg4dpn1crwajrc9ajr',
+      mbToken:
+        'pk.eyJ1IjoiZGVyaWxpbngiLCJhIjoiY2szeTlzbWo2MDV6eDNlcDMxM3dzZXBieiJ9.zPf1iiFilYYwyx6ETNj_8w',
+      topLayer: 'admin-2-boundaries-bg'
     }
   },
   plugins: [

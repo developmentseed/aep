@@ -36,6 +36,7 @@ function StudySingleCarto(props) {
   const {
     mbToken,
     basemap,
+    topLayer,
     bbox,
     mapConfig,
     panelLayers = [],
@@ -89,6 +90,7 @@ function StudySingleCarto(props) {
       <MbMap
         token={mbToken}
         basemap={basemap}
+        topLayer={topLayer}
         bbox={bbox}
         layersState={panelLayers}
         mapConfig={mapConfig}
@@ -101,6 +103,7 @@ StudySingleCarto.propTypes = {
   onAction: T.func,
   mbToken: T.string,
   basemap: T.string,
+  topLayer: T.string,
   bbox: T.array,
   mapConfig: T.object,
   panelLayers: T.array

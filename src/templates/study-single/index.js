@@ -157,6 +157,7 @@ function StudySingle({ data }) {
               onAction={onAction}
               mbToken={globalMapConfig.mbToken}
               basemap={globalMapConfig.basemap}
+              topLayer={globalMapConfig.topLayer}
               bbox={bbox}
               panelLayers={panelLayers}
               mapConfig={mapConfig}
@@ -199,6 +200,7 @@ export const pageQuery = graphql`
         mapConfig {
           basemap
           mbToken
+          topLayer
         }
       }
     }
