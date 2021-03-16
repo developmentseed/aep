@@ -23,9 +23,9 @@ function PanelLayersGroup(props) {
           {({ checkExpanded, setExpanded }) => (
             <ol>
               {layers.map((l, idx) => (
-                <li key={l.mbLayer}>
+                <li key={l.id}>
                   <PanelLayer
-                    id={l.mbLayer}
+                    id={l.id}
                     label={l.name}
                     disabled={l.disabled}
                     active={l.visible}
