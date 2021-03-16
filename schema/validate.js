@@ -14,10 +14,44 @@ const fileExists = (val) => {
 const studySchema = new Schema({
   title: { type: String, required: true },
   bbox: [
-    [{ type: Number }, { type: Number }],
-    [{ type: Number }, { type: Number }]
+    [
+      { type: Number, required: true },
+      { type: Number, required: true }
+    ],
+    [
+      { type: Number, required: true },
+      { type: Number, required: true }
+    ]
   ],
-  mapConfig: { type: String, use: { fileExists } }
+  mapConfig: { type: String, use: { fileExists }, required: true },
+  study: {
+    consultant: { type: String, required: true },
+    period: { required: true },
+    scope: { type: String, required: true },
+    summary: { type: String, required: true }
+  },
+  platform: {
+    title: { type: String },
+    url: { type: String }
+  },
+  layers: [
+    {
+      id: { type: String, required: true },
+      name: { type: String, required: true },
+      category: {
+        type: String,
+        enum: ['contextual', 'result'],
+        required: true
+      },
+      disabled: { type: Boolean },
+      mbLayer: { type: String, required: true },
+      info: { type: String },
+      source: {
+        name: { type: String, required: true },
+        url: { type: String, required: true }
+      }
+    }
+  ]
 });
 
 studySchema.message({

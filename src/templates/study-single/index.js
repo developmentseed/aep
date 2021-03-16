@@ -185,6 +185,7 @@ export const pageQuery = graphql`
         id
         name
         category
+        disabled
         mbLayer
         info
         source {

@@ -1,30 +1,130 @@
 {
   "version": 8,
   "sources": {
-    "kv": {
+    "11kv": {
       "tiles": [
-        "http://aep-tiles-temp-public.s3-website-eu-west-1.amazonaws.com/tiles/ke/11kv/{z}/{x}/{y}.pbf"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/11kv/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     },
-    "no2": {
+    "33kv": {
       "tiles": [
-        "https://8ib71h0627.execute-api.us-east-1.amazonaws.com/v1/{z}/{x}/{y}@1x?url=s3://covid-eo-data/OMNO2d_HRM/OMI_trno2_0.10x0.10_202008_Col3_V4.nc.tif&resampling_method=bilinear&bidx=1&rescale=0%2C1.5e16&color_map=custom_no2&color_formula=gamma r 1"
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/33kv/{z}/{x}/{y}.pbf"
       ],
-      "type": "raster"
+      "type": "vector"
+    },
+    "66kv": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/transmission-lines-66kv-wgs84.json",
+      "type": "geojson"
+    },
+    "132kv": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/transmission-lines-132kv-wgs84.json",
+      "type": "geojson"
+    },
+    "220kv": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/transmission-lines-220kv-wgs84.json",
+      "type": "geojson"
+    },
+    "transformers": {
+      "tiles": [
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/distribution_transformers/{z}/{x}/{y}.pbf"
+      ],
+      "type": "vector"
+    },
+    "roads": {
+      "tiles": [
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/roads/{z}/{x}/{y}.pbf"
+      ],
+      "type": "vector"
+    },
+    "schools": {
+      "tiles": [
+        "https://aep-tiles.staging.derilinx.com/tiles/ke/schools/{z}/{x}/{y}.pbf"
+      ],
+      "type": "vector"
+    },
+    "minigrid-existing": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/existing_minigrids-wgs84.json",
+      "type": "geojson"
+    },
+    "minigrid-proposed": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/proposed_kosap_minigrid-wgs84.json",
+      "type": "geojson"
+    },
+    "substation": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/primary_substations-wgs84.json",
+      "type": "geojson"
+    },
+    "minigrid": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/proposed_shs_market-wgs84.json",
+      "type": "geojson"
     }
   },
   "layers": [
     {
-      "id": "kv",
+      "id": "11kv",
       "type": "line",
-      "source": "kv",
+      "source": "11kv",
       "source-layer": "data_layer"
     },
     {
-      "id": "no2",
-      "type": "raster",
-      "source": "no2"
+      "id": "33kv",
+      "type": "line",
+      "source": "33kv",
+      "source-layer": "data_layer"
+    },
+    {
+      "id": "66kv",
+      "type": "line",
+      "source": "66kv"
+    },
+    {
+      "id": "132kv",
+      "type": "line",
+      "source": "132kv"
+    },
+    {
+      "id": "220kv",
+      "type": "line",
+      "source": "220kv"
+    },
+    {
+      "id": "minigrid-existing",
+      "type": "circle",
+      "source": "minigrid-existing"
+    },
+    {
+      "id": "minigrid-proposed",
+      "type": "circle",
+      "source": "minigrid-proposed"
+    },
+    {
+      "id": "substation",
+      "type": "circle",
+      "source": "substation"
+    },
+    {
+      "id": "minigrid",
+      "type": "circle",
+      "source": "minigrid"
+    },
+    {
+      "id": "transformers",
+      "type": "circle",
+      "source": "transformers",
+      "source-layer": "data_layer"
+    },
+    {
+      "id": "roads",
+      "type": "line",
+      "source": "roads",
+      "source-layer": "data_layer"
+    },
+    {
+      "id": "schools",
+      "type": "circle",
+      "source": "schools",
+      "source-layer": "data_layer"
     }
   ]
 }
