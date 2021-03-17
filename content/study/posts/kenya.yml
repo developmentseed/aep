@@ -51,22 +51,6 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-kenya-electricity-network
-  - id: roads
-    name: Roads
-    category: contextual
-    mbLayer: roads
-    info: Road network in Kenya. The dataset was provided by Kenya Roads Board (KRB).
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/kenya-roads-1
-  - id: schools
-    name: Schools
-    category: contextual
-    mbLayer: schools
-    info: The dataset contains Distribution Transformers in Kenya.The dataset was provided by Kenya Power and Lighting Company (KPLC).
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/kenya-schools
   - id: transformers
     name: Distribution Transformers
     category: contextual
@@ -75,24 +59,6 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-distribution-transformers
-  - id: power
-    name: Power Stations
-    category: contextual
-    disabled: true
-    mbLayer: 11kv
-    info: The dataset contains location of Power Stations in Kenya. It was provided by Kenya Power and Lighting Company (KPLC).
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/kenya-power-stations
-  - id: health
-    name: Healthcare Facilities
-    category: contextual
-    disabled: true
-    mbLayer: 11kv
-    info: Data on healthcare facility locations in Kenya. The dataset was provided by the Government of Kenya.
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/kenya-healthcare-facilities
   - id: substations
     name: Primary Substations
     category: contextual
@@ -104,12 +70,20 @@ layers:
   - id: transmission
     name: Transmission Stations
     category: contextual
-    disabled: true
-    mbLayer: 11kv
+    mbLayer: transmission-stations
     info: The data contains transmission station locations in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-transmission-stations
+  - id: power
+    name: Power Stations
+    category: contextual
+    disabled: true
+    mbLayer: 11kv
+    info: The dataset contains location of Power Stations in Kenya. It was provided by Kenya Power and Lighting Company (KPLC).
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/kenya-power-stations
   - id: population
     name: Population and Household Dataset (2009 & 2016)
     category: contextual
@@ -119,6 +93,31 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-population-and-household-dataset
+  - id: roads
+    name: Roads
+    category: contextual
+    mbLayer: roads
+    info: Road network in Kenya. The dataset was provided by Kenya Roads Board (KRB).
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/kenya-roads-1
+  - id: health
+    name: Healthcare Facilities
+    category: contextual
+    disabled: true
+    mbLayer: 11kv
+    info: Data on healthcare facility locations in Kenya. The dataset was provided by the Government of Kenya.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/kenya-healthcare-facilities
+  - id: schools
+    name: Schools
+    category: contextual
+    mbLayer: schools
+    info: School locations in Kenya. It comprises Primary and Secondary Schools. The dataset was provided by Kenya Ministry of Education.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/kenya-schools
   - id: minigrid
     name: Overview of Off-Grid Electricity Service Areas
     category: result
