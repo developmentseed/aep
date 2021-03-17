@@ -2,8 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
+import merge from 'deepmerge';
 
-const merge = require('deepmerge');
 import { diffArrayById } from '../../utils/array';
 
 const MapContainer = styled.div`
