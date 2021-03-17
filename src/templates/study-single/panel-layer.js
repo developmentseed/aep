@@ -82,6 +82,7 @@ function PanelLayer(props) {
     active,
     disabled = false,
     info,
+    source,
     onToggleClick,
     isExpanded,
     setExpanded
@@ -104,7 +105,7 @@ function PanelLayer(props) {
               useIcon='circle-information'
               title='Show/hide layer info'
               hideText
-              disabled={!info}
+              disabled={!info && !source}
               active={isFoldExpanded}
               onClick={() => setFoldExpanded(!isFoldExpanded)}
             >
@@ -133,7 +134,17 @@ function PanelLayer(props) {
       )}
       renderBody={() => (
         <LayerBodyInner>
-          {info || <p>No info available for this layer.</p>}
+          {info}
+          {source && (
+            <dl>
+              <dt>Source</dt>
+              <dd>
+                <a href={source.url} target='_blank' rel='noreferrer'>
+                  {source.name}
+                </a>
+              </dd>
+            </dl>
+          )}
         </LayerBodyInner>
       )}
     />
@@ -145,6 +156,7 @@ PanelLayer.propTypes = {
   active: T.bool,
   disabled: T.bool,
   info: T.node,
+  source: T.object,
   onToggleClick: T.func,
   isExpanded: T.bool,
   setExpanded: T.func
