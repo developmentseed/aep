@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
+import { navigate } from 'gatsby';
 import T from 'prop-types';
 import qs from 'qs';
 import { graphql, Link } from 'gatsby';
@@ -63,9 +64,13 @@ const buildUrl = (data) => {
 function StudySingle({ data }) {
   const { title, bbox, mapConfig } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
-  const layers = data.postsYaml.layers || [];
+  const layers = useMemo(() => data.postsYaml.layers || [], [
+    data.postsYaml.layers
+  ]);
 
-  const useQsState = useQsStateCreator();
+  const useQsState = useQsStateCreator({
+    commit: ({ search }) => navigate(`?${search}`)
+  });
 
   const [view] = useQsState(
     useMemo(
@@ -78,22 +83,18 @@ function StudySingle({ data }) {
     )
   );
 
-  // TODO: Store in url with useQsState - Bug fix pending
-  const [visiblePanelLayers, setVisiblePanelLayers] = useState(
-    layers.filter((l) => l.visible).map((l) => l.id)
+  const [visiblePanelLayers, setVisiblePanelLayers] = useQsState(
+    useMemo(
+      () => ({
+        key: 'layers',
+        default: layers.filter((l) => l.visible).map((l) => l.id),
+        validator: (v) => !!v,
+        hydrator: (v) => (!v ? null : v.split('|')),
+        dehydrator: (v) => v.join('|')
+      }),
+      [layers]
+    )
   );
-  // const [visiblePanelLayers, setVisiblePanelLayers] = useQsState(
-  //   useMemo(
-  //     () => ({
-  //       key: 'layers',
-  //       default: layers.filter((l) => l.visible).map((l) => l.id),
-  //       validator: (v) => !!v,
-  //       hydrator: (v) => (!v ? null : v.split('|')),
-  //       dehydrator: (v) => v.join('|')
-  //     }),
-  //     [layers]
-  //   )
-  // );
 
   const panelLayers = layers.map((l) => ({
     ...l,
