@@ -11,6 +11,21 @@ const MapContainer = styled.div`
   height: 100%;
 `;
 
+const defaultPaintObject = {
+  circle: {
+    'circle-color': '#5860FF',
+    'circle-stroke-color': '#FFFFFF',
+    'circle-stroke-opacity': 0.64,
+    'circle-stroke-width': 2,
+    'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 16, 15]
+  },
+  line: {
+    'line-color': '#747BFC',
+    'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.32, 16, 0.48],
+    'line-width': ['interpolate', ['linear'], ['zoom'], 6, 0.5, 16, 2]
+  }
+};
+
 export default function MbMap(props) {
   const { token, basemap, bbox, mapConfig, layersState } = props;
   mapboxgl.accessToken = token;
@@ -26,7 +41,18 @@ export default function MbMap(props) {
     return null;
   }, [mapConfig]);
 
-  const mapLayers = mapConfig && mapConfig.layers;
+  const mapLayers = useMemo(() => {
+    if (mapConfig && mapConfig.layers) {
+      // Set default paint properties
+      return mapConfig.layers.map((layer) => {
+        layer.paint = layer.paint
+          ? layer.paint
+          : defaultPaintObject[layer.type];
+        return layer;
+      });
+    }
+    return null;
+  }, [mapConfig]);
 
   const mapContainer = useRef(null);
   const [theMap, setMap] = useState(null);
