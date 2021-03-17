@@ -28,7 +28,15 @@ const defaultPaintObject = {
 };
 
 export default function MbMap(props) {
-  const { token, basemap, bbox, topLayer, zoomExtent, mapConfig, layersState } = props;
+  const {
+    token,
+    basemap,
+    bbox,
+    topLayer,
+    zoomExtent,
+    mapConfig,
+    layersState
+  } = props;
   mapboxgl.accessToken = token;
   const mapSources = useMemo(() => {
     if (mapConfig && mapConfig.sources) {
