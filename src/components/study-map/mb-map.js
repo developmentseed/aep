@@ -49,13 +49,14 @@ export default function MbMap(props) {
 
         // Merge custom paint properties from MB Style with the default ones.
         // Arrays are not concatenated, instead overwritten by custom props.
-        layer.paint = layer.paint
-          ? merge(defaultPaintObject[layer.type], layer.paint, {
-              arrayMerge: (destination, source) => source
-            })
-          : defaultPaintObject[layer.type];
-
-        return layer;
+        return {
+          ...layer,
+          paint: layer.paint
+            ? merge(defaultPaintObject[layer.type], layer.paint, {
+                arrayMerge: (destination, source) => source
+              })
+            : defaultPaintObject[layer.type]
+        };
       });
     }
     return null;
