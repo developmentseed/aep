@@ -37,7 +37,7 @@ function StudySingleCarto(props) {
     mbToken,
     basemap,
     bbox,
-    minMaxZoom,
+    zoomExtent,
     mapConfig,
     panelLayers = [],
     onAction
@@ -91,7 +91,7 @@ function StudySingleCarto(props) {
         token={mbToken}
         basemap={basemap}
         bbox={bbox}
-        minMaxZoom={minMaxZoom}
+        zoomExtent={zoomExtent}
         layersState={panelLayers}
         mapConfig={mapConfig}
       />
@@ -104,7 +104,7 @@ StudySingleCarto.propTypes = {
   mbToken: T.string,
   basemap: T.string,
   bbox: T.array,
-  minMaxZoom: T.array,
+  zoomExtent: T.array,
   mapConfig: T.object,
   panelLayers: T.array
 };

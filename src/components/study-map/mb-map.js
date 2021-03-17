@@ -12,7 +12,7 @@ const MapContainer = styled.div`
 `;
 
 export default function MbMap(props) {
-  const { token, basemap, bbox, minMaxZoom, mapConfig, layersState } = props;
+  const { token, basemap, bbox, zoomExtent, mapConfig, layersState } = props;
   mapboxgl.accessToken = token;
 
   const mapSources = useMemo(() => {
@@ -37,8 +37,8 @@ export default function MbMap(props) {
       attributionControl: false,
       bounds: bbox,
       container: mapContainer.current,
-      minZoom: minMaxZoom[0],
-      maxZoom: minMaxZoom[1],
+      minZoom: zoomExtent[0],
+      maxZoom: zoomExtent[1],
       style: basemap,
       logoPosition: 'bottom-right',
       pitchWithRotate: false,
@@ -67,7 +67,7 @@ export default function MbMap(props) {
     return () => {
       mbMap.remove();
     };
-  }, [bbox, basemap, minMaxZoom]);
+  }, [bbox, basemap, zoomExtent]);
 
   useSources(theMap, mapSources);
   useLayers(theMap, mapLayers);
@@ -82,7 +82,7 @@ MbMap.propTypes = {
   basemap: T.string,
   mapConfig: T.object,
   bbox: T.array,
-  minMaxZoom: T.array,
+  zoomExtent: T.array,
   layersState: T.array
 };
 
