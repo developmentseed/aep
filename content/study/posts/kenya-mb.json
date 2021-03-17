@@ -62,51 +62,70 @@
   },
   "layers": [
     {
+      "id": "roads",
+      "type": "line",
+      "source": "roads",
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#14213D",
+        "line-opacity": [
+          "interpolate", ["linear"], ["zoom"],
+          6, 0.32,
+          16, 0.48
+        ],
+        "line-width": [
+          "interpolate", ["linear"], ["zoom"],
+          6, 0.5,
+          16, 2
+        ]
+      }
+    },
+    {
       "id": "11kv",
       "type": "line",
       "source": "11kv",
-      "source-layer": "data_layer"
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FFC700"
+      }
     },
     {
       "id": "33kv",
       "type": "line",
       "source": "33kv",
-      "source-layer": "data_layer"
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
     },
     {
       "id": "66kv",
       "type": "line",
-      "source": "66kv"
+      "source": "66kv",
+      "paint": {
+        "line-color": "#FF9B14"
+      }
     },
     {
       "id": "132kv",
       "type": "line",
-      "source": "132kv"
+      "source": "132kv",
+      "paint": {
+        "line-color": "#FE851D"
+      }
     },
     {
       "id": "220kv",
       "type": "line",
-      "source": "220kv"
-    },
-    {
-      "id": "minigrid-existing",
-      "type": "circle",
-      "source": "minigrid-existing"
-    },
-    {
-      "id": "minigrid-proposed",
-      "type": "circle",
-      "source": "minigrid-proposed"
+      "source": "220kv",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
     },
     {
       "id": "substation",
       "type": "circle",
       "source": "substation"
-    },
-    {
-      "id": "minigrid",
-      "type": "circle",
-      "source": "minigrid"
     },
     {
       "id": "transformers",
@@ -115,16 +134,58 @@
       "source-layer": "data_layer"
     },
     {
-      "id": "roads",
-      "type": "line",
-      "source": "roads",
-      "source-layer": "data_layer"
-    },
-    {
       "id": "schools",
       "type": "circle",
       "source": "schools",
       "source-layer": "data_layer"
+    },
+    {
+      "id": "minigrid-existing",
+      "type": "circle",
+      "source": "minigrid-existing",
+      "paint": {
+        "circle-color": "#5860FF",
+        "circle-stroke-color": "#FFFFFF",
+        "circle-stroke-opacity": 0.64,
+        "circle-stroke-width": 2,
+        "circle-radius": [
+          "interpolate", ["linear"], ["zoom"],
+          6, 5,
+          16, 15
+        ]
+      }
+    },
+    {
+      "id": "minigrid-proposed",
+      "type": "circle",
+      "source": "minigrid-proposed",
+      "paint": {
+        "circle-color": "#5860FF",
+        "circle-stroke-color": "#FFFFFF",
+        "circle-stroke-opacity": 0.64,
+        "circle-stroke-width": 2,
+        "circle-radius": [
+          "interpolate", ["linear"], ["zoom"],
+          6, 5,
+          16, 15
+        ]
+      }
+    },
+    {
+      "id": "minigrid",
+      "type": "circle",
+      "source": "minigrid",
+      "paint": {
+        "circle-color": "#5860FF",
+        "circle-stroke-color": "#FFFFFF",
+        "circle-stroke-opacity": 0.64,
+        "circle-stroke-width": 2,
+        "circle-radius": [
+          "interpolate", ["linear"], ["zoom"],
+          6, 5,
+          16, 15
+        ]
+      }
     }
   ]
 }
