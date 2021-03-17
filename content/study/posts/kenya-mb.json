@@ -67,7 +67,9 @@
       "source": "roads",
       "source-layer": "data_layer",
       "paint": {
-        "line-color": "#14213D"
+        "line-color": "#14213D",
+        "line-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.32, 12, 0.48],
+        "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.5, 12, 2]
       }
     },
     {
