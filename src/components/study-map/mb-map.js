@@ -45,6 +45,8 @@ export default function MbMap(props) {
   const mapLayers = useMemo(() => {
     if (mapConfig && mapConfig.layers) {
       return mapConfig.layers.map((layer) => {
+        if (!defaultPaintObject[layer.type]) return layer;
+
         // Merge custom paint properties from MB Style with the default ones.
         // Arrays are not concatenated, instead overwritten by custom props.
         layer.paint = layer.paint
