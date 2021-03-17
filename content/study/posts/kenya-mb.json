@@ -31,6 +31,10 @@
       ],
       "type": "vector"
     },
+    "transmission-stations": {
+      "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/transmission_stations-wgs84.json",
+      "type": "geojson"
+    },
     "roads": {
       "tiles": [
         "https://aep-tiles.staging.derilinx.com/tiles/ke/roads/{z}/{x}/{y}.pbf"
@@ -67,7 +71,9 @@
       "source": "roads",
       "source-layer": "data_layer",
       "paint": {
-        "line-color": "#14213D"
+        "line-color": "#14213D",
+        "line-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.32, 12, 0.48],
+        "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.5, 12, 2]
       }
     },
     {
@@ -122,6 +128,11 @@
       "type": "circle",
       "source": "transformers",
       "source-layer": "data_layer"
+    },
+    {
+      "id": "transmission-stations",
+      "type": "circle",
+      "source": "transmission-stations"
     },
     {
       "id": "schools",

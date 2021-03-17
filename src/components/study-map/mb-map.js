@@ -18,12 +18,12 @@ const defaultPaintObject = {
     'circle-stroke-color': '#FFFFFF',
     'circle-stroke-opacity': 0.64,
     'circle-stroke-width': 2,
-    'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 16, 15]
+    'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 12, 15]
   },
   line: {
     'line-color': '#747BFC',
-    'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.32, 16, 0.48],
-    'line-width': ['interpolate', ['linear'], ['zoom'], 6, 0.5, 16, 2]
+    'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.96, 12, 0.66],
+    'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1, 12, 2]
   }
 };
 
