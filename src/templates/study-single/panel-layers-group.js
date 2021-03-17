@@ -30,6 +30,7 @@ function PanelLayersGroup(props) {
                     disabled={l.disabled}
                     active={l.visible}
                     info={l.info}
+                    source={l.source}
                     // legend={l.legend}
                     isExpanded={checkExpanded(idx)}
                     setExpanded={(v) => setExpanded(idx, v)}

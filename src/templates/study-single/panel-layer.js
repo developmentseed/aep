@@ -59,6 +59,9 @@ const LayerToolbar = styled.div`
 const LayerBodyInner = styled(Prose)`
   position: relative;
   z-index: 8;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: ${glsp()};
   box-shadow: inset 0 1px 0 0 ${themeVal('color.baseAlphaB')};
   background: rgba(255, 255, 255, 0.02);
   font-size: 0.875rem;
@@ -82,6 +85,7 @@ function PanelLayer(props) {
     active,
     disabled = false,
     info,
+    source,
     onToggleClick,
     isExpanded,
     setExpanded
@@ -104,7 +108,7 @@ function PanelLayer(props) {
               useIcon='circle-information'
               title='Show/hide layer info'
               hideText
-              disabled={!info}
+              disabled={!info && !source}
               active={isFoldExpanded}
               onClick={() => setFoldExpanded(!isFoldExpanded)}
             >
@@ -133,7 +137,17 @@ function PanelLayer(props) {
       )}
       renderBody={() => (
         <LayerBodyInner>
-          {info || <p>No info available for this layer.</p>}
+          {info}
+          {source && (
+            <dl>
+              <dt>Source</dt>
+              <dd>
+                <a href={source.url} target='_blank' rel='noreferrer'>
+                  {source.name}
+                </a>
+              </dd>
+            </dl>
+          )}
         </LayerBodyInner>
       )}
     />
@@ -145,6 +159,7 @@ PanelLayer.propTypes = {
   active: T.bool,
   disabled: T.bool,
   info: T.node,
+  source: T.object,
   onToggleClick: T.func,
   isExpanded: T.bool,
   setExpanded: T.func
