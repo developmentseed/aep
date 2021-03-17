@@ -62,7 +62,7 @@ const buildUrl = (data) => {
 };
 
 function StudySingle({ data }) {
-  const { title, bbox, mapConfig } = data.postsYaml;
+  const { title, bbox, zoomExtent, mapConfig } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
   const layers = useMemo(() => data.postsYaml.layers || [], [
     data.postsYaml.layers
@@ -158,7 +158,9 @@ function StudySingle({ data }) {
               onAction={onAction}
               mbToken={globalMapConfig.mbToken}
               basemap={globalMapConfig.basemap}
+              topLayer={globalMapConfig.topLayer}
               bbox={bbox}
+              zoomExtent={zoomExtent}
               panelLayers={panelLayers}
               mapConfig={mapConfig}
             />
@@ -181,6 +183,7 @@ export const pageQuery = graphql`
     postsYaml(id: { eq: $id }) {
       title
       bbox
+      zoomExtent
       mapConfig
       layers {
         id
@@ -200,6 +203,7 @@ export const pageQuery = graphql`
         mapConfig {
           basemap
           mbToken
+          topLayer
         }
       }
     }

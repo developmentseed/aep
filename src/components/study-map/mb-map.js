@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
+import merge from 'deepmerge';
 
 import { diffArrayById } from '../../utils/array';
 
@@ -11,10 +12,32 @@ const MapContainer = styled.div`
   height: 100%;
 `;
 
-export default function MbMap(props) {
-  const { token, basemap, bbox, mapConfig, layersState } = props;
-  mapboxgl.accessToken = token;
+const defaultPaintObject = {
+  circle: {
+    'circle-color': '#5860FF',
+    'circle-stroke-color': '#FFFFFF',
+    'circle-stroke-opacity': 0.64,
+    'circle-stroke-width': 2,
+    'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 16, 15]
+  },
+  line: {
+    'line-color': '#747BFC',
+    'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.32, 16, 0.48],
+    'line-width': ['interpolate', ['linear'], ['zoom'], 6, 0.5, 16, 2]
+  }
+};
 
+export default function MbMap(props) {
+  const {
+    token,
+    basemap,
+    bbox,
+    topLayer,
+    zoomExtent,
+    mapConfig,
+    layersState
+  } = props;
+  mapboxgl.accessToken = token;
   const mapSources = useMemo(() => {
     if (mapConfig && mapConfig.sources) {
       // Convert sources to array to be more easily managed.
@@ -26,7 +49,25 @@ export default function MbMap(props) {
     return null;
   }, [mapConfig]);
 
-  const mapLayers = mapConfig && mapConfig.layers;
+  const mapLayers = useMemo(() => {
+    if (mapConfig && mapConfig.layers) {
+      return mapConfig.layers.map((layer) => {
+        if (!defaultPaintObject[layer.type]) return layer;
+
+        // Merge custom paint properties from MB Style with the default ones.
+        // Arrays are not concatenated, instead overwritten by custom props.
+        return {
+          ...layer,
+          paint: layer.paint
+            ? merge(defaultPaintObject[layer.type], layer.paint, {
+                arrayMerge: (destination, source) => source
+              })
+            : defaultPaintObject[layer.type]
+        };
+      });
+    }
+    return null;
+  }, [mapConfig]);
 
   const mapContainer = useRef(null);
   const [theMap, setMap] = useState(null);
@@ -37,6 +78,8 @@ export default function MbMap(props) {
       attributionControl: false,
       bounds: bbox,
       container: mapContainer.current,
+      minZoom: zoomExtent[0],
+      maxZoom: zoomExtent[1],
       style: basemap,
       logoPosition: 'bottom-right',
       pitchWithRotate: false,
@@ -65,10 +108,10 @@ export default function MbMap(props) {
     return () => {
       mbMap.remove();
     };
-  }, [bbox, basemap]);
+  }, [bbox, basemap, zoomExtent]);
 
   useSources(theMap, mapSources);
-  useLayers(theMap, mapLayers);
+  useLayers(theMap, mapLayers, topLayer);
 
   useLayersState(theMap, mapLayers, layersState);
 
@@ -78,8 +121,10 @@ export default function MbMap(props) {
 MbMap.propTypes = {
   token: T.string,
   basemap: T.string,
+  topLayer: T.string,
   mapConfig: T.object,
   bbox: T.array,
+  zoomExtent: T.array,
   layersState: T.array
 };
 
@@ -110,7 +155,7 @@ const useSources = (theMap, sources) => {
   }, [theMap, sources]);
 };
 
-const useLayers = (theMap, layers) => {
+const useLayers = (theMap, layers, topLayer) => {
   const currentLayers = useRef([]);
 
   useEffect(() => {
@@ -128,13 +173,13 @@ const useLayers = (theMap, layers) => {
 
     added.forEach((layer) => {
       if (!theMap.getLayer(layer.id)) {
-        theMap.addLayer(layer);
+        theMap.addLayer(layer, topLayer);
       }
     });
 
     // Store new current layers.
     currentLayers.current = [...shared, ...added];
-  }, [theMap, layers]);
+  }, [theMap, layers, topLayer]);
 };
 
 const useLayersState = (theMap, layers, layersState) => {

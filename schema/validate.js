@@ -23,6 +23,7 @@ const studySchema = new Schema({
       { type: Number, required: true }
     ]
   ],
+  zoomExtent: [{ type: Number }, { type: Number }],
   mapConfig: { type: String, use: { fileExists }, required: true },
   study: {
     consultant: { type: String, required: true },
