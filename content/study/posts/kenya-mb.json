@@ -118,7 +118,11 @@
       "id": "roads",
       "type": "line",
       "source": "roads",
-      "source-layer": "data_layer"
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "black",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 6, 3, 16, 10]
+      }
     },
     {
       "id": "schools",

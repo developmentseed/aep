@@ -3,6 +3,7 @@ import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
 
+const merge = require('deepmerge');
 import { diffArrayById } from '../../utils/array';
 
 const MapContainer = styled.div`
@@ -43,11 +44,15 @@ export default function MbMap(props) {
 
   const mapLayers = useMemo(() => {
     if (mapConfig && mapConfig.layers) {
-      // Set default paint properties
       return mapConfig.layers.map((layer) => {
+        // Merge custom paint properties from MB Style with the default ones.
+        // Arrays are not concatenated, instead overwritten by custom props.
         layer.paint = layer.paint
-          ? layer.paint
+          ? merge(defaultPaintObject[layer.type], layer.paint, {
+              arrayMerge: (destination, source) => source
+            })
           : defaultPaintObject[layer.type];
+
         return layer;
       });
     }
