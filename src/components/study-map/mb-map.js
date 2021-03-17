@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
+import merge from 'deepmerge';
 
 import { diffArrayById } from '../../utils/array';
 
@@ -10,6 +11,21 @@ const MapContainer = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+const defaultPaintObject = {
+  circle: {
+    'circle-color': '#5860FF',
+    'circle-stroke-color': '#FFFFFF',
+    'circle-stroke-opacity': 0.64,
+    'circle-stroke-width': 2,
+    'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 16, 15]
+  },
+  line: {
+    'line-color': '#747BFC',
+    'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.32, 16, 0.48],
+    'line-width': ['interpolate', ['linear'], ['zoom'], 6, 0.5, 16, 2]
+  }
+};
 
 export default function MbMap(props) {
   const { token, basemap, bbox, zoomExtent, mapConfig, layersState } = props;
@@ -26,7 +42,25 @@ export default function MbMap(props) {
     return null;
   }, [mapConfig]);
 
-  const mapLayers = mapConfig && mapConfig.layers;
+  const mapLayers = useMemo(() => {
+    if (mapConfig && mapConfig.layers) {
+      return mapConfig.layers.map((layer) => {
+        if (!defaultPaintObject[layer.type]) return layer;
+
+        // Merge custom paint properties from MB Style with the default ones.
+        // Arrays are not concatenated, instead overwritten by custom props.
+        return {
+          ...layer,
+          paint: layer.paint
+            ? merge(defaultPaintObject[layer.type], layer.paint, {
+                arrayMerge: (destination, source) => source
+              })
+            : defaultPaintObject[layer.type]
+        };
+      });
+    }
+    return null;
+  }, [mapConfig]);
 
   const mapContainer = useRef(null);
   const [theMap, setMap] = useState(null);

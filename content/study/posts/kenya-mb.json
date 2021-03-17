@@ -67,17 +67,7 @@
       "source": "roads",
       "source-layer": "data_layer",
       "paint": {
-        "line-color": "#14213D",
-        "line-opacity": [
-          "interpolate", ["linear"], ["zoom"],
-          6, 0.32,
-          16, 0.48
-        ],
-        "line-width": [
-          "interpolate", ["linear"], ["zoom"],
-          6, 0.5,
-          16, 2
-        ]
+        "line-color": "#14213D"
       }
     },
     {
@@ -142,50 +132,17 @@
     {
       "id": "minigrid-existing",
       "type": "circle",
-      "source": "minigrid-existing",
-      "paint": {
-        "circle-color": "#5860FF",
-        "circle-stroke-color": "#FFFFFF",
-        "circle-stroke-opacity": 0.64,
-        "circle-stroke-width": 2,
-        "circle-radius": [
-          "interpolate", ["linear"], ["zoom"],
-          6, 5,
-          16, 15
-        ]
-      }
+      "source": "minigrid-existing"
     },
     {
       "id": "minigrid-proposed",
       "type": "circle",
-      "source": "minigrid-proposed",
-      "paint": {
-        "circle-color": "#5860FF",
-        "circle-stroke-color": "#FFFFFF",
-        "circle-stroke-opacity": 0.64,
-        "circle-stroke-width": 2,
-        "circle-radius": [
-          "interpolate", ["linear"], ["zoom"],
-          6, 5,
-          16, 15
-        ]
-      }
+      "source": "minigrid-proposed"
     },
     {
       "id": "minigrid",
       "type": "circle",
-      "source": "minigrid",
-      "paint": {
-        "circle-color": "#5860FF",
-        "circle-stroke-color": "#FFFFFF",
-        "circle-stroke-opacity": 0.64,
-        "circle-stroke-width": 2,
-        "circle-radius": [
-          "interpolate", ["linear"], ["zoom"],
-          6, 5,
-          16, 15
-        ]
-      }
+      "source": "minigrid"
     }
   ]
 }
