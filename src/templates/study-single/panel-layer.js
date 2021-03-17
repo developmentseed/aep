@@ -59,6 +59,9 @@ const LayerToolbar = styled.div`
 const LayerBodyInner = styled(Prose)`
   position: relative;
   z-index: 8;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: ${glsp()};
   box-shadow: inset 0 1px 0 0 ${themeVal('color.baseAlphaB')};
   background: rgba(255, 255, 255, 0.02);
   font-size: 0.875rem;
