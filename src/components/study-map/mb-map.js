@@ -28,7 +28,7 @@ const defaultPaintObject = {
 };
 
 export default function MbMap(props) {
-  const { token, basemap, bbox, mapConfig, layersState } = props;
+  const { token, basemap, bbox, zoomExtent, mapConfig, layersState } = props;
   mapboxgl.accessToken = token;
 
   const mapSources = useMemo(() => {
@@ -70,6 +70,8 @@ export default function MbMap(props) {
       attributionControl: false,
       bounds: bbox,
       container: mapContainer.current,
+      minZoom: zoomExtent[0],
+      maxZoom: zoomExtent[1],
       style: basemap,
       logoPosition: 'bottom-right',
       pitchWithRotate: false,
@@ -98,7 +100,7 @@ export default function MbMap(props) {
     return () => {
       mbMap.remove();
     };
-  }, [bbox, basemap]);
+  }, [bbox, basemap, zoomExtent]);
 
   useSources(theMap, mapSources);
   useLayers(theMap, mapLayers);
@@ -113,6 +115,7 @@ MbMap.propTypes = {
   basemap: T.string,
   mapConfig: T.object,
   bbox: T.array,
+  zoomExtent: T.array,
   layersState: T.array
 };
 

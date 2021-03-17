@@ -62,31 +62,72 @@
   },
   "layers": [
     {
+      "id": "roads",
+      "type": "line",
+      "source": "roads",
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#14213D"
+      }
+    },
+    {
       "id": "11kv",
       "type": "line",
       "source": "11kv",
-      "source-layer": "data_layer"
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FFC700"
+      }
     },
     {
       "id": "33kv",
       "type": "line",
       "source": "33kv",
-      "source-layer": "data_layer"
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
     },
     {
       "id": "66kv",
       "type": "line",
-      "source": "66kv"
+      "source": "66kv",
+      "paint": {
+        "line-color": "#FF9B14"
+      }
     },
     {
       "id": "132kv",
       "type": "line",
-      "source": "132kv"
+      "source": "132kv",
+      "paint": {
+        "line-color": "#FE851D"
+      }
     },
     {
       "id": "220kv",
       "type": "line",
-      "source": "220kv"
+      "source": "220kv",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
+    },
+    {
+      "id": "substation",
+      "type": "circle",
+      "source": "substation"
+    },
+    {
+      "id": "transformers",
+      "type": "circle",
+      "source": "transformers",
+      "source-layer": "data_layer"
+    },
+    {
+      "id": "schools",
+      "type": "circle",
+      "source": "schools",
+      "source-layer": "data_layer"
     },
     {
       "id": "minigrid-existing",
@@ -99,36 +140,9 @@
       "source": "minigrid-proposed"
     },
     {
-      "id": "substation",
-      "type": "circle",
-      "source": "substation"
-    },
-    {
       "id": "minigrid",
       "type": "circle",
       "source": "minigrid"
-    },
-    {
-      "id": "transformers",
-      "type": "circle",
-      "source": "transformers",
-      "source-layer": "data_layer"
-    },
-    {
-      "id": "roads",
-      "type": "line",
-      "source": "roads",
-      "source-layer": "data_layer",
-      "paint": {
-        "line-color": "black",
-        "line-width": ["interpolate", ["linear"], ["zoom"], 6, 3, 16, 10]
-      }
-    },
-    {
-      "id": "schools",
-      "type": "circle",
-      "source": "schools",
-      "source-layer": "data_layer"
     }
   ]
 }
