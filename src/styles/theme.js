@@ -3,6 +3,7 @@ import { tint } from 'polished';
 
 export default function theme(uiTheme) {
   const baseColor = '#14213d';
+  const fontFamily = '"Rubik", sans-serif';
 
   return defaultsDeep(
     {
@@ -15,7 +16,22 @@ export default function theme(uiTheme) {
       },
       type: {
         base: {
-          color: tint(0.16, baseColor)
+          color: tint(0.16, baseColor),
+          family: fontFamily,
+          light: '300',
+          regular: '300',
+          medium: '500',
+          bold: '500',
+          weight: '300'
+        },
+        heading: {
+          family: fontFamily,
+          weight: '500'
+        },
+        button: {
+          family: fontFamily,
+          weight: '500',
+          case: 'uppercase'
         }
       },
       layout: {

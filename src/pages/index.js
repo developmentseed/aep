@@ -27,13 +27,7 @@ import logoWbUrl from '../media/content/logos/logo-wb--white.png';
 const _shade = stylizeFunction(shade);
 
 const HomeInpage = styled(Inpage)`
-  background: ${themeVal('color.secondary')};
-  background: linear-gradient(
-    to bottom,
-    ${_shade(0.2, themeVal('color.primary'))} 0%,
-    ${_shade(0.2, themeVal('color.primary'))} 37.5%,
-    ${_shade(0.2, themeVal('color.primary'))} 37.5%
-  );
+  background: ${_shade(0.2, themeVal('color.primary'))};
   color: #ffffff;
 `;
 

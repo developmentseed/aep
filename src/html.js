@@ -11,6 +11,11 @@ export default function HTML(props) {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;1,300;1,500&display=swap'
+        />
         <style type='text/css'>
           {`
             #welcome-banner {
