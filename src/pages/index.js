@@ -16,7 +16,6 @@ import Layout from '../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
   InpageBody
@@ -35,6 +34,7 @@ const HomeInpage = styled(Inpage)`
 
 const HomeInpageHeader = styled(InpageHeader)`
   max-height: 0;
+  padding: 0;
   overflow: hidden;
 `;
 
@@ -94,11 +94,9 @@ const Home = ({ data, location }) => {
     <Layout location={location} title='Welcome'>
       <HomeInpage>
         <HomeInpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageTitle>Welcome</InpageTitle>
-            </InpageHeadline>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageTitle>Welcome</InpageTitle>
+          </InpageHeadline>
         </HomeInpageHeader>
         <InpageBody>
           <Intro>

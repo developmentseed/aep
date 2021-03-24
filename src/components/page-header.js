@@ -19,7 +19,7 @@ const PageHeaderSelf = styled.header`
   background-color: ${themeVal('color.primary')};
   color: #fff;
   animation: ${reveal} 0.32s ease 0s 1;
-  padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
     grid-gap: ${glsp(themeVal('layout.gap.medium'))};

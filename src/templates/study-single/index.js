@@ -13,11 +13,10 @@ import Layout from '../../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
   InpageSubtitle,
-  InpageNav,
+  InpageActions,
   InpageBody
 } from '../../styles/inpage';
 
@@ -117,40 +116,44 @@ function StudySingle({ data }) {
     <Layout title='Study'>
       <Inpage>
         <InpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageSubtitle>Study</InpageSubtitle>
-              <InpageTitle>{title}</InpageTitle>
-            </InpageHeadline>
-            <InpageNav>
-              <ViewMenu>
-                <li>
-                  <Button
-                    forwardedAs={StyledLink}
-                    to={buildUrl({ view: 'map' })}
-                    variation='achromic-plain'
-                    useIcon='map'
-                    title='Map view'
-                    active={view === 'map'}
-                  >
-                    Map
-                  </Button>
-                </li>
-                <li>
-                  <Button
-                    forwardedAs={StyledLink}
-                    to={buildUrl({ view: 'summary' })}
-                    variation='achromic-plain'
-                    useIcon='text-block'
-                    title='Summary view'
-                    active={view === 'summary'}
-                  >
-                    Summary
-                  </Button>
-                </li>
-              </ViewMenu>
-            </InpageNav>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageTitle>{title}</InpageTitle>
+            <InpageSubtitle>
+              <Link to='/studies' title='View all studies'>
+                Study
+              </Link>
+            </InpageSubtitle>
+          </InpageHeadline>
+          <InpageActions as='nav' role='navigation'>
+            <ViewMenu>
+              <li>
+                <Button
+                  forwardedAs={StyledLink}
+                  to={buildUrl({ view: 'map' })}
+                  variation='achromic-plain'
+                  title='Map view'
+                  hideText
+                  useIcon='map'
+                  active={view === 'map'}
+                >
+                  Map
+                </Button>
+              </li>
+              <li>
+                <Button
+                  forwardedAs={StyledLink}
+                  to={buildUrl({ view: 'summary' })}
+                  variation='achromic-plain'
+                  title='Summary view'
+                  hideText
+                  useIcon='text-block'
+                  active={view === 'summary'}
+                >
+                  Summary
+                </Button>
+              </li>
+            </ViewMenu>
+          </InpageActions>
         </InpageHeader>
         <InpageBody>
           {view === 'map' && (
