@@ -23,7 +23,7 @@ export const InpageHeader = styled.header`
   padding: ${glsp(
     0,
     themeVal('layout.gap.xsmall'),
-    0.5,
+    0.75,
     themeVal('layout.gap.xsmall')
   )};
 
