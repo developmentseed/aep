@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { Heading } from '@devseed-ui/typography';
-import { SupHeading } from './typography/supheading';
+import { headingAlt } from '@devseed-ui/typography';
 
 export const Panel = styled.section`
+  position: relative;
+  z-index: 20;
   display: flex;
   flex-flow: column nowrap;
   width: 18rem;
+  box-shadow: ${themeVal('boxShadow.elevationD')};
 
   ${media.mediumUp`
     width: 20rem;
@@ -44,15 +47,15 @@ export const PanelSectionHeader = styled.header`
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
-    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+    padding: ${glsp(1, themeVal('layout.gap.medium'))};
   `}
 `;
 
 export const PanelSectionHeadline = styled.div``;
 
 export const PanelSectionTitle = styled(Heading)`
-  font-size: 1.25rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   margin: 0;
 `;
 
@@ -69,7 +72,6 @@ export const PanelGroup = styled.section`
 `;
 
 export const PanelGroupHeader = styled.header`
-  background: ${themeVal('color.baseAlphaC')};
   padding: ${glsp(0.25, themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
@@ -77,10 +79,10 @@ export const PanelGroupHeader = styled.header`
   `}
 `;
 
-export const PanelGroupTitle = styled(SupHeading).attrs({
-  as: 'h1',
-  variation: 'primary'
-})`
+export const PanelGroupTitle = styled.p`
+  ${headingAlt()}
+  font-size: 0.75rem;
+  line-height: 1;
   margin: 0;
 `;
 
