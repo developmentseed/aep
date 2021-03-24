@@ -33,7 +33,7 @@ const LayerHeadline = styled.div`
 
 const LayerTitle = styled(Heading)`
   ${truncated()}
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.25rem;
   margin: 0;
 
