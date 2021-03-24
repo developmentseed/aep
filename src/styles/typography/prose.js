@@ -152,7 +152,11 @@ const Prose = styled.div`
   }
 
   > * {
-    margin-bottom: ${glsp(1.5)};
+    margin-bottom: ${glsp(1)};
+
+    ${media.mediumUp`
+      margin-bottom: ${glsp(1.5)};
+    `}
   }
 
   > *:last-child {
