@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import useQsStateCreator from 'qs-state-hook';
 
 import { glsp, themeVal } from '@devseed-ui/theme-provider';
-import { Button } from '@devseed-ui/button';
+import { Button } from '../../styles/button';
 
 import Layout from '../../components/layout';
 import {
