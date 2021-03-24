@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
+import { Heading } from '@devseed-ui/typography';
 
 import { filterComponentProps } from '../styles/utils/general';
 
@@ -60,12 +61,14 @@ const GlobalMenu = styled.ul`
 
 const PageHeadHeadline = styled.div``;
 
-const PageHeadTitle = styled.h1`
+const PageHeadTitle = styled(Heading)`
   font-size: 1.5rem;
   line-height: 1;
+
   a {
     display: block;
   }
+
   a,
   a:visited {
     color: inherit;

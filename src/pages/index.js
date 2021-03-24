@@ -10,6 +10,8 @@ import {
   themeVal
 } from '@devseed-ui/theme-provider';
 
+import { Heading } from '@devseed-ui/typography';
+
 import Layout from '../components/layout';
 import {
   Inpage,
@@ -48,7 +50,7 @@ const Intro = styled.section`
   `}
 `;
 
-const IntroTitle = styled.h1`
+const IntroTitle = styled(Heading)`
   font-size: 3rem;
   line-height: 3.5rem;
   margin: 0;

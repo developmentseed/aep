@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // import ReactTooltip from 'react-tooltip';
 import { glsp, media, themeVal, truncated } from '@devseed-ui/theme-provider';
 import { AccordionFold } from '@devseed-ui/accordion';
+import { Heading } from '@devseed-ui/typography';
 import { Button } from '@devseed-ui/button';
 
 import Prose from '../../styles/typography/prose';
@@ -30,7 +31,7 @@ const LayerHeadline = styled.div`
   min-width: 0px;
 `;
 
-const LayerTitle = styled.h1`
+const LayerTitle = styled(Heading)`
   ${truncated()}
   font-size: 1rem;
   line-height: 1.25rem;

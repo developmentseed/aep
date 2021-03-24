@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
+import { Heading } from '@devseed-ui/typography';
 import { SupHeading } from './typography/supheading';
 
 export const Panel = styled.section`
@@ -25,7 +26,7 @@ export const PanelHeader = styled.header`
   `}
 `;
 
-export const PanelTitle = styled.h1``;
+export const PanelTitle = styled(Heading)``;
 
 export const PanelBody = styled.div`
   display: flex;
@@ -49,7 +50,7 @@ export const PanelSectionHeader = styled.header`
 
 export const PanelSectionHeadline = styled.div``;
 
-export const PanelSectionTitle = styled.h1`
+export const PanelSectionTitle = styled(Heading)`
   font-size: 1.25rem;
   line-height: 2rem;
   margin: 0;

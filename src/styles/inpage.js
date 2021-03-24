@@ -8,6 +8,8 @@ import {
   visuallyHidden
 } from '@devseed-ui/theme-provider';
 
+import { Heading } from '@devseed-ui/typography';
+
 export const Inpage = styled.article`
   display: grid;
   height: 100%;
@@ -99,7 +101,7 @@ export const InpageTitleWrapper = styled.div`
   margin-bottom: ${glsp(1.5)};
 `;
 
-export const InpageTitle = styled.h1`
+export const InpageTitle = styled(Heading)`
   ${truncated()}
   font-size: 1.5rem;
   line-height: 2rem;
