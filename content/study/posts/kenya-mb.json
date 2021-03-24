@@ -131,8 +131,11 @@
     },
     {
       "id": "transmission-stations",
-      "type": "circle",
-      "source": "transmission-stations"
+      "type": "symbol",
+      "source": "transmission-stations",
+      "layout": {
+        "icon-image": "electricity"
+      }
     },
     {
       "id": "schools",
