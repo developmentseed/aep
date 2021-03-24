@@ -15,7 +15,7 @@ import SEO from './seo';
 const Page = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content auto 0;
+  grid-template-rows: min-content auto min-content;
   grid-auto-rows: min-content;
   min-height: 100vh;
 `;
