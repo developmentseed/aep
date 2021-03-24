@@ -2,7 +2,13 @@ import React from 'react';
 import T from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import { media, glsp, themeVal } from '@devseed-ui/theme-provider';
+import { shade } from 'polished';
+import {
+  media,
+  glsp,
+  stylizeFunction,
+  themeVal
+} from '@devseed-ui/theme-provider';
 
 import Layout from '../components/layout';
 import {
@@ -18,8 +24,16 @@ import Prose from '../styles/typography/prose';
 import logoEsmapUrl from '../media/content/logos/logo-esmap--white.png';
 import logoWbUrl from '../media/content/logos/logo-wb--white.png';
 
+const _shade = stylizeFunction(shade);
+
 const HomeInpage = styled(Inpage)`
   background: ${themeVal('color.secondary')};
+  background: linear-gradient(
+    to bottom,
+    ${_shade(0.2, themeVal('color.primary'))} 0%,
+    ${_shade(0.2, themeVal('color.primary'))} 37.5%,
+    ${_shade(0.2, themeVal('color.primary'))} 37.5%
+  );
   color: #ffffff;
 `;
 
