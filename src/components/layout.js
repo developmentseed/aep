@@ -23,9 +23,7 @@ const Page = styled.div`
 const PageBody = styled.main`
   padding: 0;
   margin: 0;
-
-  /* Animation */
-  animation: ${reveal} 0.48s ease 0s 1;
+  animation: ${reveal} 0.32s ease 0s 1;
 `;
 
 const Layout = ({ children, title, metaImage, description }) => {

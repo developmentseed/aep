@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
-
 import { reveal } from '@devseed-ui/animation';
 import { Heading } from '@devseed-ui/typography';
 import { headingAlt } from '@devseed-ui/typography';
@@ -19,7 +18,6 @@ export const InpageHeader = styled.header`
   align-items: center;
   background-color: ${themeVal('color.primary')};
   color: #fff;
-  animation: ${reveal} 0.32s ease 0s 1;
   padding: ${glsp(
     0,
     themeVal('layout.gap.xsmall'),
@@ -56,7 +54,8 @@ export const InpageTitle = styled(Heading)`
   font-size: 1rem;
   line-height: 1;
   margin: 0;
-  width: clamp(8rem, 24rem, 48rem);
+  width: 100%;
+  max-width: 32rem;
   overflow: hidden;
   white-space: nowrap;
 
@@ -104,4 +103,5 @@ export const InpageActions = styled.div`
 
 export const InpageBody = styled.div`
   background: transparent;
+  animation: ${reveal} 0.48s ease 0s 1;
 `;
