@@ -52,7 +52,7 @@ yarn validate
 ```
 
 ## Custom markers
-AEP supports a number of custom icons that can be used to style point data instead of colored circles. See the folder `/static/icons` for the icons that are currently supported.
+AEP supports a number of custom icons that can be used to style point data instead of colored circles. See the folder `/content/icons` for the icons that are currently supported.
 
 ### Add icon to a layer
 Define a [`symbol`](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#symbol) layer. The name of the `icon-image` is the basename of the file, without extension `.png`.
@@ -74,5 +74,5 @@ For example:
 ### Add new icons to AEP
 Icons should be in `.png` format, 64 x 64.
 
-1. add the `png` file to `/static/icons`
-2. add the basename without extension to `/src/components/study-map/mb-map.js`
+1. add the `png` file to `/content/icons`
+2. use as indicated in the previous section

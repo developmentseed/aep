@@ -5,6 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import merge from 'deepmerge';
 
 import { diffArrayById } from '../../utils/array';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const MapContainer = styled.div`
   position: relative;
@@ -37,8 +38,6 @@ const styleDefaults = {
   }
 };
 
-const icons = ['electricity', 'health'];
-
 export default function MbMap(props) {
   const {
     token,
@@ -49,7 +48,20 @@ export default function MbMap(props) {
     mapConfig,
     layersState
   } = props;
+
   mapboxgl.accessToken = token;
+
+  const icons = useStaticQuery(graphql`
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "icons" } }) {
+        nodes {
+          name
+          publicURL
+        }
+      }
+    }
+  `);
+
   const mapSources = useMemo(() => {
     if (mapConfig && mapConfig.sources) {
       // Convert sources to array to be more easily managed.
@@ -109,10 +121,10 @@ export default function MbMap(props) {
       // Style attribution
       mbMap.addControl(new mapboxgl.AttributionControl({ compact: true }));
 
-      icons.forEach((icon) => {
-        mbMap.loadImage(`/icons/${icon}.png`, (err, img) => {
+      icons.allFile.nodes.forEach((icon) => {
+        mbMap.loadImage(icon.publicURL, (err, img) => {
           if (err) throw err;
-          mbMap.addImage(icon, img);
+          mbMap.addImage(icon.name, img);
         });
       });
 
@@ -122,7 +134,7 @@ export default function MbMap(props) {
     return () => {
       mbMap.remove();
     };
-  }, [bbox, basemap, zoomExtent]);
+  }, [bbox, basemap, zoomExtent, icons]);
 
   useSources(theMap, mapSources);
   useLayers(theMap, mapLayers, topLayer);

@@ -28,6 +28,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/icons`,
+        name: `icons`
+      }
+    },
     ...contentTypes.reduce(
       (acc, type) => [
         ...acc,
