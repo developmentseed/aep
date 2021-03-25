@@ -3,11 +3,10 @@ import { navigate } from 'gatsby';
 import T from 'prop-types';
 import qs from 'qs';
 import { graphql, Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import useQsStateCreator from 'qs-state-hook';
 
-import { glsp, themeVal } from '@devseed-ui/theme-provider';
-import { Button } from '../../styles/button';
+import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 
 import Layout from '../../components/layout';
 import {
@@ -24,15 +23,6 @@ import StudySingleCarto from './carto';
 import StudySingleSummary from './summary';
 import { filterComponentProps } from '../../styles/utils/general';
 
-const ViewMenu = styled.ul`
-  display: inline-grid;
-  grid-gap: ${glsp(0, themeVal('layout.gap.xsmall'))};
-
-  > * {
-    grid-row: 1;
-  }
-`;
-
 // See documentation of filterComponentProp as to why this is
 const propsToFilter = [
   'variation',
@@ -43,6 +33,57 @@ const propsToFilter = [
   'visuallyDisabled'
 ];
 const StyledLink = filterComponentProps(Link, propsToFilter);
+
+const ViewMenu = styled.ul`
+  display: inline-grid;
+  grid-gap: ${glsp(0, 1)};
+  margin-bottom: ${glsp(-1)};
+
+  ${media.mediumUp`
+    grid-gap: ${glsp(0, 1.5)};
+  `}
+
+  > * {
+    grid-row: 1;
+  }
+`;
+
+const ViewMenuLink = styled(StyledLink)`
+  position: relative;
+  display: block;
+  height: 2.5rem;
+  padding: ${glsp(0.5, 0)};
+  font-size: 0.875rem;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: ${themeVal('type.base.bold')};
+
+  &,
+  &:visited {
+    color: inherit;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 0.25rem;
+    width: 0;
+    background: ${themeVal('color.surface')};
+    content: '';
+    pointer-events: none;
+    transform: translate(-50%, 0);
+    transition: all 0.48s ease-in-out 0s;
+  }
+
+  ${({ active }) =>
+    active &&
+    css`
+      &::after {
+        width: 100%;
+      }
+    `}
+`;
 
 const buildUrl = (data) => {
   if (typeof window === 'undefined') return '';
@@ -125,32 +166,26 @@ function StudySingle({ data }) {
             </InpageSubtitle>
           </InpageHeadline>
           <InpageActions as='nav' role='navigation'>
-            <ViewMenu>
-              <li>
-                <Button
-                  forwardedAs={StyledLink}
+            <ViewMenu role='tablist'>
+              <li role='presentation'>
+                <ViewMenuLink
+                  role='tab'
                   to={buildUrl({ view: 'map' })}
-                  variation='achromic-plain'
                   title='Map view'
-                  hideText
-                  useIcon='map'
                   active={view === 'map'}
                 >
                   Map
-                </Button>
+                </ViewMenuLink>
               </li>
-              <li>
-                <Button
-                  forwardedAs={StyledLink}
+              <li role='presentation'>
+                <ViewMenuLink
+                  role='tab'
                   to={buildUrl({ view: 'summary' })}
-                  variation='achromic-plain'
                   title='Summary view'
-                  hideText
-                  useIcon='text-block'
                   active={view === 'summary'}
                 >
                   Summary
-                </Button>
+                </ViewMenuLink>
               </li>
             </ViewMenu>
           </InpageActions>
