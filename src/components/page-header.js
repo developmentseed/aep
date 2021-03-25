@@ -135,7 +135,6 @@ function PageHeader() {
             <Button
               forwardedAs={StyledNavLink}
               activeClassName='active'
-              partiallyActive
               to='/support'
               variation='achromic-plain'
               data-tip='Project Support'
@@ -148,7 +147,6 @@ function PageHeader() {
             <Button
               forwardedAs={StyledNavLink}
               activeClassName='active'
-              partiallyActive
               to='/toolkit'
               variation='achromic-plain'
               data-tip='Agricultural Toolkit'
