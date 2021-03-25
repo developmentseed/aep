@@ -88,5 +88,4 @@ export const PanelGroupTitle = styled.p`
 
 export const PanelGroupBody = styled.div`
   flex: 1;
-  overflow: scroll;
 `;
