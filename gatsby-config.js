@@ -26,6 +26,7 @@ module.exports = {
     }
   },
   plugins: [
+    'gatsby-optional-chaining',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
