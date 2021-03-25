@@ -20,6 +20,7 @@ const LayerHeader = styled.header`
   grid-auto-columns: 1fr min-content;
   grid-gap: ${glsp(0.5)};
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
+  align-items: center;
 
   ${media.mediumUp`
     padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
@@ -44,16 +45,12 @@ const LayerTitle = styled(Heading)`
 
 const LayerToolbar = styled.div`
   grid-row: 1;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-start;
+  display: grid;
+  grid-gap: ${glsp(0.25)};
+  margin: ${glsp(-0.5, 0)};
 
   > * {
-    margin-top: -0.125rem;
-  }
-
-  > *:not(:first-child) {
-    margin-left: ${glsp(0.25)};
+    grid-row: 1;
   }
 `;
 
