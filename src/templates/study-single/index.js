@@ -57,10 +57,15 @@ const ViewMenuLink = styled(StyledLink)`
   line-height: 1;
   text-transform: uppercase;
   font-weight: ${themeVal('type.base.bold')};
+  opacity: 0.64;
 
   &,
   &:visited {
     color: inherit;
+  }
+
+  &:hover {
+    opacity: 1;
   }
 
   &::after {
@@ -73,12 +78,14 @@ const ViewMenuLink = styled(StyledLink)`
     content: '';
     pointer-events: none;
     transform: translate(-50%, 0);
-    transition: all 0.48s ease-in-out 0s;
+    transition: all 0.32s ease-in-out 0s;
   }
 
   ${({ active }) =>
     active &&
     css`
+      opacity: 1;
+
       &::after {
         width: 100%;
       }
