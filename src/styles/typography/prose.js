@@ -28,16 +28,6 @@ const Prose = styled.div`
   }
 
   h1 {
-    font-size: 2rem;
-    line-height: 2.5rem;
-
-    ${media.mediumUp`
-      font-size: 2.25rem;
-      line-height: 2.75rem;
-    `}
-  }
-
-  h2 {
     font-size: 1.75rem;
     line-height: 2.25rem;
 
@@ -47,7 +37,7 @@ const Prose = styled.div`
     `}
   }
 
-  h3 {
+  h2 {
     font-size: 1.5rem;
     line-height: 2rem;
 
@@ -57,7 +47,7 @@ const Prose = styled.div`
     `}
   }
 
-  h4 {
+  h3 {
     font-size: 1.25rem;
     line-height: 1.75rem;
 
@@ -67,6 +57,7 @@ const Prose = styled.div`
     `}
   }
 
+  h4,
   h5,
   h6 {
     font-size: 1rem;
