@@ -210,7 +210,7 @@ function StudySingle({ data }) {
               mapConfig={mapConfig}
             />
           )}
-          {view === 'summary' && <StudySingleSummary />}
+          {view === 'summary' && <StudySingleSummary study={data.postsYaml} />}
         </InpageBody>
       </Inpage>
     </Layout>
@@ -230,6 +230,15 @@ export const pageQuery = graphql`
       bbox
       zoomExtent
       mapConfig
+      country
+      study {
+        consultant
+        period
+      }
+      platform {
+        title
+        url
+      }
       layers {
         id
         name

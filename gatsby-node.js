@@ -18,10 +18,18 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         info: String
         source: PanelLayerSource
       }
+
+      type StudyInfo {
+        consultant: String
+        period: String
+        scope: String
+        summary: String
+      }
     `,
     schema.buildObjectType({
       name: 'PostsYaml',
       fields: {
+        study: 'StudyInfo',
         layers: '[PanelLayer]',
         mapConfig: {
           type: 'JSON',

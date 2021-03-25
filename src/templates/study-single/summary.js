@@ -1,34 +1,62 @@
 import React from 'react';
-// import T from 'prop-types';
+import T from 'prop-types';
 
 import { ContentBlock, Aside } from '../../styles/content-block';
 import Prose from '../../styles/typography/prose';
 import DetailsList from '../../styles/typography/details-list';
 
-function StudySingleSummary() {
+function StudySingleSummary(props) {
+  const {
+    study: {
+      title,
+      country,
+      study: { consultant, period },
+      platform,
+      layers
+    }
+  } = props;
+
   return (
     <ContentBlock layout='asided'>
       <Prose>
         <h2>Overview</h2>
         <DetailsList>
           <dt>Title</dt>
-          <dd>Lorem ipsum dolor sit amet</dd>
-          <dt>Country</dt>
-          <dd>Kenya</dd>
-          <dt>Date</dt>
-          <dd>
-            <time dateTime='2021-02-14'>February 2, 2021</time>
-          </dd>
+          <dd>{title}</dd>
+          {country && (
+            <>
+              <dt>Country</dt>
+              <dd>{country}</dd>
+            </>
+          )}
+          {period && (
+            <>
+              <dt>Period</dt>
+              <dd>{period}</dd>
+            </>
+          )}
           <dt>Data layers #</dt>
-          <dd>24</dd>
-          <dt>Consultant</dt>
-          <dd>Pellentesque quis</dd>
-          <dt>Platform</dt>
-          <dd>
-            <a href='#' title='Visit platform'>
-              Vestibulum eget
-            </a>
-          </dd>
+          <dd>{layers?.length || 0}</dd>
+          {consultant && (
+            <>
+              <dt>Consultant</dt>
+              <dd>{consultant}</dd>
+            </>
+          )}
+          {platform?.title && (
+            <>
+              <dt>Platform</dt>
+              <dd>
+                {platform.url ? (
+                  <a href={platform.url} title='Visit platform'>
+                    {platform.title}
+                  </a>
+                ) : (
+                  platform.title
+                )}
+              </dd>
+            </>
+          )}
         </DetailsList>
         <h2>Description</h2>
         <p>
@@ -82,6 +110,20 @@ function StudySingleSummary() {
   );
 }
 
-StudySingleSummary.propTypes = {};
+StudySingleSummary.propTypes = {
+  study: T.shape({
+    title: T.string,
+    country: T.string,
+    study: T.shape({
+      consultant: T.string,
+      period: T.oneOfType([T.string, T.number])
+    }),
+    platform: T.shape({
+      title: T.string,
+      url: T.string
+    }),
+    layers: T.array
+  })
+};
 
 export default StudySingleSummary;
