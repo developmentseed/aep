@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // import ReactTooltip from 'react-tooltip';
 import { glsp, media, themeVal, truncated } from '@devseed-ui/theme-provider';
 import { AccordionFold } from '@devseed-ui/accordion';
+import { Heading } from '@devseed-ui/typography';
 import { Button } from '@devseed-ui/button';
 
 import Prose from '../../styles/typography/prose';
@@ -30,9 +31,9 @@ const LayerHeadline = styled.div`
   min-width: 0px;
 `;
 
-const LayerTitle = styled.h1`
+const LayerTitle = styled(Heading)`
   ${truncated()}
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.25rem;
   margin: 0;
 
@@ -115,7 +116,7 @@ function PanelLayer(props) {
               <span>Info</span>
             </Button>
             <Button
-              variation='base-plain'
+              variation={active ? 'primary-plain' : 'base-plain'}
               size='small'
               useIcon={active ? 'eye' : 'eye-disabled'}
               disabled={disabled}

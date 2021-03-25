@@ -6,7 +6,6 @@ import Layout from '../../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageTitle,
   InpageHeadline,
   InpageBody
@@ -86,11 +85,9 @@ function About() {
     <Layout title='About'>
       <Inpage>
         <InpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageTitle>About</InpageTitle>
-            </InpageHeadline>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageTitle>About</InpageTitle>
+          </InpageHeadline>
         </InpageHeader>
         <InpageBody>
           <ContentBlock>

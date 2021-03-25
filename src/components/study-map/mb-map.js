@@ -8,6 +8,7 @@ import { diffArrayById } from '../../utils/array';
 
 const MapContainer = styled.div`
   position: relative;
+  z-index: 10;
   width: 100%;
   height: 100%;
 `;

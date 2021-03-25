@@ -15,7 +15,6 @@ import UniversalGridder from '../../styles/universal-gridder';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
   InpageBody
@@ -78,11 +77,9 @@ export default function Studies({ data }) {
     <Layout title='Studies'>
       <Inpage>
         <InpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageTitle>Studies</InpageTitle>
-            </InpageHeadline>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageTitle>Studies</InpageTitle>
+          </InpageHeadline>
         </InpageHeader>
         <InpageBody>
           <StudiesSection>

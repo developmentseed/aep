@@ -70,7 +70,7 @@ function StudySingleCarto(props) {
           <PanelSection>
             <PanelSectionHeader>
               <PanelSectionHeadline>
-                <PanelSectionTitle>Layers</PanelSectionTitle>
+                <PanelSectionTitle>Data layers</PanelSectionTitle>
               </PanelSectionHeadline>
             </PanelSectionHeader>
             <PanelSectionBody>

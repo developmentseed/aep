@@ -14,11 +14,6 @@ const Prose = styled.div`
   font-size: 1rem;
   line-height: 1.5;
 
-  ${media.mediumUp`
-    font-size: 1.25rem;
-    line-height: 1.6;
-  `}
-
   h1,
   h2,
   h3,
@@ -33,26 +28,6 @@ const Prose = styled.div`
   }
 
   h1 {
-    font-size: 2.5rem;
-    line-height: 3rem;
-
-    ${media.mediumUp`
-      font-size: 2.75rem;
-      line-height: 3.25rem;
-    `}
-  }
-
-  h2 {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
-
-    ${media.mediumUp`
-      font-size: 2.5rem;
-      line-height: 3rem;
-    `}
-  }
-
-  h3 {
     font-size: 2rem;
     line-height: 2.5rem;
 
@@ -62,7 +37,7 @@ const Prose = styled.div`
     `}
   }
 
-  h4 {
+  h2 {
     font-size: 1.75rem;
     line-height: 2.25rem;
 
@@ -72,7 +47,7 @@ const Prose = styled.div`
     `}
   }
 
-  h5 {
+  h3 {
     font-size: 1.5rem;
     line-height: 2rem;
 
@@ -82,13 +57,24 @@ const Prose = styled.div`
     `}
   }
 
-  h6 {
+  h4 {
     font-size: 1.25rem;
     line-height: 1.75rem;
 
     ${media.mediumUp`
       font-size: 1.5rem;
       line-height: 2rem;
+    `}
+  }
+
+  h5,
+  h6 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    ${media.mediumUp`
+      font-size: 1.25rem;
+      line-height: 1.75rem;
     `}
   }
 
@@ -166,10 +152,10 @@ const Prose = styled.div`
   }
 
   > * {
-    margin-bottom: ${glsp(1.5)};
+    margin-bottom: ${glsp(1)};
 
     ${media.mediumUp`
-      margin-bottom: ${glsp(2)};
+      margin-bottom: ${glsp(1.5)};
     `}
   }
 
