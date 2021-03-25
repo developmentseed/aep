@@ -5,6 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import merge from 'deepmerge';
 
 import { diffArrayById } from '../../utils/array';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const MapContainer = styled.div`
   position: relative;
@@ -13,18 +14,28 @@ const MapContainer = styled.div`
   height: 100%;
 `;
 
-const defaultPaintObject = {
+const styleDefaults = {
   circle: {
-    'circle-color': '#5860FF',
-    'circle-stroke-color': '#FFFFFF',
-    'circle-stroke-opacity': 0.64,
-    'circle-stroke-width': 2,
-    'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 12, 15]
+    paint: {
+      'circle-color': '#5860FF',
+      'circle-stroke-color': '#FFFFFF',
+      'circle-stroke-opacity': 0.64,
+      'circle-stroke-width': 2,
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 12, 15]
+    }
   },
   line: {
-    'line-color': '#747BFC',
-    'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.96, 12, 0.66],
-    'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1, 12, 2]
+    paint: {
+      'line-color': '#747BFC',
+      'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.96, 12, 0.66],
+      'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1, 12, 2]
+    }
+  },
+  symbol: {
+    layout: {
+      'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.2, 12, 0.5],
+      'icon-allow-overlap': true
+    }
   }
 };
 
@@ -38,7 +49,20 @@ export default function MbMap(props) {
     mapConfig,
     layersState
   } = props;
+
   mapboxgl.accessToken = token;
+
+  const icons = useStaticQuery(graphql`
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "icons" } }) {
+        nodes {
+          name
+          publicURL
+        }
+      }
+    }
+  `);
+
   const mapSources = useMemo(() => {
     if (mapConfig && mapConfig.sources) {
       // Convert sources to array to be more easily managed.
@@ -53,18 +77,13 @@ export default function MbMap(props) {
   const mapLayers = useMemo(() => {
     if (mapConfig && mapConfig.layers) {
       return mapConfig.layers.map((layer) => {
-        if (!defaultPaintObject[layer.type]) return layer;
+        if (!styleDefaults[layer.type]) return layer;
 
-        // Merge custom paint properties from MB Style with the default ones.
+        // Merge custom layer properties from MB Style with the default ones.
         // Arrays are not concatenated, instead overwritten by custom props.
-        return {
-          ...layer,
-          paint: layer.paint
-            ? merge(defaultPaintObject[layer.type], layer.paint, {
-                arrayMerge: (destination, source) => source
-              })
-            : defaultPaintObject[layer.type]
-        };
+        return merge(styleDefaults[layer.type], layer, {
+          arrayMerge: (destination, source) => source
+        });
       });
     }
     return null;
@@ -103,13 +122,20 @@ export default function MbMap(props) {
       // Style attribution
       mbMap.addControl(new mapboxgl.AttributionControl({ compact: true }));
 
+      icons.allFile.nodes.forEach((icon) => {
+        mbMap.loadImage(icon.publicURL, (err, img) => {
+          if (err) throw err;
+          mbMap.addImage(icon.name, img);
+        });
+      });
+
       setMap(mbMap);
     });
 
     return () => {
       mbMap.remove();
     };
-  }, [bbox, basemap, zoomExtent]);
+  }, [bbox, basemap, zoomExtent, icons]);
 
   useSources(theMap, mapSources);
   useLayers(theMap, mapLayers, topLayer);
