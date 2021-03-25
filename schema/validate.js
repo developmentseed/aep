@@ -44,6 +44,7 @@ const studySchema = new Schema({
         enum: ['contextual', 'result'],
         required: true
       },
+      visible: { type: Boolean },
       disabled: { type: Boolean },
       mbLayer: { type: String, required: true },
       info: { type: String },

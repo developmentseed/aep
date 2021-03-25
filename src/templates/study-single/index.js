@@ -245,6 +245,7 @@ export const pageQuery = graphql`
         category
         disabled
         mbLayer
+        visible
         info
         source {
           name
