@@ -401,6 +401,15 @@
     "@babel/helper-skip-transparent-expression-wrappers" "^7.12.1"
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
 
+"@babel/plugin-proposal-optional-chaining@^7.8.3":
+  version "7.13.12"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.13.12.tgz#ba9feb601d422e0adea6760c2bd6bbb7bfec4866"
+  integrity sha512-fcEdKOkIB7Tf4IxrgEVeFC4zeJSTr78no9wTdBuZZbqF64kzllU0ybo2zrzm7gUQfxGhBgq4E39oRs8Zx/RMYQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.13.0"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.12.1"
+    "@babel/plugin-syntax-optional-chaining" "^7.8.3"
+
 "@babel/plugin-proposal-private-methods@^7.13.0":
   version "7.13.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-methods/-/plugin-proposal-private-methods-7.13.0.tgz#04bd4c6d40f6e6bbfa2f57e2d8094bad900ef787"
@@ -6390,6 +6399,13 @@ gatsby-link@^2.11.0:
     "@babel/runtime" "^7.12.5"
     "@types/reach__router" "^1.3.7"
     prop-types "^15.7.2"
+
+gatsby-optional-chaining@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-optional-chaining/-/gatsby-optional-chaining-1.0.1.tgz#94b5a72b0c8d4c0e9e98376706a5139b973c2d73"
+  integrity sha512-WfRoFXxh+/gCB+XtARHoP654UIty0OGDDy3XWJILiIF5XlgCOUxUPvfkI6VRiD7dGCNGEAjLyZQ7T6oBhPqSCQ==
+  dependencies:
+    "@babel/plugin-proposal-optional-chaining" "^7.8.3"
 
 gatsby-page-utils@^0.9.1:
   version "0.9.1"
