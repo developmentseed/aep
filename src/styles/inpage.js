@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
+import { glsp, media, truncated, themeVal } from '@devseed-ui/theme-provider';
 import { reveal } from '@devseed-ui/animation';
 import { Heading } from '@devseed-ui/typography';
 import { headingAlt } from '@devseed-ui/typography';
@@ -51,20 +51,10 @@ export const InpageHeadline = styled.div`
 `;
 
 export const InpageTitle = styled(Heading)`
+  ${truncated()}
   font-size: 1rem;
   line-height: 1;
   margin: 0;
-  width: 100%;
-  max-width: 32rem;
-  overflow: hidden;
-  white-space: nowrap;
-
-  /* Apply mask conditionally: container max-width (24rem) - mask size (3rem) */
-  mask-image: linear-gradient(
-    to right,
-    black calc(100% - ${glsp(3)}),
-    transparent 100%
-  );
 
   ${media.mediumUp`
     font-size: 1.25rem;
