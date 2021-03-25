@@ -3,27 +3,34 @@ import React from 'react';
 
 import { ContentBlock, Aside } from '../../styles/content-block';
 import Prose from '../../styles/typography/prose';
+import DetailsList from '../../styles/typography/details-list';
 
 function StudySingleSummary() {
   return (
     <ContentBlock layout='asided'>
       <Prose>
-        <h2>Summary</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          sapien justo, dignissim a mi eu, faucibus faucibus lectus. Nunc nisl
-          neque, dignissim non velit id, sagittis fermentum nulla. Morbi
-          vehicula, ante et varius luctus, purus lacus commodo metus, vel ornare
-          elit dolor a lorem. Proin vel nunc non enim interdum sagittis a ut
-          mauris. Vivamus ut hendrerit sapien. Integer convallis semper ornare.
-          Nam non pellentesque justo.
-        </p>
-        <img
-          src='https://via.placeholder.com/1440/CCCCCC'
-          width='1440'
-          height='1440'
-          alt='A placeholder image'
-        />
+        <h2>Overview</h2>
+        <DetailsList>
+          <dt>Title</dt>
+          <dd>Lorem ipsum dolor sit amet</dd>
+          <dt>Country</dt>
+          <dd>Kenya</dd>
+          <dt>Date</dt>
+          <dd>
+            <time dateTime='2021-02-14'>February 2, 2021</time>
+          </dd>
+          <dt>Data layers #</dt>
+          <dd>24</dd>
+          <dt>Consultant</dt>
+          <dd>Pellentesque quis</dd>
+          <dt>Platform</dt>
+          <dd>
+            <a href='#' title='Visit platform'>
+              Vestibulum eget
+            </a>
+          </dd>
+        </DetailsList>
+        <h2>Description</h2>
         <p>
           In sed nisi orci. Vestibulum eget aliquet magna. Nulla massa leo,
           pretium id magna iaculis, euismod vulputate odio. Pellentesque quis
@@ -34,6 +41,12 @@ function StudySingleSummary() {
           maximus. Maecenas quis euismod tellus, sit amet placerat sapien. Morbi
           imperdiet justo at imperdiet venenatis.
         </p>
+        <img
+          src='https://via.placeholder.com/1440/CCCCCC'
+          width='1440'
+          height='1440'
+          alt='A placeholder image'
+        />
         <p>
           Nunc viverra vehicula nulla non euismod. Pellentesque ornare fermentum
           quam vel aliquet. Vestibulum ante ipsum primis in faucibus orci luctus
@@ -48,7 +61,7 @@ function StudySingleSummary() {
       </Prose>
       <Aside>
         <Prose>
-          <h2>Graphs</h2>
+          <h2>Insights</h2>
           <p>Lorem ipsum dolor sit amet.</p>
           <img
             src='https://via.placeholder.com/1440/CCCCCC'
