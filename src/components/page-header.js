@@ -135,6 +135,32 @@ function PageHeader() {
             <Button
               forwardedAs={StyledNavLink}
               activeClassName='active'
+              partiallyActive
+              to='/support'
+              variation='achromic-plain'
+              data-tip='Project Support'
+              title='View Project Support page'
+            >
+              Support
+            </Button>
+          </li>
+          <li>
+            <Button
+              forwardedAs={StyledNavLink}
+              activeClassName='active'
+              partiallyActive
+              to='/toolkit'
+              variation='achromic-plain'
+              data-tip='Agricultural Toolkit'
+              title='View Agricultural Toolkit page'
+            >
+              Toolkit
+            </Button>
+          </li>
+          <li>
+            <Button
+              forwardedAs={StyledNavLink}
+              activeClassName='active'
               to='/about'
               variation='achromic-plain'
               data-tip='About'
