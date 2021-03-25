@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
+import { glsp, media, rgba, themeVal } from '@devseed-ui/theme-provider';
 import { Heading } from '@devseed-ui/typography';
 import { headingAlt } from '@devseed-ui/typography';
 
@@ -44,10 +44,20 @@ export const PanelSection = styled.section`
 `;
 
 export const PanelSectionHeader = styled.header`
-  padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(
+    0.5,
+    themeVal('layout.gap.xsmall'),
+    0,
+    themeVal('layout.gap.xsmall')
+  )};
 
   ${media.mediumUp`
-    padding: ${glsp(1, themeVal('layout.gap.medium'))};
+    padding: ${glsp(
+      1,
+      themeVal('layout.gap.medium'),
+      0,
+      themeVal('layout.gap.medium')
+    )};
   `}
 `;
 
@@ -69,6 +79,8 @@ export const PanelGroup = styled.section`
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
+  box-shadow: 0 1px 0 0 ${themeVal('color.baseAlphaC')};
+  padding: ${glsp(0.5, 0, 0, 0)};
 `;
 
 export const PanelGroupHeader = styled.header`
