@@ -12,6 +12,8 @@ export const Inpage = styled.article`
 `;
 
 export const InpageHeader = styled.header`
+  position: relative;
+  z-index: 20;
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-gap: ${glsp(0, themeVal('layout.gap.xsmall'))};

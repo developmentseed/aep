@@ -37,10 +37,11 @@ const StyledLink = filterComponentProps(Link, propsToFilter);
 const ViewMenu = styled.ul`
   display: inline-grid;
   grid-gap: ${glsp(0, 1)};
-  margin-bottom: ${glsp(-1)};
+  margin-bottom: ${glsp(-0.75)};
 
   ${media.mediumUp`
     grid-gap: ${glsp(0, 1.5)};
+    margin-bottom: ${glsp(-1)};
   `}
 
   > * {
@@ -51,13 +52,18 @@ const ViewMenu = styled.ul`
 const ViewMenuLink = styled(StyledLink)`
   position: relative;
   display: block;
-  height: 2.5rem;
+  height: 2.25rem;
   padding: ${glsp(0.5, 0)};
   font-size: 0.875rem;
   line-height: 1;
   text-transform: uppercase;
   font-weight: ${themeVal('type.base.bold')};
   opacity: 0.64;
+  clip-path: polygon(0 0, 100% 0, 100% 200%, 0 200%);
+
+  ${media.mediumUp`
+    height: 2.5rem;
+  `}
 
   &,
   &:visited {
@@ -72,7 +78,7 @@ const ViewMenuLink = styled(StyledLink)`
     position: absolute;
     bottom: 0;
     left: 50%;
-    height: 0.25rem;
+    height: 0.125rem;
     width: 0;
     background: ${themeVal('color.surface')};
     content: '';
@@ -85,6 +91,7 @@ const ViewMenuLink = styled(StyledLink)`
     active &&
     css`
       opacity: 1;
+      box-shadow: ${themeVal('boxShadow.elevationD')};
 
       &::after {
         width: 100%;
