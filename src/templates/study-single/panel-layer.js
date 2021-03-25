@@ -116,7 +116,7 @@ function PanelLayer(props) {
               <span>Info</span>
             </Button>
             <Button
-              variation='base-plain'
+              variation={active ? 'primary-plain' : 'base-plain'}
               size='small'
               useIcon={active ? 'eye' : 'eye-disabled'}
               disabled={disabled}
