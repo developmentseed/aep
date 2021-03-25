@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { glsp, media, rgba, themeVal } from '@devseed-ui/theme-provider';
+import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { Heading } from '@devseed-ui/typography';
 import { headingAlt } from '@devseed-ui/typography';
 
