@@ -52,17 +52,17 @@ const ViewMenu = styled.ul`
 const ViewMenuLink = styled(StyledLink)`
   position: relative;
   display: block;
-  height: 2.25rem;
-  padding: ${glsp(0.5, 0)};
+  height: 1.75rem;
   font-size: 0.875rem;
-  line-height: 1;
+  line-height: 1rem;
   text-transform: uppercase;
   font-weight: ${themeVal('type.base.bold')};
   opacity: 0.64;
   clip-path: polygon(0 0, 100% 0, 100% 200%, 0 200%);
 
   ${media.mediumUp`
-    height: 2.5rem;
+    height: 2.25rem;
+    line-height: 1.25rem;
   `}
 
   &,
@@ -97,6 +97,11 @@ const ViewMenuLink = styled(StyledLink)`
         width: 100%;
       }
     `}
+
+  > * {
+    transform: translateY(0.075em);
+    display: block;
+  }
 `;
 
 const buildUrl = (data) => {
@@ -188,7 +193,7 @@ function StudySingle({ data }) {
                   title='Map view'
                   active={view === 'map'}
                 >
-                  Map
+                  <span>Map</span>
                 </ViewMenuLink>
               </li>
               <li role='presentation'>
@@ -198,7 +203,7 @@ function StudySingle({ data }) {
                   title='Summary view'
                   active={view === 'summary'}
                 >
-                  Summary
+                  <span>Summary</span>
                 </ViewMenuLink>
               </li>
             </ViewMenu>
