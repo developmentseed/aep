@@ -93,8 +93,8 @@ export const PanelGroupHeader = styled.header`
 
 export const PanelGroupTitle = styled.p`
   ${headingAlt()}
-  font-size: 0.75rem;
-  line-height: 1;
+  font-size: 0.875rem;
+  line-height: 1rem;
   margin: 0;
 `;
 

@@ -6,13 +6,14 @@ import { glsp, media, themeVal, truncated } from '@devseed-ui/theme-provider';
 import { AccordionFold } from '@devseed-ui/accordion';
 import { Heading } from '@devseed-ui/typography';
 import { Button } from '@devseed-ui/button';
+import { headingAlt } from '@devseed-ui/typography';
 
 import Prose from '../../styles/typography/prose';
 // import LayerLegend from './layer-legend';
 
 const LayerSelf = styled(AccordionFold)`
   position: relative;
-  box-shadow: 0 1px 0 0 ${themeVal('color.baseAlphaB')};
+  border-radius: 0;
 `;
 
 const LayerHeader = styled.header`
@@ -60,8 +61,9 @@ const LayerBodyInner = styled(Prose)`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: ${glsp()};
-  box-shadow: inset 0 1px 0 0 ${themeVal('color.baseAlphaB')};
-  background: rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 1px 0 0 ${themeVal('color.baseAlphaB')},
+    inset 0 -1px 0 0 ${themeVal('color.baseAlphaB')};
+  background: ${themeVal('color.baseAlphaA')};
   font-size: 0.875rem;
   line-height: 1.25rem;
   backdrop-filter: saturate(48%);
@@ -74,6 +76,22 @@ const LayerBodyInner = styled(Prose)`
   /* stylelint-disable-next-line no-descending-specificity */
   > * {
     margin-bottom: ${glsp(0.75)};
+  }
+`;
+
+const LayerDetailsList = styled.dl`
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content) 1fr;
+  grid-gap: ${glsp(0.25, 1)};
+
+  dt {
+    ${headingAlt()}
+    font-size: 0.75rem;
+    line-height: inherit;
+  }
+
+  dd {
+    font-weight: ${themeVal('type.base.bold')};
   }
 `;
 
@@ -137,14 +155,14 @@ function PanelLayer(props) {
         <LayerBodyInner>
           {info}
           {source && (
-            <dl>
+            <LayerDetailsList>
               <dt>Source</dt>
               <dd>
                 <a href={source.url} target='_blank' rel='noreferrer'>
                   {source.name}
                 </a>
               </dd>
-            </dl>
+            </LayerDetailsList>
           )}
         </LayerBodyInner>
       )}
