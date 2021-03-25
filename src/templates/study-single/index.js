@@ -3,36 +3,25 @@ import { navigate } from 'gatsby';
 import T from 'prop-types';
 import qs from 'qs';
 import { graphql, Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import useQsStateCreator from 'qs-state-hook';
 
-import { glsp, themeVal } from '@devseed-ui/theme-provider';
-import { Button } from '@devseed-ui/button';
+import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 
 import Layout from '../../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
   InpageSubtitle,
-  InpageNav,
+  InpageActions,
   InpageBody
 } from '../../styles/inpage';
 
 import StudySingleCarto from './carto';
 import StudySingleSummary from './summary';
 import { filterComponentProps } from '../../styles/utils/general';
-
-const ViewMenu = styled.ul`
-  display: inline-grid;
-  grid-gap: ${glsp(0, themeVal('layout.gap.xsmall'))};
-
-  > * {
-    grid-row: 1;
-  }
-`;
 
 // See documentation of filterComponentProp as to why this is
 const propsToFilter = [
@@ -44,6 +33,64 @@ const propsToFilter = [
   'visuallyDisabled'
 ];
 const StyledLink = filterComponentProps(Link, propsToFilter);
+
+const ViewMenu = styled.ul`
+  display: inline-grid;
+  grid-gap: ${glsp(0, 1)};
+  margin-bottom: ${glsp(-1)};
+
+  ${media.mediumUp`
+    grid-gap: ${glsp(0, 1.5)};
+  `}
+
+  > * {
+    grid-row: 1;
+  }
+`;
+
+const ViewMenuLink = styled(StyledLink)`
+  position: relative;
+  display: block;
+  height: 2.5rem;
+  padding: ${glsp(0.5, 0)};
+  font-size: 0.875rem;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: ${themeVal('type.base.bold')};
+  opacity: 0.64;
+
+  &,
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 0.25rem;
+    width: 0;
+    background: ${themeVal('color.surface')};
+    content: '';
+    pointer-events: none;
+    transform: translate(-50%, 0);
+    transition: all 0.32s ease-in-out 0s;
+  }
+
+  ${({ active }) =>
+    active &&
+    css`
+      opacity: 1;
+
+      &::after {
+        width: 100%;
+      }
+    `}
+`;
 
 const buildUrl = (data) => {
   if (typeof window === 'undefined') return '';
@@ -117,40 +164,38 @@ function StudySingle({ data }) {
     <Layout title='Study'>
       <Inpage>
         <InpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageSubtitle>Study</InpageSubtitle>
-              <InpageTitle>{title}</InpageTitle>
-            </InpageHeadline>
-            <InpageNav>
-              <ViewMenu>
-                <li>
-                  <Button
-                    forwardedAs={StyledLink}
-                    to={buildUrl({ view: 'map' })}
-                    variation='achromic-plain'
-                    useIcon='map'
-                    title='Map view'
-                    active={view === 'map'}
-                  >
-                    Map
-                  </Button>
-                </li>
-                <li>
-                  <Button
-                    forwardedAs={StyledLink}
-                    to={buildUrl({ view: 'summary' })}
-                    variation='achromic-plain'
-                    useIcon='text-block'
-                    title='Summary view'
-                    active={view === 'summary'}
-                  >
-                    Summary
-                  </Button>
-                </li>
-              </ViewMenu>
-            </InpageNav>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageTitle>{title}</InpageTitle>
+            <InpageSubtitle>
+              <Link to='/studies' title='View all studies'>
+                Study
+              </Link>
+            </InpageSubtitle>
+          </InpageHeadline>
+          <InpageActions as='nav' role='navigation'>
+            <ViewMenu role='tablist'>
+              <li role='presentation'>
+                <ViewMenuLink
+                  role='tab'
+                  to={buildUrl({ view: 'map' })}
+                  title='Map view'
+                  active={view === 'map'}
+                >
+                  Map
+                </ViewMenuLink>
+              </li>
+              <li role='presentation'>
+                <ViewMenuLink
+                  role='tab'
+                  to={buildUrl({ view: 'summary' })}
+                  title='Summary view'
+                  active={view === 'summary'}
+                >
+                  Summary
+                </ViewMenuLink>
+              </li>
+            </ViewMenu>
+          </InpageActions>
         </InpageHeader>
         <InpageBody>
           {view === 'map' && (

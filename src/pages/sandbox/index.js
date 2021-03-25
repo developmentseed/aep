@@ -4,7 +4,6 @@ import Layout from '../../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
   InpageSubtitle,
@@ -17,12 +16,10 @@ function Sandbox() {
     <Layout title='Sandbox'>
       <Inpage>
         <InpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageSubtitle>Sandbox</InpageSubtitle>
-              <InpageTitle>Lorem ipsum dolor</InpageTitle>
-            </InpageHeadline>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageSubtitle>Sandbox</InpageSubtitle>
+            <InpageTitle>Lorem ipsum dolor</InpageTitle>
+          </InpageHeadline>
         </InpageHeader>
         <InpageBody>
           <ContentBlock>The sandbox.</ContentBlock>

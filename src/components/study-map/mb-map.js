@@ -9,6 +9,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 const MapContainer = styled.div`
   position: relative;
+  z-index: 10;
   width: 100%;
   height: 100%;
 `;

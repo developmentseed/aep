@@ -13,18 +13,17 @@ import PageFooter from './page-footer';
 import SEO from './seo';
 
 const Page = styled.div`
-  min-height: 100vh;
   display: grid;
-  grid-template-columns: 1;
-  grid-template-rows: minmax(4rem, max-content) auto 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content auto min-content;
+  grid-auto-rows: min-content;
+  min-height: 100vh;
 `;
 
 const PageBody = styled.main`
   padding: 0;
   margin: 0;
-
-  /* Animation */
-  animation: ${reveal} 0.48s ease 0s 1;
+  animation: ${reveal} 0.32s ease 0s 1;
 `;
 
 const Layout = ({ children, title, metaImage, description }) => {
