@@ -123,6 +123,7 @@ layers:
     name: Overview of Off-Grid Electricity Service Areas
     category: result
     mbLayer: minigrid
+    visible: true
     info: This dataset represents the locations of existing mini-grids, mini-grids under development, proposed KOSAP mini-grids, and potential SHS markets in Kenya. This is the output of preliminary GIS analysis funded by the World Bank and undertaken in 2017.
     source:
       name: energydata.info
@@ -140,6 +141,7 @@ layers:
     name: Existing Mini-Grid Expansion Projects
     category: result
     mbLayer: minigrid-existing
+    visible: true
     info: Potential expansion projects for existing mini-grids; the expansion projects were identified through a least-cost geospatial analysis undertaken over the period 2017-2018.
     source:
       name: energydata.info
@@ -148,6 +150,7 @@ layers:
     name: New Mini-Grid Projects
     category: result
     mbLayer: minigrid-proposed
+    visible: true
     info: Potential mini-grid projects; these projects were identified through a least-cost geospatial analysis undertaken over the period 2017-2018.
     source:
       name: energydata.info
