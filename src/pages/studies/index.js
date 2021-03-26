@@ -122,9 +122,9 @@ export default function Studies({ data }) {
                       <CardMedia>
                         <CardMediaThumb>
                           <img
-                            src={`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/[${node.bbox.flat().join(
-                              ','
-                            )}]/960x320?access_token=${
+                            src={`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/[${node.bbox
+                              .flat()
+                              .join(',')}]/960x320?access_token=${
                               data.site.siteMetadata.mapConfig.mbToken
                             }`}
                             width='960'
