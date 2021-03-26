@@ -42,7 +42,7 @@ The main information and metadata of each study is managed through a `yml` file,
 | layers | `array` | The layers that make up the layer switcher |
 | layers[].id | `string` | Unique ID of the layer |
 | layers[].name | `string` | Name of the layer that appears in the layer switcher |
-| layers[].category | `enum` (`contextual`, `results`) | The layer category is used to organize the layers |
+| layers[].category | `enum` one of [`contextual`, `results`] | The layer category is used to organize the layers |
 | layers[].mbLayer | `string` | ID of the layer. Should refer to a layer in the map configuration |
 | layers[].info | `string` | Used for the description in the info drawer |
 | layers[].disabled | `boolean` | If set to true, the `enable/disable` icon will be disabled. *Optional, defaults to false* |
@@ -116,7 +116,7 @@ Adding a layer and allowing users to interact with it, requires three things:
 
 ## Map style
 ### AEP default style
-
+*More information to come*
 
 ### Custom markers
 AEP supports a number of custom icons that can be used to style point data instead of colored circles. See the folder `/content/icons` for the icons that are currently supported.
@@ -144,8 +144,8 @@ New icons can be added to [`/content/icons`](/content/icons). They should be in 
 [To top](#managing-studies)
 
 ## FAQ
+*More information to come*
 
 ## Troubleshooting
-
 ### Map shows an unexpected layer
 If the map loads with a layer that can't be managed through the layer switcher, it's likely that you added a layer in the Mapbox Style that isn't referenced in the layer configuration of the `yml`. This is by design. It allows you to overlay a contextual layer on the map that the user don't have control over. A use case could be a layer that adds a disputed border.
