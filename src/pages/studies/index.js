@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import {
@@ -19,6 +19,16 @@ import {
   InpageTitle,
   InpageBody
 } from '../../styles/inpage';
+
+import {
+  CardInteractive,
+  CardHeader,
+  CardHeadline,
+  CardTitle,
+  CardHeaderDetails,
+  CardMedia,
+  CardMediaThumb
+} from '../../styles/card';
 
 const StudiesSection = styled(UniversalGridder).attrs({
   as: 'div',
@@ -61,13 +71,10 @@ const StudiesList = styled.ul`
   ${media.largeUp`
     grid-template-columns: repeat(3, 1fr);
   `}
-`;
 
-const Study = styled(Link)`
-  display: block;
-  padding: ${glsp(2)};
-  border-radius: ${themeVal('shape.rounded')};
-  box-shadow: inset 0 0 0 1px ${themeVal('color.baseAlphaC')};
+  li > * {
+    height: 100%;
+  }
 `;
 
 export default function Studies({ data }) {
@@ -87,9 +94,47 @@ export default function Studies({ data }) {
             <StudiesList>
               {studies.map((node) => (
                 <li key={node.id}>
-                  <Study to={`/studies/${node.fields.slug}`}>
-                    {node.title}
-                  </Study>
+                  <CardInteractive
+                    linkTo={`/studies/${node.fields.slug}`}
+                    linkTitle='View study'
+                    linkLabel='View'
+                  >
+                    <CardHeader>
+                      <CardHeadline>
+                        <CardTitle>{node.title}</CardTitle>
+                      </CardHeadline>
+                      <CardHeaderDetails>
+                        {node.country && (
+                          <>
+                            <dt>Country</dt>
+                            <dd>{node.country}</dd>
+                          </>
+                        )}
+                        {node.study.period && (
+                          <>
+                            <dt>Period</dt>
+                            <dd>{node.study.period}</dd>
+                          </>
+                        )}
+                      </CardHeaderDetails>
+                    </CardHeader>
+                    {node.bbox && (
+                      <CardMedia>
+                        <CardMediaThumb>
+                          <img
+                            src={`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/[${node.bbox
+                              .flat()
+                              .join(',')}]/960x320?access_token=${
+                              data.site.siteMetadata.mapConfig.mbToken
+                            }`}
+                            width='960'
+                            height='320'
+                            alt='Study thumbnail'
+                          />
+                        </CardMediaThumb>
+                      </CardMedia>
+                    )}
+                  </CardInteractive>
                 </li>
               ))}
             </StudiesList>
@@ -106,10 +151,22 @@ Studies.propTypes = {
 
 export const pageQuery = graphql`
   query Studies {
+    site {
+      siteMetadata {
+        mapConfig {
+          mbToken
+        }
+      }
+    }
     allPostsYaml {
       nodes {
         id
         title
+        bbox
+        country
+        study {
+          period
+        }
         fields {
           slug
         }

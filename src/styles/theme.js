@@ -39,10 +39,10 @@ export default function theme(uiTheme) {
         // The elements that use the gap should use it as a parameter for the glsp function
         gap: {
           xsmall: 1,
-          small: 2,
+          small: 1,
           medium: 2,
           large: 2,
-          xlarge: 3
+          xlarge: 2
         }
       }
     },
