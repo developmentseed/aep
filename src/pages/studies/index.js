@@ -27,7 +27,7 @@ import {
   CardTitle,
   CardHeaderDetails,
   CardMedia,
-  CardMediaThumb,
+  CardMediaThumb
 } from '../../styles/card';
 
 const StudiesSection = styled(UniversalGridder).attrs({
@@ -118,16 +118,22 @@ export default function Studies({ data }) {
                         )}
                       </CardHeaderDetails>
                     </CardHeader>
-                    <CardMedia>
-                      <CardMediaThumb>
-                        <img
-                          src='https://via.placeholder.com/960x480/CCCCCC'
-                          width='960'
-                          height='480'
-                          alt='A placeholder image'
-                        />
-                      </CardMediaThumb>
-                    </CardMedia>
+                    {node.bbox && (
+                      <CardMedia>
+                        <CardMediaThumb>
+                          <img
+                            src={`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/[${node.bbox.flat().join(
+                              ','
+                            )}]/960x320?access_token=${
+                              data.site.siteMetadata.mapConfig.mbToken
+                            }`}
+                            width='960'
+                            height='320'
+                            alt='Study thumbnail'
+                          />
+                        </CardMediaThumb>
+                      </CardMedia>
+                    )}
                   </CardInteractive>
                 </li>
               ))}
@@ -145,10 +151,18 @@ Studies.propTypes = {
 
 export const pageQuery = graphql`
   query Studies {
+    site {
+      siteMetadata {
+        mapConfig {
+          mbToken
+        }
+      }
+    }
     allPostsYaml {
       nodes {
         id
         title
+        bbox
         country
         study {
           period
