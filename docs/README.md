@@ -22,7 +22,7 @@ The study configuration consists of two files:
 ![Study Configuration](media/study-main-page.png)
 
 ### Study configuration
-The main information and metadata of each study is managed through a `yml` file, with the following structure. For a full example, please see [`kenya.yml`](../study/posts/kenya.yml)
+The main information and metadata of each study is managed through a `yml` file, with the following structure. For a full example, please see [`kenya.yml`](/content/study/posts/kenya.yml)
 
 | key | format | description |
 | --- | --- | --- |
@@ -64,6 +64,9 @@ Validation is done in two steps:
 
 1. the `yml` files are validated using the study schema in [`/schema/validate.js`](/schema/validate.js)
 2. the `json` files are validated using the [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/)
+
+![](media/checks.png)
+*All checks passing*
 
 #### Validating locally
 To validate changes prior to pushing them to Github, you can run the following command:
@@ -139,7 +142,7 @@ For example:
 ```
 
 #### Add new icons to AEP
-New icons can be added to [`/content/icons`](/content/icons). They should be in `.png` format and measure 64 x 64px.
+New icons can be added to [`/content/icons`](/content/icons). They should be in `png` format and measure 64 x 64px.
 
 [To top](#managing-studies)
 
