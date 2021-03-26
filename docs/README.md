@@ -10,10 +10,9 @@
 * [AEP Map Style](#aep-map-style)
   * [Default styles](#default-styles)
   * [Custom markers](#custom-markers)
-* [FAQ](#faq)
 * [Troubleshooting](#troubleshooting)
 
-## Anatomy of a study
+# Anatomy of a study
 The study configuration consists of two files:
 
 * a `yml` file that contains the basic information and metadata of the study.
@@ -21,7 +20,7 @@ The study configuration consists of two files:
 
 ![Study Configuration](media/study-main-page.png)
 
-### Study configuration
+## Study configuration
 The main information and metadata of each study is managed through a `yml` file, with the following structure. For a full example, please see [`kenya.yml`](/content/study/posts/kenya.yml)
 
 | key | format | description |
@@ -52,12 +51,14 @@ The main information and metadata of each study is managed through a `yml` file,
 | layers[].source.name | `string` | Name of the source link |
 | layers[].source.url | `string` | URL of the data source |
 
-### Map configuration
-The map is configured using the Mapbox Style specification. This provides a high degree of control over the style and interaction of the map of each study. Please refer to the [Mapbox documentation](https://docs.mapbox.com/mapbox-gl-js/style-spec/) for a full description of the style spec.
+## Map configuration
+The map of each study is configured using a `json` file that follows the Mapbox Style specification. For a full example, please see [`kenya-mb.json`](/content/study/posts/kenya-mb.json).
+
+Leveraging the MB Style Specification provides a high degree of control over the style and interaction of the map of each study. Please refer to the [Mapbox documentation](https://docs.mapbox.com/mapbox-gl-js/style-spec/) for a full description of the style spec.
 
 In addition to the default Mapbox styling, AEP has its own set of default styles, optimized for country level analysis. For more details see the [AEP default style](#aep-default-style) section.
 
-#### Validating configuration
+## Validating configuration
 The `yml` and `json` files in `/content/study` are automatically validated when pushing a change to Github. If validation fails, it won't be possible to merge these changes into the `main` branch.
 
 Validation is done in two steps:
@@ -68,7 +69,7 @@ Validation is done in two steps:
 ![](media/checks.png)
 *All checks passing*
 
-#### Validating locally
+### Validating locally
 To validate changes prior to pushing them to Github, you can run the following command:
 
 ```
@@ -77,25 +78,25 @@ yarn validate
 
 [To top](#managing-studies)
 
-## Howto
-### Add a new study
+# Howto
+## Add a new study
 
 1. create a new Github branch from `main`
 2. add a `yml` file to `/content/study/posts` with the [study configuration](#study-configuration)
 3. add a `json` file to `/content/study/posts` with the [map configuration](#map-configuration)
 4. set up a Pull Request and merge once [the validations](#validating-configuration) are run successfully
 
-### Add a layer
-Adding a layer and allowing users to interact with it, requires three things:
+## Add a layer
+To add a new layer to a study that users can interact with, requires three things:
 
-1. add a source to the Mapbox Style Specification  
+1. add a source to the Mapbox Style Specification that references the dataset. This example shows a GeoJSON, but other types like raster or vector tiles are also supported.  
 ``` json
 "minigrid-proposed": {
   "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/proposed_kosap_minigrid-wgs84.json",
   "type": "geojson"
 }
 ```
-2. add a layer to the Mapbox Style Specification that references the source  
+2. add a layer to the Mapbox Style Specification that references the source.  
 ```json
 {
   "id": "minigrid-proposed",
@@ -115,16 +116,32 @@ Adding a layer and allowing users to interact with it, requires three things:
       url: https://energydata.info/dataset/kenya-potential-new-mini-grid-sites
 ```
 
+## Adjust the style of a layer
+The style of each map layer can be customized in the `json` file with map configuration. The following example makes all the lines in this dataset yellow.
+
+```json
+{
+  "id": "kv",
+  "type": "line",
+  "source": "11kv",
+  "paint": {
+    "line-color": "#FFC700"
+  }
+}
+```
+
+It's possible to apply a lot more advanced custom styling to each layer. For a full overview, see the [Mapbox documentation](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/).
+
 [To top](#managing-studies)
 
-## Map style
-### AEP default style
+# Map style
+## AEP default style
 *More information to come*
 
-### Custom markers
+## Custom markers
 AEP supports a number of custom icons that can be used to style point data instead of colored circles. See the folder `/content/icons` for the icons that are currently supported.
 
-#### Add icon to a layer
+### Add icon to a layer
 Define a [`symbol`](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#symbol) layer. The name of the `icon-image` is the basename of the file, without extension `.png`.
 
 For example:
@@ -141,14 +158,11 @@ For example:
 }
 ```
 
-#### Add new icons to AEP
+### Add new icons to AEP
 New icons can be added to [`/content/icons`](/content/icons). They should be in `png` format and measure 64 x 64px.
 
 [To top](#managing-studies)
 
-## FAQ
-*More information to come*
-
-## Troubleshooting
-### Map shows an unexpected layer
+# Troubleshooting
+## Map shows an unexpected layer
 If the map loads with a layer that can't be managed through the layer switcher, it's likely that you added a layer in the Mapbox Style that isn't referenced in the layer configuration of the `yml`. This is by design. It allows you to overlay a contextual layer on the map that the user don't have control over. A use case could be a layer that adds a disputed border.
