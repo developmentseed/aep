@@ -62,6 +62,13 @@
     "minigrid": {
       "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/proposed_shs_market-wgs84.json",
       "type": "geojson"
+    },
+    "wind": {
+      "tiles": [
+        "https://s3-eu-west-1.amazonaws.com/globalwindatlas3/tiles/250_wspd_100m/{z}/{x}/{y}.png"
+      ],
+      "type": "raster",
+      "scheme": "tms"
     }
   },
   "layers": [
@@ -157,6 +164,11 @@
       "id": "minigrid",
       "type": "circle",
       "source": "minigrid"
+    },
+    {
+      "id": "wind",
+      "type": "raster",
+      "source": "wind"
     }
   ]
 }
