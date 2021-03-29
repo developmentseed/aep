@@ -48,7 +48,12 @@ function StudySingleSummary(props) {
               <dt>Platform</dt>
               <dd>
                 {platform.url ? (
-                  <a href={platform.url} title='Visit platform'>
+                  <a
+                    href={platform.url}
+                    title='Visit platform'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     {platform.title}
                   </a>
                 ) : (
