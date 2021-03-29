@@ -82,7 +82,7 @@ yarn validate
 ## Add a new study
 
 1. create a new Github branch from `main`
-2. add a `yml` file to `/content/study/posts` with the [study configuration](#study-configuration)
+2. add a `yml` file to `/content/study/posts` with the [study configuration](#study-configuration). The filename is used to determine the URL of the study. (`kenya.yml` -> `/studies/kenya`)
 3. add a `json` file to `/content/study/posts` with the [map configuration](#map-configuration)
 4. set up a Pull Request and merge once [the validations](#validating-configuration) are run successfully
 
