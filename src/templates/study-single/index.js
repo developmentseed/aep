@@ -143,16 +143,19 @@ function StudySingle({ data }) {
   );
 
   const [visiblePanelLayers, setVisiblePanelLayers] = useQsState(
-    useMemo(
-      () => ({
+    useMemo(() => {
+      const defaultLayers = layers.filter((l) => l.visible).map((l) => l.id);
+      return {
         key: 'layers',
-        default: layers.filter((l) => l.visible).map((l) => l.id),
+        default: defaultLayers,
         validator: (v) => !!v,
-        hydrator: (v) => (!v ? null : v.split('|')),
-        dehydrator: (v) => v.join('|')
-      }),
-      [layers]
-    )
+        hydrator: (v) => {
+          if (!v) return null;
+          return v === 'none' ? [] : v.split('|');
+        },
+        dehydrator: (v) => (v.length ? v.join('|') : 'none')
+      };
+    }, [layers])
   );
 
   const panelLayers = layers.map((l) => ({
