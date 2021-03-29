@@ -41,7 +41,7 @@
       ],
       "type": "vector"
     },
-    "schools": {
+    "education": {
       "tiles": [
         "https://aep-tiles.staging.derilinx.com/tiles/ke/schools/{z}/{x}/{y}.pbf"
       ],
@@ -145,9 +145,9 @@
       }
     },
     {
-      "id": "schools",
+      "id": "education",
       "type": "circle",
-      "source": "schools",
+      "source": "education",
       "source-layer": "data_layer"
     },
     {

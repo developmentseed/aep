@@ -111,10 +111,10 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-healthcare-facilities
-  - id: schools
+  - id: education
     name: Schools
     category: contextual
-    mbLayer: schools
+    mbLayer: education
     info: School locations in Kenya. It comprises Primary and Secondary Schools. The dataset was provided by Kenya Ministry of Education.
     source:
       name: energydata.info
