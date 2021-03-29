@@ -130,7 +130,10 @@ The style of each map layer can be customized in the `json` file with map config
 }
 ```
 
-It's possible to apply a lot more advanced custom styling to each layer. For a full overview, see the [Mapbox documentation](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/).
+It's possible to apply advanced custom styling to each layer. For a full overview, see the [Mapbox documentation](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/).
+
+## Change the order of layers on the map
+The order of the layers on the map is determined by the order of the `layers` array in the [map configuration](#map-configuration). The first layer in this array is the bottom-most layer on the map, the last layer the top-most.
 
 [To top](#managing-studies)
 
