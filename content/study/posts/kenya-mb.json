@@ -84,6 +84,11 @@
       }
     },
     {
+      "id": "wind",
+      "type": "raster",
+      "source": "wind"
+    },
+    {
       "id": "11kv",
       "type": "line",
       "source": "11kv",
@@ -128,13 +133,19 @@
     {
       "id": "substation",
       "type": "circle",
-      "source": "substation"
+      "source": "substation",
+      "paint": {
+        "circle-color": "#878684"
+      }
     },
     {
       "id": "transformers",
       "type": "circle",
       "source": "transformers",
-      "source-layer": "data_layer"
+      "source-layer": "data_layer",
+      "paint": {
+        "circle-color": "#878684"
+      }
     },
     {
       "id": "transmission-stations",
@@ -153,22 +164,26 @@
     {
       "id": "minigrid-existing",
       "type": "circle",
-      "source": "minigrid-existing"
+      "source": "minigrid-existing",
+      "paint": {
+        "circle-color": "#7cc03c"
+      }
     },
     {
       "id": "minigrid-proposed",
       "type": "circle",
-      "source": "minigrid-proposed"
+      "source": "minigrid-proposed",
+      "paint": {
+        "circle-color": "#e58f25"
+      }
     },
     {
       "id": "minigrid",
       "type": "circle",
-      "source": "minigrid"
-    },
-    {
-      "id": "wind",
-      "type": "raster",
-      "source": "wind"
+      "source": "minigrid",
+      "paint": {
+        "circle-color": "#e3e356"
+      }
     }
   ]
 }
