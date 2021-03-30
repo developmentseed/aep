@@ -1,119 +1,99 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import {
-  glsp,
-  media,
-  themeVal,
-  truncated,
-  visuallyHidden
-} from '@devseed-ui/theme-provider';
+import { glsp, media, truncated, themeVal } from '@devseed-ui/theme-provider';
+import { reveal } from '@devseed-ui/animation';
+import { Heading } from '@devseed-ui/typography';
+import { headingAlt } from '@devseed-ui/typography';
 
 export const Inpage = styled.article`
   display: grid;
   height: 100%;
   grid-template-rows: min-content 1fr;
-
-  /**
-   * Make Inpage map-centric
-   *
-   * Visually hides inpageHeader and sets the grid layout to a single row.
-   * The latter is needed so that inpageBody can be displayed in full height.
-   */
-
-  ${({ isMapCentric }) =>
-    isMapCentric &&
-    css`
-      grid-template-rows: 1fr;
-      ${InpageHeader} {
-        ${visuallyHidden()}
-      }
-    `}
 `;
 
 export const InpageHeader = styled.header`
-  /* Visually hidden */
-  ${({ isHidden }) =>
-    isHidden &&
-    css`
-      ${visuallyHidden()}
-    `}
-`;
-
-export const InpageHeaderInner = styled.div`
+  position: relative;
+  z-index: 20;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: ${glsp(1, themeVal('layout.gap.xsmall'))};
-  align-items: end;
-  padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
+  grid-template-columns: max-content 1fr;
+  grid-gap: ${glsp(0, themeVal('layout.gap.xsmall'))};
+  align-items: center;
   background-color: ${themeVal('color.primary')};
-  color: ${themeVal('color.baseLight')};
+  color: #fff;
+  padding: ${glsp(
+    0,
+    themeVal('layout.gap.xsmall'),
+    0.75,
+    themeVal('layout.gap.xsmall')
+  )};
 
   ${media.mediumUp`
-    grid-template-columns: repeat(8, 1fr);
-    padding: ${glsp(1, themeVal('layout.gap.medium'))};
-    grid-gap: ${glsp(1, themeVal('layout.gap.medium'))};
-  `}
-
-  ${media.largeUp`
-    grid-template-columns: repeat(12, 1fr);
-    grid-column: content-2 / content-12;
+    grid-gap: ${glsp(0, themeVal('layout.gap.medium'))};
+    padding: ${glsp(
+      0,
+      themeVal('layout.gap.medium'),
+      1,
+      themeVal('layout.gap.medium')
+    )};
   `}
 `;
 
 export const InpageHeadline = styled.div`
-  grid-column: 1 / span 4;
-  display: flex;
-  flex-flow: column;
-  min-width: 0;
+  display: inline-grid;
+  grid-gap: ${glsp(0.5)};
+  align-items: center;
 
   ${media.mediumUp`
-    grid-column: 1 / span 4;
+    grid-gap: ${glsp(1)};
   `}
 
-  ${media.largeUp`
-    grid-column: 1 / span 8;
-  `}
-
-  > *:last-child {
-    margin-bottom: 0;
+  > * {
+    grid-row: 1;
   }
 `;
 
-export const InpageNav = styled.nav`
-  grid-column: 1 / span 4;
+export const InpageTitle = styled(Heading)`
+  ${truncated()}
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
 
   ${media.mediumUp`
-    grid-column: 5 / span 4;
-    text-align: right;
+    font-size: 1.25rem;
   `}
-
-  ${media.largeUp`
-    grid-column: 9 / span 4;
-  `}
-`;
-
-export const InpageTitleWrapper = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  min-width: 0;
-  margin-bottom: ${glsp(1.5)};
-`;
-
-export const InpageTitle = styled.h1`
-  ${truncated()}
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin: 0;
 `;
 
 export const InpageSubtitle = styled.p`
-  position: absolute;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  ${headingAlt()}
+  grid-column: 1;
+  font-size: 0.875rem;
+  line-height: 1;
   margin: 0;
-  transform: translate(0, calc(-100% + 0.25rem));
+  transform: translateY(0.075em);
+
+  a,
+  a:visited {
+    display: block;
+    color: inherit;
+  }
+
+  ${media.mediumUp`
+    font-size: 1rem;
+  `}
+`;
+
+export const InpageActions = styled.div`
+  display: inline-grid;
+  grid-gap: ${glsp(0.5)};
+  align-items: center;
+  margin-left: auto;
+
+  > * {
+    grid-row: 1;
+  }
 `;
 
 export const InpageBody = styled.div`
   background: transparent;
+  animation: ${reveal} 0.48s ease 0s 1;
 `;

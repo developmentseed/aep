@@ -26,8 +26,16 @@ module.exports = {
     }
   },
   plugins: [
+    'gatsby-optional-chaining',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/icons`,
+        name: `icons`
+      }
+    },
     ...contentTypes.reduce(
       (acc, type) => [
         ...acc,

@@ -2,13 +2,20 @@ import React from 'react';
 import T from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import { media, glsp, themeVal } from '@devseed-ui/theme-provider';
+import { shade } from 'polished';
+import {
+  media,
+  glsp,
+  stylizeFunction,
+  themeVal
+} from '@devseed-ui/theme-provider';
+
+import { Heading } from '@devseed-ui/typography';
 
 import Layout from '../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
   InpageBody
@@ -18,13 +25,16 @@ import Prose from '../styles/typography/prose';
 import logoEsmapUrl from '../media/content/logos/logo-esmap--white.png';
 import logoWbUrl from '../media/content/logos/logo-wb--white.png';
 
+const _shade = stylizeFunction(shade);
+
 const HomeInpage = styled(Inpage)`
-  background: ${themeVal('color.secondary')};
+  background: ${_shade(0.2, themeVal('color.primary'))};
   color: #ffffff;
 `;
 
 const HomeInpageHeader = styled(InpageHeader)`
   max-height: 0;
+  padding: 0;
   overflow: hidden;
 `;
 
@@ -40,7 +50,7 @@ const Intro = styled.section`
   `}
 `;
 
-const IntroTitle = styled.h1`
+const IntroTitle = styled(Heading)`
   font-size: 3rem;
   line-height: 3.5rem;
   margin: 0;
@@ -84,11 +94,9 @@ const Home = ({ data, location }) => {
     <Layout location={location} title='Welcome'>
       <HomeInpage>
         <HomeInpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageTitle>Welcome</InpageTitle>
-            </InpageHeadline>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageTitle>Welcome</InpageTitle>
+          </InpageHeadline>
         </HomeInpageHeader>
         <InpageBody>
           <Intro>

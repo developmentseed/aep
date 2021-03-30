@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
-import { SupHeading } from './typography/supheading';
+import { Heading } from '@devseed-ui/typography';
+import { headingAlt } from '@devseed-ui/typography';
 
 export const Panel = styled.section`
+  position: relative;
+  z-index: 20;
   display: flex;
   flex-flow: column nowrap;
   width: 18rem;
+  box-shadow: ${themeVal('boxShadow.elevationD')};
 
   ${media.mediumUp`
     width: 20rem;
@@ -25,7 +29,7 @@ export const PanelHeader = styled.header`
   `}
 `;
 
-export const PanelTitle = styled.h1``;
+export const PanelTitle = styled(Heading)``;
 
 export const PanelBody = styled.div`
   display: flex;
@@ -40,18 +44,28 @@ export const PanelSection = styled.section`
 `;
 
 export const PanelSectionHeader = styled.header`
-  padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(
+    0.5,
+    themeVal('layout.gap.xsmall'),
+    0,
+    themeVal('layout.gap.xsmall')
+  )};
 
   ${media.mediumUp`
-    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+    padding: ${glsp(
+      1,
+      themeVal('layout.gap.medium'),
+      0,
+      themeVal('layout.gap.medium')
+    )};
   `}
 `;
 
 export const PanelSectionHeadline = styled.div``;
 
-export const PanelSectionTitle = styled.h1`
-  font-size: 1.25rem;
-  line-height: 2rem;
+export const PanelSectionTitle = styled(Heading)`
+  font-size: 1rem;
+  line-height: 1.5rem;
   margin: 0;
 `;
 
@@ -65,10 +79,11 @@ export const PanelGroup = styled.section`
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
+  box-shadow: 0 1px 0 0 ${themeVal('color.baseAlphaC')};
+  padding: ${glsp(0.5, 0, 0, 0)};
 `;
 
 export const PanelGroupHeader = styled.header`
-  background: ${themeVal('color.baseAlphaC')};
   padding: ${glsp(0.25, themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
@@ -76,14 +91,13 @@ export const PanelGroupHeader = styled.header`
   `}
 `;
 
-export const PanelGroupTitle = styled(SupHeading).attrs({
-  as: 'h1',
-  variation: 'primary'
-})`
+export const PanelGroupTitle = styled.p`
+  ${headingAlt()}
+  font-size: 0.875rem;
+  line-height: 1rem;
   margin: 0;
 `;
 
 export const PanelGroupBody = styled.div`
   flex: 1;
-  overflow: scroll;
 `;

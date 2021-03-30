@@ -4,29 +4,34 @@ import Layout from '../../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeadline,
   InpageTitle,
-  InpageSubtitle,
+  InpageHeadline,
   InpageBody
 } from '../../styles/inpage';
-import { ContentBlock } from '../../styles/content-block';
 
-function Sandbox() {
+import { ContentBlock } from '../../styles/content-block';
+import Prose from '../../styles/typography/prose';
+
+function Toolkit() {
   return (
-    <Layout title='Sandbox'>
+    <Layout title='Toolkit'>
       <Inpage>
         <InpageHeader>
           <InpageHeadline>
-            <InpageSubtitle>Sandbox</InpageSubtitle>
-            <InpageTitle>Lorem ipsum dolor</InpageTitle>
+            <InpageTitle>Agricultural Toolkit</InpageTitle>
           </InpageHeadline>
         </InpageHeader>
         <InpageBody>
-          <ContentBlock>The sandbox.</ContentBlock>
+          <ContentBlock>
+            <Prose>
+              <h2>Agricultural Toolkit</h2>
+              <p>More information about the agricultural toolkit.</p>
+            </Prose>
+          </ContentBlock>
         </InpageBody>
       </Inpage>
     </Layout>
   );
 }
 
-export default Sandbox;
+export default Toolkit;

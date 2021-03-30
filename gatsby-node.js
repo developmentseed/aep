@@ -12,16 +12,36 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       }
 
       type PanelLayer {
+        id: String
         name: String
+        visible: Boolean
         category: String
         mbLayer: String
         info: String
         source: PanelLayerSource
       }
+
+      type Platform {
+        title: String
+        url: String
+      }
+
+      type StudyInfo {
+        consultant: String
+        period: String
+        scope: String
+        summary: String
+      }
     `,
     schema.buildObjectType({
       name: 'PostsYaml',
       fields: {
+        title: 'String',
+        bbox: 'JSON',
+        zoomExtent: 'JSON',
+        country: 'String',
+        platform: 'Platform',
+        study: 'StudyInfo',
         layers: '[PanelLayer]',
         mapConfig: {
           type: 'JSON',

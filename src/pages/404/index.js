@@ -5,7 +5,6 @@ import Layout from '../../components/layout';
 import {
   Inpage,
   InpageHeader,
-  InpageHeaderInner,
   InpageHeadline,
   InpageTitle,
   InpageBody
@@ -18,11 +17,9 @@ function UhOh() {
     <Layout title='Page not found'>
       <Inpage>
         <InpageHeader>
-          <InpageHeaderInner>
-            <InpageHeadline>
-              <InpageTitle>Page not found</InpageTitle>
-            </InpageHeadline>
-          </InpageHeaderInner>
+          <InpageHeadline>
+            <InpageTitle>Page not found</InpageTitle>
+          </InpageHeadline>
         </InpageHeader>
         <InpageBody>
           <ContentBlock>

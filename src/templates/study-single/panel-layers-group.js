@@ -1,14 +1,19 @@
 import React from 'react';
 import T from 'prop-types';
+import styled from 'styled-components';
 import { Accordion } from '@devseed-ui/accordion';
+import ShadowScrollbar from '@devseed-ui/shadow-scrollbar';
 
 import {
   PanelGroup,
   PanelGroupHeader,
-  PanelGroupTitle,
-  PanelGroupBody
+  PanelGroupTitle
 } from '../../styles/panel';
 import PanelLayer from './panel-layer';
+
+export const PanelGroupBodyScroll = styled(ShadowScrollbar)`
+  flex: 1;
+`;
 
 function PanelLayersGroup(props) {
   const { title, onAction, layers = [] } = props;
@@ -18,7 +23,7 @@ function PanelLayersGroup(props) {
       <PanelGroupHeader>
         <PanelGroupTitle>{title}</PanelGroupTitle>
       </PanelGroupHeader>
-      <PanelGroupBody>
+      <PanelGroupBodyScroll>
         <Accordion>
           {({ checkExpanded, setExpanded }) => (
             <ol>
@@ -41,7 +46,7 @@ function PanelLayersGroup(props) {
             </ol>
           )}
         </Accordion>
-      </PanelGroupBody>
+      </PanelGroupBodyScroll>
     </PanelGroup>
   );
 }

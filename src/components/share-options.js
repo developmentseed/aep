@@ -38,8 +38,8 @@ function ShareOptions() {
 
   return (
     <Dropdown
-      alignment='bottom'
-      direction='right'
+      alignment='right'
+      direction='down'
       triggerElement={(props) => (
         <Button
           variation='achromic-plain'

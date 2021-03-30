@@ -41,7 +41,7 @@
       ],
       "type": "vector"
     },
-    "schools": {
+    "education": {
       "tiles": [
         "https://aep-tiles.staging.derilinx.com/tiles/ke/schools/{z}/{x}/{y}.pbf"
       ],
@@ -62,6 +62,13 @@
     "minigrid": {
       "data": "https://aep-tiles.staging.derilinx.com/geojson/ke/proposed_shs_market-wgs84.json",
       "type": "geojson"
+    },
+    "wind": {
+      "tiles": [
+        "https://s3-eu-west-1.amazonaws.com/globalwindatlas3/tiles/250_wspd_100m/{z}/{x}/{y}.png"
+      ],
+      "type": "raster",
+      "scheme": "tms"
     }
   },
   "layers": [
@@ -75,6 +82,11 @@
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.32, 12, 0.48],
         "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.5, 12, 2]
       }
+    },
+    {
+      "id": "wind",
+      "type": "raster",
+      "source": "wind"
     },
     {
       "id": "11kv",
@@ -121,39 +133,57 @@
     {
       "id": "substation",
       "type": "circle",
-      "source": "substation"
+      "source": "substation",
+      "paint": {
+        "circle-color": "#878684"
+      }
     },
     {
       "id": "transformers",
       "type": "circle",
       "source": "transformers",
-      "source-layer": "data_layer"
+      "source-layer": "data_layer",
+      "paint": {
+        "circle-color": "#878684"
+      }
     },
     {
       "id": "transmission-stations",
-      "type": "circle",
-      "source": "transmission-stations"
+      "type": "symbol",
+      "source": "transmission-stations",
+      "layout": {
+        "icon-image": "electricity"
+      }
     },
     {
-      "id": "schools",
+      "id": "education",
       "type": "circle",
-      "source": "schools",
+      "source": "education",
       "source-layer": "data_layer"
     },
     {
       "id": "minigrid-existing",
       "type": "circle",
-      "source": "minigrid-existing"
+      "source": "minigrid-existing",
+      "paint": {
+        "circle-color": "#7cc03c"
+      }
     },
     {
       "id": "minigrid-proposed",
       "type": "circle",
-      "source": "minigrid-proposed"
+      "source": "minigrid-proposed",
+      "paint": {
+        "circle-color": "#e58f25"
+      }
     },
     {
       "id": "minigrid",
       "type": "circle",
-      "source": "minigrid"
+      "source": "minigrid",
+      "paint": {
+        "circle-color": "#e3e356"
+      }
     }
   ]
 }
