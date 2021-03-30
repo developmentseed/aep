@@ -246,6 +246,8 @@ export const pageQuery = graphql`
       study {
         consultant
         period
+        scope
+        summary
       }
       platform {
         title

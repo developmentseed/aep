@@ -56,7 +56,7 @@ layers:
     name: Distribution Transformers
     category: contextual
     mbLayer: transformers
-    info:
+    info: The dataset contains Distribution Transformers in Kenya.The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-distribution-transformers
@@ -111,10 +111,10 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-healthcare-facilities
-  - id: schools
+  - id: education
     name: Schools
     category: contextual
-    mbLayer: schools
+    mbLayer: education
     info: School locations in Kenya. It comprises Primary and Secondary Schools. The dataset was provided by Kenya Ministry of Education.
     source:
       name: energydata.info
