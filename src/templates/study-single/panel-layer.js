@@ -68,9 +68,19 @@ const LayerBodyInner = styled(Prose)`
   line-height: 1.25rem;
   backdrop-filter: saturate(48%);
   padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black ${glsp(themeVal('layout.gap.xsmall'))}
+  );
 
   ${media.mediumUp`
     padding: ${glsp(1, themeVal('layout.gap.medium'))};
+    mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black ${glsp(themeVal('layout.gap.medium'))}
+  );
   `}
 
   /* stylelint-disable-next-line no-descending-specificity */

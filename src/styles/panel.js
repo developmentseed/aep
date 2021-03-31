@@ -47,7 +47,7 @@ export const PanelSectionHeader = styled.header`
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
-    padding: ${glsp(0.75, themeVal('layout.gap.medium'))};
+    padding: ${glsp(1, themeVal('layout.gap.medium'))};
   `}
 `;
 
@@ -55,7 +55,7 @@ export const PanelSectionHeadline = styled.div``;
 
 export const PanelSectionTitle = styled(Heading)`
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
 `;
 
@@ -66,11 +66,26 @@ export const PanelSectionBody = styled.div`
 `;
 
 export const PanelGroup = styled.section`
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
-  box-shadow: 0 -1px 0 0 ${themeVal('color.baseAlphaC')};
   padding: ${glsp(0.5, 0, 0, 0)};
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: ${glsp(themeVal('layout.gap.xsmall'))};
+    right: 0;
+    content: '';
+    pointer-events: none;
+    height: 1px;
+    background: ${themeVal('color.baseAlphaC')};
+
+    ${media.mediumUp`
+      left: ${glsp(themeVal('layout.gap.medium'))};
+    `}
+  }
 `;
 
 export const PanelGroupHeader = styled.header`
