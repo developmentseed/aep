@@ -91,7 +91,6 @@ const ViewMenuLink = styled(StyledLink)`
     active &&
     css`
       opacity: 1;
-      box-shadow: ${themeVal('boxShadow.elevationD')};
 
       &::after {
         width: 100%;

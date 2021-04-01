@@ -2,6 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
 import { Accordion } from '@devseed-ui/accordion';
+import { glsp } from '@devseed-ui/theme-provider';
 import ShadowScrollbar from '@devseed-ui/shadow-scrollbar';
 
 import {
@@ -13,6 +14,7 @@ import PanelLayer from './panel-layer';
 
 export const PanelGroupBodyScroll = styled(ShadowScrollbar)`
   flex: 1;
+  padding-bottom: ${glsp(1)};
 `;
 
 function PanelLayersGroup(props) {
