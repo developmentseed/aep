@@ -6,7 +6,7 @@ import { headingAlt } from '@devseed-ui/typography';
 
 export const Panel = styled.section`
   position: relative;
-  z-index: 20;
+  z-index: 30;
   display: flex;
   flex-flow: column nowrap;
   width: 18rem;

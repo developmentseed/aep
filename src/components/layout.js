@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import T from 'prop-types';
 import { DevseedUiThemeProvider } from '@devseed-ui/theme-provider';
 import { CollecticonsGlobalStyle } from '@devseed-ui/collecticons';
-import { reveal } from '@devseed-ui/animation';
 
 import theme from '../styles/theme';
 
@@ -23,7 +22,6 @@ const Page = styled.div`
 const PageBody = styled.main`
   padding: 0;
   margin: 0;
-  animation: ${reveal} 0.32s ease 0s 1;
 `;
 
 const Layout = ({ children, title, metaImage, description }) => {
