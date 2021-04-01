@@ -129,13 +129,12 @@ function PanelLayer(props) {
           </LayerHeadline>
           <LayerToolbar>
             <Button
-              variation='base-plain'
+              variation={isFoldExpanded ? 'primary-plain' : 'base-plain'}
               size='small'
               useIcon='circle-information'
               title='Show/hide layer info'
               hideText
               disabled={!info && !source}
-              active={isFoldExpanded}
               onClick={() => setFoldExpanded(!isFoldExpanded)}
             >
               <span>Info</span>
