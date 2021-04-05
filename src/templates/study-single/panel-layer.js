@@ -198,6 +198,8 @@ function PanelLayer(props) {
           {info}
           {source && (
             <LayerDetailsList>
+              <dt>Title</dt>
+              <dd>{label}</dd>
               <dt>Source</dt>
               <dd>
                 <a href={source.url} target='_blank' rel='noreferrer'>
