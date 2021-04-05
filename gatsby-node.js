@@ -6,6 +6,15 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
   const typeDefs = [
     `
+      type LayerLegend {
+        type: String
+        min: String
+        max: String
+        stops: [String]
+        color: String
+        icon: String
+      }
+
       type PanelLayerSource {
         name: String
         url: String
@@ -19,6 +28,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         mbLayer: String
         info: String
         source: PanelLayerSource
+        legendData: LayerLegend
       }
 
       type Platform {
