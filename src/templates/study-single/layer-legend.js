@@ -1,9 +1,11 @@
 import React from 'react';
 import T from 'prop-types';
 import styled, { css } from 'styled-components';
+import { tint } from 'polished';
 import {
   glsp,
   visuallyHidden,
+  stylizeFunction,
   themeVal,
   truncated
 } from '@devseed-ui/theme-provider';
@@ -11,6 +13,8 @@ import { headingAlt } from '@devseed-ui/typography';
 
 import { formatThousands } from '../../utils/format';
 import { graphql, useStaticQuery } from 'gatsby';
+
+const _tint = stylizeFunction(tint);
 
 const makeGradient = (stops) => {
   const d = 100 / stops.length - 1;
@@ -90,46 +94,73 @@ const LayerLegendTitle = styled.h2`
   ${visuallyHidden()}
 `;
 
-const computeBorder = ({ dashed, color }) => {
-  return css`
-    border: 1px ${dashed ? 'dashed' : 'solid'} ${color};
-  `;
+const renderIconography = ({ type, dashed, color }) => {
+  switch (type) {
+    case 'line': {
+      const borderStyle = css`
+        border: 1px ${dashed ? 'dashed' : 'solid'} ${color};
+      `;
+
+      return css`
+        &::before {
+          ${borderStyle}
+          display: block;
+          content: '';
+          height: 100%;
+          width: 1px;
+          transform: rotate(45deg);
+          border-radius: ${themeVal('shape.ellipsoid')};
+        }
+      `;
+    }
+    case 'circle':
+      return css`
+        &::before {
+          display: block;
+          height: 0.75rem;
+          width: 0.75rem;
+          content: '';
+          background: ${color};
+          border-radius: ${themeVal('shape.ellipsoid')};
+        }
+      `;
+    case 'gradient':
+      return css`
+        &::before {
+          display: block;
+          height: 100%;
+          width: 100%;
+          content: '';
+          background: blue;
+          background: linear-gradient(
+            to right,
+            ${_tint(0.8, themeVal('color.base'))},
+            ${_tint(0.32, themeVal('color.base'))}
+          );
+          border-radius: ${themeVal('shape.rounded')};
+        }
+      `;
+  }
 };
 
 const LayerSubtitle = styled.p`
   grid-column: 1;
-  box-shadow: 1px 0 0 0 ${themeVal('color.baseAlphaC')};
-  padding-right: 0.25rem;
 
   span {
     position: relative;
     display: flex;
-    border-radius: ${themeVal('shape.rounded')};
-
-    height: 1.25rem;
-    width: 1.25rem;
-    font-size: 0;
+    height: 1rem;
+    width: 1rem;
     justify-content: center;
     align-items: center;
+    font-size: 0;
 
-    ${({ type }) =>
-      type === 'circle'
-        ? css`
-            display: block;
-            content: '';
-            background: red;
-          `
-        : css`
-            &::before {
-              ${computeBorder}
-              display: block;
-              content: '';
-              height: 100%;
-              width: 1px;
-              transform: rotate(45deg);
-              border-radius: ${themeVal('shape.ellipsoid')};
-            }
-          `}
+    ${renderIconography}
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 `;
 
@@ -175,16 +206,15 @@ export function LegendIcon(props) {
     }
   `);
 
-  if (type === 'gradient') {
-    return null;
-  }
-
   if (type === 'symbol') {
     const iconData = icons.allFile.nodes.find((n) => n.name === icon);
     return (
       iconData && (
         <LayerSubtitle>
-          <img src={iconData.publicURL} />
+          <span>
+            <img src={iconData.publicURL} alt='Layer icon' />
+            {type} type layer
+          </span>
         </LayerSubtitle>
       )
     );

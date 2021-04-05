@@ -16,12 +16,8 @@ export const Panel = styled.section`
     width: 20rem;
   `}
 
-  ${media.largeUp`
-    width: 22rem;
-  `}
-
   ${media.xlargeUp`
-    width: 24rem;
+    width: 22rem;
   `}
 `;
 

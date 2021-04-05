@@ -31,6 +31,7 @@ const LayerHeadline = styled.div`
   min-width: 0px;
   display: grid;
   justify-content: start;
+  align-items: center;
   grid-gap: 0.5rem;
 
   > * {
@@ -85,6 +86,15 @@ const LayerBodyInner = styled(Prose)`
       to right,
       transparent 0,
       black ${glsp(themeVal('layout.gap.medium'))}
+    );
+  `}
+
+  ${media.largeUp`
+    padding: ${glsp(1, themeVal('layout.gap.large'))};
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black ${glsp(themeVal('layout.gap.large'))}
     );
   `}
 

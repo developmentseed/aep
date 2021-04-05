@@ -42,7 +42,7 @@ export default function theme(uiTheme) {
           small: 1,
           medium: 1.5,
           large: 1.5,
-          xlarge: 2
+          xlarge: 1.5
         }
       }
     },
