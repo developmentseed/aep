@@ -14,7 +14,6 @@ import PanelLayer from './panel-layer';
 
 export const PanelGroupBodyScroll = styled(ShadowScrollbar)`
   flex: 1;
-  padding-bottom: ${glsp(1)};
 `;
 
 function PanelLayersGroup(props) {

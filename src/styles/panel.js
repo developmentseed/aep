@@ -70,7 +70,6 @@ export const PanelGroup = styled.section`
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
-  padding: ${glsp(0.5, 0, 0, 0)};
 
   &::before {
     position: absolute;
@@ -89,10 +88,20 @@ export const PanelGroup = styled.section`
 `;
 
 export const PanelGroupHeader = styled.header`
-  padding: ${glsp(0.25, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(
+    0.75,
+    themeVal('layout.gap.xsmall'),
+    0.25,
+    themeVal('layout.gap.xsmall')
+  )};
 
   ${media.mediumUp`
-    padding: ${glsp(0.5, themeVal('layout.gap.medium'))};
+    padding: ${glsp(
+      1,
+      themeVal('layout.gap.medium'),
+      0.5,
+      themeVal('layout.gap.medium')
+    )};
   `}
 `;
 
