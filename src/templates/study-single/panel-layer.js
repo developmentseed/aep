@@ -1,15 +1,13 @@
 import React from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
-// import ReactTooltip from 'react-tooltip';
 import { glsp, media, themeVal, truncated } from '@devseed-ui/theme-provider';
 import { AccordionFold } from '@devseed-ui/accordion';
-import { Heading } from '@devseed-ui/typography';
 import { Button } from '@devseed-ui/button';
-import { headingAlt } from '@devseed-ui/typography';
+import { Heading, headingAlt } from '@devseed-ui/typography';
 
 import Prose from '../../styles/typography/prose';
-// import LayerLegend from './layer-legend';
+import { LegendGradient, LegendIcon } from './layer-legend';
 
 const LayerSelf = styled(AccordionFold)`
   position: relative;
@@ -48,34 +46,6 @@ const LayerTitle = styled(Heading)`
 
   sub {
     bottom: 0;
-  }
-`;
-
-const LayerSubtitle = styled.p`
-  grid-column: 1;
-  box-shadow: 1px 0 0 0 ${themeVal('color.baseAlphaC')};
-  padding-right: 0.25rem;
-
-  span {
-    position: relative;
-    display: flex;
-    border-radius: ${themeVal('shape.rounded')};
-
-    height: 1.25rem;
-    width: 1.25rem;
-    font-size: 0;
-    justify-content: center;
-    align-items: center;
-
-    &::before {
-      display: block;
-      content: '';
-      height: 100%;
-      width: 1px;
-      border: 1px dashed ${themeVal('color.primary')};
-      transform: rotate(45deg);
-      border-radius: ${themeVal('shape.ellipsoid')};
-    }
   }
 `;
 
@@ -156,6 +126,7 @@ function PanelLayer(props) {
     disabled = false,
     info,
     source,
+    legendData,
     onToggleClick,
     isExpanded,
     setExpanded
@@ -170,9 +141,14 @@ function PanelLayer(props) {
         <LayerHeader>
           <LayerHeadline>
             <LayerTitle title={label}>{label}</LayerTitle>
-            <LayerSubtitle>
-              <span>Line type layer</span>
-            </LayerSubtitle>
+            {legendData && (
+              <LegendIcon
+                type={legendData.type}
+                color={legendData.color}
+                icon={legendData.icon}
+                dashed={legendData.dashed}
+              />
+            )}
           </LayerHeadline>
           <LayerToolbar>
             <Button
@@ -198,13 +174,13 @@ function PanelLayer(props) {
               Enable layer
             </Button>
           </LayerToolbar>
-          {/* <LayerLegend
-            dataOrder={dataOrder}
-            legend={legend}
-            knobPos={knobPos}
-            onLegendKnobChange={onLegendKnobChange}
-            id={id}
-          /> */}
+          {legendData?.type === 'gradient' && (
+            <LegendGradient
+              min={legendData.min}
+              max={legendData.max}
+              stops={legendData.stops}
+            />
+          )}
         </LayerHeader>
       )}
       renderBody={() => (
@@ -232,6 +208,7 @@ PanelLayer.propTypes = {
   disabled: T.bool,
   info: T.node,
   source: T.object,
+  legendData: T.object,
   onToggleClick: T.func,
   isExpanded: T.bool,
   setExpanded: T.func
