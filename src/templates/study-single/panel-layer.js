@@ -17,7 +17,7 @@ const LayerSelf = styled(AccordionFold)`
 const LayerHeader = styled.header`
   display: grid;
   grid-auto-columns: 1fr min-content;
-  grid-gap: ${glsp(0.5)};
+  grid-gap: ${glsp(0.5, 1)};
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
   align-items: center;
 
