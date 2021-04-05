@@ -66,14 +66,13 @@ const LayerBodyInner = styled(Prose)`
   z-index: 8;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: ${glsp()};
+  grid-gap: ${glsp(0.75)};
   box-shadow: inset 0 1px 0 0 ${themeVal('color.baseAlphaB')},
     inset 0 -1px 0 0 ${themeVal('color.baseAlphaB')};
   background: ${themeVal('color.baseAlphaA')};
   font-size: 0.875rem;
   line-height: 1.25rem;
-  backdrop-filter: saturate(48%);
-  padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(0.75, themeVal('layout.gap.xsmall'))};
   mask-image: linear-gradient(
     to right,
     transparent 0,
@@ -81,7 +80,7 @@ const LayerBodyInner = styled(Prose)`
   );
 
   ${media.mediumUp`
-    padding: ${glsp(1, themeVal('layout.gap.medium'))};
+    padding: ${glsp(0.75, themeVal('layout.gap.medium'))};
     mask-image: linear-gradient(
       to right,
       transparent 0,
@@ -90,7 +89,7 @@ const LayerBodyInner = styled(Prose)`
   `}
 
   ${media.largeUp`
-    padding: ${glsp(1, themeVal('layout.gap.large'))};
+    padding: ${glsp(0.75, themeVal('layout.gap.large'))};
     mask-image: linear-gradient(
       to right,
       transparent 0,
@@ -99,7 +98,7 @@ const LayerBodyInner = styled(Prose)`
   `}
 
   ${media.xlargeUp`
-    padding: ${glsp(1, themeVal('layout.gap.xlarge'))};
+    padding: ${glsp(0.75, themeVal('layout.gap.xlarge'))};
     mask-image: linear-gradient(
       to right,
       transparent 0,
@@ -116,7 +115,7 @@ const LayerBodyInner = styled(Prose)`
 const LayerDetailsList = styled.dl`
   display: grid;
   grid-template-columns: minmax(min-content, max-content) 1fr;
-  grid-gap: ${glsp(0.25, 1)};
+  grid-gap: ${glsp(0.125, 0.5)};
 
   dt {
     ${headingAlt()}
