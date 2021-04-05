@@ -20,11 +20,11 @@ function BurgerOptions() {
           useIcon='hamburger-menu'
           {...props}
         >
-          Menu
+          Browse
         </Button>
       )}
     >
-      <DropTitle>Menu</DropTitle>
+      <DropTitle>Browse</DropTitle>
       <DropMenu role='menu'>
         <li>
           <DropMenuItem href='#' title='View Item A'>
