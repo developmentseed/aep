@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { reveal } from '@devseed-ui/animation';
-import { VerticalDivider } from '@devseed-ui/toolbar';
 import { Heading } from '@devseed-ui/typography';
 
 import { Button } from '../styles/button';
 import { filterComponentProps } from '../styles/utils/general';
 
+import BurgerOptions from './burger-options';
 import ShareOptions from './share-options';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 
@@ -67,7 +67,11 @@ const PageNav = styled.nav`
 
 const GlobalMenu = styled.ul`
   display: inline-grid;
-  grid-gap: ${glsp(0.5)};
+  grid-gap: ${glsp(0.25)};
+
+  ${media.mediumUp`
+    grid-gap: ${glsp(0.5)};
+  `}
 
   > * {
     grid-row: 1;
@@ -170,11 +174,11 @@ function PageHeader() {
               About
             </Button>
           </li>
-        </GlobalMenu>
-        <VerticalDivider variation='light' />
-        <GlobalMenu>
           <li>
             <ShareOptions />
+          </li>
+          <li>
+            <BurgerOptions />
           </li>
         </GlobalMenu>
       </PageNav>
