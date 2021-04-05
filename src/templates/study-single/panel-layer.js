@@ -31,6 +31,13 @@ const LayerHeader = styled.header`
 const LayerHeadline = styled.div`
   grid-row: 1;
   min-width: 0px;
+  display: grid;
+  justify-content: start;
+  grid-gap: 0.5rem;
+
+  > * {
+    grid-row: 1;
+  }
 `;
 
 const LayerTitle = styled(Heading)`
@@ -41,6 +48,34 @@ const LayerTitle = styled(Heading)`
 
   sub {
     bottom: 0;
+  }
+`;
+
+const LayerSubtitle = styled.p`
+  grid-column: 1;
+  box-shadow: 1px 0 0 0 ${themeVal('color.baseAlphaC')};
+  padding-right: 0.25rem;
+
+  span {
+    position: relative;
+    display: flex;
+    border-radius: ${themeVal('shape.rounded')};
+
+    height: 1.25rem;
+    width: 1.25rem;
+    font-size: 0;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      display: block;
+      content: '';
+      height: 100%;
+      width: 1px;
+      border: 1px dashed ${themeVal('color.primary')};
+      transform: rotate(45deg);
+      border-radius: ${themeVal('shape.ellipsoid')};
+    }
   }
 `;
 
@@ -77,10 +112,19 @@ const LayerBodyInner = styled(Prose)`
   ${media.mediumUp`
     padding: ${glsp(1, themeVal('layout.gap.medium'))};
     mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black ${glsp(themeVal('layout.gap.medium'))}
-  );
+      to right,
+      transparent 0,
+      black ${glsp(themeVal('layout.gap.medium'))}
+    );
+  `}
+
+  ${media.xlargeUp`
+    padding: ${glsp(1, themeVal('layout.gap.xlarge'))};
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black ${glsp(themeVal('layout.gap.xlarge'))}
+    );
   `}
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -126,6 +170,9 @@ function PanelLayer(props) {
         <LayerHeader>
           <LayerHeadline>
             <LayerTitle title={label}>{label}</LayerTitle>
+            <LayerSubtitle>
+              <span>Line type layer</span>
+            </LayerSubtitle>
           </LayerHeadline>
           <LayerToolbar>
             <Button
