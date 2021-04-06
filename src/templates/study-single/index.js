@@ -91,7 +91,6 @@ const ViewMenuLink = styled(StyledLink)`
     active &&
     css`
       opacity: 1;
-      box-shadow: ${themeVal('boxShadow.elevationD')};
 
       &::after {
         width: 100%;
@@ -267,6 +266,15 @@ export const pageQuery = graphql`
         source {
           name
           url
+        }
+        legendData {
+          type
+          min
+          max
+          stops
+          color
+          icon
+          dashed
         }
       }
     }

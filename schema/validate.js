@@ -7,9 +7,8 @@ const mbValidator = require('@mapbox/mapbox-gl-style-spec');
 const Schema = require('validate');
 const yml = require('js-yaml');
 
-const fileExists = (val) => {
-  return fs.existsSync(path.join(__dirname, '../content/study/posts/', val));
-};
+const studyFileExists = (val) =>
+  fs.existsSync(path.join(__dirname, '../content/study/posts/', val));
 
 const studySchema = new Schema({
   title: { type: String, required: true },
@@ -24,7 +23,7 @@ const studySchema = new Schema({
     ]
   ],
   zoomExtent: [{ type: Number }, { type: Number }],
-  mapConfig: { type: String, use: { fileExists }, required: true },
+  mapConfig: { type: String, use: { studyFileExists }, required: true },
   study: {
     consultant: { type: String, required: true },
     period: { required: true },
@@ -41,7 +40,7 @@ const studySchema = new Schema({
       name: { type: String, required: true },
       category: {
         type: String,
-        enum: ['contextual', 'result'],
+        enum: ['input', 'outcome'],
         required: true
       },
       visible: { type: Boolean },
@@ -51,6 +50,18 @@ const studySchema = new Schema({
       source: {
         name: { type: String, required: true },
         url: { type: String, required: true }
+      },
+      legendData: {
+        type: {
+          type: String,
+          enum: ['gradient', 'line', 'circle', 'symbol']
+        },
+        color: { type: String, match: /^#[0-9a-fA-F]{6}$/ },
+        dashed: { type: Boolean },
+        icon: { type: String },
+        min: { type: String },
+        max: { type: String },
+        stops: [{ type: String, match: /^#[0-9a-fA-F]{6}$/ }]
       }
     }
   ]

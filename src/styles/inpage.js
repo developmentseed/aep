@@ -15,17 +15,20 @@ export const InpageHeader = styled.header`
   position: relative;
   z-index: 20;
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: auto 1fr;
   grid-gap: ${glsp(0, themeVal('layout.gap.xsmall'))};
   align-items: center;
   background-color: ${themeVal('color.primary')};
   color: #fff;
+  box-shadow: ${themeVal('boxShadow.elevationD')};
+  clip-path: polygon(0 0, 100% 0, 100% 200%, 0% 200%);
   padding: ${glsp(
     0,
     themeVal('layout.gap.xsmall'),
     0.75,
     themeVal('layout.gap.xsmall')
   )};
+  animation: ${reveal} 0.32s ease 0s 1;
 
   ${media.mediumUp`
     grid-gap: ${glsp(0, themeVal('layout.gap.medium'))};

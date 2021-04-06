@@ -40,9 +40,9 @@ export default function theme(uiTheme) {
         gap: {
           xsmall: 1,
           small: 1,
-          medium: 2,
-          large: 2,
-          xlarge: 2
+          medium: 1.5,
+          large: 1.5,
+          xlarge: 1.5
         }
       }
     },

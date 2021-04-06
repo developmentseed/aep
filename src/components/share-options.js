@@ -55,26 +55,24 @@ function ShareOptions() {
       <DropTitle>Share</DropTitle>
       <DropMenu role='menu' iconified>
         <li>
-          <Button
-            forwardedAs={DropMenuItem}
+          <DropMenuItem
             useIcon='brand-facebook'
             href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
             title='Share on Facebook'
             target='_blank'
           >
             Facebook
-          </Button>
+          </DropMenuItem>
         </li>
         <li>
-          <Button
-            forwardedAs={DropMenuItem}
+          <DropMenuItem
             useIcon='brand-twitter'
             href={`https://twitter.com/intent/tweet?url=${url}`}
             title='Share on Twitter'
             target='_blank'
           >
             Twitter
-          </Button>
+          </DropMenuItem>
         </li>
       </DropMenu>
       <DropInset>
