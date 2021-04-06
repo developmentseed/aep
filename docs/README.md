@@ -54,6 +54,7 @@ The main information and metadata of each study is managed through a `yml` file,
 | layers[].legendData.type | `enum` one of [`gradient`, `line`, `circle`, `symbol`] | Type of legend |
 | layers[].legendData.color | `string` | The color of the feature. Applies to `circle` and `line` |
 | layers[].legendData.dashed | `boolean` | The color of the feature. Applies to `line` |
+| layers[].legendData.icon | `string` | The basename of the icon, without file extension. Applies to `symbol` |
 | layers[].legendData.min | `string` | Minimum value printed on the x-axis. Applies to `gradient` |
 | layers[].legendData.max | `string` | Maximum value printed on the x-axis. Applies to `gradient` 
 | layers[].legendData.stops | `array` | An array with RGB colors that indicate the stops. Applies to `gradient` 
@@ -177,9 +178,10 @@ New icons can be added to [`/content/icons`](/content/icons). They should be in 
 # Legends
 Broadly speaking, AEP supports two types of legends: symbology for features on the map like circles and lines and gradient legends for raster data like the Global Wind Atlas.
 
-## Vector layers
+## Customizing vector legends
 The platform will automatically determine the legend for vector layers. It's possible to override these defaults by specifying a `legendData` object on the layer configuration. For example:
 
+### Line
 ![](media/line-legend.png)
 
 ``` yml
@@ -189,7 +191,16 @@ legendData:
   dashed: true
 ```
 
-## Raster layers
+### Symbol
+![](media/symbol-legend.png)
+
+``` yml
+legendData:
+  type: symbol
+  color: 'electricity'
+```
+
+## Defining raster legends
 The legend for external data layers can't be automatically determined by AEP and always have to be defined through configuration. The platform currently supports linear gradients, below is an example with 7 color stops.
 
 ![](media/wind-legend.png)
