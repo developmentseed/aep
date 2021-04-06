@@ -1,15 +1,13 @@
 import React from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
-// import ReactTooltip from 'react-tooltip';
 import { glsp, media, themeVal, truncated } from '@devseed-ui/theme-provider';
 import { AccordionFold } from '@devseed-ui/accordion';
-import { Heading } from '@devseed-ui/typography';
 import { Button } from '@devseed-ui/button';
-import { headingAlt } from '@devseed-ui/typography';
+import { Heading, headingAlt } from '@devseed-ui/typography';
 
 import Prose from '../../styles/typography/prose';
-// import LayerLegend from './layer-legend';
+import { LegendGradient, LegendIcon } from './layer-legend';
 
 const LayerSelf = styled(AccordionFold)`
   position: relative;
@@ -19,7 +17,7 @@ const LayerSelf = styled(AccordionFold)`
 const LayerHeader = styled.header`
   display: grid;
   grid-auto-columns: 1fr min-content;
-  grid-gap: ${glsp(0.5)};
+  grid-gap: ${glsp(0.5, 1)};
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
   align-items: center;
 
@@ -31,6 +29,14 @@ const LayerHeader = styled.header`
 const LayerHeadline = styled.div`
   grid-row: 1;
   min-width: 0px;
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  grid-gap: 0.5rem;
+
+  > * {
+    grid-row: 1;
+  }
 `;
 
 const LayerTitle = styled(Heading)`
@@ -60,14 +66,13 @@ const LayerBodyInner = styled(Prose)`
   z-index: 8;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: ${glsp()};
+  grid-gap: ${glsp(0.75)};
   box-shadow: inset 0 1px 0 0 ${themeVal('color.baseAlphaB')},
     inset 0 -1px 0 0 ${themeVal('color.baseAlphaB')};
   background: ${themeVal('color.baseAlphaA')};
   font-size: 0.875rem;
   line-height: 1.25rem;
-  backdrop-filter: saturate(48%);
-  padding: ${glsp(1, themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(0.75, themeVal('layout.gap.xsmall'))};
   mask-image: linear-gradient(
     to right,
     transparent 0,
@@ -75,12 +80,30 @@ const LayerBodyInner = styled(Prose)`
   );
 
   ${media.mediumUp`
-    padding: ${glsp(1, themeVal('layout.gap.medium'))};
+    padding: ${glsp(0.75, themeVal('layout.gap.medium'))};
     mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black ${glsp(themeVal('layout.gap.medium'))}
-  );
+      to right,
+      transparent 0,
+      black ${glsp(themeVal('layout.gap.medium'))}
+    );
+  `}
+
+  ${media.largeUp`
+    padding: ${glsp(0.75, themeVal('layout.gap.large'))};
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black ${glsp(themeVal('layout.gap.large'))}
+    );
+  `}
+
+  ${media.xlargeUp`
+    padding: ${glsp(0.75, themeVal('layout.gap.xlarge'))};
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black ${glsp(themeVal('layout.gap.xlarge'))}
+    );
   `}
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -92,7 +115,7 @@ const LayerBodyInner = styled(Prose)`
 const LayerDetailsList = styled.dl`
   display: grid;
   grid-template-columns: minmax(min-content, max-content) 1fr;
-  grid-gap: ${glsp(0.25, 1)};
+  grid-gap: ${glsp(0.125, 0.5)};
 
   dt {
     ${headingAlt()}
@@ -112,6 +135,7 @@ function PanelLayer(props) {
     disabled = false,
     info,
     source,
+    legendData,
     onToggleClick,
     isExpanded,
     setExpanded
@@ -126,6 +150,14 @@ function PanelLayer(props) {
         <LayerHeader>
           <LayerHeadline>
             <LayerTitle title={label}>{label}</LayerTitle>
+            {legendData && (
+              <LegendIcon
+                type={legendData.type}
+                color={legendData.color}
+                icon={legendData.icon}
+                dashed={legendData.dashed}
+              />
+            )}
           </LayerHeadline>
           <LayerToolbar>
             <Button
@@ -151,13 +183,13 @@ function PanelLayer(props) {
               Enable layer
             </Button>
           </LayerToolbar>
-          {/* <LayerLegend
-            dataOrder={dataOrder}
-            legend={legend}
-            knobPos={knobPos}
-            onLegendKnobChange={onLegendKnobChange}
-            id={id}
-          /> */}
+          {legendData?.type === 'gradient' && (
+            <LegendGradient
+              min={legendData.min}
+              max={legendData.max}
+              stops={legendData.stops}
+            />
+          )}
         </LayerHeader>
       )}
       renderBody={() => (
@@ -165,6 +197,8 @@ function PanelLayer(props) {
           {info}
           {source && (
             <LayerDetailsList>
+              <dt>Title</dt>
+              <dd>{label}</dd>
               <dt>Source</dt>
               <dd>
                 <a href={source.url} target='_blank' rel='noreferrer'>
@@ -185,6 +219,7 @@ PanelLayer.propTypes = {
   disabled: T.bool,
   info: T.node,
   source: T.object,
+  legendData: T.object,
   onToggleClick: T.func,
   isExpanded: T.bool,
   setExpanded: T.func

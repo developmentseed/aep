@@ -2,7 +2,6 @@ import React from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
 import { Accordion } from '@devseed-ui/accordion';
-import { glsp } from '@devseed-ui/theme-provider';
 import ShadowScrollbar from '@devseed-ui/shadow-scrollbar';
 
 import {
@@ -14,7 +13,6 @@ import PanelLayer from './panel-layer';
 
 export const PanelGroupBodyScroll = styled(ShadowScrollbar)`
   flex: 1;
-  padding-bottom: ${glsp(1)};
 `;
 
 function PanelLayersGroup(props) {
@@ -38,7 +36,9 @@ function PanelLayersGroup(props) {
                     active={l.visible}
                     info={l.info}
                     source={l.source}
-                    // legend={l.legend}
+                    // For the time being we only care about the first entry on
+                    // the array list
+                    legendData={l.legendData?.[0]}
                     isExpanded={checkExpanded(idx)}
                     setExpanded={(v) => setExpanded(idx, v)}
                     onToggleClick={() => onAction('layer.toggle', l)}

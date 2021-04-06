@@ -267,6 +267,15 @@ export const pageQuery = graphql`
           name
           url
         }
+        legendData {
+          type
+          min
+          max
+          stops
+          color
+          icon
+          dashed
+        }
       }
     }
     site {
