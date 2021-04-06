@@ -13,6 +13,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         stops: [String]
         color: String
         icon: String
+        dashed: Boolean
       }
 
       type PanelLayerSource {
