@@ -68,6 +68,7 @@ const PageNav = styled.nav`
 const GlobalMenu = styled.ul`
   display: inline-grid;
   grid-gap: ${glsp(0.25)};
+  margin-right: -0.5rem;
 
   ${media.mediumUp`
     grid-gap: ${glsp(0.5)};
