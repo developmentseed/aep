@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from 'styled-components';
 
 const calculateBreakpoints = (ranges) => {
-  const w = window.innerWidth;
+  const w = typeof window === 'undefined' ? 0 : window.innerWidth;
   const mediaKeys = Object.keys(ranges);
   return mediaKeys.reduce((acc, k) => {
     const [lower, upper] = ranges[k];
