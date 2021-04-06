@@ -50,6 +50,13 @@ The main information and metadata of each study is managed through a `yml` file,
 | layers[].source | `object` | Link to the data source |
 | layers[].source.name | `string` | Name of the source link |
 | layers[].source.url | `string` | URL of the data source |
+| layers[].legendData | `object` | Custom legend |
+| layers[].legendData.type | `enum` one of [`gradient`, `line`, `circle`, `symbol`] | Type of legend |
+| layers[].legendData.color | `string` | The color of the feature. Applies to `circle` and `line` |
+| layers[].legendData.dashed | `boolean` | The color of the feature. Applies to `line` |
+| layers[].legendData.min | `string` | Minimum value printed on the x-axis. Applies to `gradient` |
+| layers[].legendData.max | `string` | Maximum value printed on the x-axis. Applies to `gradient` 
+| layers[].legendData.stops | `array` | An array with RGB colors that indicate the stops. Applies to `gradient` 
 
 ## Map configuration
 The map of each study is configured using a `json` file that follows the Mapbox Style specification. For a full example, please see [`kenya-mb.json`](/content/study/posts/kenya-mb.json).
@@ -163,6 +170,45 @@ For example:
 
 ### Add new icons to AEP
 New icons can be added to [`/content/icons`](/content/icons). They should be in `png` format and measure 64 x 64px.
+
+[To top](#managing-studies)
+
+
+# Legends
+Broadly speaking, AEP supports two types of legends: symbology for features on the map like circles and lines and gradient legends for raster data like the Global Wind Atlas.
+
+## Vector layers
+The platform will automatically determine the legend for vector layers. It's possible to override these defaults by specifying a `legendData` object on the layer configuration. For example:
+
+![](media/line-legend.png)
+
+``` yml
+legendData:
+  type: line
+  color: '#00FF00'
+  dashed: true
+```
+
+## Raster layers
+The legend for external data layers can't be automatically determined by AEP and always have to be defined through configuration. The platform currently supports linear gradients, below is an example with 7 color stops.
+
+![](media/wind-legend.png)
+
+
+``` yml
+legendData:
+  type: gradient
+  min: '< 2.5'
+  max: '> 9.75 m/s'
+  stops:
+    - '#BEE6FA'
+    - '#488FC6'
+    - '#7BC34C'
+    - '#F9E65B'
+    - '#F56E2B'
+    - '#C82333'
+    - '#A3305C'
+```
 
 [To top](#managing-studies)
 
