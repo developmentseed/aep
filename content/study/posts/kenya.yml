@@ -155,10 +155,6 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/kenya-potential-new-mini-grid-sites
-    legendData:
-      type: line
-      color: '#00FF00'
-      dashed: true
   - id: wind
     name: Mean wind speed
     category: contextual
