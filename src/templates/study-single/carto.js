@@ -92,8 +92,8 @@ function StudySingleCarto(props) {
   // Group panel layers by their category and get the config for each map layer
   // being controlled. This is needed to construct the legend.
   const {
-    result: panelResultLayers,
-    contextual: panelContextualLayers
+    outcome: panelOutcomeLayers,
+    input: panelInputLayers
   } = useMemo(() => {
     const mapLayers = applyMapLayersDefaults(mapConfig?.layers);
 
@@ -143,13 +143,13 @@ function StudySingleCarto(props) {
             </PanelSectionHeader>
             <PanelSectionBody>
               <PanelLayersGroup
-                title='Results'
-                layers={panelResultLayers}
+                title='Outcome'
+                layers={panelOutcomeLayers}
                 onAction={onAction}
               />
               <PanelLayersGroup
-                title='Contextual'
-                layers={panelContextualLayers}
+                title='Input'
+                layers={panelInputLayers}
                 onAction={onAction}
               />
             </PanelSectionBody>

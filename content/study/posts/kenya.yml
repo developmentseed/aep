@@ -14,7 +14,7 @@ platform:
 layers:
   - id: 11kv
     name: Existing grid 11kv
-    category: contextual
+    category: input
     mbLayer: 11kv
     info: This dataset contains electricity transmission lines with different voltage levels as well as unidentified voltage in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -22,7 +22,7 @@ layers:
       url: https://energydata.info/dataset/kenya-kenya-electricity-network
   - id: 33kv
     name: Existing grid 33kv
-    category: contextual
+    category: input
     mbLayer: 33kv
     info: This dataset contains electricity transmission lines with different voltage levels as well as unidentified voltage in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -30,7 +30,7 @@ layers:
       url: https://energydata.info/dataset/kenya-kenya-electricity-network
   - id: 66kv
     name: Existing grid 66kv
-    category: contextual
+    category: input
     mbLayer: 66kv
     info: This dataset contains electricity transmission lines with different voltage levels as well as unidentified voltage in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -38,7 +38,7 @@ layers:
       url: https://energydata.info/dataset/kenya-kenya-electricity-network
   - id: 132kv
     name: Existing grid 132kv
-    category: contextual
+    category: input
     mbLayer: 132kv
     info: This dataset contains electricity transmission lines with different voltage levels as well as unidentified voltage in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -46,7 +46,7 @@ layers:
       url: https://energydata.info/dataset/kenya-kenya-electricity-network
   - id: 220kv
     name: Existing grid 220kv
-    category: contextual
+    category: input
     mbLayer: 220kv
     info: This dataset contains electricity transmission lines with different voltage levels as well as unidentified voltage in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -54,7 +54,7 @@ layers:
       url: https://energydata.info/dataset/kenya-kenya-electricity-network
   - id: transformers
     name: Distribution Transformers
-    category: contextual
+    category: input
     mbLayer: transformers
     info: The dataset contains Distribution Transformers in Kenya.The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -62,7 +62,7 @@ layers:
       url: https://energydata.info/dataset/kenya-distribution-transformers
   - id: substations
     name: Primary Substations
-    category: contextual
+    category: input
     mbLayer: substation
     info: The dataset contains primary substations in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -70,7 +70,7 @@ layers:
       url: https://energydata.info/dataset/kenya-primary-substations
   - id: transmission
     name: Transmission Stations
-    category: contextual
+    category: input
     mbLayer: transmission-stations
     info: The data contains transmission station locations in Kenya. The dataset was provided by Kenya Power and Lighting Company (KPLC).
     source:
@@ -78,7 +78,7 @@ layers:
       url: https://energydata.info/dataset/kenya-transmission-stations
   - id: power
     name: Power Stations
-    category: contextual
+    category: input
     disabled: true
     mbLayer: 11kv
     info: The dataset contains location of Power Stations in Kenya. It was provided by Kenya Power and Lighting Company (KPLC).
@@ -87,7 +87,7 @@ layers:
       url: https://energydata.info/dataset/kenya-power-stations
   - id: population
     name: Population and Household Dataset (2009 & 2016)
-    category: contextual
+    category: input
     disabled: true
     mbLayer: 11kv
     info: Population and Household statistics for the years 2009 and 2016 as well as the enumeration areas.The dataset was provided by Kenya National Bureau of Statistics (KNBS).
@@ -96,7 +96,7 @@ layers:
       url: https://energydata.info/dataset/kenya-population-and-household-dataset
   - id: roads
     name: Roads
-    category: contextual
+    category: input
     mbLayer: roads
     info: Road network in Kenya. The dataset was provided by Kenya Roads Board (KRB).
     source:
@@ -104,7 +104,7 @@ layers:
       url: https://energydata.info/dataset/kenya-roads-1
   - id: health
     name: Healthcare Facilities
-    category: contextual
+    category: input
     disabled: true
     mbLayer: 11kv
     info: Data on healthcare facility locations in Kenya. The dataset was provided by the Government of Kenya.
@@ -113,7 +113,7 @@ layers:
       url: https://energydata.info/dataset/kenya-healthcare-facilities
   - id: education
     name: Schools
-    category: contextual
+    category: input
     mbLayer: education
     info: School locations in Kenya. It comprises Primary and Secondary Schools. The dataset was provided by Kenya Ministry of Education.
     source:
@@ -121,7 +121,7 @@ layers:
       url: https://energydata.info/dataset/kenya-schools
   - id: minigrid
     name: Overview of Off-Grid Electricity Service Areas
-    category: result
+    category: outcome
     mbLayer: minigrid
     visible: true
     info: This dataset represents the locations of existing mini-grids, mini-grids under development, proposed KOSAP mini-grids, and potential SHS markets in Kenya. This is the output of preliminary GIS analysis funded by the World Bank and undertaken in 2017.
@@ -130,7 +130,7 @@ layers:
       url: https://energydata.info/dataset/kenya-overview-of-off-grid-electricity-service-areas
   - id: grid-expansion
     name: Grid Expansion Projects
-    category: result
+    category: outcome
     disabled: true
     mbLayer: 11kv
     info: This dataset represents potential grid expansion projects identified through a least-cost geospatial analysis undertaken over the period 2017-2018.
@@ -139,7 +139,7 @@ layers:
       url: https://energydata.info/dataset/kenya-grid-expansion
   - id: minigrid-expansion
     name: Existing Mini-Grid Expansion Projects
-    category: result
+    category: outcome
     mbLayer: minigrid-existing
     visible: true
     info: Potential expansion projects for existing mini-grids; the expansion projects were identified through a least-cost geospatial analysis undertaken over the period 2017-2018.
@@ -148,7 +148,7 @@ layers:
       url: https://energydata.info/dataset/kenya-potential-expansion-of-existing-mini-grids
   - id: minigrid-new
     name: New Mini-Grid Projects
-    category: result
+    category: outcome
     mbLayer: minigrid-proposed
     visible: true
     info: Potential mini-grid projects; these projects were identified through a least-cost geospatial analysis undertaken over the period 2017-2018.
@@ -157,7 +157,7 @@ layers:
       url: https://energydata.info/dataset/kenya-potential-new-mini-grid-sites
   - id: wind
     name: Mean wind speed
-    category: contextual
+    category: input
     mbLayer: wind
     info: The mean wind speed is a measure of the wind resource. Higher mean wind speeds normally indicate better wind resources, but mean wind power density gives a more accurate indication of the available wind resource.
     source:

@@ -40,7 +40,7 @@ const studySchema = new Schema({
       name: { type: String, required: true },
       category: {
         type: String,
-        enum: ['contextual', 'result'],
+        enum: ['input', 'outcome'],
         required: true
       },
       visible: { type: Boolean },
