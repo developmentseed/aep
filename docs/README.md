@@ -53,7 +53,7 @@ The main information and metadata of each study is managed through a `yml` file,
 | layers[].legendData | `object` | Custom legend |
 | layers[].legendData.type | `enum` one of [`gradient`, `line`, `circle`, `symbol`] | Type of legend |
 | layers[].legendData.color | `string` | The color of the feature. Applies to `circle` and `line` |
-| layers[].legendData.dashed | `boolean` | The color of the feature. Applies to `line` |
+| layers[].legendData.dashed | `boolean` | Use a dashed line. Applies to `line` |
 | layers[].legendData.icon | `string` | The basename of the icon, without file extension. Applies to `symbol` |
 | layers[].legendData.min | `string` | Minimum value printed on the x-axis. Applies to `gradient` |
 | layers[].legendData.max | `string` | Maximum value printed on the x-axis. Applies to `gradient` 
