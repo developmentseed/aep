@@ -1,5 +1,5 @@
 import React from 'react';
-
+import T from 'prop-types';
 import { Button } from '@devseed-ui/button';
 import Dropdown, {
   DropTitle,
@@ -7,7 +7,11 @@ import Dropdown, {
   DropMenuItem
 } from '@devseed-ui/dropdown';
 
-function BurgerOptions() {
+import { Link } from '../styles/clean/link';
+
+function BurgerOptions(props) {
+  const { items } = props;
+
   return (
     <Dropdown
       alignment='right'
@@ -26,34 +30,27 @@ function BurgerOptions() {
     >
       <DropTitle>Browse</DropTitle>
       <DropMenu role='menu'>
-        <li>
-          <DropMenuItem href='#' title='View Item A'>
-            Item A
-          </DropMenuItem>
-        </li>
-        <li>
-          <DropMenuItem href='#' title='View Item B'>
-            Item B
-          </DropMenuItem>
-        </li>
-        <li>
-          <DropMenuItem href='#' title='View Item C'>
-            Item C
-          </DropMenuItem>
-        </li>
-        <li>
-          <DropMenuItem href='#' title='View Item D'>
-            Item D
-          </DropMenuItem>
-        </li>
-        <li>
-          <DropMenuItem href='#' title='View Item E'>
-            Item E
-          </DropMenuItem>
-        </li>
+        {items.map((l) => (
+          <li key={l.url}>
+            <DropMenuItem
+              as={Link}
+              activeClassName='active'
+              partiallyActive={l.partiallyActive}
+              to={l.url}
+              title={l.title}
+              data-dropdown='click.close'
+            >
+              {l.label}
+            </DropMenuItem>
+          </li>
+        ))}
       </DropMenu>
     </Dropdown>
   );
 }
+
+BurgerOptions.propTypes = {
+  items: T.array
+};
 
 export default BurgerOptions;

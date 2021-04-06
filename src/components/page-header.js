@@ -5,11 +5,11 @@ import { reveal } from '@devseed-ui/animation';
 import { Heading } from '@devseed-ui/typography';
 
 import { Button } from '../styles/button';
-import { filterComponentProps } from '../styles/utils/general';
-
+import { Link } from '../styles/clean/link';
 import BurgerOptions from './burger-options';
 import ShareOptions from './share-options';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+
+import useBreakpoints from '../utils/use-breakpoints';
 
 const PageHeaderSelf = styled.header`
   position: relative;
@@ -78,108 +78,72 @@ const GlobalMenu = styled.ul`
   }
 `;
 
-// See documentation of filterComponentProp as to why this is
-const propsToFilter = [
-  'variation',
-  'size',
-  'hideText',
-  'useIcon',
-  'active',
-  'visuallyDisabled'
+const pageMainNavLinks = [
+  {
+    url: '/',
+    title: 'Visit the home page',
+    label: 'Welcome'
+  },
+  {
+    url: '/studies',
+    partiallyActive: true,
+    title: 'View Studies page',
+    label: 'Studies'
+  },
+  {
+    url: '/support',
+    title: 'View Project Support page',
+    label: 'Support'
+  },
+  {
+    url: '/toolkit',
+    title: 'View Agricultural Toolkit page',
+    label: 'Toolkit'
+  },
+  {
+    url: '/about',
+    title: 'View About page',
+    label: 'About'
+  }
 ];
-const StyledNavLink = filterComponentProps(Link, propsToFilter);
 
 function PageHeader() {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  const { title } = data.site.siteMetadata;
+  const { mediumUp } = useBreakpoints();
 
   return (
     <PageHeaderSelf role='banner'>
       <PageHeadline>
         <PageTitle>
-          <Link to='/' title='Visit the home page' data-tip={title}>
+          <Link to='/' title='Visit the home page'>
             <span>AEP</span>
           </Link>
         </PageTitle>
       </PageHeadline>
       <PageNav role='navigation'>
         <GlobalMenu>
-          <li>
-            <Button
-              forwardedAs={StyledNavLink}
-              activeClassName='active'
-              to='/'
-              variation='achromic-plain'
-              title='Visit the home page'
-              data-tip={title}
-            >
-              Welcome
-            </Button>
-          </li>
-          <li>
-            <Button
-              forwardedAs={StyledNavLink}
-              activeClassName='active'
-              partiallyActive
-              to='/studies'
-              variation='achromic-plain'
-              data-tip='Studies'
-              title='View Studies page'
-            >
-              Studies
-            </Button>
-          </li>
-          <li>
-            <Button
-              forwardedAs={StyledNavLink}
-              activeClassName='active'
-              to='/support'
-              variation='achromic-plain'
-              data-tip='Project Support'
-              title='View Project Support page'
-            >
-              Support
-            </Button>
-          </li>
-          <li>
-            <Button
-              forwardedAs={StyledNavLink}
-              activeClassName='active'
-              to='/toolkit'
-              variation='achromic-plain'
-              data-tip='Agricultural Toolkit'
-              title='View Agricultural Toolkit page'
-            >
-              Toolkit
-            </Button>
-          </li>
-          <li>
-            <Button
-              forwardedAs={StyledNavLink}
-              activeClassName='active'
-              to='/about'
-              variation='achromic-plain'
-              data-tip='About'
-              title='View About page'
-            >
-              About
-            </Button>
-          </li>
+          {mediumUp &&
+            pageMainNavLinks.map((l) => (
+              <li key={l.url}>
+                <Button
+                  forwardedAs={Link}
+                  activeClassName='active'
+                  partiallyActive={l.partiallyActive}
+                  to={l.url}
+                  variation='achromic-plain'
+                  title={l.title}
+                >
+                  {l.label}
+                </Button>
+              </li>
+            ))}
           <li>
             <ShareOptions />
           </li>
-          <li>
-            <BurgerOptions />
-          </li>
+          {!mediumUp && (
+            <li>
+              <BurgerOptions items={pageMainNavLinks} />
+            </li>
+          )}
         </GlobalMenu>
       </PageNav>
     </PageHeaderSelf>
