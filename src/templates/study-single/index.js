@@ -190,7 +190,7 @@ function StudySingle({ data }) {
   return (
     <Layout title='Study'>
       <Inpage>
-        <InpageHeader>
+        <InpageHeader isSticky>
           <InpageHeadline>
             <InpageTitle>{title}</InpageTitle>
             <InpageSubtitle>
