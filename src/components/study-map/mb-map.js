@@ -1,7 +1,15 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useCallback
+} from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
+
+import Popover from './popover';
 
 import { diffArrayById } from '../../utils/array';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -55,6 +63,8 @@ export default function MbMap(props) {
 
   const mapContainer = useRef(null);
   const [theMap, setMap] = useState(null);
+  const [popoverCoords, setPopoverCoords] = useState(null);
+  const [popoverData, setPopoverData] = useState({});
 
   // Initialize map
   useEffect(() => {
@@ -101,12 +111,73 @@ export default function MbMap(props) {
     };
   }, [bbox, basemap, zoomExtent, icons]);
 
+  // Popover click listener and move listener to set the cursor.
+  useEffect(() => {
+    if (!theMap) return;
+
+    // Map.reduce on layers.
+    const visibleLayers = layersState.reduce(
+      (acc, l) => (l.visible ? acc.concat(l.mbLayer) : acc),
+      []
+    );
+
+    const clickListener = (e) => {
+      // Set bbox as 5px rectangle area around clicked point.
+      const bbox = [
+        [e.point.x - 5, e.point.y - 5],
+        [e.point.x + 5, e.point.y + 5]
+      ];
+
+      const [feature] = theMap.queryRenderedFeatures(bbox, {
+        layers: visibleLayers
+      });
+
+      if (feature) {
+        const panelLayer = layersState.find(
+          (l) => l.mbLayer === feature.layer.id
+        );
+        if (panelLayer) {
+          setPopoverData({
+            title: panelLayer.name,
+            properties: feature.properties
+          });
+          setPopoverCoords([e.lngLat.lng, e.lngLat.lat]);
+        }
+      }
+    };
+
+    const mouseMoveListener = (e) => {
+      const features = theMap.queryRenderedFeatures(e.point, {
+        layers: visibleLayers
+      });
+      theMap.getCanvas().style.cursor = features.length ? 'pointer' : '';
+    };
+
+    theMap.on('click', clickListener);
+    theMap.on('mousemove', mouseMoveListener);
+
+    return () => {
+      theMap.off('click', clickListener);
+      theMap.off('mousemove', mouseMoveListener);
+    };
+  }, [theMap, layersState]);
+
   useSources(theMap, mapSources);
   useLayers(theMap, mapLayers, topLayer);
 
   useLayersState(theMap, mapLayers, layersState);
 
-  return <MapContainer ref={mapContainer} />;
+  return (
+    <React.Fragment>
+      <MapContainer ref={mapContainer} />
+      <Popover
+        mbMap={theMap}
+        lngLat={popoverCoords}
+        onClose={useCallback(() => setPopoverCoords(null), [])}
+        data={popoverData}
+      />
+    </React.Fragment>
+  );
 }
 
 MbMap.propTypes = {
