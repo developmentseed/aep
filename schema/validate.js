@@ -34,6 +34,20 @@ const studySchema = new Schema({
     title: { type: String },
     url: { type: String }
   },
+  charts: [
+    {
+      name: { type: String },
+      type: { type: String, enum: ['donut', 'number']},
+      value: { type: Number },
+      unit: { type: String },
+      data: [
+        {
+          name: { type: String },
+          value: { type: Number, required: true }
+        }
+      ]
+    }
+  ],
   layers: [
     {
       id: { type: String, required: true },
