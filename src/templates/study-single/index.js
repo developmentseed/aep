@@ -259,6 +259,7 @@ export const pageQuery = graphql`
         name
         type
         data
+        datum
       }
       layers {
         id

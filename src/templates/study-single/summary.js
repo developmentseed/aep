@@ -206,7 +206,7 @@ DonutChart.propTypes = {
 function NumberChart(props) {
   const {
     name,
-    data: { value, unit }
+    datum: { value, unit }
   } = props;
 
   return (
@@ -219,7 +219,7 @@ function NumberChart(props) {
 
 NumberChart.propTypes = {
   name: T.string,
-  data: T.shape({
+  datum: T.shape({
     value: T.number,
     unit: T.string
   })

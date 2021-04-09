@@ -33,17 +33,17 @@ charts:
         value: 600
   - name: Total lengh of T&D
     type: number
-    data: 
+    datum: 
       value: 60
       unit: km
   - name: Mini-grids
     type: number
-    data: 
+    datum: 
       value: 65
       unit:
   - name: Stand-alone systems
     type: number
-    data: 
+    datum: 
       value: 3000
       unit:
 platform:
