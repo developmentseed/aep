@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { glsp, themeVal } from '@devseed-ui/theme-provider';
+import { glsp, multiply, themeVal } from '@devseed-ui/theme-provider';
 import { Heading, headingAlt } from '@devseed-ui/typography';
 
 export const POPOVER_SHOW_HIDE_ANIM_TIME = 240;
@@ -120,7 +120,7 @@ export const Popover = styled.article`
 `;
 
 export const PopoverContents = styled.div`
-  border-radius: ${themeVal('shape.rounded')};
+  border-radius: ${multiply(themeVal('shape.rounded'), 2)};
   background: ${themeVal('color.surface')};
   box-shadow: ${themeVal('boxShadow.elevationD')};
   transform: scale(1);

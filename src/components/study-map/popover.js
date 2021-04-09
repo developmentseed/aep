@@ -8,7 +8,7 @@ import ShadowScrollbar from '@devseed-ui/shadow-scrollbar';
 import MBPopover from '../mb-popover';
 
 const WideMBPopover = styled(MBPopover)`
-  width: 20rem;
+  width: 18rem;
 `;
 
 const ShadowScrollbarPopover = styled(ShadowScrollbar)`
@@ -17,6 +17,7 @@ const ShadowScrollbarPopover = styled(ShadowScrollbar)`
 
 const PopoverBody = styled.div`
   background: transparent;
+  padding-bottom: ${glsp(themeVal('layout.gap.xsmall'))};
 `;
 
 const PopoverBodyInner = styled.div`
@@ -26,7 +27,7 @@ const PopoverBodyInner = styled.div`
   padding: ${glsp(
     0.75,
     themeVal('layout.gap.xsmall'),
-    0.75,
+    0,
     themeVal('layout.gap.xsmall')
   )};
   font-size: 0.875rem;
