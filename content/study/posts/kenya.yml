@@ -33,16 +33,19 @@ charts:
         value: 600
   - name: Total lengh of T&D
     type: number
-    value: 60
-    unit: km
+    data: 
+      value: 60
+      unit: km
   - name: Mini-grids
     type: number
-    value: 65
-    unit:
+    data: 
+      value: 65
+      unit:
   - name: Stand-alone systems
     type: number
-    value: 3000
-    unit:
+    data: 
+      value: 3000
+      unit:
 platform:
   title: Kenya Energy Planning
   url: https://kenya-energy-planning-geowb.hub.arcgis.com/
