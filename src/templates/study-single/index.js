@@ -255,6 +255,11 @@ export const pageQuery = graphql`
         title
         url
       }
+      charts {
+        name
+        type
+        data
+      }
       layers {
         id
         name
