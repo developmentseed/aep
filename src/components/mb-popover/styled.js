@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { themeVal, glsp } from '@devseed-ui/theme-provider';
-import { headingAlt } from '@devseed-ui/typography';
+import { glsp, themeVal } from '@devseed-ui/theme-provider';
+import { Heading, headingAlt } from '@devseed-ui/typography';
 
 export const POPOVER_SHOW_HIDE_ANIM_TIME = 240;
 
@@ -122,9 +122,7 @@ export const Popover = styled.article`
 export const PopoverContents = styled.div`
   border-radius: ${themeVal('shape.rounded')};
   background: ${themeVal('color.surface')};
-  box-shadow: 0 0 32px 2px ${themeVal('color.baseAlphaA')},
-    0 16px 48px -16px ${themeVal('color.baseAlphaB')};
-  padding: ${glsp()};
+  box-shadow: ${themeVal('boxShadow.elevationD')};
   transform: scale(1);
   transform-origin: center
     ${({ verticalAttachment: va }) => (va === 'top' ? 'top' : 'bottom')};
@@ -167,21 +165,43 @@ export const PopoverContents = styled.div`
 `;
 
 export const PopoverHeader = styled.header`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-start;
-  margin-bottom: ${glsp()};
+  position: relative;
+  z-index: 9999;
+  display: grid;
+  grid-auto-columns: 1fr min-content;
+  grid-gap: ${glsp(0.5, 1)};
+  padding: ${glsp(0.75, themeVal('layout.gap.xsmall'))};
+  align-items: start;
+
+  &::before {
+    position: absolute;
+    top: 100%;
+    left: ${glsp(themeVal('layout.gap.xsmall'))};
+    right: 0;
+    content: '';
+    pointer-events: none;
+    height: 1px;
+    background: ${themeVal('color.baseAlphaC')};
+  }
 `;
 
 export const PopoverHeadline = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
+  grid-row: 1;
+  min-width: 0px;
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  grid-gap: 0.5rem;
 
-  h1 {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    margin: 0;
+  > * {
+    grid-row: 1;
   }
+`;
+
+export const PopoverTitle = styled(Heading)`
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
 `;
 
 export const PopoverSubtitle = styled.p`
@@ -190,18 +210,27 @@ export const PopoverSubtitle = styled.p`
 `;
 
 export const PopoverToolbar = styled.div`
-  margin-left: auto;
-  display: flex;
-  align-items: flex-start;
-  padding: ${glsp(1 / 8, 0, 1 / 8, 1)};
+  grid-row: 1;
+  display: grid;
+  grid-gap: ${glsp(0.25)};
+
+  > * {
+    grid-row: 1;
+  }
 `;
 
 export const PopoverBody = styled.div`
-  margin-bottom: ${glsp()};
-
-  > *:not(:last-child) {
-    margin-bottom: ${glsp()};
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: ${glsp(0.75)};
+  padding: ${glsp(
+    0.75,
+    themeVal('layout.gap.xsmall'),
+    0.75,
+    themeVal('layout.gap.xsmall')
+  )};
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 `;
 
 export const PopoverFooter = styled.footer`

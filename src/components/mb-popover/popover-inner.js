@@ -9,6 +9,7 @@ import {
   PopoverContents,
   PopoverHeader,
   PopoverHeadline,
+  PopoverTitle,
   PopoverSubtitle,
   PopoverToolbar,
   PopoverBody,
@@ -178,7 +179,7 @@ export default function MBPopoverInner(props) {
               <PopoverHeader>
                 <Try fn={renderHeadline} close={destroy}>
                   <PopoverHeadline>
-                    <h1>{title}</h1>
+                    <PopoverTitle>{title}</PopoverTitle>
                     {(subtitle || suptitle) && (
                       <PopoverSubtitle isSup={!subtitle}>
                         {subtitle || suptitle}
