@@ -7,6 +7,7 @@ import styled, { css } from 'styled-components';
 import useQsStateCreator from 'qs-state-hook';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
+import collecticon from '@devseed-ui/collecticons';
 
 import Layout from '../../components/layout';
 import {
@@ -33,6 +34,18 @@ const propsToFilter = [
   'visuallyDisabled'
 ];
 const StyledLink = filterComponentProps(Link, propsToFilter);
+
+const LinkToHub = styled(Link)`
+  position: relative;
+
+  &::before {
+    ${collecticon('chevron-left--small')};
+    position: absolute;
+    left: 0;
+    transform: translate(calc((100% + ${glsp(0.25)}) * -1), 0);
+    display: none;
+  }
+`;
 
 const ViewMenu = styled.ul`
   display: inline-grid;
@@ -181,9 +194,9 @@ function StudySingle({ data }) {
           <InpageHeadline>
             <InpageTitle>{title}</InpageTitle>
             <InpageSubtitle>
-              <Link to='/studies' title='View all studies'>
+              <LinkToHub to='/studies' title='View all studies'>
                 Study
-              </Link>
+              </LinkToHub>
             </InpageSubtitle>
           </InpageHeadline>
           <InpageActions as='nav' role='navigation'>

@@ -76,7 +76,9 @@ export const InpageSubtitle = styled.p`
 
   a,
   a:visited {
-    display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
     color: inherit;
   }
 
