@@ -74,6 +74,11 @@ const IntroTitle = styled(Heading)`
   line-height: 2.5rem;
   margin: 0;
 
+  ${media.smallUp`
+    font-size: 2.5rem;
+    line-height: 3rem;
+  `}
+
   ${media.mediumUp`
     font-size: 3rem;
     line-height: 3.5rem;
