@@ -21,6 +21,9 @@ const DonutChartWrapper = styled.div`
 
     & > g > g:nth-child(2) text {
       font-weight: ${themeVal('type.base.bold')};
+      fill: ${themeVal('type.base.color')} !important;
+      text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+        1px 1px 0 white;
     }
   }
 `;
@@ -195,6 +198,7 @@ const DonutTotal = ({ dataWithArc, centerX, centerY }) => {
       textAnchor='middle'
       dominantBaseline='central'
       fontWeight={theme.type.base.bold}
+      fill={theme.type.base.color}
     >
       {total}
     </text>
