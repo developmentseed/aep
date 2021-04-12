@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { Heading } from '@devseed-ui/typography';
@@ -9,16 +9,24 @@ export const Panel = styled.section`
   z-index: 30;
   display: flex;
   flex-flow: column nowrap;
-  width: 18rem;
+  max-width: 0;
+  width: 100vw;
   box-shadow: ${themeVal('boxShadow.elevationD')};
+  transition: max-width 0.16s ease 0s;
 
-  ${media.mediumUp`
-    width: 20rem;
-  `}
+  ${({ revealed }) =>
+    revealed &&
+    css`
+      max-width: 100vw;
 
-  ${media.xlargeUp`
-    width: 22rem;
-  `}
+      ${media.mediumUp`
+        max-width: 20rem;
+      `}
+
+      ${media.xlargeUp`
+        max-width: 22rem;
+      `}
+    `}
 `;
 
 export const PanelHeader = styled.header`
@@ -29,7 +37,9 @@ export const PanelHeader = styled.header`
   `}
 `;
 
-export const PanelTitle = styled(Heading)``;
+export const PanelTitle = styled(Heading)`
+  /* No styled applied */
+`;
 
 export const PanelBody = styled.div`
   display: flex;
@@ -51,7 +61,9 @@ export const PanelSectionHeader = styled.header`
   `}
 `;
 
-export const PanelSectionHeadline = styled.div``;
+export const PanelSectionHeadline = styled.div`
+  /* No styled applied */
+`;
 
 export const PanelSectionTitle = styled(Heading)`
   font-size: 1rem;

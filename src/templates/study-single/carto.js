@@ -1,8 +1,14 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import T from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { visuallyHidden } from '@devseed-ui/theme-provider';
+import {
+  visuallyHidden,
+  glsp,
+  themeVal,
+  media
+} from '@devseed-ui/theme-provider';
+import { Button } from '@devseed-ui/button';
 
 import {
   Panel,
@@ -31,6 +37,25 @@ const Carto = styled.div`
 
 const CartoPanelHeader = styled(PanelHeader)`
   ${visuallyHidden()}
+`;
+
+const PanelOffsetActions = styled.div`
+  position: absolute;
+  top: ${glsp(0.5)};
+  border-radius: ${themeVal('shape.rounded')};
+  transform: translate(0, 0);
+  z-index: 120;
+
+  left: calc(100% + ${glsp(0.5)}); /* stylelint-disable-line */
+
+  ${media.mediumDown`
+    ${({ revealed }) =>
+      revealed &&
+      css`
+        left: calc(100% - ${glsp(0.5)});
+        transform: translate(-100%, 0);
+      `}
+  `}
 `;
 
 const castArray = (l) => (Array.isArray(l) ? l : [l]);
@@ -128,9 +153,29 @@ function StudySingleCarto(props) {
     }, {});
   }, [mapConfig, panelLayers]);
 
+  const panelRef = useRef(null);
+  const mbMapRef = useRef(null);
+  // Panel revealed.
+  const [isPanelRevealed, setPanelRevealed] = useState(true);
+
+  // Setup listener to resize the map when the panel transition finishes.
+  useEffect(() => {
+    const panel = panelRef.current;
+    const listener = (e) => {
+      if (e.propertyName === 'max-width') {
+        mbMapRef.current.resize();
+      }
+    };
+
+    panel.addEventListener('transitionend', listener);
+    return () => {
+      panel.removeEventListener('transitionend', listener);
+    };
+  }, []);
+
   return (
     <Carto>
-      <Panel>
+      <Panel ref={panelRef} revealed={isPanelRevealed}>
         <CartoPanelHeader>
           <PanelTitle>Study panel</PanelTitle>
         </CartoPanelHeader>
@@ -140,6 +185,19 @@ function StudySingleCarto(props) {
               <PanelSectionHeadline>
                 <PanelSectionTitle>Data layers</PanelSectionTitle>
               </PanelSectionHeadline>
+              <PanelOffsetActions revealed={isPanelRevealed}>
+                <Button
+                  variation='base-plain'
+                  useIcon={
+                    isPanelRevealed ? 'shrink-to-left' : 'expand-from-left'
+                  }
+                  title='Show/hide prime panel'
+                  hideText
+                  onClick={() => setPanelRevealed((v) => !v)}
+                >
+                  <span>Prime panel</span>
+                </Button>
+              </PanelOffsetActions>
             </PanelSectionHeader>
             <PanelSectionBody>
               <PanelLayersGroup
@@ -157,6 +215,7 @@ function StudySingleCarto(props) {
         </PanelBody>
       </Panel>
       <MbMap
+        ref={mbMapRef}
         token={mbToken}
         basemap={basemap}
         topLayer={topLayer}
