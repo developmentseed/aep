@@ -36,6 +36,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         name: String
         type: String
         data: JSON
+        datum: JSON
       }
 
       type Platform {
