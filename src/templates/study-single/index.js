@@ -268,6 +268,12 @@ export const pageQuery = graphql`
         title
         url
       }
+      charts {
+        name
+        type
+        data
+        datum
+      }
       layers {
         id
         name

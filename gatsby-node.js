@@ -32,6 +32,13 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         legendData: LayerLegend
       }
 
+      type ChartDefinition {
+        name: String
+        type: String
+        data: JSON
+        datum: JSON
+      }
+
       type Platform {
         title: String
         url: String
@@ -54,6 +61,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         platform: 'Platform',
         study: 'StudyInfo',
         layers: '[PanelLayer]',
+        charts: '[ChartDefinition]',
         mapConfig: {
           type: 'JSON',
           resolve: async (source, args, context) => {
