@@ -3,7 +3,9 @@ import React, {
   useMemo,
   useRef,
   useState,
-  useCallback
+  useCallback,
+  forwardRef,
+  useImperativeHandle
 } from 'react';
 import T from 'prop-types';
 import styled from 'styled-components';
@@ -22,7 +24,7 @@ const MapContainer = styled.div`
   height: 100%;
 `;
 
-export default function MbMap(props) {
+function MbMapBase(props, ref) {
   const {
     token,
     basemap,
@@ -66,6 +68,13 @@ export default function MbMap(props) {
   const [popoverCoords, setPopoverCoords] = useState(null);
   const [popoverData, setPopoverData] = useState({});
 
+  // Expose resize method.
+  useImperativeHandle(ref, () => ({
+    resize: () => {
+      theMap && theMap.resize();
+    }
+  }));
+
   // Initialize map
   useEffect(() => {
     const mbMap = new mapboxgl.Map({
@@ -88,7 +97,7 @@ export default function MbMap(props) {
       mbMap.touchZoomRotate.disableRotation();
 
       // Add zoom controls.
-      mbMap.addControl(new mapboxgl.NavigationControl(), 'top-left');
+      mbMap.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
 
       // Remove compass.
       document.querySelector('.mapboxgl-ctrl .mapboxgl-ctrl-compass').remove();
@@ -180,7 +189,9 @@ export default function MbMap(props) {
   );
 }
 
-MbMap.propTypes = {
+const MbMap = forwardRef(MbMapBase);
+
+MbMapBase.propTypes = {
   token: T.string,
   basemap: T.string,
   topLayer: T.string,
@@ -189,6 +200,8 @@ MbMap.propTypes = {
   zoomExtent: T.array,
   layersState: T.array
 };
+
+export default MbMap;
 
 const useSources = (theMap, sources) => {
   const currentSources = useRef([]);

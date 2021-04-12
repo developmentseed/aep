@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { Heading } from '@devseed-ui/typography';
@@ -9,16 +9,20 @@ export const Panel = styled.section`
   z-index: 30;
   display: flex;
   flex-flow: column nowrap;
-  width: 18rem;
+  max-width: 0;
+  width: 100vw;
   box-shadow: ${themeVal('boxShadow.elevationD')};
+  transition: max-width 0.16s ease 0s;
 
-  ${media.mediumUp`
-    width: 20rem;
-  `}
+  ${({ revealed }) =>
+    revealed &&
+    css`
+      max-width: 20rem;
 
-  ${media.xlargeUp`
-    width: 22rem;
-  `}
+      ${media.xlargeUp`
+        max-width: 22rem;
+      `}
+    `}
 `;
 
 export const PanelHeader = styled.header`
@@ -29,7 +33,9 @@ export const PanelHeader = styled.header`
   `}
 `;
 
-export const PanelTitle = styled(Heading)``;
+export const PanelTitle = styled(Heading)`
+  /* No styled applied */
+`;
 
 export const PanelBody = styled.div`
   display: flex;
@@ -44,6 +50,9 @@ export const PanelSection = styled.section`
 `;
 
 export const PanelSectionHeader = styled.header`
+  display: grid;
+  grid-auto-columns: 1fr min-content;
+  grid-gap: ${glsp(0.5, 1)};
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
@@ -51,7 +60,9 @@ export const PanelSectionHeader = styled.header`
   `}
 `;
 
-export const PanelSectionHeadline = styled.div``;
+export const PanelSectionHeadline = styled.div`
+  overflow: hidden;
+`;
 
 export const PanelSectionTitle = styled(Heading)`
   font-size: 1rem;
@@ -110,6 +121,7 @@ export const PanelGroupTitle = styled.p`
   font-size: 0.875rem;
   line-height: 1rem;
   margin: 0;
+  overflow: hidden;
 `;
 
 export const PanelGroupBody = styled.div`
