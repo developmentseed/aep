@@ -1,13 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import T from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
-import {
-  visuallyHidden,
-  glsp,
-  themeVal,
-  media
-} from '@devseed-ui/theme-provider';
+import { visuallyHidden, glsp, themeVal } from '@devseed-ui/theme-provider';
 import { Button } from '@devseed-ui/button';
 
 import {
@@ -104,6 +99,8 @@ function StudySingleCarto(props) {
     onAction
   } = props;
 
+  const theme = useTheme();
+
   // Group panel layers by their category and get the config for each map layer
   // being controlled. This is needed to construct the legend.
   const {
@@ -146,7 +143,7 @@ function StudySingleCarto(props) {
   const panelRef = useRef(null);
   const mbMapRef = useRef(null);
   // Panel revealed.
-  const [isPanelRevealed, setPanelRevealed] = useState(true);
+  const [isPanelRevealed, setPanelRevealed] = useState(false);
 
   // Setup listener to resize the map when the panel transition finishes.
   useEffect(() => {
@@ -162,6 +159,22 @@ function StudySingleCarto(props) {
       panel.removeEventListener('transitionend', listener);
     };
   }, []);
+
+  // Setup listener to close/open panel on media query.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const listener = () => {
+      setPanelRevealed(window.innerWidth >= theme.mediaRanges.medium[0]);
+    };
+
+    window.addEventListener('resize', listener);
+    listener();
+
+    return () => {
+      window.removeEventListener('resize', listener);
+    };
+  }, [theme]);
 
   return (
     <Carto>
