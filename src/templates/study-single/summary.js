@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import T from 'prop-types';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { ResponsivePie } from '@nivo/pie';
 
 import { themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
@@ -10,9 +10,19 @@ import { ContentBlock, Aside } from '../../styles/content-block';
 import Prose from '../../styles/typography/prose';
 import DetailsList from '../../styles/typography/details-list';
 
-const ChartWrapper = styled.div`
+const DonutChartWrapper = styled.div`
   max-width: 20rem;
   height: 15rem;
+
+  svg {
+    * {
+      font-family: inherit !important;
+    }
+
+    & > g > g:nth-child(2) text {
+      font-weight: ${themeVal('type.base.bold')};
+    }
+  }
 `;
 
 const NumberChartSelf = styled.p`
@@ -175,6 +185,7 @@ function renderChartType(chart) {
 }
 
 const DonutTotal = ({ dataWithArc, centerX, centerY }) => {
+  const theme = useTheme();
   const total = dataWithArc.reduce((acc, datum) => acc + datum.value, 0);
 
   return (
@@ -183,6 +194,7 @@ const DonutTotal = ({ dataWithArc, centerX, centerY }) => {
       y={centerY}
       textAnchor='middle'
       dominantBaseline='central'
+      fontWeight={theme.type.base.bold}
     >
       {total}
     </text>
@@ -210,13 +222,13 @@ function DonutChart(props) {
   return (
     <React.Fragment>
       <h4>{name}</h4>
-      <ChartWrapper>
+      <DonutChartWrapper>
         <ResponsivePie
           {...pieChartConfig}
           data={dataWithLabel}
           layers={['slices', 'sliceLabels', 'legends', DonutTotal]}
         />
-      </ChartWrapper>
+      </DonutChartWrapper>
     </React.Fragment>
   );
 }
