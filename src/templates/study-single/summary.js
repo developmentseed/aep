@@ -3,6 +3,9 @@ import T from 'prop-types';
 import styled from 'styled-components';
 import { ResponsivePie } from '@nivo/pie';
 
+import { themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
+import { headingAlt } from '@devseed-ui/typography';
+
 import { ContentBlock, Aside } from '../../styles/content-block';
 import Prose from '../../styles/typography/prose';
 import DetailsList from '../../styles/typography/details-list';
@@ -10,6 +13,26 @@ import DetailsList from '../../styles/typography/details-list';
 const ChartWrapper = styled.div`
   max-width: 20rem;
   height: 15rem;
+`;
+
+const NumberChartSelf = styled.p`
+  display: grid;
+`;
+
+const NumberChartLabel = styled.em`
+  grid-row: 2;
+  ${headingAlt()}
+  font-style: normal;
+
+  span {
+    ${visuallyHidden()}
+  }
+`;
+
+const NumberChartValue = styled.strong`
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: ${themeVal('type.base.bold')};
 `;
 
 const pieChartConfig = {
@@ -186,7 +209,7 @@ function DonutChart(props) {
 
   return (
     <React.Fragment>
-      <p>{name}</p>
+      <h4>{name}</h4>
       <ChartWrapper>
         <ResponsivePie
           {...pieChartConfig}
@@ -210,10 +233,15 @@ function NumberChart(props) {
   } = props;
 
   return (
-    <p>
-      {name}: {value}
-      {unit}
-    </p>
+    <NumberChartSelf>
+      <NumberChartLabel>
+        {name}
+        <span>:</span>
+      </NumberChartLabel>
+      <NumberChartValue>
+        {value} {unit}
+      </NumberChartValue>
+    </NumberChartSelf>
   );
 }
 
