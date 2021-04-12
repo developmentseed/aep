@@ -97,7 +97,7 @@ function MbMapBase(props, ref) {
       mbMap.touchZoomRotate.disableRotation();
 
       // Add zoom controls.
-      mbMap.addControl(new mapboxgl.NavigationControl(), 'top-right');
+      mbMap.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
 
       // Remove compass.
       document.querySelector('.mapboxgl-ctrl .mapboxgl-ctrl-compass').remove();

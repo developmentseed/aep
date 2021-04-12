@@ -42,20 +42,10 @@ const CartoPanelHeader = styled(PanelHeader)`
 const PanelOffsetActions = styled.div`
   position: absolute;
   top: ${glsp(0.5)};
+  left: calc(100% + ${glsp(0.5)});
   border-radius: ${themeVal('shape.rounded')};
   transform: translate(0, 0);
   z-index: 120;
-
-  left: calc(100% + ${glsp(0.5)}); /* stylelint-disable-line */
-
-  ${media.mediumDown`
-    ${({ revealed }) =>
-      revealed &&
-      css`
-        left: calc(100% - ${glsp(0.5)});
-        transform: translate(-100%, 0);
-      `}
-  `}
 `;
 
 const castArray = (l) => (Array.isArray(l) ? l : [l]);
@@ -187,7 +177,7 @@ function StudySingleCarto(props) {
               </PanelSectionHeadline>
               <PanelOffsetActions revealed={isPanelRevealed}>
                 <Button
-                  variation='base-plain'
+                  variation='base-raised-light'
                   useIcon={
                     isPanelRevealed ? 'shrink-to-left' : 'expand-from-left'
                   }

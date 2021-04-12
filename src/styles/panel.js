@@ -17,11 +17,7 @@ export const Panel = styled.section`
   ${({ revealed }) =>
     revealed &&
     css`
-      max-width: 100vw;
-
-      ${media.mediumUp`
-        max-width: 20rem;
-      `}
+      max-width: 20rem;
 
       ${media.xlargeUp`
         max-width: 22rem;
@@ -54,6 +50,9 @@ export const PanelSection = styled.section`
 `;
 
 export const PanelSectionHeader = styled.header`
+  display: grid;
+  grid-auto-columns: 1fr min-content;
+  grid-gap: ${glsp(0.5, 1)};
   padding: ${glsp(0.5, themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
@@ -62,7 +61,7 @@ export const PanelSectionHeader = styled.header`
 `;
 
 export const PanelSectionHeadline = styled.div`
-  /* No styled applied */
+  overflow: hidden;
 `;
 
 export const PanelSectionTitle = styled(Heading)`
@@ -122,6 +121,7 @@ export const PanelGroupTitle = styled.p`
   font-size: 0.875rem;
   line-height: 1rem;
   margin: 0;
+  overflow: hidden;
 `;
 
 export const PanelGroupBody = styled.div`
