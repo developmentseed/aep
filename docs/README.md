@@ -1,17 +1,3 @@
-# Managing studies
-
-* [Anatomy of a study](#anatomy-of-a-study)
-  * [Study configuration](#study-configuration)
-  * [Map configuration](#map-configuration)
-  * [Validating configuration](#validating-configuration)
-* [Howto](#hotwo)
-  * [Add a new study](#add-a-new-study)
-  * [Add a layer](#add-a-layer)
-* [AEP Map Style](#aep-map-style)
-  * [Default styles](#default-styles)
-  * [Custom markers](#custom-markers)
-* [Troubleshooting](#troubleshooting)
-
 # Anatomy of a study
 The study configuration consists of two files:
 
@@ -174,6 +160,51 @@ New icons can be added to [`/content/icons`](/content/icons). They should be in 
 
 [To top](#managing-studies)
 
+# Charts
+The charts on the Summary page are configured and managed through the `yml` file with study configuration. They are included on the right side of the summary page and ordered using the order in the study configuration file.
+
+## Donut
+The donut has a chart title (`name`) and a data array that consists of entries with a `name` and `value`.
+
+![](media/donut.png)
+
+Configuration:
+
+```yml
+charts:
+  - name: Modelled Electricity demand (GWh/year)
+    type: donut
+    data:
+      - name: Residential
+        value: 90
+      - name: Social (HF, EF, public)
+        value: 60
+      - name: Commercial
+        value: 60
+      - name: Productive
+        value: 60
+      - name: Other
+        value: 30
+```
+
+## Big number
+The big number consists of a title (`name`), a `value` and an optional `unit`.
+
+![](media/big-number.png)
+_Big number with and without the `unit`_
+
+Configuration:
+
+```yml
+charts:
+  - name: Total lengh of T&D
+    type: number
+    datum:
+      value: 60
+      unit: km
+```
+
+[To top](#managing-studies)
 
 # Legends
 Broadly speaking, AEP supports two types of legends: symbology for features on the map like circles and lines and gradient legends for raster data like the Global Wind Atlas.
@@ -222,6 +253,11 @@ legendData:
 ```
 
 [To top](#managing-studies)
+
+# Popups
+The popups in the application show all the attributes that are available in the source data. To adjust the label or the value, you can update the original GeoJSON or Vector Tiles.
+
+![](media/popup.png)
 
 # Troubleshooting
 ## Map shows an unexpected layer
