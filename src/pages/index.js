@@ -155,8 +155,10 @@ const CreditsList = styled.dl`
   }
 
   img {
-    display: block;
-    width: 100%;
+    vertical-align: top;
+    display: inline-flex;
+    width: auto;
+    max-width: 100%;
     max-height: 2rem;
 
     ${media.mediumUp`
