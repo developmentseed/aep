@@ -34,6 +34,22 @@ const studySchema = new Schema({
     title: { type: String },
     url: { type: String }
   },
+  charts: [
+    {
+      name: { type: String },
+      type: { type: String, enum: ['donut', 'number'] },
+      datum: {
+        value: { type: Number },
+        unit: { type: String }
+      },
+      data: [
+        {
+          name: { type: String },
+          value: { type: Number, required: true }
+        }
+      ]
+    }
+  ],
   layers: [
     {
       id: { type: String, required: true },
@@ -111,7 +127,7 @@ function printResult(fn, fileErrors) {
     console.log('\nValidating YML\n===');
     ymlFiles.forEach((fn) => {
       const fileContent = yml.load(fs.readFileSync(fn));
-      const fileErrors = studySchema.validate(fileContent);
+      const fileErrors = studySchema.validate(fileContent, { strip: false });
 
       if (fileErrors.length) {
         errors = true;
@@ -123,6 +139,7 @@ function printResult(fn, fileErrors) {
     if (errors) throw new Error();
     process.exit(0);
   } catch (error) {
+    console.log(error);
     process.exit(1);
   }
 })();

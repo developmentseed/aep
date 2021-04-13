@@ -35,6 +35,7 @@ export default function theme(uiTheme) {
         }
       },
       layout: {
+        min: '368px',
         // The gap is defined as a multiplier of the layout.space
         // The elements that use the gap should use it as a parameter for the glsp function
         gap: {

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { glsp, media, truncated, themeVal } from '@devseed-ui/theme-provider';
 import { reveal } from '@devseed-ui/animation';
@@ -22,23 +22,22 @@ export const InpageHeader = styled.header`
   color: #fff;
   box-shadow: ${themeVal('boxShadow.elevationD')};
   clip-path: polygon(0 0, 100% 0, 100% 200%, 0% 200%);
-  padding: ${glsp(
-    0,
-    themeVal('layout.gap.xsmall'),
-    0.75,
-    themeVal('layout.gap.xsmall')
-  )};
+  padding: ${glsp(0.75, themeVal('layout.gap.xsmall'))};
+  margin-top: -0.75rem;
   animation: ${reveal} 0.32s ease 0s 1;
 
   ${media.mediumUp`
     grid-gap: ${glsp(0, themeVal('layout.gap.medium'))};
-    padding: ${glsp(
-      0,
-      themeVal('layout.gap.medium'),
-      1,
-      themeVal('layout.gap.medium')
-    )};
+    padding: ${glsp(1, themeVal('layout.gap.medium'))};
+    margin-top: -1rem;
   `}
+
+  ${({ isSticky }) =>
+    isSticky &&
+    css`
+      position: sticky;
+      top: 0;
+    `}
 `;
 
 export const InpageHeadline = styled.div`
@@ -76,7 +75,9 @@ export const InpageSubtitle = styled.p`
 
   a,
   a:visited {
-    display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
     color: inherit;
   }
 

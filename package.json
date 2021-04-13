@@ -1,6 +1,6 @@
 {
   "name": "aep-frontend",
-  "version": "1.0.0",
+  "version": "0.4.0",
   "description": "Africa Electrification Platform",
   "repository": {
     "type": "git",
@@ -61,6 +61,9 @@
     "@devseed-ui/theme-provider": "^3.0.0",
     "@devseed-ui/toolbar": "^2.0.1",
     "@devseed-ui/typography": "^1.0.0",
+    "@nivo/core": "^0.67.0",
+    "@nivo/pie": "^0.67.0",
+    "babel-plugin-styled-components": "^1.12.0",
     "clipboard": "^2.0.8",
     "deepmerge": "^4.2.2",
     "element-resize-event": "^3.0.3",

@@ -8,6 +8,44 @@ study:
   period: 2017-2018
   scope: National Least-cost geospatial plan identifying least-cost supply solutions and investment requirements to achieve universal electricity access by 2022 and maintain through 2027.
   summary: The geospatial electrification planning platform populated with the latest available census data, satellite imagery, consumption estimates as well as capital and operating cost data was used to evaluate expansion options.  The data used for this report was collected/provided in 2016 and projected over succeeding years to evaluate connection expansion by  technology including expansion of medium voltage service (grid expansion); connection of consumers in close proximity to existing KPLC service (grid densification/intensification); expansion of mini-grid service; and off-grid stand-alone solar home system service. For the target year 2022, the geospatial planning projects indicate that the following connection thresholds can be met.
+charts:
+  - name: Modelled Electricity demand (GWh/year)
+    type: donut
+    data:
+      - name: Residential
+        value: 90
+      - name: Social (HF, EF, public)
+        value: 60
+      - name: Commercial
+        value: 60
+      - name: Productive
+        value: 60
+      - name: Other
+        value: 30
+  - name: Total additional capacity (MW)
+    type: donut
+    data:
+      - name: Grid
+        value: 1500
+      - name: Mini-grid
+        value: 150
+      - name: Stand-alone
+        value: 600
+  - name: Total lengh of T&D
+    type: number
+    datum: 
+      value: 60
+      unit: km
+  - name: Mini-grids
+    type: number
+    datum: 
+      value: 65
+      unit:
+  - name: Stand-alone systems
+    type: number
+    datum: 
+      value: 3000
+      unit:
 platform:
   title: Kenya Energy Planning
   url: https://kenya-energy-planning-geowb.hub.arcgis.com/
