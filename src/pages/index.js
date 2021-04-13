@@ -7,8 +7,9 @@ import { shade } from 'polished';
 import { Link } from '../styles/clean/link';
 
 import {
-  media,
   glsp,
+  media,
+  multiply,
   stylizeFunction,
   themeVal,
   visuallyHidden
@@ -47,7 +48,10 @@ const Intro = styled.section`
   display: grid;
   grid-gap: ${glsp(2)};
   align-content: center;
-  padding: ${glsp(themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(
+    multiply(themeVal('layout.gap.xsmall'), 2),
+    themeVal('layout.gap.xsmall')
+  )};
   height: 100%;
   max-width: 56rem;
   margin: 0 auto;
@@ -55,7 +59,10 @@ const Intro = styled.section`
 
   ${media.mediumUp`
     grid-gap: ${glsp(4)};
-    padding: ${glsp(themeVal('layout.gap.medium'))};
+    padding: ${glsp(
+      multiply(themeVal('layout.gap.medium'), 2),
+      themeVal('layout.gap.medium')
+    )};
   `}
 `;
 

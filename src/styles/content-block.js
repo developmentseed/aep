@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
+import { glsp, media, multiply, themeVal } from '@devseed-ui/theme-provider';
 
 import UniversalGridder from './universal-gridder';
 import Prose from './typography/prose';
@@ -47,21 +47,21 @@ export const ContentBlock = styled(UniversalGridder).attrs({
     largeUp: ['full-start', 'full-end']
   }
 })`
-  padding: ${glsp(themeVal('layout.gap.xsmall'), 0)};
+  padding: ${glsp(multiply(themeVal('layout.gap.xsmall'), 2), 0)};
   grid-row-gap: ${glsp(themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
-    padding: ${glsp(themeVal('layout.gap.medium'), 0)};
+    padding: ${glsp(multiply(themeVal('layout.gap.medium'), 2), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.medium'))};
   `}
 
   ${media.largeUp`
-    padding: ${glsp(themeVal('layout.gap.large'), 0)};
+    padding: ${glsp(multiply(themeVal('layout.gap.large'), 2), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.large'))};
   `}
 
   ${media.xlargeUp`
-    padding: ${glsp(themeVal('layout.gap.xlarge'), 0)};
+    padding: ${glsp(multiply(themeVal('layout.gap.xlarge'), 2), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.xlarge'))};
   `}
 

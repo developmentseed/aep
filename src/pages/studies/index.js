@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import {
   glsp,
   media,
+  multiply,
   themeVal,
   visuallyHidden
 } from '@devseed-ui/theme-provider';
@@ -38,11 +39,11 @@ const StudiesSection = styled(UniversalGridder).attrs({
     largeUp: ['full-start', 'full-end']
   }
 })`
-  padding: ${glsp(themeVal('layout.gap.xsmall'), 0)};
+  padding: ${glsp(multiply(themeVal('layout.gap.xsmall'), 2), 0)};
   grid-row-gap: ${glsp(themeVal('layout.gap.xsmall'))};
 
   ${media.mediumUp`
-    padding: ${glsp(themeVal('layout.gap.medium'), 0)};
+    padding: ${glsp(multiply(themeVal('layout.gap.medium'), 2), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.medium'))};
   `}
 `;
