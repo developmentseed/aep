@@ -228,7 +228,7 @@ legendData:
 ``` yml
 legendData:
   type: symbol
-  color: 'electricity'
+  icon: 'electricity'
 ```
 
 ## Defining raster legends
