@@ -47,16 +47,21 @@ export const ContentBlock = styled(UniversalGridder).attrs({
     largeUp: ['full-start', 'full-end']
   }
 })`
-  padding: ${glsp(multiply(themeVal('layout.gap.xsmall'), 2), 0)};
+  padding: ${glsp(themeVal('layout.gap.xsmall'), 0)};
   grid-row-gap: ${glsp(themeVal('layout.gap.xsmall'))};
 
+  ${media.smallUp`
+    padding: ${glsp(themeVal('layout.gap.small'), 0)};
+    grid-row-gap: ${glsp(themeVal('layout.gap.small'))};
+  `}
+
   ${media.mediumUp`
-    padding: ${glsp(multiply(themeVal('layout.gap.medium'), 2), 0)};
+    padding: ${glsp(themeVal('layout.gap.medium'), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.medium'))};
   `}
 
   ${media.largeUp`
-    padding: ${glsp(multiply(themeVal('layout.gap.large'), 2), 0)};
+    padding: ${glsp(themeVal('layout.gap.large'), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.large'))};
   `}
 

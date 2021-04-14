@@ -3,15 +3,9 @@ import T from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import {
-  glsp,
-  media,
-  multiply,
-  themeVal,
-  visuallyHidden
-} from '@devseed-ui/theme-provider';
+import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import Layout from '../../components/layout';
-import UniversalGridder from '../../styles/universal-gridder';
+import { ContentBlock } from '../../styles/content-block';
 
 import {
   Inpage,
@@ -30,29 +24,6 @@ import {
   CardMedia,
   CardMediaThumb
 } from '../../styles/card';
-
-const StudiesSection = styled(UniversalGridder).attrs({
-  as: 'div',
-  grid: {
-    smallUp: ['full-start', 'full-end'],
-    mediumUp: ['full-start', 'full-end'],
-    largeUp: ['full-start', 'full-end']
-  }
-})`
-  padding: ${glsp(multiply(themeVal('layout.gap.xsmall'), 2), 0)};
-  grid-row-gap: ${glsp(themeVal('layout.gap.xsmall'))};
-
-  ${media.mediumUp`
-    padding: ${glsp(multiply(themeVal('layout.gap.medium'), 2), 0)};
-    grid-row-gap: ${glsp(themeVal('layout.gap.medium'))};
-  `}
-`;
-
-const StudiesTitle = styled.h1`
-  ${visuallyHidden()}
-  grid-column: content-start / content-end;
-  margin: 0;
-`;
 
 const StudiesList = styled.ul`
   grid-column: content-start / content-end;
@@ -90,8 +61,7 @@ export default function Studies({ data }) {
           </InpageHeadline>
         </InpageHeader>
         <InpageBody>
-          <StudiesSection>
-            <StudiesTitle>List of studies</StudiesTitle>
+          <ContentBlock>
             <StudiesList>
               {studies.map((node) => (
                 <li key={node.id}>
@@ -139,7 +109,7 @@ export default function Studies({ data }) {
                 </li>
               ))}
             </StudiesList>
-          </StudiesSection>
+          </ContentBlock>
         </InpageBody>
       </Inpage>
     </Layout>
