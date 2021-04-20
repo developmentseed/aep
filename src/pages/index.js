@@ -15,8 +15,8 @@ import {
   visuallyHidden
 } from '@devseed-ui/theme-provider';
 
+import { reveal } from '@devseed-ui/animation';
 import { Heading } from '@devseed-ui/typography';
-
 import { Button } from '../styles/button';
 
 import Layout from '../components/layout';
@@ -205,6 +205,7 @@ const HomeIllu = styled.figure`
   left: 50%;
   z-index: 10;
   transform: translate(-50%, -50%);
+  animation: ${reveal} 2s ease 0s 1;
 
   ${media.mediumUp`
     transform: translate(-25%, -50%);
