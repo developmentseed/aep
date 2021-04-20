@@ -28,6 +28,7 @@ import {
   InpageBody
 } from '../styles/inpage';
 
+import welcomeIllu from '../media/layout/welcome-illu.svg';
 import logoEsmapUrl from '../media/content/logos/logo-esmap--white.png';
 import logoWbUrl from '../media/content/logos/logo-wb--white.png';
 
@@ -44,7 +45,14 @@ const HomeInpageHeader = styled(InpageHeader)`
   overflow: hidden;
 `;
 
+const HomeInpageBody = styled(InpageBody)`
+  position: relative;
+  overflow: hidden;
+`;
+
 const Intro = styled.section`
+  position: relative;
+  z-index: 20;
   display: grid;
   grid-gap: ${glsp(2)};
   align-content: center;
@@ -166,11 +174,42 @@ const CreditsList = styled.dl`
     display: inline-flex;
     width: auto;
     max-width: 100%;
-    max-height: 2rem;
+    max-height: 1.75rem;
+
+    ${media.smallUp`
+      max-height: 2rem;
+    `}
 
     ${media.mediumUp`
       max-height: 2.5rem;
     `}
+  }
+`;
+
+const HomeIllu = styled.figure`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+
+  ${media.mediumUp`
+    transform: translate(-25%, -50%);
+  `}
+`;
+
+const HomeIlluInner = styled.div`
+  opacity: 16%;
+  width: 544px;
+  transition: all 0.32s ease-in-out;
+
+  ${media.xlargeUp`
+    width: 640px;
+  `}
+
+  img {
+    width: 100%;
+    height: auto;
   }
 `;
 
@@ -185,7 +224,7 @@ const Home = ({ data, location }) => {
             <InpageTitle>Welcome</InpageTitle>
           </InpageHeadline>
         </HomeInpageHeader>
-        <InpageBody>
+        <HomeInpageBody>
           <Intro>
             <IntroHeader>
               <IntroTitle>
@@ -248,7 +287,17 @@ const Home = ({ data, location }) => {
               </CreditsList>
             </IntroFooter>
           </Intro>
-        </InpageBody>
+          <HomeIllu>
+            <HomeIlluInner>
+              <img
+                alt='Welcome illustration'
+                src={welcomeIllu}
+                width='544'
+                height='640'
+              />
+            </HomeIlluInner>
+          </HomeIllu>
+        </HomeInpageBody>
       </HomeInpage>
     </Layout>
   );
