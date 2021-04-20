@@ -11,8 +11,10 @@ import Prose from '../../styles/typography/prose';
 import DetailsList from '../../styles/typography/details-list';
 
 const DonutChartWrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
   max-width: 20rem;
-  height: 15rem;
+  height: 14rem;
 
   svg {
     * {
