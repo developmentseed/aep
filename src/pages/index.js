@@ -130,6 +130,19 @@ const IntroActions = styled.div`
 
   > * {
     grid-row: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    ${media.smallDown`
+      line-height: 1;
+      height: 2.25rem;
+      padding: ${glsp(0, 1)};
+    `}
+
+    ${media.smallUp`
+      min-width: 12rem;
+    `}
 
     ${media.mediumUp`
       min-width: 14rem;
