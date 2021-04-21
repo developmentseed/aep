@@ -194,7 +194,7 @@ function StudySingleCarto(props) {
                   useIcon={
                     isPanelRevealed ? 'shrink-to-left' : 'expand-from-left'
                   }
-                  title='Show/hide prime panel'
+                  title='Show/hide panel'
                   hideText
                   onClick={() => setPanelRevealed((v) => !v)}
                 >
