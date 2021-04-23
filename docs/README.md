@@ -1,3 +1,16 @@
+# Static pages
+There are 3 static pages whose content can be customized using [Markdown](https://www.markdownguide.org/) files (found in `content/page/posts`):
+  - About
+  - Support
+  - Toolkit
+
+### Images and static pages
+Any image used in these pages should be placed inside `content/page/media` and then referenced using a relative path
+Example when editing a file inside `content/page/posts`:
+```
+![alt text](../media/img_name.png "Image caption if needed")
+```
+
 # Anatomy of a study
 The study configuration consists of two files:
 
@@ -19,8 +32,7 @@ The main information and metadata of each study is managed through a `yml` file,
 | study | `object` | Metadata about the study |
 | study.consultant | `string` | Name of the consultant |
 | study.period | `string` | Period of the study |
-| study.scope | `string` | Brief decription of the scope of the study |
-| study.summary | `string` | Summary of the study results |
+| study.content | `string` | The filename that contains the study's content in markdown |
 | platform | `object` | Reference to an external platform that hosts full study results |
 | platform.title | `string` | Title of the platform |
 | platform.url | `string` | URL of the platform |
@@ -83,7 +95,8 @@ yarn validate
 1. create a new Github branch from `main`
 2. add a `yml` file to `/content/study/posts` with the [study configuration](#study-configuration). The filename is used to determine the URL of the study. (`kenya.yml` -> `/studies/kenya`)
 3. add a `json` file to `/content/study/posts` with the [map configuration](#map-configuration)
-4. set up a Pull Request and merge once [the validations](#validating-configuration) are run successfully
+4. add a `md` file to `/content/study/posts` with the study content. This is rendered in the study summary page.
+5. set up a Pull Request and merge once [the validations](#validating-configuration) are run successfully
 
 ## Add a layer
 To add a new layer to a study that users can interact with, requires three things:
