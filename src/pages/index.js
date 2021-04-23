@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import { graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { shade } from 'polished';
 
@@ -229,6 +229,7 @@ const HomeIlluInner = styled.div`
 
 const Home = ({ data, location }) => {
   const { title } = data.site.siteMetadata;
+  const { description } = data.site.siteMetadata;
 
   return (
     <Layout location={location} title='Welcome'>
@@ -246,11 +247,7 @@ const Home = ({ data, location }) => {
                 {title}
               </IntroTitle>
               <IntroLead>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer massa nibh, pulvinar nec neque et, sollicitudin mattis
-                  ante. Nulla id scelerisque nisi, dapibus consectetur metus.
-                </p>
+                <p>{description}</p>
               </IntroLead>
             </IntroHeader>
             <IntroBody>
@@ -329,6 +326,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
   }
