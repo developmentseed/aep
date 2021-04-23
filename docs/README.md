@@ -1,3 +1,16 @@
+# Static pages
+There are 3 static pages whose content can be customized using [Markdown](https://www.markdownguide.org/) files (found in `content/page/posts`):
+  - About
+  - Support
+  - Toolkit
+
+### Images and static pages
+Any image used in these pages should be placed inside `content/page/media` and then referenced using a relative path
+Example when editing a file inside `content/page/posts`:
+```
+![alt text](../media/img_name.png "Image caption if needed")
+```
+
 # Anatomy of a study
 The study configuration consists of two files:
 
@@ -19,8 +32,7 @@ The main information and metadata of each study is managed through a `yml` file,
 | study | `object` | Metadata about the study |
 | study.consultant | `string` | Name of the consultant |
 | study.period | `string` | Period of the study |
-| study.scope | `string` | Brief decription of the scope of the study |
-| study.summary | `string` | Summary of the study results |
+| study.content | `string` | The filename that contains the study's content in markdown |
 | platform | `object` | Reference to an external platform that hosts full study results |
 | platform.title | `string` | Title of the platform |
 | platform.url | `string` | URL of the platform |
@@ -42,8 +54,13 @@ The main information and metadata of each study is managed through a `yml` file,
 | layers[].legendData.dashed | `boolean` | Use a dashed line. Applies to `line` |
 | layers[].legendData.icon | `string` | The basename of the icon, without file extension. Applies to `symbol` |
 | layers[].legendData.min | `string` | Minimum value printed on the x-axis. Applies to `gradient` |
-| layers[].legendData.max | `string` | Maximum value printed on the x-axis. Applies to `gradient` 
-| layers[].legendData.stops | `array` | An array with RGB colors that indicate the stops. Applies to `gradient` 
+| layers[].legendData.max | `string` | Maximum value printed on the x-axis. Applies to `gradient` |
+| layers[].legendData.stops | `array` | An array with RGB colors that indicate the stops. Applies to `gradient` |
+| layers[].displayData | `array` | Configuration for the data to be displayed on the popover |
+| layers[].displayData[].label | `string` | A static label for the popover. Exclusive with `labelProp` |
+| layers[].displayData[].value | `string` | A static value for the popover. Exclusive with `valueProp` |
+| layers[].displayData[].labelProp | `string` | A dynamic label for the popover. Exclusive with `label` |
+| layers[].displayData[].valueProp | `string` | A dynamic value for the popover. Exclusive with `value` |
 
 ## Map configuration
 The map of each study is configured using a `json` file that follows the Mapbox Style specification. For a full example, please see [`kenya-mb.json`](/content/study/posts/kenya-mb.json).
@@ -78,7 +95,8 @@ yarn validate
 1. create a new Github branch from `main`
 2. add a `yml` file to `/content/study/posts` with the [study configuration](#study-configuration). The filename is used to determine the URL of the study. (`kenya.yml` -> `/studies/kenya`)
 3. add a `json` file to `/content/study/posts` with the [map configuration](#map-configuration)
-4. set up a Pull Request and merge once [the validations](#validating-configuration) are run successfully
+4. add a `md` file to `/content/study/posts` with the study content. This is rendered in the study summary page.
+5. set up a Pull Request and merge once [the validations](#validating-configuration) are run successfully
 
 ## Add a layer
 To add a new layer to a study that users can interact with, requires three things:
@@ -160,6 +178,10 @@ New icons can be added to [`/content/icons`](/content/icons). They should be in 
 
 [To top](#managing-studies)
 
+
+### Update summary content
+The summary content can be updated from the study respective markdown file. This block is rendered bellow the summary overview.
+
 # Charts
 The charts on the Summary page are configured and managed through the `yml` file with study configuration. They are included on the right side of the summary page and ordered using the order in the study configuration file.
 
@@ -190,7 +212,7 @@ charts:
 ## Big number
 The big number consists of a title (`name`), a `value` and an optional `unit`.
 
-![](media/big-number.png)
+![](media/big-number.png)  
 _Big number with and without the `unit`_
 
 Configuration:
@@ -255,10 +277,60 @@ legendData:
 [To top](#managing-studies)
 
 # Popups
-The popups in the application show all the attributes that are available in the source data. To adjust the label or the value, you can update the original GeoJSON or Vector Tiles.
+By default, the popups in the application show all the attributes that are available in the source data. This can be customized by specifying a `displayData` list on the layer configuration.
 
 ![](media/popup.png)
+
+## Customizing popup data
+It is possible to extract data from the features the map layer and display it on a popover.
+For each layer you can specify a `label:value` pair using a syntax expression.
+Once a customization is defined, only the specified options will be displayed.
+
+![](media/popup-label-val.png)  
+_The label property will always be displayed in uppercase format._
+
+There are 2 properties to get a label and a value.
+  - When using `label` the value is assumed static and will be displayed as is.
+  - When using `labelProp` the value will be extracted from the feature data and computed.
+
+These two properties are mutually exclusive. Use one or the other, not both at the same time. The same is true for `value` and `valueProp`.
+
+To allow some processing of labels and values it is possible to use a simple inline piping syntax to define functions (and respective arguments) to apply to a value.
+The feature property name is always the first element to appear and subsequent functions are separated using pipes `|` and arguments are separated using colons `:`
+
+Example:
+```
+Length_km|round:2|suffix:km
+```
+In this example the system would get the value of the property `road_length` from the selected feature, `round` it to `2` decimal digits, and then add a `suffix` of `km`.
+
+The available functions are:
+```
+sum : value
+subtract : value
+multiply : value
+divide : value
+prefix : value
+suffix : value
+capitalize
+toUpperCase
+toLowerCase
+round : decimal_digits
+```
+
+Configuration:
+
+```yml
+displayData:
+  - label: A static label
+    value: Static value
+  - label: Length
+    valueProp: Length_km|round:2|suffix:km
+```
 
 # Troubleshooting
 ## Map shows an unexpected layer
 If the map loads with a layer that can't be managed through the layer switcher, it's likely that you added a layer in the Mapbox Style that isn't referenced in the layer configuration of the `yml`. This is by design. It allows you to overlay a contextual layer on the map that the user don't have control over. A use case could be a layer that adds a disputed border.
+
+## Popover doesn't show a value after customization
+If no value is displayed double check that the property name is correct. Some times it is a matter of an uppercase letter.

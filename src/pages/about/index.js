@@ -1,23 +1,17 @@
 import React from 'react';
+import T from 'prop-types';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { media, themeVal, visuallyHidden } from '@devseed-ui/theme-provider';
 
-import Layout from '../../components/layout';
-import {
-  Inpage,
-  InpageHeader,
-  InpageTitle,
-  InpageHeadline,
-  InpageBody
-} from '../../styles/inpage';
+import PageLayout from '../../components/page-layout';
 import Dl from '../../styles/typography/definition-list';
+import Prose from '../../styles/typography/prose';
 
 import logoEsmapUrl from '../../media/content/logos/logo-esmap.png';
 import logoWbUrl from '../../media/content/logos/logo-wbg.png';
 import logoDevseedUrl from '../../media/content/logos/logo-devseed.png';
 import logoDerilinxUrl from '../../media/content/logos/logo-derilinx.png';
-import { ContentBlock } from '../../styles/content-block';
-import Prose from '../../styles/typography/prose';
 
 const LogoList = styled(Dl)`
   display: grid;
@@ -80,88 +74,81 @@ const LogoList = styled(Dl)`
   }
 `;
 
-function About() {
+function About({ data }) {
+  const post = data.markdownRemark;
   return (
-    <Layout title='About'>
-      <Inpage>
-        <InpageHeader>
-          <InpageHeadline>
-            <InpageTitle>About</InpageTitle>
-          </InpageHeadline>
-        </InpageHeader>
-        <InpageBody>
-          <ContentBlock>
-            <Prose>
-              <h2>The tool</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque sapien justo, dignissim a mi eu, faucibus faucibus
-                lectus. Nunc nisl neque, dignissim non velit id, sagittis
-                fermentum nulla. Morbi vehicula, ante et varius luctus, purus
-                lacus commodo metus, vel ornare elit dolor a lorem. Proin vel
-                nunc non enim interdum sagittis a ut mauris. Vivamus ut
-                hendrerit sapien. Integer convallis semper ornare. Nam non
-                pellentesque justo.
-              </p>
-
-              <h3>Credits</h3>
-              <LogoList>
-                <dt>Partners</dt>
-                <dd>
-                  <a
-                    href='https://www.worldbank.org/'
-                    title='Visit World Bank'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img alt='WBG Logo' src={logoWbUrl} />
-                    <span>World Bank Group</span>
-                  </a>
-                </dd>
-                <dd>
-                  <a
-                    href='https://www.esmap.org/'
-                    title='Visit Energy Sector Management Assistance Program'
-                    className='logo-esmap'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img alt='ESMAP Logo' src={logoEsmapUrl} />
-                    <span>ESMAP</span>
-                  </a>
-                </dd>
-                <dt>Developed by</dt>
-                <dd>
-                  <a
-                    href='https://www.developmentseed.org/'
-                    title='Visit Development Seed'
-                    className='logo-devseed'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img alt='DevSeedLogo' src={logoDevseedUrl} />
-                    <span>Development Seed</span>
-                  </a>
-                </dd>
-                <dd>
-                  <a
-                    href='https://www.derilinx.com/'
-                    title='Visit Derilinx'
-                    className='logo-esmap'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img alt='Derilinx Logo' src={logoDerilinxUrl} />
-                    <span>Derilinx</span>
-                  </a>
-                </dd>
-              </LogoList>
-            </Prose>
-          </ContentBlock>
-        </InpageBody>
-      </Inpage>
-    </Layout>
+    <PageLayout title='About'>
+      <Prose dangerouslySetInnerHTML={{ __html: post.html }} />
+      <Prose>
+        <h3>Credits</h3>
+        <LogoList>
+          <dt>Partners</dt>
+          <dd>
+            <a
+              href='https://www.worldbank.org/'
+              title='Visit World Bank'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img alt='WBG Logo' src={logoWbUrl} />
+              <span>World Bank Group</span>
+            </a>
+          </dd>
+          <dd>
+            <a
+              href='https://www.esmap.org/'
+              title='Visit Energy Sector Management Assistance Program'
+              className='logo-esmap'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img alt='ESMAP Logo' src={logoEsmapUrl} />
+              <span>ESMAP</span>
+            </a>
+          </dd>
+          <dt>Developed by</dt>
+          <dd>
+            <a
+              href='https://www.developmentseed.org/'
+              title='Visit Development Seed'
+              className='logo-devseed'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img alt='DevSeedLogo' src={logoDevseedUrl} />
+              <span>Development Seed</span>
+            </a>
+          </dd>
+          <dd>
+            <a
+              href='https://www.derilinx.com/'
+              title='Visit Derilinx'
+              className='logo-esmap'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img alt='Derilinx Logo' src={logoDerilinxUrl} />
+              <span>Derilinx</span>
+            </a>
+          </dd>
+        </LogoList>
+      </Prose>
+    </PageLayout>
   );
 }
 
 export default About;
+
+About.propTypes = {
+  data: T.object
+};
+
+export const query = graphql`
+  query {
+    markdownRemark(
+      fields: { collection: { eq: "page" }, slug: { eq: "about" } }
+    ) {
+      html
+    }
+  }
+`;

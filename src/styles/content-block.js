@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
+import { glsp, media, multiply, themeVal } from '@devseed-ui/theme-provider';
 
 import UniversalGridder from './universal-gridder';
 import Prose from './typography/prose';
@@ -49,6 +49,13 @@ export const ContentBlock = styled(UniversalGridder).attrs({
 })`
   padding: ${glsp(themeVal('layout.gap.xsmall'), 0)};
   grid-row-gap: ${glsp(themeVal('layout.gap.xsmall'))};
+  grid-template-rows: min-content;
+  grid-auto-rows: 1fr;
+
+  ${media.smallUp`
+    padding: ${glsp(themeVal('layout.gap.small'), 0)};
+    grid-row-gap: ${glsp(themeVal('layout.gap.small'))};
+  `}
 
   ${media.mediumUp`
     padding: ${glsp(themeVal('layout.gap.medium'), 0)};
@@ -61,7 +68,7 @@ export const ContentBlock = styled(UniversalGridder).attrs({
   `}
 
   ${media.xlargeUp`
-    padding: ${glsp(themeVal('layout.gap.xlarge'), 0)};
+    padding: ${glsp(multiply(themeVal('layout.gap.xlarge'), 2), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.xlarge'))};
   `}
 
@@ -73,6 +80,7 @@ export const Aside = styled.aside`
 
   ${media.largeUp`
     grid-column: content-9 / span 4;
+    grid-row: 1 / span 2;
   `}
 
   ${media.xlargeUp`

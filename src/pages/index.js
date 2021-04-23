@@ -7,15 +7,16 @@ import { shade } from 'polished';
 import { Link } from '../styles/clean/link';
 
 import {
-  media,
   glsp,
+  media,
+  multiply,
   stylizeFunction,
   themeVal,
   visuallyHidden
 } from '@devseed-ui/theme-provider';
 
+import { reveal } from '@devseed-ui/animation';
 import { Heading } from '@devseed-ui/typography';
-
 import { Button } from '../styles/button';
 
 import Layout from '../components/layout';
@@ -27,6 +28,7 @@ import {
   InpageBody
 } from '../styles/inpage';
 
+import welcomeIllu from '../media/layout/welcome-illu.svg';
 import logoEsmapUrl from '../media/content/logos/logo-esmap--white.png';
 import logoWbUrl from '../media/content/logos/logo-wb--white.png';
 
@@ -43,11 +45,21 @@ const HomeInpageHeader = styled(InpageHeader)`
   overflow: hidden;
 `;
 
+const HomeInpageBody = styled(InpageBody)`
+  position: relative;
+  overflow: hidden;
+`;
+
 const Intro = styled.section`
+  position: relative;
+  z-index: 20;
   display: grid;
   grid-gap: ${glsp(2)};
   align-content: center;
-  padding: ${glsp(themeVal('layout.gap.xsmall'))};
+  padding: ${glsp(
+    multiply(themeVal('layout.gap.xsmall'), 2),
+    themeVal('layout.gap.xsmall')
+  )};
   height: 100%;
   max-width: 56rem;
   margin: 0 auto;
@@ -55,7 +67,10 @@ const Intro = styled.section`
 
   ${media.mediumUp`
     grid-gap: ${glsp(4)};
-    padding: ${glsp(themeVal('layout.gap.medium'))};
+    padding: ${glsp(
+      multiply(themeVal('layout.gap.medium'), 2),
+      themeVal('layout.gap.medium')
+    )};
   `}
 `;
 
@@ -115,6 +130,19 @@ const IntroActions = styled.div`
 
   > * {
     grid-row: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    ${media.smallDown`
+      line-height: 1;
+      height: 2.25rem;
+      padding: ${glsp(0, 1)};
+    `}
+
+    ${media.smallUp`
+      min-width: 12rem;
+    `}
 
     ${media.mediumUp`
       min-width: 14rem;
@@ -159,7 +187,11 @@ const CreditsList = styled.dl`
     display: inline-flex;
     width: auto;
     max-width: 100%;
-    max-height: 2rem;
+    max-height: 1.75rem;
+
+    ${media.smallUp`
+      max-height: 2rem;
+    `}
 
     ${media.mediumUp`
       max-height: 2.5rem;
@@ -167,8 +199,37 @@ const CreditsList = styled.dl`
   }
 `;
 
+const HomeIllu = styled.figure`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  animation: ${reveal} 2s ease 0s 1;
+
+  ${media.mediumUp`
+    transform: translate(-25%, -50%);
+  `}
+`;
+
+const HomeIlluInner = styled.div`
+  opacity: 16%;
+  width: 544px;
+  transition: all 0.32s ease-in-out;
+
+  ${media.xlargeUp`
+    width: 640px;
+  `}
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
 const Home = ({ data, location }) => {
   const { title } = data.site.siteMetadata;
+  const { description } = data.site.siteMetadata;
 
   return (
     <Layout location={location} title='Welcome'>
@@ -178,7 +239,7 @@ const Home = ({ data, location }) => {
             <InpageTitle>Welcome</InpageTitle>
           </InpageHeadline>
         </HomeInpageHeader>
-        <InpageBody>
+        <HomeInpageBody>
           <Intro>
             <IntroHeader>
               <IntroTitle>
@@ -186,11 +247,7 @@ const Home = ({ data, location }) => {
                 {title}
               </IntroTitle>
               <IntroLead>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer massa nibh, pulvinar nec neque et, sollicitudin mattis
-                  ante. Nulla id scelerisque nisi, dapibus consectetur metus.
-                </p>
+                <p>{description}</p>
               </IntroLead>
             </IntroHeader>
             <IntroBody>
@@ -241,7 +298,17 @@ const Home = ({ data, location }) => {
               </CreditsList>
             </IntroFooter>
           </Intro>
-        </InpageBody>
+          <HomeIllu>
+            <HomeIlluInner>
+              <img
+                alt='Welcome illustration'
+                src={welcomeIllu}
+                width='544'
+                height='640'
+              />
+            </HomeIlluInner>
+          </HomeIllu>
+        </HomeInpageBody>
       </HomeInpage>
     </Layout>
   );
@@ -259,6 +326,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
   }

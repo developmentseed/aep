@@ -11,7 +11,7 @@ import T from 'prop-types';
 import styled from 'styled-components';
 import mapboxgl from 'mapbox-gl';
 
-import Popover from './popover';
+import Popover, { computePopoverProperties } from './popover';
 
 import { diffArrayById } from '../../utils/array';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -145,10 +145,15 @@ function MbMapBase(props, ref) {
         const panelLayer = layersState.find(
           (l) => l.mbLayer === feature.layer.id
         );
+
         if (panelLayer) {
+          const popoverProperties = computePopoverProperties(
+            panelLayer,
+            feature
+          );
           setPopoverData({
             title: panelLayer.name,
-            properties: feature.properties
+            properties: popoverProperties
           });
           setPopoverCoords([e.lngLat.lng, e.lngLat.lat]);
         }

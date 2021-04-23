@@ -27,8 +27,7 @@ const studySchema = new Schema({
   study: {
     consultant: { type: String, required: true },
     period: { required: true },
-    scope: { type: String, required: true },
-    summary: { type: String, required: true }
+    content: { type: String, use: { studyFileExists }, required: true }
   },
   platform: {
     title: { type: String },
@@ -78,6 +77,12 @@ const studySchema = new Schema({
         min: { type: String },
         max: { type: String },
         stops: [{ type: String, match: /^#[0-9a-fA-F]{6}$/ }]
+      },
+      displayData: {
+        value: { type: String },
+        label: { type: String },
+        valueProp: { type: String },
+        labelProp: { type: String }
       }
     }
   ]

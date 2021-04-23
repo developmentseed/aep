@@ -39,7 +39,7 @@ const LinkToHub = styled(Link)`
   position: relative;
 
   &::before {
-    ${collecticon('chevron-left--small')};
+    ${collecticon('chevron-left--small')}
     position: absolute;
     left: 0;
     transform: translate(calc((100% + ${glsp(0.25)}) * -1), 0);
@@ -188,7 +188,7 @@ function StudySingle({ data }) {
   };
 
   return (
-    <Layout title='Study'>
+    <Layout title={`Study: ${title}`}>
       <Inpage>
         <InpageHeader isSticky>
           <InpageHeadline>
@@ -261,8 +261,11 @@ export const pageQuery = graphql`
       study {
         consultant
         period
-        scope
-        summary
+        content {
+          childMarkdownRemark {
+            html
+          }
+        }
       }
       platform {
         title
@@ -294,6 +297,12 @@ export const pageQuery = graphql`
           color
           icon
           dashed
+        }
+        displayData {
+          value
+          label
+          valueProp
+          labelProp
         }
       }
     }

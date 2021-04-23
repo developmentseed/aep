@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import { reveal } from '@devseed-ui/animation';
@@ -108,15 +109,24 @@ const pageMainNavLinks = [
   }
 ];
 
-function PageHeader() {
+const PageHeader = () => {
   const { mediumUp } = useBreakpoints();
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          shortTitle
+        }
+      }
+    }
+  `);
 
   return (
     <PageHeaderSelf role='banner'>
       <PageHeadline>
         <PageTitle>
           <Link to='/' title='Visit the home page'>
-            <span>AEP</span>
+            <span>{data.site.siteMetadata.shortTitle}</span>
           </Link>
         </PageTitle>
       </PageHeadline>
@@ -149,6 +159,6 @@ function PageHeader() {
       </PageNav>
     </PageHeaderSelf>
   );
-}
+};
 
 export default PageHeader;

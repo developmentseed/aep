@@ -1,6 +1,6 @@
 {
   "name": "aep-frontend",
-  "version": "0.4.0",
+"version": "0.5.0",
   "description": "Africa Electrification Platform",
   "repository": {
     "type": "git",
@@ -74,7 +74,9 @@
     "gatsby-plugin-react-helmet": "^3.10.0",
     "gatsby-plugin-sharp": "^2.14.3",
     "gatsby-plugin-styled-components": "^3.10.0",
+    "gatsby-remark-images": "^5.0.0",
     "gatsby-source-filesystem": "^2.11.1",
+    "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^2.12.0",
     "gatsby-transformer-yaml-full": "^0.4.1",
     "gatsby-yaml-full-markdown": "^0.4.1",

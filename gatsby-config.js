@@ -1,4 +1,4 @@
-const contentTypes = ['study'];
+const contentTypes = ['study', 'page'];
 
 const siteUrl = process.env.SITE_URL || 'http://localhost:9000';
 
@@ -10,10 +10,11 @@ module.exports = {
   },
   siteMetadata: {
     title: `Africa Electrification Platform`,
+    shortTitle: `AEP`,
     author: {
-      name: `Development Seed`
+      name: `ESMAP / World Bank Group`
     },
-    description: `Africa Electrification Platform - geospatial analysis for an energy secure future.`,
+    description: `Explore electrification planning activities in the Africa Region, interact with country data and explore different scenario results. The program is funded by ESMAP at the World Bank.`,
     siteUrl,
     social: {
       twitter: ''
@@ -57,6 +58,21 @@ module.exports = {
       ],
       []
     ),
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              linkImagesToOriginal: false,
+              showCaptions: ['title'],
+              maxWidth: 1280
+            }
+          }
+        ]
+      }
+    },
     {
       resolve: 'gatsby-transformer-yaml-full',
       options: {
