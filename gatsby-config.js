@@ -1,4 +1,4 @@
-const contentTypes = ['study'];
+const contentTypes = ['study', 'page'];
 
 const siteUrl = process.env.SITE_URL || 'http://localhost:9000';
 
@@ -58,6 +58,7 @@ module.exports = {
       ],
       []
     ),
+    `gatsby-transformer-remark`,
     {
       resolve: 'gatsby-transformer-yaml-full',
       options: {

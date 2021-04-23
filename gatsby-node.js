@@ -159,24 +159,25 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'PostsYaml') {
+  if (
+    node.internal.type === 'PostsYaml' ||
+    node.internal.type === `MarkdownRemark`
+  ) {
     const parentNode = getNode(node.parent);
     const collection = parentNode.sourceInstanceName;
 
-    if (collection === 'study') {
-      const fileName = getNode(node.parent).name;
+    const fileName = getNode(node.parent).name;
 
-      createNodeField({
-        node,
-        name: 'collection',
-        value: collection
-      });
+    createNodeField({
+      node,
+      name: 'collection',
+      value: collection
+    });
 
-      createNodeField({
-        node,
-        name: 'slug',
-        value: fileName
-      });
-    }
+    createNodeField({
+      node,
+      name: 'slug',
+      value: fileName
+    });
   }
 };
