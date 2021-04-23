@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { shade } from 'polished';
 
