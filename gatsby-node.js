@@ -55,8 +55,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       type StudyInfo {
         consultant: String
         period: String
-        scope: String
-        summary: String
+        content: File @fileByRelativePath
       }
     `,
     schema.buildObjectType({

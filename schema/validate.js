@@ -27,8 +27,7 @@ const studySchema = new Schema({
   study: {
     consultant: { type: String, required: true },
     period: { required: true },
-    scope: { type: String, required: true },
-    summary: { type: String, required: true }
+    content: { type: String, use: { studyFileExists }, required: true }
   },
   platform: {
     title: { type: String },

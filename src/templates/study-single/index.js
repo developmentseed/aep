@@ -261,8 +261,11 @@ export const pageQuery = graphql`
       study {
         consultant
         period
-        scope
-        summary
+        content {
+          childMarkdownRemark {
+            html
+          }
+        }
       }
       platform {
         title
