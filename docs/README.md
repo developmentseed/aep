@@ -267,6 +267,7 @@ By default, the popups in the application show all the attributes that are avail
 ## Customizing popup data
 It is possible to extract data from the features the map layer and display it on a popover.
 For each layer you can specify a `label:value` pair using a syntax expression.
+Once a customization is defined, only the specified options will be displayed.
 
 ![](media/popup-label-val.png)  
 _The label property will always be displayed in uppercase format._
@@ -313,3 +314,6 @@ displayData:
 # Troubleshooting
 ## Map shows an unexpected layer
 If the map loads with a layer that can't be managed through the layer switcher, it's likely that you added a layer in the Mapbox Style that isn't referenced in the layer configuration of the `yml`. This is by design. It allows you to overlay a contextual layer on the map that the user don't have control over. A use case could be a layer that adds a disputed border.
+
+## Popover doesn't show a value after customization
+If no value is displayed double check that the property name is correct. Some times it is a matter of an uppercase letter.
