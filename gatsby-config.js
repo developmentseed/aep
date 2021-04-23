@@ -10,10 +10,11 @@ module.exports = {
   },
   siteMetadata: {
     title: `Africa Electrification Platform`,
+    shortTitle: `AEP`,
     author: {
-      name: `Development Seed`
+      name: `ESMAP / World Bank Group`
     },
-    description: `Africa Electrification Platform - geospatial analysis for an energy secure future.`,
+    description: `Explore electrification planning activities in the Africa Region, interact with country data and explore different scenario results. The program is funded by ESMAP at the World Bank.`,
     siteUrl,
     social: {
       twitter: ''
