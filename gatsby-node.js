@@ -6,6 +6,13 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
   const typeDefs = [
     `
+      type DisplayDataEntry {
+        value: String
+        label: String
+        valueProp: String
+        labelProp: String
+      }
+
       type LayerLegend {
         type: String
         min: String
@@ -30,6 +37,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         info: String
         source: PanelLayerSource
         legendData: LayerLegend
+        displayData: [DisplayDataEntry]
       }
 
       type ChartDefinition {

@@ -39,7 +39,7 @@ const LinkToHub = styled(Link)`
   position: relative;
 
   &::before {
-    ${collecticon('chevron-left--small')};
+    ${collecticon('chevron-left--small')}
     position: absolute;
     left: 0;
     transform: translate(calc((100% + ${glsp(0.25)}) * -1), 0);
@@ -294,6 +294,12 @@ export const pageQuery = graphql`
           color
           icon
           dashed
+        }
+        displayData {
+          value
+          label
+          valueProp
+          labelProp
         }
       }
     }
