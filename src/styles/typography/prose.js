@@ -142,6 +142,19 @@ const Prose = styled.div`
     display: block;
   }
 
+  hr {
+    border: 0;
+    height: ${glsp(0.5)};
+    background: 0 0;
+    width: 100%;
+    background: linear-gradient(
+        transparent,
+        ${themeVal('color.baseAlphaD')},
+        transparent
+      )
+      50% / auto 1px repeat-x;
+  }
+
   > * {
     margin-bottom: ${glsp(1)};
 
