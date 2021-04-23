@@ -188,7 +188,7 @@ function StudySingle({ data }) {
   };
 
   return (
-    <Layout title='Study'>
+    <Layout title={`Study: ${title}`}>
       <Inpage>
         <InpageHeader isSticky>
           <InpageHeadline>
