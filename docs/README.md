@@ -195,7 +195,7 @@ charts:
 ## Big number
 The big number consists of a title (`name`), a `value` and an optional `unit`.
 
-![](media/big-number.png)
+![](media/big-number.png)  
 _Big number with and without the `unit`_
 
 Configuration:
@@ -268,7 +268,7 @@ By default, the popups in the application show all the attributes that are avail
 It is possible to extract data from the features the map layer and display it on a popover.
 For each layer you can specify a `label:value` pair using a syntax expression.
 
-![](media/popup-label-val.png)
+![](media/popup-label-val.png)  
 _The label property will always be displayed in uppercase format._
 
 There are 2 properties to get a label and a value.
@@ -282,7 +282,7 @@ The feature property name is always the first element to appear and subsequent f
 
 Example:
 ```
-road_length|round:2|suffix:km
+Length_km|round:2|suffix:km
 ```
 In this example the system would get the value of the property `road_length` from the selected feature, `round` it to `2` decimal digits, and then add a `suffix` of `km`.
 
@@ -298,6 +298,16 @@ capitalize
 toUpperCase
 toLowerCase
 round : decimal_digits
+```
+
+Configuration:
+
+```yml
+displayData:
+  - label: A static label
+    value: Static value
+  - label: Length
+    valueProp: Length_km|round:2|suffix:km
 ```
 
 # Troubleshooting

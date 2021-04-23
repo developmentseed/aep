@@ -1,6 +1,11 @@
 import get from 'lodash.get';
 import { round } from './format';
 
+const numOrUndef = (val) =>
+  typeof val === 'undefined' ? undefined : Number(val);
+
+const cleanRound = (v, roundDec) => round(numOrUndef(v), numOrUndef(roundDec));
+
 /**
  * List of valid function for the inline syntax.
  */
@@ -14,13 +19,13 @@ const fnsMappings = {
   capitalize: (v) => v.charAt(0).toUpperCase() + v.slice(1),
   toUpperCase: (v) => v.toUpperCase(),
   toLowerCase: (v) => v.toLowerCase(),
-  round,
+  round: cleanRound,
   roundSafe: (v, roundDec, errVal = 'N/A') => {
-    const rounded = round(v, roundDec);
+    const rounded = cleanRound(v, roundDec);
     return isNaN(rounded) ? errVal : rounded;
   },
   percent: (v, roundDec, errVal = 'N/A') => {
-    const rounded = round(v, roundDec);
+    const rounded = cleanRound(v, roundDec);
     return isNaN(rounded) ? errVal : rounded + '%';
   },
   _error: (v, name) => {
