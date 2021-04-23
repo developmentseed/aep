@@ -58,7 +58,21 @@ module.exports = {
       ],
       []
     ),
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              linkImagesToOriginal: false,
+              showCaptions: ['title'],
+              maxWidth: 1280
+            }
+          }
+        ]
+      }
+    },
     {
       resolve: 'gatsby-transformer-yaml-full',
       options: {
