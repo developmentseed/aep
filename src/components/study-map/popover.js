@@ -6,6 +6,7 @@ import { headingAlt } from '@devseed-ui/typography';
 import ShadowScrollbar from '@devseed-ui/shadow-scrollbar';
 
 import MBPopover from '../mb-popover';
+import { computeFinalPropValue } from '../../utils/inline-filter-processor';
 
 const WideMBPopover = styled(MBPopover)`
   width: 18rem;
@@ -79,18 +80,11 @@ export default function Popover(props) {
             <PopoverBodyInner>
               {data.properties ? (
                 <PopoverDetailsList>
-                  {Object.keys(data.properties).map((k) => {
-                    const v = data.properties[k];
+                  {data.properties.map(({ id, label, value }) => {
                     return (
-                      <React.Fragment key={k}>
-                        <dt>{k}</dt>
-                        <dd>
-                          {v
-                            ? typeof v === 'string'
-                              ? v.trim() || 'n/a'
-                              : v || 'n/a'
-                            : 'n/a'}
-                        </dd>
+                      <React.Fragment key={id}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
                       </React.Fragment>
                     );
                   })}
@@ -110,3 +104,77 @@ Popover.propTypes = {
   lngLat: T.array,
   onClose: T.func
 };
+
+/**
+ * Prepares the list of properties to display on the popover taking into account
+ * the display data settings defined in the panel layer.
+ *
+ * @param {object} panelLayer The panel layer definition
+ * @param {object} feature The map feature as returned by mapbox
+ * @returns array
+ */
+export function computePopoverProperties(panelLayer, feature) {
+  const { displayData } = panelLayer;
+
+  // If there's no data config, return all feature values.
+  if (!displayData?.length) {
+    return Object.keys(feature.properties).map((k) => {
+      const v = feature.properties[k];
+      return {
+        id: k,
+        label: k,
+        value: v
+          ? typeof v === 'string'
+            ? v.trim() || 'n/a'
+            : v || 'n/a'
+          : 'n/a'
+      };
+    });
+  }
+
+  return displayData
+    .map((d, idx) => {
+      // To compute the label and the corresponding value we look at the keys of
+      // each displayData object.
+      // If there is a `label` property we assume that is it. If there is a
+      // `labelProp` that means that we need to get the value from the feature
+      // properties and compute it's value.
+      // The same is valid for the `value` but the keys are `value` and
+      // `valueProp`respectively.
+
+      // Compute the label value.
+      let label;
+      // If there is a static label it has priority.
+      if (d.label) {
+        label = d.label;
+        // Compute dynamic if it exists.
+      } else if (d.labelProp) {
+        label = computeFinalPropValue(d.labelProp, feature.properties);
+      } else {
+        // eslint-disable-next-line
+        console.error(
+          `Label not found for layer [${panelLayer.id}] - displayData index ${idx}`
+        );
+        return null;
+      }
+
+      // Compute the value value.
+      let value;
+      // If there is a static value it has priority.
+      if (d.value) {
+        value = d.value;
+        // Compute dynamic if it exists.
+      } else if (d.valueProp) {
+        value = computeFinalPropValue(d.valueProp, feature.properties);
+      } else {
+        // eslint-disable-next-line
+        console.error(
+          `Value not found for layer [${panelLayer.id}] - displayData index ${idx}`
+        );
+        return null;
+      }
+
+      return { id: idx, label, value };
+    })
+    .filter(Boolean);
+}
