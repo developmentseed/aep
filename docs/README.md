@@ -178,6 +178,10 @@ New icons can be added to [`/content/icons`](/content/icons). They should be in 
 
 [To top](#managing-studies)
 
+
+### Update summary content
+The summary content can be updated from the study respective markdown file. This block is rendered bellow the summary overview.
+
 # Charts
 The charts on the Summary page are configured and managed through the `yml` file with study configuration. They are included on the right side of the summary page and ordered using the order in the study configuration file.
 
