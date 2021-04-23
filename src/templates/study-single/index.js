@@ -188,7 +188,7 @@ function StudySingle({ data }) {
   };
 
   return (
-    <Layout title='Study'>
+    <Layout title={`Study: ${title}`}>
       <Inpage>
         <InpageHeader isSticky>
           <InpageHeadline>
@@ -261,8 +261,11 @@ export const pageQuery = graphql`
       study {
         consultant
         period
-        scope
-        summary
+        content {
+          childMarkdownRemark {
+            html
+          }
+        }
       }
       platform {
         title

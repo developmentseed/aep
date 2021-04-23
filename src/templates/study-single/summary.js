@@ -88,7 +88,7 @@ function StudySingleSummary(props) {
     study: {
       title,
       country,
-      study: { consultant, period, scope, summary },
+      study: { consultant, period, content },
       platform,
       layers,
       charts
@@ -142,11 +142,12 @@ function StudySingleSummary(props) {
             </>
           )}
         </DetailsList>
-        <h2>Scope</h2>
-        <p>{scope}</p>
-        <h2>Description</h2>
-        <p>{summary}</p>
       </Prose>
+      {content && (
+        <Prose
+          dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }}
+        />
+      )}
       <Aside>
         <Prose>
           <h2>Insights</h2>
@@ -164,8 +165,7 @@ StudySingleSummary.propTypes = {
     study: T.shape({
       consultant: T.string,
       period: T.oneOfType([T.string, T.number]),
-      scope: T.string,
-      summary: T.string
+      content: T.object
     }),
     platform: T.shape({
       title: T.string,

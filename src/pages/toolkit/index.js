@@ -1,37 +1,31 @@
 import React from 'react';
+import T from 'prop-types';
+import { graphql } from 'gatsby';
 
-import Layout from '../../components/layout';
-import {
-  Inpage,
-  InpageHeader,
-  InpageTitle,
-  InpageHeadline,
-  InpageBody
-} from '../../styles/inpage';
-
-import { ContentBlock } from '../../styles/content-block';
+import PageLayout from '../../components/page-layout';
 import Prose from '../../styles/typography/prose';
 
-function Toolkit() {
+function Toolkit({ data }) {
+  const post = data.markdownRemark;
   return (
-    <Layout title='Toolkit'>
-      <Inpage>
-        <InpageHeader>
-          <InpageHeadline>
-            <InpageTitle>Agricultural Toolkit</InpageTitle>
-          </InpageHeadline>
-        </InpageHeader>
-        <InpageBody>
-          <ContentBlock>
-            <Prose>
-              <h2>Agricultural Toolkit</h2>
-              <p>More information about the agricultural toolkit.</p>
-            </Prose>
-          </ContentBlock>
-        </InpageBody>
-      </Inpage>
-    </Layout>
+    <PageLayout title='Agricultural Toolkit' metaTitle='Toolkit'>
+      <Prose dangerouslySetInnerHTML={{ __html: post.html }} />
+    </PageLayout>
   );
 }
 
 export default Toolkit;
+
+Toolkit.propTypes = {
+  data: T.object
+};
+
+export const query = graphql`
+  query {
+    markdownRemark(
+      fields: { collection: { eq: "page" }, slug: { eq: "toolkit" } }
+    ) {
+      html
+    }
+  }
+`;
