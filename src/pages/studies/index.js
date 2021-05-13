@@ -138,7 +138,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPostsYaml {
+    allPostsYaml(sort: { fields: title }) {
       nodes {
         id
         title

@@ -121,7 +121,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allPostsYaml(filter: { external: { eq: null } }) {
+        allPostsYaml(
+          sort: { fields: title }
+          filter: { external: { eq: null } }
+        ) {
           nodes {
             id
             fields {
