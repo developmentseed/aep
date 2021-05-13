@@ -108,7 +108,8 @@ export const CardMedia = styled.figure`
 
 export const CardMediaThumb = styled.div`
   position: relative;
-  background: ${themeVal('color.baseAlphaA')};
+  min-height: 3rem;
+  background: ${themeVal('color.baseAlphaB')};
   border-radius: ${themeVal('shape.rounded')};
   overflow: hidden;
 
