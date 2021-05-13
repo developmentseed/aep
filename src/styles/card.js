@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import { glsp, media, multiply, themeVal } from '@devseed-ui/theme-provider';
 import { Heading } from '@devseed-ui/typography';
 import { headingAlt } from '@devseed-ui/typography';
+import collecticon from '@devseed-ui/collecticons';
 
 export const Card = styled.article`
   position: relative;
@@ -29,6 +30,29 @@ export const Card = styled.article`
     z-index: 3;
     pointer-events: none;
   }
+
+  ${({ isExternal }) =>
+    isExternal &&
+    css`
+      &::after {
+        ${collecticon('expand-top-right')}
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        width: 3.5rem;
+        height: 3.5rem;
+        color: ${themeVal('color.surface')};
+        line-height: 1;
+        background: ${themeVal('color.link')};
+        padding: ${glsp(0.5)};
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
+        pointer-events: none;
+      }
+    `}
 `;
 
 export const CardHeader = styled.header`
