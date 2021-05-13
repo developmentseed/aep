@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import T from 'prop-types';
 import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
 
 import { glsp, media, multiply, themeVal } from '@devseed-ui/theme-provider';
 import { Heading } from '@devseed-ui/typography';
 import { headingAlt } from '@devseed-ui/typography';
 import collecticon from '@devseed-ui/collecticons';
+import SmartLink from '../components/smart-link';
 
 export const Card = styled.article`
   position: relative;
@@ -65,7 +65,9 @@ export const CardHeader = styled.header`
   `}
 `;
 
-export const CardHeadline = styled.div``;
+export const CardHeadline = styled.div`
+  /* styled-component */
+`;
 
 export const CardTitle = styled(Heading)`
   font-size: 1rem;
@@ -133,7 +135,7 @@ export const CardMediaThumb = styled.div`
   }
 `;
 
-export const CardLink = styled(Link)`
+export const CardLink = styled(SmartLink)`
   position: absolute;
   z-index: 1;
   top: 0;
@@ -194,6 +196,7 @@ export const CardInteractive = (props) => {
     linkTitle,
     linkLabel,
     onClickCapture,
+    linkProps = {},
     ...rest
   } = props;
   const [isStateOver, setStateOver] = useState(false);
@@ -212,6 +215,7 @@ export const CardInteractive = (props) => {
       <CardLink
         to={linkTo}
         title={linkTitle}
+        {...linkProps}
         onMouseDown={() => setStateActive(true)}
         onMouseUp={() => setStateActive(false)}
         onMouseEnter={() => setStateOver(true)}
@@ -233,5 +237,6 @@ CardInteractive.propTypes = {
   onClickCapture: T.func,
   linkTo: T.string,
   linkTitle: T.string,
-  linkLabel: T.string
+  linkLabel: T.string,
+  linkProps: T.object
 };
