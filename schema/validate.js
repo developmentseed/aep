@@ -10,7 +10,7 @@ const yml = require('js-yaml');
 const studyFileExists = (val) =>
   fs.existsSync(path.join(__dirname, '../content/study/posts/', val));
 
-const studySchema = new Schema({
+const baseSchema = {
   title: { type: String, required: true },
   bbox: [
     [
@@ -21,7 +21,16 @@ const studySchema = new Schema({
       { type: Number, required: true },
       { type: Number, required: true }
     ]
-  ],
+  ]
+};
+
+const externalStudySchema = new Schema({
+  ...baseSchema,
+  external: { type: String, match: /^https?:\/\// }
+});
+
+const studySchema = new Schema({
+  ...baseSchema,
   zoomExtent: [{ type: Number }, { type: Number }],
   mapConfig: { type: String, use: { studyFileExists }, required: true },
   study: {
@@ -132,7 +141,10 @@ function printResult(fn, fileErrors) {
     console.log('\nValidating YML\n===');
     ymlFiles.forEach((fn) => {
       const fileContent = yml.load(fs.readFileSync(fn));
-      const fileErrors = studySchema.validate(fileContent, { strip: false });
+      const schemaToUse = fileContent.external
+        ? externalStudySchema
+        : studySchema;
+      const fileErrors = schemaToUse.validate(fileContent, { strip: false });
 
       if (fileErrors.length) {
         errors = true;

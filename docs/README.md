@@ -16,6 +16,8 @@ The study configuration consists of two files:
 
 * a `yml` file that contains the basic information and metadata of the study.
 * a `json` file that contains the map configuration.
+  
+> 🌍 AEP also supports external studies. See the [External studies](#external-studies) section on how to configure them.
 
 ![Study Configuration](media/study-main-page.png)
 
@@ -61,6 +63,20 @@ The main information and metadata of each study is managed through a `yml` file,
 | layers[].displayData[].value | `string` | A static value for the popover. Exclusive with `valueProp` |
 | layers[].displayData[].labelProp | `string` | A dynamic label for the popover. Exclusive with `label` |
 | layers[].displayData[].valueProp | `string` | A dynamic value for the popover. Exclusive with `value` |
+
+## External studies
+External studies can be used to include a reference to external content in the studies hub.
+They will be rendered with an iconographic indication that their content is outside the AEP application.
+
+![](./media/external-study-card.png)
+
+An external study only has one `yml` file which must contain a `title`, `bbox`, and an `external` property with the Url to link to.
+Example:
+```yml
+title: Liberia National Electrification Analysis
+bbox: [[-14.3691,4.2762], [-4.2258,8.7002]]
+external: https://liberianea.com/
+```
 
 ## Map configuration
 The map of each study is configured using a `json` file that follows the Mapbox Style specification. For a full example, please see [`kenya-mb.json`](/content/study/posts/kenya-mb.json).

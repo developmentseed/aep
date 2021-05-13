@@ -62,6 +62,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       name: 'PostsYaml',
       fields: {
         title: 'String',
+        external: 'String',
         bbox: 'JSON',
         zoomExtent: 'JSON',
         country: 'String',
@@ -120,7 +121,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allPostsYaml {
+        allPostsYaml(
+          sort: { fields: title }
+          filter: { external: { eq: null } }
+        ) {
           nodes {
             id
             fields {

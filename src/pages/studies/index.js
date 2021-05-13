@@ -66,9 +66,18 @@ export default function Studies({ data }) {
               {studies.map((node) => (
                 <li key={node.id}>
                   <CardInteractive
-                    linkTo={`/studies/${node.fields.slug}`}
-                    linkTitle='View study'
-                    linkLabel='View'
+                    linkProps={{
+                      to: node.external
+                        ? node.external
+                        : `/studies/${node.fields.slug}`,
+                      title: node.external
+                        ? 'View external study'
+                        : 'View study',
+                      target: node.external ? '_blank' : undefined,
+                      rel: node.external ? 'noopener noreferrer' : undefined
+                    }}
+                    linkLabel={node.external ? 'View external study' : 'View'}
+                    isExternal={!!node.external}
                   >
                     <CardHeader>
                       <CardHeadline>
@@ -81,7 +90,7 @@ export default function Studies({ data }) {
                             <dd>{node.country}</dd>
                           </>
                         )}
-                        {node.study.period && (
+                        {node.study?.period && (
                           <>
                             <dt>Period</dt>
                             <dd>{node.study.period}</dd>
@@ -129,10 +138,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPostsYaml {
+    allPostsYaml(sort: { fields: title }) {
       nodes {
         id
         title
+        external
         bbox
         country
         study {
