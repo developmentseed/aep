@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import Layout from '../../components/layout';
 import { ContentBlock } from '../../styles/content-block';
+import Prose from '../../styles/typography/prose';
 
 import {
   Inpage,
@@ -24,6 +25,22 @@ import {
   CardMedia,
   CardMediaThumb
 } from '../../styles/card';
+
+const StudiesIntro = styled.div`
+  grid-column: content-start / content-end;
+
+  ${media.smallUp`
+    grid-column: content-start / content-end;
+  `}
+
+  ${media.mediumUp`
+    grid-column: content-start / content-end;
+  `}
+
+  ${media.largeUp`
+    grid-column: content-start / content-9;
+  `}
+`;
 
 const StudiesList = styled.ul`
   grid-column: content-start / content-end;
@@ -62,6 +79,12 @@ export default function Studies({ data }) {
         </InpageHeader>
         <InpageBody>
           <ContentBlock>
+            <StudiesIntro>
+              <Prose>
+                <h2>Browse the studies</h2>
+                <p>Lorem ipsum dolor sit amet</p>
+              </Prose>
+            </StudiesIntro>
             <StudiesList>
               {studies.map((node) => (
                 <li key={node.id}>
