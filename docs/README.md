@@ -115,6 +115,8 @@ yarn validate
 5. set up a Pull Request and merge once [the validations](#validating-configuration) are run successfully
 
 ## Add a layer
+If you have data to upload to [Energydata.info](https://energydata.info/), please follow the steps described in the [datasets preparation document](./DATASETS.md), prior to adding to AEP.
+
 To add a new layer to a study that users can interact with, requires three things:
 
 1. add a source to the Mapbox Style Specification that references the dataset. This example shows a GeoJSON, but other types like raster or vector tiles are also supported.  

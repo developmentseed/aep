@@ -28,10 +28,6 @@ const renderContentBlockLayout = ({ layout }) => {
           grid-column: content-start / content-end;
 
           ${media.largeUp`
-            grid-column: content-2 / span 8;
-          `}
-
-          ${media.xlargeUp`
             grid-column: content-3 / span 8;
           `}
         }
