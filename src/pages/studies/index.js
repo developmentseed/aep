@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { glsp, media, themeVal } from '@devseed-ui/theme-provider';
 import Layout from '../../components/layout';
 import { ContentBlock } from '../../styles/content-block';
+import Prose from '../../styles/typography/prose';
 
 import {
   Inpage,
@@ -24,6 +25,22 @@ import {
   CardMedia,
   CardMediaThumb
 } from '../../styles/card';
+
+const StudiesIntro = styled.div`
+  grid-column: content-start / content-end;
+
+  ${media.smallUp`
+    grid-column: content-start / content-end;
+  `}
+
+  ${media.mediumUp`
+    grid-column: content-start / content-end;
+  `}
+
+  ${media.largeUp`
+    grid-column: content-start / content-9;
+  `}
+`;
 
 const StudiesList = styled.ul`
   grid-column: content-start / content-end;
@@ -52,6 +69,8 @@ const StudiesList = styled.ul`
 export default function Studies({ data }) {
   const studies = data.allPostsYaml.nodes;
 
+  const hasExternal = studies.some((s) => !!s.external);
+
   return (
     <Layout title='Studies'>
       <Inpage>
@@ -62,13 +81,37 @@ export default function Studies({ data }) {
         </InpageHeader>
         <InpageBody>
           <ContentBlock>
+            <StudiesIntro>
+              <Prose>
+                <h2>Browse the studies</h2>
+                <p>
+                  There {studies.length === 1 ? 'is' : 'are'} currently{' '}
+                  <strong>
+                    {studies.length}{' '}
+                    {studies.length === 1 ? 'study' : 'studies'}
+                  </strong>{' '}
+                  available.{' '}
+                  {hasExternal &&
+                    'Studies marked as external are hosted outside the platform.'}
+                </p>
+              </Prose>
+            </StudiesIntro>
             <StudiesList>
               {studies.map((node) => (
                 <li key={node.id}>
                   <CardInteractive
-                    linkTo={`/studies/${node.fields.slug}`}
-                    linkTitle='View study'
-                    linkLabel='View'
+                    linkProps={{
+                      to: node.external
+                        ? node.external
+                        : `/studies/${node.fields.slug}`,
+                      title: node.external
+                        ? 'View external study'
+                        : 'View study',
+                      target: node.external ? '_blank' : undefined,
+                      rel: node.external ? 'noopener noreferrer' : undefined
+                    }}
+                    linkLabel={node.external ? 'View external study' : 'View'}
+                    isExternal={!!node.external}
                   >
                     <CardHeader>
                       <CardHeadline>
@@ -81,7 +124,7 @@ export default function Studies({ data }) {
                             <dd>{node.country}</dd>
                           </>
                         )}
-                        {node.study.period && (
+                        {node.study?.period && (
                           <>
                             <dt>Period</dt>
                             <dd>{node.study.period}</dd>
@@ -129,10 +172,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPostsYaml {
+    allPostsYaml(sort: { fields: title }) {
       nodes {
         id
         title
+        external
         bbox
         country
         study {
