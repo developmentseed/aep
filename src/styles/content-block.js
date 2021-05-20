@@ -45,8 +45,6 @@ export const ContentBlock = styled(UniversalGridder).attrs({
 })`
   padding: ${glsp(themeVal('layout.gap.xsmall'), 0)};
   grid-row-gap: ${glsp(themeVal('layout.gap.xsmall'))};
-  grid-template-rows: min-content;
-  grid-auto-rows: 1fr;
 
   ${media.smallUp`
     padding: ${glsp(themeVal('layout.gap.small'), 0)};
@@ -61,6 +59,8 @@ export const ContentBlock = styled(UniversalGridder).attrs({
   ${media.largeUp`
     padding: ${glsp(themeVal('layout.gap.large'), 0)};
     grid-row-gap: ${glsp(themeVal('layout.gap.large'))};
+    grid-template-rows: min-content;
+    grid-auto-rows: 1fr;
   `}
 
   ${media.xlargeUp`
