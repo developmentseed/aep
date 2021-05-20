@@ -69,6 +69,8 @@ const StudiesList = styled.ul`
 export default function Studies({ data }) {
   const studies = data.allPostsYaml.nodes;
 
+  const hasExternal = studies.some((s) => !!s.external);
+
   return (
     <Layout title='Studies'>
       <Inpage>
@@ -82,7 +84,16 @@ export default function Studies({ data }) {
             <StudiesIntro>
               <Prose>
                 <h2>Browse the studies</h2>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p>
+                  There {studies.length === 1 ? 'is' : 'are'} currently{' '}
+                  <strong>
+                    {studies.length}{' '}
+                    {studies.length === 1 ? 'study' : 'studies'}
+                  </strong>{' '}
+                  available.{' '}
+                  {hasExternal &&
+                    'Studies marked as external are hosted outside the platform.'}
+                </p>
               </Prose>
             </StudiesIntro>
             <StudiesList>
