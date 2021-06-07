@@ -1,7 +1,7 @@
 {
   "version": 8,
   "sources": {
-    "transmission_lines_1: {
+    "transmission_lines_1": {
       "tiles": [
         "https://energydata.info/dataset/AICD-AFR-62/resource/029caf85-1dca-4a76-b51b-54dbe51b3bf8/download/liberia-electricity-transmission-network.geojson"
       ],
@@ -12,6 +12,10 @@
         "https://development-data-hub-s3-public.s3.amazonaws.com/ddhfiles/145281/liberiafinal.geojson"
       ],
       "type": "geojson"
+    },
+    "power": {
+      "data": "",
+      "type": "vector"
     },
     "population": {
       "data": "https://energydata.info/dataset/f8cca8c3-b61f-4f66-b669-bec20d513156/resource/952ef90e-4caa-417f-a98d-46f7bca872a4/download/popplaces2007lisgis.geojson",
@@ -49,6 +53,14 @@
       "source-layer": "data_layer",
       "paint": {
         "line-color": "#FFC700"
+      }
+    },
+    {
+      "id": "power",
+      "type": "circle",
+      "source": "power",
+      "paint": {
+        "circle-color": "#e58f25"
       }
     },
     {
