@@ -1,0 +1,76 @@
+{
+  "version": 8,
+  "sources": {
+    "transmission_lines_1: {
+      "tiles": [
+        "https://energydata.info/dataset/AICD-AFR-62/resource/029caf85-1dca-4a76-b51b-54dbe51b3bf8/download/liberia-electricity-transmission-network.geojson"
+      ],
+      "type": "geojson"
+    },
+    "transmission_lines_2": {
+      "tiles": [
+        "https://development-data-hub-s3-public.s3.amazonaws.com/ddhfiles/145281/liberiafinal.geojson"
+      ],
+      "type": "geojson"
+    },
+    "power": {
+      "data": "",
+      "type": "vector"
+    },
+    "population": {
+      "data": "https://energydata.info/dataset/f8cca8c3-b61f-4f66-b669-bec20d513156/resource/952ef90e-4caa-417f-a98d-46f7bca872a4/download/popplaces2007lisgis.geojson",
+      "type": "geojson"
+    },
+    "wind": {
+      "tiles": [
+        "https://s3-eu-west-1.amazonaws.com/globalwindatlas3/tiles/250_wspd_100m/{z}/{x}/{y}.png"
+      ],
+      "type": "raster",
+      "scheme": "tms"
+    }
+  },
+  "layers": [
+    {
+      "id": "transmission_lines_1",
+      "type": "line",
+      "source": "transmission_lines_1",
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#14213D",
+        "line-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.32, 12, 0.48],
+        "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.5, 12, 2]
+      }
+    },
+    {
+      "id": "wind",
+      "type": "raster",
+      "source": "wind"
+    },
+    {
+      "id": "transmission_lines_2",
+      "type": "line",
+      "source": "transmission_lines_2",
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FFC700"
+      }
+    },
+    {
+      "id": "power",
+      "type": "circle",
+      "source": "power",
+      "paint": {
+        "circle-color": "#e58f25"
+      }
+    },
+    {
+      "id": "population",
+      "type": "circle",
+      "source": "population",
+      "source-layer": "data_layer",
+      "paint": {
+        "circle-color": "#878684"
+      }
+    },
+  ]
+}
