@@ -65,15 +65,6 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/liberia-electricity-transmission-network-2017
-  - id: power
-    name: Power Stations
-    category: input
-    disabled: true
-    mbLayer: power
-    info: Data for power plants in Liberia with total installed generating capacity 10 mw from the Platts World Electric Power Plants Database (WEPP 2006).
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/liberia-power-plants
   - id: population
     name: Population settlements
     category: input
