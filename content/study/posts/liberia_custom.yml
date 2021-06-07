@@ -1,5 +1,5 @@
 title: Liberia National Electrification Analysis (NEA) (custom visualization)
-bbox: [[ 33.893,-4.676],[41.855,5.506 ]]
+bbox: [[-11.438, 4.355],[-7.539, 8.541]]
 zoomExtent: [ 6, 12 ]
 mapConfig: ./liberia_custom-mb.json
 country: Liberia
@@ -65,15 +65,6 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/liberia-electricity-transmission-network-2017
-  - id: power
-    name: Power Stations
-    category: input
-    disabled: true
-    mbLayer: power
-    info: Data for power plants in Liberia with total installed generating capacity 10 mw from the Platts World Electric Power Plants Database (WEPP 2006).
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/liberia-power-plants
   - id: population
     name: Population settlements
     category: input
@@ -82,9 +73,6 @@ layers:
     source:
       name: energydata.info
       url: hhttps://energydata.info/dataset/liberia-populated-settlements
-    displayData:
-      - label: Households
-        valueProp: HH|round:0|suffix:Households
   - id: wind
     name: Mean wind speed
     category: input
@@ -96,7 +84,7 @@ layers:
     legendData:
       type: gradient
       min: '< 2.5'
-      max: '> 9.75 m/s'displayData:
+      max: '> 9.75 m/s'
       stops:
         - '#BEE6FA'
         - '#488FC6'
