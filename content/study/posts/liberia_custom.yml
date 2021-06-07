@@ -1,6 +1,6 @@
 title: Liberia National Electrification Analysis (NEA) (custom visualization)
 bbox: [[-11.438, 4.355],[-7.539, 8.541]]
-zoomExtent: [ 6, 12 ]
+zoomExtent: [ 3, 10 ]
 mapConfig: ./liberia_custom-mb.json
 country: Liberia
 study:

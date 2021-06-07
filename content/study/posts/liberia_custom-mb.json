@@ -30,11 +30,8 @@
       "id": "transmission_lines_1",
       "type": "line",
       "source": "transmission_lines_1",
-      "source-layer": "data_layer",
       "paint": {
-        "line-color": "#14213D",
-        "line-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.32, 12, 0.48],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.5, 12, 2]
+        "line-color": "#14213D"
       }
     },
     {
@@ -46,7 +43,6 @@
       "id": "transmission_lines_2",
       "type": "line",
       "source": "transmission_lines_2",
-      "source-layer": "data_layer",
       "paint": {
         "line-color": "#FFC700"
       }
