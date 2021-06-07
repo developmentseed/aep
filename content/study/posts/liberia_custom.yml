@@ -97,14 +97,6 @@ layers:
       type: gradient
       min: '< 2.5'
       max: '> 9.75 m/s'displayData:
-  - label: A static label
-    value: Static value
-  - label: Length
-    valueProp: Length_km|round:2|suffix:kmdisplayData:
-  - label: A static label
-    value: Static value
-  - label: Length
-    valueProp: Length_km|round:2|suffix:km
       stops:
         - '#BEE6FA'
         - '#488FC6'
