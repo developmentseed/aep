@@ -2,6 +2,76 @@ title: Congo
 bbox: [[11.0937,-5.0379], [18.4530,3.7281]]
 mapConfig: ./congo-mb.json
 study:
-  consultant: Another consultant
+  consultant: IED -Innovation Energie Développement
   period: 2019
   content: ./congo.md
+ charts:
+  - name: Modelled Electricity demand (GWh/year)
+    type: donut
+    data:
+      - name: Residential
+        value: 90
+      - name: Social (HF, EF, public)
+        value: 60
+      - name: Commercial
+        value: 60
+      - name: Productive
+        value: 60
+      - name: Other
+        value: 30
+  - name: Total additional capacity (MW)
+    type: donut
+    data:
+      - name: Grid
+        value: 1500
+      - name: Mini-grid
+        value: 150
+      - name: Stand-alone
+        value: 600
+  - name: Total lengh of T&D
+    type: number
+    datum: 
+      value: 60
+      unit: km
+  - name: Mini-grids
+    type: number
+    datum: 
+      value: 65
+      unit:
+  - name: Stand-alone systems
+    type: number
+    datum: 
+      value: 3000
+      unit:
+platform:
+  title: Congo Final Report
+  url: https://worldbankgroup-my.sharepoint.com.mcas.ms/personal/rjordan_worldbank_org/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Frjordan%5Fworldbank%5Forg%2FDocuments%2FWork%2FOperations%2FAFR%20Geospatial%2FCongo%2FFinal%20Report%2FRC%2D%20Planification%20Geospatiale%20%2D%20Rapport%20final%2D%20V6%2Epdf&parent=%2Fpersonal%2Frjordan%5Fworldbank%5Forg%2FDocuments%2FWork%2FOperations%2FAFR%20Geospatial%2FCongo%2FFinal%20Report
+layers:
+  - id: 11kv
+    name: Existing Transmission Networl
+    category: input
+    mbLayer: 35kv
+    info: This dataset contains electricity transmission lines both existing and planned, 35 kV upwards in Congo. The dataset was provided by AICD.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/kenya-kenya-electricity-network
+  - id: wind
+    name: Mean wind speed
+    category: input
+    mbLayer: wind
+    info: The mean wind speed is a measure of the wind resource. Higher mean wind speeds normally indicate better wind resources, but mean wind power density gives a more accurate indication of the available wind resource.
+    source:
+      name: Global Wind Atlas
+      url: https://globalwindatlas.info/
+    legendData:
+      type: gradient
+      min: '< 2.5'
+      max: '> 9.75 m/s'
+      stops:
+        - '#BEE6FA'
+        - '#488FC6'
+        - '#7BC34C'
+        - '#F9E65B'
+        - '#F56E2B'
+        - '#C82333'
+        - '#A3305C'
