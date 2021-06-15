@@ -47,7 +47,10 @@ platform:
   title: Congo Final Report
   url: https://worldbankgroup-my.sharepoint.com.mcas.ms/personal/rjordan_worldbank_org/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Frjordan%5Fworldbank%5Forg%2FDocuments%2FWork%2FOperations%2FAFR%20Geospatial%2FCongo%2FFinal%20Report%2FRC%2D%20Planification%20Geospatiale%20%2D%20Rapport%20final%2D%20V6%2Epdf&parent=%2Fpersonal%2Frjordan%5Fworldbank%5Forg%2FDocuments%2FWork%2FOperations%2FAFR%20Geospatial%2FCongo%2FFinal%20Report
 layers:
+<<<<<<< HEAD
   - id: HV
+=======
+  - id: 11kv
     name: Existing Transmission Network
     category: input
     mbLayer: HV
