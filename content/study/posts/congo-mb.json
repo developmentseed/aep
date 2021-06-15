@@ -1,14 +1,14 @@
 {
   "version": 8,
   "sources": {
-    "35kv": {
+    "HV": {
       "tiles": [
-        "https://aep-tiles.staging.derilinx.com/tiles/ke/35kv/{z}/{x}/{y}.pbf"
+        "https://energydata-tiles-bk.s3.amazonaws.com/tiles/5fc59596-8379-4bf0-bc4f-e05f42b3300d-45a71608-fb6f-4ea9-a03c-ce812993ecf4/data.tilejson"
       ],
       "type": "vector"
     },
   "sources": {
-    "no2": {
+    "wind": {
       "tiles": [
         "https://8ib71h0627.execute-api.us-east-1.amazonaws.com/v1/{z}/{x}/{y}@1x?url=s3://covid-eo-data/OMNO2d_HRM/OMI_trno2_0.10x0.10_202008_Col3_V4.nc.tif&resampling_method=bilinear&bidx=1&rescale=0%2C1.5e16&color_map=custom_no2&color_formula=gamma r 1"
       ],
@@ -16,10 +16,20 @@
     }
   },
   "layers": [
-    {
-      "id": "no2",
+    
+
+{
+      "id": "wind",
       "type": "raster",
-      "source": "no2"
+      "source": "wind"
+    },
+    {
+      "id": "HV",
+      "type": "line",
+      "source": "HV",
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FFC700"
+      }
     }
-  ]
-}
+]

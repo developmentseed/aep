@@ -47,14 +47,14 @@ platform:
   title: Congo Final Report
   url: https://worldbankgroup-my.sharepoint.com.mcas.ms/personal/rjordan_worldbank_org/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Frjordan%5Fworldbank%5Forg%2FDocuments%2FWork%2FOperations%2FAFR%20Geospatial%2FCongo%2FFinal%20Report%2FRC%2D%20Planification%20Geospatiale%20%2D%20Rapport%20final%2D%20V6%2Epdf&parent=%2Fpersonal%2Frjordan%5Fworldbank%5Forg%2FDocuments%2FWork%2FOperations%2FAFR%20Geospatial%2FCongo%2FFinal%20Report
 layers:
-  - id: 11kv
-    name: Existing Transmission Networl
+  - id: HV
+    name: Existing Transmission Network
     category: input
-    mbLayer: 35kv
+    mbLayer: HV
     info: This dataset contains electricity transmission lines both existing and planned, 35 kV upwards in Congo. The dataset was provided by AICD.
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/kenya-kenya-electricity-network
+      url: https://energydata.info/dataset/republic-congo-electricity-transmission-network-2007/
   - id: wind
     name: Mean wind speed
     category: input
