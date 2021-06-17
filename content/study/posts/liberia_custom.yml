@@ -73,6 +73,13 @@ layers:
     source:
       name: energydata.info
       url: hhttps://energydata.info/dataset/liberia-populated-settlements
+    displayData:
+      - label: Location Name
+        valueProp: LNAME
+      - label: Population
+        valueProp: TOTAL
+      - label: Households
+        valueProp: HH
   - id: wind
     name: Mean wind speed
     category: input
