@@ -56,7 +56,14 @@ layers:
     info: Data for medium and high voltage transmission lines in Liberia (2009). The data were compiled for the AICD study led by the World Bank. A variety of sources were consulted, including regional power pool documents and maps from World Bank project documents.
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/liberia-electricity-transmission-network
+      url: https://energydata.info/dataset/liberia-electricity-transmission-networky
+    displayData:
+      - label: From
+        valueProp: FROM_NM
+      - label: To
+        valueProp: TO_NM
+      - label: Voltage
+        valueProp: VOLTAGE_KV|suffix:kv
   - id: transmission_lines_2
     name: Liberia Electricity Transmission Network (2017)
     category: input
@@ -65,6 +72,9 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/liberia-electricity-transmission-network-2017
+    displayData:
+      - label: Test
+        value: 5
   - id: population
     name: Population settlements
     category: input
@@ -100,4 +110,3 @@ layers:
         - '#F56E2B'
         - '#C82333'
         - '#A3305C'
-      
