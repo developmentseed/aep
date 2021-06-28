@@ -87,12 +87,12 @@ const studySchema = new Schema({
         max: { type: String },
         stops: [{ type: String, match: /^#[0-9a-fA-F]{6}$/ }]
       },
-      displayData: [{
+      displayData: {
         value: { type: String },
         label: { type: String },
         valueProp: { type: String },
         labelProp: { type: String }
-      }]
+      }
     }
   ]
 });
