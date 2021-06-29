@@ -74,7 +74,7 @@ layers:
       url: https://energydata.info/dataset/liberia-electricity-transmission-network-2017
     displayData:
       - label: Test
-        value: 5
+        value: '5'
   - id: population
     name: Population settlements
     category: input
