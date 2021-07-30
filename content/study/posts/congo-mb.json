@@ -2,9 +2,7 @@
   "version": 8,
   "sources": {
     "HV": {
-      "tiles": [
-        "https://energydata-tiles-bk.s3.amazonaws.com/tiles/5fc59596-8379-4bf0-bc4f-e05f42b3300d-45a71608-fb6f-4ea9-a03c-ce812993ecf4/data.tilejson"
-      ],
+      "url": "https://energydata-tiles-bk.s3.amazonaws.com/tiles/5fc59596-8379-4bf0-bc4f-e05f42b3300d-45a71608-fb6f-4ea9-a03c-ce812993ecf4/data.tilejson",
       "type": "vector"
     },
     "wind": {
