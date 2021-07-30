@@ -7,7 +7,6 @@
       ],
       "type": "vector"
     },
-  "sources": {
     "wind": {
       "tiles": [
         "https://8ib71h0627.execute-api.us-east-1.amazonaws.com/v1/{z}/{x}/{y}@1x?url=s3://covid-eo-data/OMNO2d_HRM/OMI_trno2_0.10x0.10_202008_Col3_V4.nc.tif&resampling_method=bilinear&bidx=1&rescale=0%2C1.5e16&color_map=custom_no2&color_formula=gamma r 1"
@@ -16,9 +15,7 @@
     }
   },
   "layers": [
-    
-
-{
+    {
       "id": "wind",
       "type": "raster",
       "source": "wind"
@@ -32,4 +29,5 @@
         "line-color": "#FFC700"
       }
     }
-]
+  ]
+}
