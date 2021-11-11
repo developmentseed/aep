@@ -1,7 +1,0 @@
-title: Congo
-bbox: [[11.0937,-5.0379], [18.4530,3.7281]]
-mapConfig: ./congo-mb.json
-study:
-  consultant: Another consultant
-  period: 2019
-  content: ./congo.md
