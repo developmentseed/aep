@@ -1,0 +1,172 @@
+title: Congo Brazzaville Low cost electrification solutions
+bbox: [[11.869,-4.871],[15.919,2.131]]
+mapConfig: ./congo-mb.json
+country: Congo-Brazzaville
+study:
+  consultant: IED
+  period: 2020
+  content: congo.md
+layers:
+  - id: Hydro Potential Sites
+    name: Hydro Potential Sites
+    category: outcome
+    mbLayer: Hydro Potential Sites
+    visible: true
+    info: This data was collected during the Preparation of a high-level least-cost geospatial analysis for grid and off-grid electrification options Synoptic analysis of low-cost electrification solutions in Congo
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-hydro-potential-2019
+  - id: Hydro minigrid projects
+    name: Hydro minigrid projects
+    category: outcome
+    mbLayer: Hydro minigrid projects
+    visible: false
+    info:  The consultant identified 11 mini-hydro projects that could be developed both to electrify rural communities on an off-grid basis as well as potential sites for grid injection
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-independent-and-grid-injection-hydro-mini-grid-projects-2019
+  - id: Grid connection hydro minigrid projects
+    name: Grid connection hydro minigrid projects
+    category: outcome
+    mbLayer: Grid connection hydro minigrid projects
+    visible: false
+    info:  The consultant identified 11 mini-hydro projects that could be developed both to electrify rural communities on an off-grid basis as well as potential sites for grid injection
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-independent-and-grid-injection-hydro-mini-grid-projects-2019 
+  - id: Biomass Potential Sites
+    name: Biomass Potential Sites
+    category: outcome
+    mbLayer: Biomass Potential Sites
+    visible: true
+    info: This data was collected during the Preparation of a high-level least-cost geospatial analysis for grid and off-grid electrification options Synoptic analysis of low-cost electrification solutions in Congo
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-biomass-potential-2019
+  - id: Biomass minigrid projects
+    name: Biomass minigrid projects
+    category: outcome
+    mbLayer: Biomass minigrid projects
+    visible: true
+    info: The consultant identified 6 biomass projects that could be developed both to electrify rural communities on an off-grid basis as well as potential sites for grid injection
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-independent-and-grid-injection-biomass-projects-2019
+  - id: Grid connection biomass projects
+    name: Grid connection biomass projects
+    category: outcome
+    mbLayer: Grid connection hydro biomass projects
+    visible: true
+    info: The consultant identified 6 biomass projects that could be developed both to electrify rural communities on an off-grid basis as well as potential sites for grid injection
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-independent-and-grid-injection-biomass-projects-2019 
+  - id: Solar projects sc Low
+    name: Solar projects sc Low
+    category: outcome
+    mbLayer: Solar projects sc Low
+    visible: true
+    info: The geospatial planning exercise examined the least cost options for grid extension, off-grid supply and distributed energy solutions in Congo based on three scenarios Low, Medium, High
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-proposal-grid-extension-and-solar-projects-2019
+  - id: Grid connection Solar sc Low
+    name: Grid connection Solar sc Low
+    category: outcome
+    mbLayer: Grid connection Solar sc Low
+    visible: true
+    info: The geospatial planning exercise examined the least cost options for grid extension, off-grid supply and distributed energy solutions in Congo based on three scenarios Low, Medium, High
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-proposal-grid-extension-and-solar-projects-2019
+  - id: Solar projects sc Base
+    name: Solar projects sc Base
+    category: outcome
+    mbLayer: Solar projects sc Base
+    visible: true
+    info: The geospatial planning exercise examined the least cost options for grid extension, off-grid supply and distributed energy solutions in Congo based on three scenarios Low, Medium, High
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-proposal-grid-extension-and-solar-projects-2019
+  - id: Grid connection Solar sc Base
+    name: Grid connection Solar sc Base
+    category: outcome
+    mbLayer: Grid connection Solar sc Base
+    visible: true
+    info: The geospatial planning exercise examined the least cost options for grid extension, off-grid supply and distributed energy solutions in Congo based on three scenarios Low, Medium, High
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-proposal-grid-extension-and-solar-projects-2019
+  - id: Solar projects sc High
+    name: Solar projects sc High
+    category: outcome
+    mbLayer: Solar projects sc High
+    visible: true
+    info: The geospatial planning exercise examined the least cost options for grid extension, off-grid supply and distributed energy solutions in Congo based on three scenarios Low, Medium, High
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-proposal-grid-extension-and-solar-projects-2019
+  - id: Grid connection Solar sc High
+    name: Grid connection Solar sc High
+    category: outcome
+    mbLayer: Grid connection Solar sc High
+    visible: true
+    info: The geospatial planning exercise examined the least cost options for grid extension, off-grid supply and distributed energy solutions in Congo based on three scenarios Low, Medium, High
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-proposal-grid-extension-and-solar-projects-2019
+  - id: Hydro Power Plants
+    name: Hydro Power Plants
+    category: input
+    mbLayer: Hydro Power Plants
+    visible: false
+    info: This data was collected during the Preparation of a high-level least-cost geospatial analysis for grid and off-grid electrification options Synoptic analysis of low-cost electrification solutions in Congo
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-hydro-power-plants-2019    
+  - id: Thermal Power Plants
+    name: Thermal Power Plants
+    category: input
+    mbLayer: Thermal Power Plants
+    visible: false
+    info: This data was collected during the Preparation of a high-level least-cost geospatial analysis for grid and off-grid electrification options Synoptic analysis of low-cost electrification solutions in Congo
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-thermal-power-plants-2019
+  - id: Diesel Groups
+    name: Diesel Groups
+    category: input
+    mbLayer: Diesel Groups
+    visible: false
+    info: This data was collected during the Preparation of a high-level least-cost geospatial analysis for grid and off-grid electrification options Synoptic analysis of low-cost electrification solutions in Congo
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-diesel-groups-2019
+  - id: HV Electricity Network
+    name: HV Electricity Network
+    category: input
+    mbLayer: HV Electricity Network
+    visible: false
+    info: This data was collected during the Preparation of a high-level least-cost geospatial analysis for grid and off-grid electrification options Synoptic analysis of low-cost electrification solutions in Congo
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-hv-electricity-network-2019
+  - id: MV Electricity Network
+    name: MV Electricity Network
+    category: input
+    mbLayer: MV Electricity Network
+    visible: false
+    info: This data was collected during the Preparation of a high-level least-cost geospatial analysis for grid and off-grid electrification options Synoptic analysis of low-cost electrification solutions in Congo
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-mv-electricity-network-2019
+  - id: Major Cities Electrification Status
+    name: Major Cities Electrification Status
+    category: input
+    mbLayer: Major Cities Electrification Status
+    visible: false
+    info: In line with the Government of Congo’s stated objective of achieving 100% electrification of administrative headquarters, the consultant has considered all district or departmental headquarters as priority localities for electrification
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/congo-brazzaville-electrification-status-major-cities-2019 
+      

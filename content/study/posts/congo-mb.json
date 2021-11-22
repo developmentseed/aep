@@ -1,0 +1,223 @@
+{
+  "version": 8,
+  "sources": {
+    "Biomass Potential Sites": {
+      "data": "https://energydata.info/dataset/78752943-70d1-459c-b6e2-0ac68b1eaec6/resource/16562184-c116-4725-8497-dee1502f8005/download/potentiel_biomasse_wgs84.geojson",
+      "type": "geojson"
+    },
+    "Hydro Potential Sites": {
+      "data": "https://energydata.info/dataset/650f4924-6fff-4d1b-803b-7501653c53c6/resource/10afe2c6-a14a-4d39-ae14-4103a9db9118/download/potentiel_hydro_wgs84.geojson",
+      "type": "geojson"
+	},
+    "Hydro Power Plants": {
+      "data": "https://energydata.info/dataset/baa71d9a-0b52-44ae-8dc4-3b1548b8548c/resource/0084cfed-4fb1-43e1-9b45-7b8f1304421e/download/centrales_hydro_utm32n.geojson",
+      "type": "geojson"
+	},
+    "Thermal Power Plants": {
+      "data": "https://energydata.info/dataset/1dfbb09e-54f8-4b4b-8a8f-e115c5fd1761/resource/342ca722-f6dc-417f-83a2-b9704345f8f6/download/centrales_thermiques_utm32n.geojson",
+      "type": "geojson"
+	},
+    "Diesel Groups": {
+      "data": "https://energydata.info/dataset/69fb39e4-f348-4a05-afbe-f46f7ed32fb5/resource/7ebeb840-1cd8-4245-a02e-66a213c269cf/download/groupes_diesel_utm32n.geojson",
+      "type": "geojson"
+	},
+	"HV Electricity Network": {
+      "data": "https://energydata.info/dataset/5ab0cfc3-8d86-448f-9824-5eac3468cd57/resource/386c22d4-aa76-4c49-8987-36e4c29979b3/download/reseaux_ht_existant_utm32n.geojson",
+      "type": "geojson"
+	},
+	"MV Electricity Network": {
+      "data": "https://energydata.info/dataset/dd36e549-f163-46db-8889-c10b45b9613e/resource/a475ba39-5621-49f8-870f-87183fa0201d/download/reseaux_mt_existant_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Major Cities Electrification Status": {
+      "data": "https://energydata.info/dataset/2917d4aa-4cef-4c48-af40-129d40a20990/resource/57c69ba8-5665-4c4d-9784-e48c15560666/download/poles_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Hydro minigrid projects": {
+      "data": "https://energydata.info/dataset/95722d8c-be05-4927-bec5-f4408bc58f4c/resource/00680061-c84d-47f4-ad94-0f8f6b92f72f/download/grappes-hydro-localites_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Grid connection hydro minigrid projects": {
+      "data": "https://energydata.info/dataset/95722d8c-be05-4927-bec5-f4408bc58f4c/resource/2b952e4c-40c4-466d-aa98-eedb2da16b5c/download/grappes-hydro-reseau_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Solar projects sc Low": {
+      "data": "https://energydata.info/dataset/9b00cd9a-a37a-4cae-8849-48c291dc34e6/resource/53aabe56-9bf3-44a6-b442-2a53dff378b1/download/projets-solaires-scbas_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Solar projects sc Base": {
+      "data": "https://energydata.info/dataset/9b00cd9a-a37a-4cae-8849-48c291dc34e6/resource/0d295cc1-e0fa-4998-b74d-b4db30b6d6ad/download/projets-solaires-scmed_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Solar projects sc High": {
+      "data": "https://energydata.info/dataset/9b00cd9a-a37a-4cae-8849-48c291dc34e6/resource/cebed8c4-f59a-4cb7-ab1c-470e0a020926/download/projets-solaires-schaut_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Grid connection Solar sc Low": {
+      "data": "https://energydata.info/dataset/9b00cd9a-a37a-4cae-8849-48c291dc34e6/resource/4d3f5a15-411b-4875-ad3a-cf016d45b3fa/download/reseau_scbas_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Grid connection Solar sc High": {
+      "data": "https://energydata.info/dataset/9b00cd9a-a37a-4cae-8849-48c291dc34e6/resource/af5f90fe-9c65-4171-8b61-bb6b3ff3a14c/download/reseau_schaut_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Grid connection Solar sc Base": {
+      "data": "https://energydata.info/dataset/9b00cd9a-a37a-4cae-8849-48c291dc34e6/resource/64b30447-6993-4ff1-b9c9-b015ce89a423/download/reseau_scmed_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Biomass minigrid projects": {
+      "data": "https://energydata.info/dataset/1e87a202-b8f7-49d5-8938-a9b4ddf41f3d/resource/330a0797-e410-4989-bfac-a035cbcd2624/download/grappes-biomasse-localites_utm32n.geojson",
+      "type": "geojson"
+	},
+	"Grid connection hydro biomass projects": {
+      "data": "https://energydata.info/dataset/1e87a202-b8f7-49d5-8938-a9b4ddf41f3d/resource/17ad4ec6-789d-4432-899a-3632628a345c/download/grappes-biomasse-reseau_utm32n.geojson",
+      "type": "geojson"
+	}
+  },  
+  "layers": [
+	{
+	  "id": "Biomass Potential Sites",
+      "type": "circle",
+      "source": "Biomass Potential Sites",
+      "paint": {
+        "circle-color": "#a6ce85"
+      }
+	},
+	{
+	  "id": "Hydro Potential Sites",
+      "type": "circle",
+      "source": "Hydro Potential Sites",
+      "paint": {
+        "circle-color": "#a6cee3"
+      }
+	},
+	{
+	  "id": "Hydro Power Plants",
+      "type": "circle",
+      "source": "Hydro Power Plants",
+      "paint": {
+        "circle-color": "#3c54a3"
+      }
+	},
+	{
+	  "id": "Thermal Power Plants",
+      "type": "circle",
+      "source": "Thermal Power Plants",
+      "paint": {
+        "circle-color": "#cf6656"
+      }
+	},
+	{
+	  "id": "Diesel Groups",
+      "type": "circle",
+      "source": "Diesel Groups",
+      "paint": {
+        "circle-color": "#431a14"
+      }
+	},
+	{
+	  "id": "HV Electricity Network",
+      "type": "line",
+      "source": "HV Electricity Network",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
+	},
+	{
+	  "id": "MV Electricity Network",
+      "type": "line",
+      "source": "MV Electricity Network",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
+	},
+	{
+	  "id": "Major Cities Electrification Status",
+      "type": "circle",
+      "source": "Major Cities Electrification Status",
+      "paint": {
+        "circle-color": "#ffffff"
+      }
+	},
+	{
+	  "id": "Hydro minigrid projects",
+      "type": "circle",
+      "source": "Hydro minigrid projects",
+      "paint": {
+        "circle-color": "#e58f25"
+      }
+	},
+	{
+	  "id": "Grid connection hydro minigrid projects",
+      "type": "line",
+      "source": "Grid connection hydro minigrid projects",
+      "paint": {
+        "line-color": "#84a5b5"
+      }
+	},
+	{
+	  "id": "Grid connection Solar sc High",
+      "type": "line",
+      "source": "Grid connection Solar sc High",
+      "paint": {
+        "line-color": "#ce320f"
+      }
+	},
+	{
+	  "id": "Grid connection Solar sc Base",
+      "type": "line",
+      "source": "Grid connection Solar sc Base",
+      "paint": {
+        "line-color": "#ce560f"
+      }
+	},
+	{
+	  "id": "Grid connection Solar sc Low",
+      "type": "line",
+      "source": "Grid connection Solar sc Low",
+      "paint": {
+        "line-color": "#ce8736"
+      }
+	},
+	{
+	  "id": "Solar projects sc High",
+      "type": "circle",
+      "source": "Solar projects sc High",
+      "paint": {
+        "circle-color": "#ce320f"
+      }
+	},
+	{
+	  "id": "Solar projects sc Base",
+      "type": "circle",
+      "source": "Solar projects sc Base",
+      "paint": {
+        "circle-color": "#ce560f"
+      }
+	},
+	{
+	  "id": "Solar projects sc Low",
+      "type": "circle",
+      "source": "Solar projects sc Low",
+      "paint": {
+        "circle-color": "#ce8736"
+      }
+	},
+	{
+	  "id": "Biomass minigrid projects",
+      "type": "circle",
+      "source": "Biomass minigrid projects",
+      "paint": {
+        "circle-color": "#83ce3c"
+      }
+	},
+	{
+	  "id": "Grid connection hydro biomass projects",
+      "type": "line",
+      "source": "Grid connection hydro biomass projects",
+      "paint": {
+        "line-color": "#83ce3c"
+      }
+	}
+	]
+}
