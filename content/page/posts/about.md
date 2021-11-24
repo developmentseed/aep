@@ -1,7 +1,7 @@
 ---
 title: About
 ---
-## The tool
+## Introduction
 
 Access to electricity remains a global development challenge with about 759 million people lacking access to electricity in 2019. Inadequate electricity services also pose a major impediment to reducing extreme poverty and boosting shared prosperity in Sub-Saharan Africa (SSA), where 570 million people and tens of millions of small and medium enterprises had no access to electricity.
 
