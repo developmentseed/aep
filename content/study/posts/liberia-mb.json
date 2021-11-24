@@ -1,0 +1,139 @@
+{
+  "version": 8,
+  "sources": {
+    "Electric Distribution Network": {
+      "data": "https://energydata.info/dataset/184cfd9b-3209-4ee4-9c04-39f23748da8d/resource/9827909a-c96d-4d34-bd1a-087881735fba/download/liberia-electric-distribution-line.geojson",
+      "type": "geojson"
+    },
+    "Electric Transmission Network": {
+      "data": "https://energydata.info/dataset/a5852687-d705-4c85-9c03-e6c421b9a97a/resource/760a005b-35f4-4b22-b17d-cdbeba4e487c/download/liberia-electric-transmission-line.geojson",
+      "type": "geojson"
+    },
+	"Substations":{
+		"data":"https://energydata.info/dataset/d9a29edd-31a3-4e0a-81b3-760cc1840ca7/resource/0eabde4f-ab8a-4dfe-853d-98b1fea86a7c/download/liberia-electric-substations.geojson",
+		"type":"geojson"
+	},
+	"Distribution Transformers":{
+		"data":"https://energydata.info/dataset/65c746a2-36b0-4611-9034-c017fb89fe0d/resource/1da27889-11d7-455d-93c7-e237a9a12fcc/download/liberia-electric-distribution-transformers.geojson",
+		"type":"geojson"
+	},
+	"Large Mini-Grid Line":{
+		"data":"https://energydata.info/dataset/d086f65f-d9a7-4925-9250-9e0ed9560d37/resource/a8debf14-6817-410d-84bb-15c0c04a6b1a/download/liberia-large-mini-grid-line-nea-project.geojson",
+		"type":"geojson"
+	},		 
+	"CLSG SW and MV Projects":{
+		"data":"https://energydata.info/dataset/4c8228a7-8606-419e-aad2-e52b7a192396/resource/31891d34-2644-43cd-8ecc-f775c4660ddd/download/liberia-clsg-sw-and-mv-project-location-original.geojson",
+		"type":"geojson"
+	},
+	"Large Mini-Grid Transformers":{
+		"data":"https://energydata.info/dataset/3b3fcf35-7038-44db-80f3-2ca8227dc4b4/resource/178e6355-28c4-4080-b162-7c6c1a8c61fa/download/liberia-large-mini-grid-transformers-nea-project.geojson",
+		"type":"geojson"
+	},
+	"Educational Institutes":{	
+		"data":"https://energydata.info/dataset/eae8fa74-5a80-4776-8327-b94ea9c25709/resource/22b47774-e7d7-4437-9def-40f6f291df18/download/liberia-educational-institutes.geojson",
+		"type":"geojson"
+	},
+	"Health Facilities":{	
+		"data":"https://energydata.info/dataset/077dca95-8743-4b6c-ade9-e7dc0a668096/resource/bbc368be-f3b0-4286-8c88-c4b56cff396d/download/liberia-health-facilities.geojson",
+		"type":"geojson"
+	},
+	"Hydro Generation Sites":{	
+		"data":"https://energydata.info/dataset/fccfd10e-a61c-401b-8736-fb36c51219c6/resource/d48942b4-8f3b-4bb7-8d2a-0de4e7d84e72/download/liberia-hydro-generation-sites.geojson",
+		"type":"geojson"
+	},
+	"Transformers grid expansion":{	
+		"data":"https://energydata.info/dataset/76845315-6837-4def-a2dc-7638f610e06e/resource/c3e64371-fa4c-41b8-9471-543f3864ead3/download/liberia-monrovia-electric-grid-expansion-transformers-nea-project.geojson",
+		"type":"geojson"
+	}		
+  },  
+  "layers": [
+    {
+      "id": "Electric Distribution Network",
+      "type": "line",
+      "source": "Electric Distribution Network",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
+    },
+	{
+	  "id": "Electric Transmission Network",
+      "type": "line",
+      "source": "Electric Transmission Network",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
+	},
+	{
+	  "id": "Substations",
+      "type": "circle",
+      "source": "Substations",
+      "paint": {
+        "circle-color": "#878684"
+      }
+	},
+	{
+	  "id": "Distribution Transformers",
+      "type": "circle",
+      "source": "Distribution Transformers",
+      "paint": {
+        "circle-color": "#878684"
+      }
+	},
+	{
+	  "id": "Large Mini-Grid Line",
+      "type": "line",
+      "source": "Large Mini-Grid Line",
+      "paint": {
+        "line-color": "#2a0d68"
+      }
+	},
+	{
+	  "id": "CLSG SW and MV Projects",
+      "type": "circle",
+      "source": "CLSG SW and MV Projects",
+      "paint": {
+        "circle-color": "#680e33"
+      }
+	},
+	{
+	  "id": "Large Mini-Grid Transformers",
+      "type": "circle",
+      "source": "Large Mini-Grid Transformers",
+      "paint": {
+        "circle-color": "#e58f25"
+      }
+	},
+	{
+	  "id": "Transformers grid expansion",
+      "type": "circle",
+      "source": "Transformers grid expansion",
+      "paint": {
+        "circle-color": "#e3e356"
+      }
+	},
+	{
+	  "id": "Hydro Generation Sites",
+      "type": "circle",
+      "source": "Hydro Generation Sites",
+      "paint": {
+        "circle-color": "#3c54a3"
+      }
+	},
+	{
+	  "id": "Health Facilities",
+      "type": "circle",
+      "source": "Health Facilities",
+      "paint": {
+        "circle-color": "#3ca1ff"
+      }
+	},
+	{
+	  "id": "Educational Institutes",
+      "type": "circle",
+      "source": "Educational Institutes",
+      "paint": {
+        "circle-color": "#6c11ff"
+      }
+	}
+  ]
+}
