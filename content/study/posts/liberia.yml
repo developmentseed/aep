@@ -1,6 +1,111 @@
 title: Liberia National Electrification Analysis
 bbox: [[-14.3691,4.2762], [-4.2258,8.7002]]
-external: https://liberianea.com/
+mapConfig: ./liberia-mb.json
 country: Liberia
 study:
+  consultant: NRECA
   period: 2020
+  content: ./liberia.md
+platform:
+  title: Liberia National Electrification Analysis
+  url: https://liberianea.com/
+layers:
+  - id: Electric Transmission Network
+    name: Electric Transmission Network
+    category: input
+    mbLayer: Electric Transmission Network
+    visible: true
+    info: This layer contain existing, funded and planned transmission network data gathered for the purpose of using in Liberia NEA project analysis and mapping.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-electric-transmission-line
+  - id: Electric Distribution Network
+    name: Electric Distribution Network
+    category: input
+    mbLayer: Electric Distribution Network
+    visible: false
+    info: This layer contain existing, under-implementation and funded distribution line data collected from field survey for the purpose of using in Liberia NEA project analysis and mapping.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-electric-distribution-line 
+  - id: Substations
+    name: Substations
+    category: input
+    mbLayer: Substations
+    visible: true
+    info: This layer contain existing, funded and planned substation data gathered for the purpose of using in Liberia NEA project analysis and mapping.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-electric-substations
+  - id: Distribution Transformers
+    name: Distribution Transformers
+    category: input
+    mbLayer: Distribution Transformers
+    visible: false
+    info: This layer contain existing distribution transformers data collected from field survey for the purpose of using in Liberia NEA project analysis and mapping.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-electric-distribution-transformers
+  - id: Large Mini-Grid Line
+    name: Large Mini-Grid Line
+    category: outcome
+    mbLayer: Large Mini-Grid Line
+    visible: true
+    info: This layer contains large mini-grid project line routes, project characteristics that is proposed under NEA project analysis.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-large-mini-grid-line-nea-project
+  - id: Large Mini-Grid Transformers
+    name: Large Mini-Grid Transformers
+    category: outcome
+    mbLayer: Large Mini-Grid Transformers
+    visible: true
+    info: This layer contains large mini-grid project transformer location and characteristics that is proposed under NEA project analysis.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-large-mini-grid-transformers-nea-project
+  - id: CLSG SW and MV Projects
+    name: CLSG SW and MV Projects
+    category: outcome
+    mbLayer: CLSG SW and MV Projects
+    visible: false
+    info: This layer contains town location that is Under Implementation from AfDB funded CLSG SW and MV project that collected for Liberia NEA project.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-clsg-sw-and-mv-project-location-original
+  - id: Transformers grid expansion
+    name: Transformers grid expansion
+    category: outcome
+    mbLayer: Transformers grid expansion
+    visible: true
+    info: This layer contains grid expansion project transformers location and properties in Monrovia area that is proposed under NEA project analysis.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-monrovia-electric-grid-expansion-transformers-nea-project
+  - id: Hydro Generation Sites
+    name: Hydro Generation Sites
+    category: input
+    mbLayer: Hydro Generation Sites
+    visible: false
+    info: This layer contain hydro generation sites collected from Liberia RESMP data for the purpose of using in Liberia NEA project analysis and mapping.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-hydro-generation-sites
+  - id: Health Facilities
+    name: Health Facilities
+    category: input
+    mbLayer: Health Facilities
+    visible: false
+    info: This layer contains location of health center location in Liberia that is collected from LISGIS to be use as base data for the analysis and mapping under NEA project.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-health-facilities
+  - id: Educational Institutes
+    name: Educational Institutes
+    category: input
+    mbLayer: Educational Institutes
+    visible: false
+    info: This layer contains location of educational institutes in Liberia that is collected from LISGIS to be use as base data for the analysis and mapping under Liberia NEA project.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/liberia-educational-institutes
