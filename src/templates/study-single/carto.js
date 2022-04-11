@@ -103,42 +103,40 @@ function StudySingleCarto(props) {
 
   // Group panel layers by their category and get the config for each map layer
   // being controlled. This is needed to construct the legend.
-  const {
-    outcome: panelOutcomeLayers,
-    input: panelInputLayers
-  } = useMemo(() => {
-    const mapLayers = applyMapLayersDefaults(mapConfig?.layers);
+  const { outcome: panelOutcomeLayers, input: panelInputLayers } =
+    useMemo(() => {
+      const mapLayers = applyMapLayersDefaults(mapConfig?.layers);
 
-    return panelLayers.reduce((acc, layer) => {
-      const c = layer.category || 'n/a';
-      const mbLayers = castArray(layer.mbLayer);
+      return panelLayers.reduce((acc, layer) => {
+        const c = layer.category || 'n/a';
+        const mbLayers = castArray(layer.mbLayer);
 
-      // Prep legend for each mb layer.
-      const legends = layer.legendData
-        ? castArray(layer.legendData)
-        : mbLayers.map((id) => {
-            const mbLayer = mapLayers.find((l) => l.id === id);
-            if (!mbLayer) {
-              /* eslint-disable-next-line no-console */
-              console.error(
-                `Map layer with id \`${id}\` not found in map config`
-              );
-              return null;
-            }
-            return inferLegend(layer, mbLayer);
-          });
+        // Prep legend for each mb layer.
+        const legends = layer.legendData
+          ? castArray(layer.legendData)
+          : mbLayers.map((id) => {
+              const mbLayer = mapLayers.find((l) => l.id === id);
+              if (!mbLayer) {
+                /* eslint-disable-next-line no-console */
+                console.error(
+                  `Map layer with id \`${id}\` not found in map config`
+                );
+                return null;
+              }
+              return inferLegend(layer, mbLayer);
+            });
 
-      const l = {
-        ...layer,
-        legendData: legends.filter(Boolean)
-      };
+        const l = {
+          ...layer,
+          legendData: legends.filter(Boolean)
+        };
 
-      return {
-        ...acc,
-        [c]: [...(acc[c] || []), l]
-      };
-    }, {});
-  }, [mapConfig, panelLayers]);
+        return {
+          ...acc,
+          [c]: [...(acc[c] || []), l]
+        };
+      }, {});
+    }, [mapConfig, panelLayers]);
 
   const panelRef = useRef(null);
   const mbMapRef = useRef(null);

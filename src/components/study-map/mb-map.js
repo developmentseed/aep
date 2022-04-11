@@ -25,15 +25,8 @@ const MapContainer = styled.div`
 `;
 
 function MbMapBase(props, ref) {
-  const {
-    token,
-    basemap,
-    bbox,
-    topLayer,
-    zoomExtent,
-    mapConfig,
-    layersState
-  } = props;
+  const { token, basemap, bbox, topLayer, zoomExtent, mapConfig, layersState } =
+    props;
 
   mapboxgl.accessToken = token;
 
