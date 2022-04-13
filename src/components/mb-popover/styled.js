@@ -4,88 +4,92 @@ import { Heading, headingAlt } from '@devseed-ui/typography';
 
 export const POPOVER_SHOW_HIDE_ANIM_TIME = 240;
 
-const applyBorderStyles = () => ({ anchor }) => {
-  return {
-    'top-left': css`
-      border-top-left-radius: 0;
-    `,
-    'top-right': css`
-      border-top-right-radius: 0;
-    `,
-    'bottom-left': css`
-      border-bottom-left-radius: 0;
-    `,
-    'bottom-right': css`
-      border-bottom-right-radius: 0;
-    `
-  }[anchor];
-};
+const applyBorderStyles =
+  () =>
+  ({ anchor }) => {
+    return {
+      'top-left': css`
+        border-top-left-radius: 0;
+      `,
+      'top-right': css`
+        border-top-right-radius: 0;
+      `,
+      'bottom-left': css`
+        border-bottom-left-radius: 0;
+      `,
+      'bottom-right': css`
+        border-bottom-right-radius: 0;
+      `
+    }[anchor];
+  };
 
-const applyAnchorStyles = () => ({ anchor }) => {
-  const centerClip = 'clip-path: polygon(50% 0, 0% 100%, 100% 100%);';
-  const cornerClip = 'clip-path: polygon(0 0, 0% 100%, 100% 100%);';
+const applyAnchorStyles =
+  () =>
+  ({ anchor }) => {
+    const centerClip = 'clip-path: polygon(50% 0, 0% 100%, 100% 100%);';
+    const cornerClip = 'clip-path: polygon(0 0, 0% 100%, 100% 100%);';
 
-  if (anchor === 'top' || anchor === 'bottom') {
-    const common = css`
-      ${centerClip}
-      left: 50%;
-      width: 1.5rem;
-      height: 0.75rem;
-    `;
-    if (anchor === 'top') {
-      return css`
-        ${common}
-        top: -0.75rem;
-        transform: translate(-50%, 0);
+    if (anchor === 'top' || anchor === 'bottom') {
+      const common = css`
+        ${centerClip}
+        left: 50%;
+        width: 1.5rem;
+        height: 0.75rem;
       `;
-    }
-    if (anchor === 'bottom') {
-      return css`
-        ${common}
-        bottom: -0.75rem;
-        transform: scaleY(-1) translate(-50%, 0);
+      if (anchor === 'top') {
+        return css`
+          ${common}
+          top: -0.75rem;
+          transform: translate(-50%, 0);
+        `;
+      }
+      if (anchor === 'bottom') {
+        return css`
+          ${common}
+          bottom: -0.75rem;
+          transform: scaleY(-1) translate(-50%, 0);
+        `;
+      }
+    } else {
+      const common = css`
+        ${cornerClip}
+        width: 0.75rem;
+        height: 0.75rem;
       `;
-    }
-  } else {
-    const common = css`
-      ${cornerClip}
-      width: 0.75rem;
-      height: 0.75rem;
-    `;
 
-    if (anchor === 'top-left') {
-      return css`
-        ${common}
-        top: -0.75rem;
-        left: 0;
-      `;
+      if (anchor === 'top-left') {
+        return css`
+          ${common}
+          top: -0.75rem;
+          left: 0;
+        `;
+      }
+      if (anchor === 'top-right') {
+        return css`
+          ${common}
+          top: -0.75rem;
+          right: 0;
+          transform: scaleX(-1);
+        `;
+      }
+      if (anchor === 'bottom-left') {
+        return css`
+          ${common}
+          bottom: -0.75rem;
+          left: 0;
+          transform: scaleY(-1);
+        `;
+      }
+      if (anchor === 'bottom-right') {
+        return css`
+          ${common}
+          bottom: -0.75rem;
+          right: 0;
+          transform: scaleX(-1) scaleY(-1);
+        `;
+      }
     }
-    if (anchor === 'top-right') {
-      return css`
-        ${common}
-        top: -0.75rem;
-        right: 0;
-        transform: scaleX(-1);
-      `;
-    }
-    if (anchor === 'bottom-left') {
-      return css`
-        ${common}
-        bottom: -0.75rem;
-        left: 0;
-        transform: scaleY(-1);
-      `;
-    }
-    if (anchor === 'bottom-right') {
-      return css`
-        ${common}
-        bottom: -0.75rem;
-        right: 0;
-        transform: scaleX(-1) scaleY(-1);
-      `;
-    }
-  }
-};
+  };
 
 export const getAnchorTranslate = (pos) =>
   ({

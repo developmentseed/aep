@@ -135,9 +135,10 @@ const buildUrl = (data) => {
 function StudySingle({ data }) {
   const { title, bbox, zoomExtent, mapConfig } = data.postsYaml;
   const { mapConfig: globalMapConfig } = data.site.siteMetadata;
-  const layers = useMemo(() => data.postsYaml.layers || [], [
-    data.postsYaml.layers
-  ]);
+  const layers = useMemo(
+    () => data.postsYaml.layers || [],
+    [data.postsYaml.layers]
+  );
 
   const useQsState = useQsStateCreator({
     commit: ({ search }) => navigate(`?${search}`)
