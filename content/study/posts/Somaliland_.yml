@@ -1,0 +1,111 @@
+title: Somaliland National Electrification Analysis
+bbox: [[41.48,2.43], [50.48,11.43]]
+mapConfig: ./Somaliland.json
+country: Somalia
+study:
+  consultant: World Bank (Africa Geospatial Team)
+  period: 2021
+  content: ./Somaliland.md
+platform:
+  title: Somaliland (Somalia) Electrification Platform
+  url: https://somaliland.gep.kartoza.com/gep/explore/sol-1
+charts:
+  - name: National electrification rate (44.6/100)
+    type: donut
+    data:
+      - name: Urban Rate
+        value: 80.7
+      - name: Rural rate
+        value: 19.3
+  - name: Investment Costs (million USD)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 102.9
+      - name: Mini Grids
+        value: 83.1
+      - name: Solar Home Systems
+        value: 245
+  - name: Population share 2030
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 22.7
+      - name: Mini Grids
+        value: 18.7
+      - name: Solar Home Systems
+        value: 58.6
+        
+  - name: Total (estimated) Capacity (MW)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 4.6
+      - name: Mini Grids
+        value: 40.5
+      - name: Solar Home Systems
+        value: 90.6
+layers:  
+  - id: Water Data Collection Points
+    name: Water Data Collection Points
+    category: input
+    mbLayer: Water Data Collection Points
+    visible: false
+    info: This dataset, used by SESRP project, contains water data collection points in Somaliland.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-water-data-collection-points
+  - id: Distribution Lines - Hargeysa 33kv/15kv/11kv 
+    name: Distribution Lines - Hargeysa 33kv/15kv/11kv 
+    category: input
+    mbLayer: Distribution Lines - Hargeysa 33kv/15kv/11kv 
+    visible: false
+    info: The dataset contains the location of 33kv/15kv/11kv Distribution lines in Hargeysa (Somaliland).
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/hargeysa-somaliland-33kv-15kv-11kv-distribution-lines
+  - id: Distribution Lines - Berbera 11kv 
+    name: Distribution Lines - Berbera 11kv 
+    category: input
+    mbLayer: Distribution Lines - Berbera 11kv 
+    visible: false
+    info: The dataset contains location of 11kv distribution line in Berbera (Somaliland)
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/berbera-somaliland-11kv-distribution-line  
+  - id: Mini-Grid Locations
+    name: Mini-Grid Locations
+    category: outcome
+    mbLayer: Mini-Grid Locations
+    visible: true
+    info: The dataset contains the location(point) of mini-grids in Somaliland
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-minigrids  
+  - id: Hydro Potential Sites
+    name: Hydro Potential Sites
+    category: outcome
+    mbLayer: Hydro Potential Sites
+    visible: true
+    info: The dataset contains location of small scale hydro-potential points in Somaliland.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-small-scale-hydrological-power
+  - id: Health Facilities
+    name: Health Facilities
+    category: input
+    mbLayer: Health Facilities
+    visible: false
+    info: This dataset collected by SARA survey and GoSL contains the location (point) of health facilities in Somaliland.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-health-facilities
+  - id: Education Facilities
+    name: Education Facilities
+    category: input
+    mbLayer: Education Facilities
+    visible: false
+    info: This dataset contains the location (point) of education facilities in Somaliland. It was provided by GoSL and was combined with open-source data available in UNICEF’s database.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-education-facilities
