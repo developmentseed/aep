@@ -1,0 +1,80 @@
+{
+  "version": 8,
+  "sources": {
+    "Electric Transmission Network": {
+      "data": "https://energydata.info/dataset/d2452fcf-43e1-428e-9852-381b752e11df/resource/6b14181e-0c6b-4be5-8632-a83ff166c411/download/somalia20-20transmission20backbone.geojson",
+      "type": "geojson"
+    },
+	"Education Facilities":{	
+		"data":"https://energydata.info/dataset/5779577f-e510-416b-92b2-528fdf8a92de/resource/d824f8af-eb86-4ac7-b31c-7a964e6d4578/download/somalia20-20education20facilities.geojson",
+		"type":"geojson"
+	},
+	"Health Facilities":{	
+		"data":"https://energydata.info/dataset/2dfc50b2-29a7-4578-be1b-f3d984b947ad/resource/bdf18639-3c73-4e4e-8a13-65907bc22419/download/who_health_sites.geojson",
+		"type":"geojson"
+	},
+	"Potential Hydro Generation Sites":{	
+		"data":"https://energydata.info/dataset/4e65f628-0c77-4b47-9ad1-2dd1c7d9f6ad/resource/8a85a927-c3af-4476-bfeb-7043d5e5f9d4/download/somalia20-20hydro20potential.geojson",
+		"type":"geojson"
+	},
+	"Minigrids both MV and LV":{	
+		"data":"https://energydata.info/dataset/dfc072af-a1cf-4981-855c-fa66f64a6801/resource/7f2d2a16-34f8-4188-ac4d-28e44430e219/download/somalia20-20minigrids.geojson",
+		"type":"geojson"
+	},
+	"Minigrids MV only":{	
+		"data":"https://energydata.info/dataset/6f230f2c-fd01-41ca-909d-1ed13bd3b1f4/resource/3c2842c5-0276-4696-986b-c227ad9c8857/download/somalia20-20existing20mini-grids20with20mv20lines.geojson",
+		"type":"geojson"
+	}
+		  },  
+  "layers": [
+
+	{
+	  "id": "Electric Transmission Network",
+      "type": "line",
+      "source": "Electric Transmission Network",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
+	},
+	{
+	  "id": "Potential Hydro Generation Sites",
+      "type": "circle",
+      "source": "Potential Hydro Generation Sites",
+      "paint": {
+        "circle-color": "#3c54a3"
+      }
+	},
+	{
+	  "id": "Health Facilities",
+      "type": "circle",
+      "source": "Health Facilities",
+      "paint": {
+        "circle-color": "#3ca1ff"
+      }
+	},
+	{
+	  "id": "Education Facilities",
+      "type": "circle",
+      "source": "Education Facilities",
+      "paint": {
+        "circle-color": "#6c11ff"
+      }
+	},
+	{
+	  "id": "Minigrids both MV and LV",
+      "type": "circle",
+      "source": "Minigrids both MV and LV",
+      "paint": {
+        "circle-color": "#e3e356"
+      }
+	},
+	{
+	  "id": "Minigrids MV only",
+      "type": "circle",
+      "source": "Minigrids MV only",
+      "paint": {
+        "circle-color": "#7cc03c"
+      }
+	}
+  ]
+}
