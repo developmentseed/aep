@@ -61,12 +61,9 @@ export default function MBPopoverInner(props) {
     if (!popoverEl.current) return;
 
     const { pageYOffset, pageXOffset } = window;
-    const {
-      width,
-      height,
-      top,
-      left
-    } = mbMap.getContainer().getBoundingClientRect();
+    const { width, height, top, left } = mbMap
+      .getContainer()
+      .getBoundingClientRect();
 
     const mapTop = pageYOffset + top;
     const mapLeft = pageXOffset + left;
