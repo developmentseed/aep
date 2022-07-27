@@ -1,11 +1,11 @@
 title: Somalia National Electrification Analysis
 bbox: [[41.48,2.43], [50.48,11.43]]
-mapConfig: ./Somalia.json
+mapConfig: ./Somalia1.json
 country: Somalia
 study:
   consultant: KTH
   period: 2021
-  content: ./Somalia.md
+  content: ./Somalia1.md
 platform:
   title: Somalia National Electrification Analysis
   url: https://somalielectrification.so/gep

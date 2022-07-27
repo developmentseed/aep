@@ -1,11 +1,11 @@
 title: Somaliland National Electrification Analysis
 bbox: [[41.48,2.43], [50.48,11.43]]
-mapConfig: ./Somaliland.json
+mapConfig: ./Somaliland2.json
 country: Somalia
 study:
   consultant: World Bank (Africa Geospatial Team)
   period: 2021
-  content: ./Somaliland.md
+  content: ./Somaliland2.md
 platform:
   title: Somaliland (Somalia) Electrification Platform
   url: https://somaliland.gep.kartoza.com/gep/explore/sol-1
