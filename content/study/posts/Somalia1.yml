@@ -46,6 +46,33 @@ charts:
       - name: Stand alone PV
         value: 220
 layers:
+  - id: Electric Transmission Network
+    name: Electric Transmission Network
+    category: input
+    mbLayer: Electric Transmission Network
+    visible: true
+    info: The dataset contains the location of transmission backbone in Somalia.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-transmission-backbone
+  - id: Health Facilities
+    name: Health Facilities
+    category: input
+    mbLayer: Health Facilities
+    visible: false
+    info: The dataset developed by WHO contains the location of health facilities in Somalia.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-health-facilities1
+  - id: Potential Hydro Generation Sites
+    name: Potential Hydro Generation Sites
+    category: outcome
+    mbLayer: Potential Hydro Generation Sites
+    visible: false
+    info: The dataset contains the location of hydro potential in Somalia.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-hydro-potential
   - id: Minigrids both MV and LV
     name: Minigrids both MV and LV
     category: input
@@ -64,33 +91,6 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/somalia-mini-grids-with-mv-lines
-  - id: Electric Transmission Network
-    name: Electric Transmission Network
-    category: input
-    mbLayer: Electric Transmission Network
-    visible: true
-    info: The dataset contains the location of transmission backbone in Somalia.
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/somalia-transmission-backbone
-  - id: Potential Hydro Generation Sites
-    name: Potential Hydro Generation Sites
-    category: outcome
-    mbLayer: Potential Hydro Generation Sites
-    visible: false
-    info: The dataset contains the location of hydro potential in Somalia.
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/somalia-hydro-potential
-  - id: Health Facilities
-    name: Health Facilities
-    category: input
-    mbLayer: Health Facilities
-    visible: false
-    info: The dataset developed by WHO contains the location of health facilities in Somalia.
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/somalia-health-facilities1
   - id: Education Facilities
     name: Education Facilities
     category: input

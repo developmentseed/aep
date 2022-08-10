@@ -28,15 +28,75 @@
 	"Water Data Collection Points":{	
 		"data":"https://energydata.info/dataset/1dad249b-7650-470c-8326-09a0558dcbf6/resource/623fd599-34dc-4d5e-8bcc-b3b48345cab8/download/somaliland20-20water20data20collection20points.geojson",
 		"type":"geojson"
+	},
+	"Somalia Ethiopia Interconnection":{	
+		"data":"https://energydata.info/dataset/ec664cb5-d894-4039-b1cd-2d425fae5c3c/resource/21875136-2287-436a-b8b7-84991ca3ace8/download/ethiopia20somalia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Ethiopia Interconnection":{	
+		"data":"https://energydata.info/dataset/2e541f4b-7c64-49dd-8476-af56798bff28/resource/1d05b2b1-db6f-42c3-b5ac-97f810aa77fc/download/ethiopia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Somalia Interconnection":{	
+		"data":"https://energydata.info/dataset/48955d36-6212-4ba3-b935-3f578ab0339a/resource/030717ab-0016-4eda-af46-27a3434a8fcb/download/somalia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Health Facilities w/o Adequate Access To Elec":{
+		 "data":"https://energydata.info/dataset/2771829a-dccc-4a08-9ffe-554d6d137ae9/resource/472d1d17-f387-4513-beca-c53c44db2767/download/somalia20-20health20facilities20lacking20adequate20access20to20electricity.geojson",
+		 "type":"geojson"
+	},
+	"Water Points w/o Adequate Access To Elec":{
+		 "data":"https://energydata.info/dataset/3600dbae-b976-431d-bc57-9eadc8a8d809/resource/f60c149e-1208-4c58-9f45-35ac8617ce52/download/somalia20-20water20points20lacking20adequate20access20to20electricity.geojson",
+		 "type":"geojson"
 	}
   },  
   "layers": [
-    {
+	{
       "id": "Distribution Lines - Hargeysa 33kv/15kv/11kv",
       "type": "line",
       "source": "Distribution Lines - Hargeysa 33kv/15kv/11kv",
       "paint": {
         "line-color": "#FFB10A"
+      }
+    },
+	{
+      "id": "Ethiopia Interconnection",
+      "type": "line",
+      "source": "Ethiopia Interconnection",
+      "paint": {
+        "line-color": "#808080"
+      }	  
+    },
+	{
+	  "id": "Health Facilities w/o Adequate Access To Elec",
+      "type": "circle",
+      "source": "Health Facilities w/o Adequate Access To Elec",
+      "paint": {
+        "circle-color": "#ff0000"
+      }
+	},
+	{
+	  "id": "Water Points w/o Adequate Access To Elec",
+      "type": "circle",
+      "source": "Water Points w/o Adequate Access To Elec",
+      "paint": {
+        "circle-color": "#aa0114"
+      }
+	},
+	{
+      "id": "Somalia Interconnection",
+      "type": "line",
+      "source": "Somalia Interconnection",
+      "paint": {
+        "line-color": "#5a5a5a"
+      }
+    },
+	{
+      "id": "Somalia Ethiopia Interconnection",
+      "type": "line",
+      "source": "Somalia Ethiopia Interconnection",
+      "paint": {
+        "line-color": "#bfbfbf"
       }
     },
 	  {
