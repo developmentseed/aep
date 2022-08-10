@@ -5,10 +5,6 @@
       "data": "https://energydata.info/dataset/d2452fcf-43e1-428e-9852-381b752e11df/resource/6b14181e-0c6b-4be5-8632-a83ff166c411/download/somalia20-20transmission20backbone.geojson",
       "type": "geojson"
     },
-	"Education Facilities":{	
-		"data":"https://energydata.info/dataset/5779577f-e510-416b-92b2-528fdf8a92de/resource/d824f8af-eb86-4ac7-b31c-7a964e6d4578/download/somalia20-20education20facilities.geojson",
-		"type":"geojson"
-	},
 	"Health Facilities":{	
 		"data":"https://energydata.info/dataset/2dfc50b2-29a7-4578-be1b-f3d984b947ad/resource/bdf18639-3c73-4e4e-8a13-65907bc22419/download/who_health_sites.geojson",
 		"type":"geojson"
@@ -24,8 +20,12 @@
 	"Minigrids MV only":{	
 		"data":"https://energydata.info/dataset/6f230f2c-fd01-41ca-909d-1ed13bd3b1f4/resource/3c2842c5-0276-4696-986b-c227ad9c8857/download/somalia20-20existing20mini-grids20with20mv20lines.geojson",
 		"type":"geojson"
+	},
+	"Education Facilities":{	
+		"data":"https://energydata.info/dataset/5779577f-e510-416b-92b2-528fdf8a92de/resource/d824f8af-eb86-4ac7-b31c-7a964e6d4578/download/somalia20-20education20facilities.geojson",
+		"type":"geojson"
 	}
-		  },  
+ },  
   "layers": [
 
 	{
@@ -37,14 +37,6 @@
       }
 	},
 	{
-	  "id": "Potential Hydro Generation Sites",
-      "type": "circle",
-      "source": "Potential Hydro Generation Sites",
-      "paint": {
-        "circle-color": "#3c54a3"
-      }
-	},
-	{
 	  "id": "Health Facilities",
       "type": "circle",
       "source": "Health Facilities",
@@ -53,11 +45,11 @@
       }
 	},
 	{
-	  "id": "Education Facilities",
+	  "id": "Potential Hydro Generation Sites",
       "type": "circle",
-      "source": "Education Facilities",
+      "source": "Potential Hydro Generation Sites",
       "paint": {
-        "circle-color": "#6c11ff"
+        "circle-color": "#3c54a3"
       }
 	},
 	{
@@ -74,6 +66,14 @@
       "source": "Minigrids MV only",
       "paint": {
         "circle-color": "#7cc03c"
+      }
+	},
+	{
+	  "id": "Education Facilities",
+      "type": "circle",
+      "source": "Education Facilities",
+      "paint": {
+        "circle-color": "#6c11ff"
       }
 	}
   ]

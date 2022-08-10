@@ -54,7 +54,34 @@ layers:
     info: This dataset, used by SESRP project, contains water data collection points in Somaliland.
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/somaliland-water-data-collection-points
+      url: https://energydata.info/dataset/somaliland-water-data-collection-points  
+  - id: Somalia Ethiopia Interconnection
+    name: Somalia Ethiopia Interconnection
+    category: input
+    mbLayer: Somalia Ethiopia Interconnection
+    visible: false
+    info: The dataset contains the location of Ethiopia and Somalia interconnection lines.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-ethiopia-somalia-interconnection
+  - id: Ethiopia Interconnection
+    name: Ethiopia Interconnection
+    category: input
+    mbLayer: Ethiopia Interconnection
+    visible: false
+    info: The dataset contains the location of Ethiopia interconnection lines.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/wb-data-catalog-somalia-ethiopia-interconnection
+  - id: Somalia Interconnection
+    name: Somalia Interconnection
+    category: input
+    mbLayer: Somalia Interconnection
+    visible: false
+    info: The dataset contains the location of Somalia interconnection lines.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/wb-data-catalog-somalia-somalia-interconnection
   - id: Distribution Lines - Hargeysa 33kv/15kv/11kv 
     name: Distribution Lines - Hargeysa 33kv/15kv/11kv 
     category: input
@@ -109,3 +136,21 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/somaliland-education-facilities
+  - id: Health Facilities w/o Adequate Access To Elec
+    name: Health Facilities w/o Adequate Access To Elec
+    category: outcome
+    mbLayer: Health Facilities w/o Adequate Access To Elec
+    visible: true
+    info: This dataset,used for the SESRP project, contains the information on health facilities lacking adequate access to electricity in Somalia
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-health-facilities-lacking-adequate-access-to-electricity
+  - id: Water Points w/o Adequate Access To Elec
+    name: Water Points w/o Adequate Access To Elec
+    category: outcome
+    mbLayer: Water Points w/o Adequate Access To Elec
+    visible: true
+    info: This dataset was used for SESRP project, which contains the water points lacking adequate access to electricity in Somalia
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-water-points-lacking-adequate-access-to-electricity
