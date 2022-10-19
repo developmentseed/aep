@@ -45,7 +45,7 @@
   "layers": [
 	{
 	  "id": "SHS",
-      "type": "polygon",
+      "type": "fill",
       "source": "SHS",
       "paint": {
         "fill-color": "#ff3333"
@@ -53,7 +53,7 @@
 	},
 	{
 	  "id": "MG Hydro",
-      "type": "polygon",
+      "type": "fill",
       "source": "MG Hydro",
       "paint": {
         "fill-color": "#3399ff"
@@ -89,14 +89,6 @@
       "source": "Hydro Power Plants",
       "paint": {
         "circle-color": "#3c54a3"
-      }
-	},
-	{
-	  "id": "Thermal Power Plants",
-      "type": "circle",
-      "source": "Thermal Power Plants",
-      "paint": {
-        "circle-color": "#cf6656"
       }
 	},
 	{

@@ -1,4 +1,4 @@
-## Scope
++## Scope
 A spatial electrification analysis based on the Open Source Spatial Electrification Tool (OnSSET)
 ## Description
 Access to electricity is strongly linked to social- and economic development [4]. As of 2016 in Benin, residential access to electricity was limited to 29%. Targeting universal access to electricity by 2030 – as per SDG71 mandates – requires a combination of grid expansion and deployment of off-grid technologies. In this study, the Open Source Spatial Electrification Tool (OnSSET) was used to examine 21 electrification pathways for Benin. The tool leverages geo-spatial information and uses a least-cost approach to identify the most cost effective electrification solution in each settlement.
