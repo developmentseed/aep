@@ -1,0 +1,127 @@
+{
+  "version": 8,
+  "sources": {
+    "Hydro Power Plants": {
+      "data": "https://energydata.info/dataset/9fa83728-ba31-467d-a9fe-6b5e44fd43db/resource/b0f3b6f5-0681-4167-80b6-a0f19eb74c05/download/benin-hydro-sites.geojson",
+      "type": "geojson"
+	},
+	"Health Facilities":{	
+		"data":"https://energydata.info/dataset/9fa83728-ba31-467d-a9fe-6b5e44fd43db/resource/8fdbac75-501e-4666-9000-3b457d5f6688/download/benin-healthcare-sites.geojson",
+		"type":"geojson"
+	},
+	"Education Facilities":{	
+		"data":"https://energydata.info/dataset/9fa83728-ba31-467d-a9fe-6b5e44fd43db/resource/b0a8689b-37a4-47db-813c-87314aa54afa/download/benin-education-sites.geojson",
+		"type":"geojson"
+	},
+	"HV Electricity Network": {
+      "data": "https://energydata.info/dataset/9fa83728-ba31-467d-a9fe-6b5e44fd43db/resource/ce9c3415-1cc8-44dd-916c-09c7df8e2e35/download/benin-transmission-lines.geojson",
+      "type": "geojson"
+	},
+	"MV Electricity Network": {
+      "data": "https://energydata.info/dataset/9fa83728-ba31-467d-a9fe-6b5e44fd43db/resource/2475576b-6c91-4738-9d1d-e0e2bf3fd713/download/benin_distributionnetwork.geojson",
+      "type": "geojson"
+	},
+	"Solar sites": {
+      "data": "https://energydata.info/dataset/9fa83728-ba31-467d-a9fe-6b5e44fd43db/resource/2ff1de8c-547b-48b3-b2ab-8b00861eb284/download/benin-solar-sites.geojson",
+      "type": "geojson"
+	},
+	"Grid Connection": {
+      "data": "https://energydata.info/dataset/face48da-d84d-4c21-92ca-129170046c66/resource/c5eec2c3-e452-4ca2-a143-5ce84d0caeb1/download/benin_gridconnection.geojson",
+      "type": "geojson"
+	},
+	"MG Hydro": {
+      "data": "https://energydata.info/dataset/face48da-d84d-4c21-92ca-129170046c66/resource/d7e51139-5ea0-4d36-bebb-f634571bd07d/download/benin_mghydro.geojson",
+      "type": "geojson"
+	},
+	"PV Diesel": {
+      "data": "https://energydata.info/dataset/face48da-d84d-4c21-92ca-129170046c66/resource/974f8d00-cd78-453e-835e-efd797c820d3/download/benin_pvdiesel_mg.geojson",
+      "type": "geojson"
+	},
+	"SHS": {
+      "data": "https://energydata.info/dataset/face48da-d84d-4c21-92ca-129170046c66/resource/bff4b7af-ca88-4f47-bc67-9396d414aadc/download/benin_shs.geojson",
+      "type": "geojson"
+	}
+    },  
+  "layers": [
+	{
+	  "id": "SHS",
+      "type": "fill",
+      "source": "SHS",
+      "paint": {
+        "fill-color": "#ff3333"
+      }
+	},
+	{
+	  "id": "MG Hydro",
+      "type": "fill",
+      "source": "MG Hydro",
+      "paint": {
+        "fill-color": "#3399ff"
+      }
+	},
+	{
+	  "id": "PV Diesel",
+      "type": "fill",
+      "source": "PV Diesel",
+      "paint": {
+        "fill-color": "#660000"
+      }
+	},
+	{
+	  "id": "Grid Connection",
+      "type": "fill",
+      "source": "Grid Connection",
+      "paint": {
+        "fill-color": "#a0a0a0"
+      }
+	},
+	{
+	  "id": "Health Facilities",
+      "type": "circle",
+      "source": "Health Facilities",
+      "paint": {
+        "circle-color": "#3ca1ff"
+      }
+	},
+	{
+	  "id": "Hydro Power Plants",
+      "type": "circle",
+      "source": "Hydro Power Plants",
+      "paint": {
+        "circle-color": "#3c54a3"
+      }
+	},
+	{
+	  "id": "HV Electricity Network",
+      "type": "line",
+      "source": "HV Electricity Network",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
+	},
+	{
+	  "id": "MV Electricity Network",
+      "type": "line",
+      "source": "MV Electricity Network",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
+	},
+	{
+	  "id": "Solar sites",
+      "type": "circle",
+      "source": "Solar sites",
+      "paint": {
+        "circle-color": "#ce8736"
+      }
+	},
+	{
+	  "id": "Education Facilities",
+      "type": "circle",
+      "source": "Education Facilities",
+      "paint": {
+        "circle-color": "#6c11ff"
+      }
+	}
+	]
+}

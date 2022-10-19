@@ -1,5 +1,5 @@
 title: Somalia National Electrification Analysis
-bbox: [[41.48,2.43], [50.48,11.43]]
+bbox: [[41.48,2.43], [55.48,12.43]]
 mapConfig: ./Somalia1.json
 country: Somalia
 study:
@@ -55,24 +55,33 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/somalia-transmission-backbone
-  - id: Health Facilities
-    name: Health Facilities
+  - id: Somalia Ethiopia Interconnection
+    name: Somalia Ethiopia Interconnection
     category: input
-    mbLayer: Health Facilities
+    mbLayer: Somalia Ethiopia Interconnection
     visible: false
-    info: The dataset developed by WHO contains the location of health facilities in Somalia.
+    info: The dataset contains the location of Ethiopia and Somalia interconnection lines.
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/somalia-health-facilities1
-  - id: Potential Hydro Generation Sites
-    name: Potential Hydro Generation Sites
-    category: outcome
-    mbLayer: Potential Hydro Generation Sites
+      url: https://energydata.info/dataset/somalia-ethiopia-somalia-interconnection
+  - id: Ethiopia Interconnection
+    name: Ethiopia Interconnection
+    category: input
+    mbLayer: Ethiopia Interconnection
     visible: false
-    info: The dataset contains the location of hydro potential in Somalia.
+    info: The dataset contains the location of Ethiopia interconnection lines.
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/somalia-hydro-potential
+      url: https://energydata.info/dataset/wb-data-catalog-somalia-ethiopia-interconnection
+  - id: Somalia Interconnection
+    name: Somalia Interconnection
+    category: input
+    mbLayer: Somalia Interconnection
+    visible: false
+    info: The dataset contains the location of Somalia interconnection lines.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/wb-data-catalog-somalia-somalia-interconnection
   - id: Minigrids both MV and LV
     name: Minigrids both MV and LV
     category: input
@@ -100,3 +109,48 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/somalia-education-facilities1
+  - id: Health Facilities
+    name: Health Facilities
+    category: input
+    mbLayer: Health Facilities
+    visible: false
+    info: The dataset developed by WHO contains the location of health facilities in Somalia.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-health-facilities1
+  - id: Connection to Planned grid
+    name: Connection to Planned grid
+    category: outcome
+    mbLayer: Planned grid
+    visible: true
+    info: Population clusters that would be suitable for connection to new, centralized grid.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-population-cluster-with-electrification-scenarios
+  - id: PV Diesel MG
+    name: PV Diesel MG
+    category: outcome
+    mbLayer: PV Diesel MG
+    visible: true
+    info: Population clusters that would be suitable for connection to PV Diesel MG.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-population-cluster-with-electrification-scenarios
+  - id: Wind Diesel MG
+    name: Wind Diesel MG
+    category: outcome
+    mbLayer: Wind Diesel MG
+    visible: true
+    info: Population clusters that would be suitable for connection to Wind Diesel MG.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-population-cluster-with-electrification-scenarios
+  - id: Potential Hydro Generation Sites
+    name: Potential Hydro Generation Sites
+    category: outcome
+    mbLayer: Potential Hydro Generation Sites
+    visible: false
+    info: The dataset contains the location of hydro potential in Somalia.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somalia-hydro-potential 

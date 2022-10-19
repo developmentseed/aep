@@ -24,7 +24,31 @@
 	"Education Facilities":{	
 		"data":"https://energydata.info/dataset/5779577f-e510-416b-92b2-528fdf8a92de/resource/d824f8af-eb86-4ac7-b31c-7a964e6d4578/download/somalia20-20education20facilities.geojson",
 		"type":"geojson"
-	}
+	},
+		"Somalia Ethiopia Interconnection":{	
+		"data":"https://energydata.info/dataset/ec664cb5-d894-4039-b1cd-2d425fae5c3c/resource/21875136-2287-436a-b8b7-84991ca3ace8/download/ethiopia20somalia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Ethiopia Interconnection":{	
+		"data":"https://energydata.info/dataset/2e541f4b-7c64-49dd-8476-af56798bff28/resource/1d05b2b1-db6f-42c3-b5ac-97f810aa77fc/download/ethiopia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Somalia Interconnection":{	
+		"data":"https://energydata.info/dataset/48955d36-6212-4ba3-b935-3f578ab0339a/resource/030717ab-0016-4eda-af46-27a3434a8fcb/download/somalia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Planned grid":{	
+		"data":"https://energydata.info/dataset/8c8a9f94-fa72-43bd-a19f-e1555eec7c74/resource/7b7ee2d3-629b-41f4-ad53-becc37caa4d3/download/somalia_popcluster_2.geojson",
+		"type":"geojson" 
+	},
+	"PV Diesel MG":{	
+		"data":"https://energydata.info/dataset/8c8a9f94-fa72-43bd-a19f-e1555eec7c74/resource/2e8fdea6-e6d7-4563-8878-b003474cbece/download/somalia_popcluster_4.geojson",
+		"type":"geojson" 
+	},
+	"Wind Diesel MG":{	
+		"data":"https://energydata.info/dataset/8c8a9f94-fa72-43bd-a19f-e1555eec7c74/resource/932451d6-fed9-4f8c-9710-d3650b8decfc/download/somalia_popcluster_5.geojson",
+		"type":"geojson" 
+	}	
  },  
   "layers": [
 
@@ -34,6 +58,30 @@
       "source": "Electric Transmission Network",
       "paint": {
         "line-color": "#FE6F27"
+      }
+	},
+	{
+	  "id": "Planned grid",
+      "type": "fill",
+      "source": "Planned grid",
+      "paint": {
+        "fill-color": "#a0a0a0"
+      }
+	},
+	{
+	  "id": "PV Diesel MG",
+      "type": "fill",
+      "source": "PV Diesel MG",
+      "paint": {
+        "fill-color": "#660000"		
+      }
+	},
+	{
+	  "id": "Wind Diesel MG",
+      "type": "fill",
+      "source": "Wind Diesel MG",
+      "paint": {
+        "fill-color": "#3ca1ff"
       }
 	},
 	{
@@ -68,6 +116,30 @@
         "circle-color": "#7cc03c"
       }
 	},
+	{
+      "id": "Somalia Interconnection",
+      "type": "line",
+      "source": "Somalia Interconnection",
+      "paint": {
+        "line-color": "#5a5a5a"
+      }
+    },
+	{
+      "id": "Somalia Ethiopia Interconnection",
+      "type": "line",
+      "source": "Somalia Ethiopia Interconnection",
+      "paint": {
+        "line-color": "#bfbfbf"
+      }
+    },
+	{
+      "id": "Ethiopia Interconnection",
+      "type": "line",
+      "source": "Ethiopia Interconnection",
+      "paint": {
+        "line-color": "#808080"
+      }	  
+    },
 	{
 	  "id": "Education Facilities",
       "type": "circle",
