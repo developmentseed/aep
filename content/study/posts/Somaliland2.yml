@@ -1,5 +1,5 @@
 title: Somaliland National Electrification Analysis
-bbox: [[41.48,2.43], [50.48,11.43]]
+bbox: [[43.48,2.43], [61.48,12.43]]
 mapConfig: ./Somaliland2.json
 country: Somalia
 study:
@@ -46,20 +46,11 @@ charts:
       - name: Solar Home Systems
         value: 90.6
 layers:  
-  - id: Water Data Collection Points
-    name: Water Data Collection Points
-    category: input
-    mbLayer: Water Data Collection Points
-    visible: false
-    info: This dataset, used by SESRP project, contains water data collection points in Somaliland.
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/somaliland-water-data-collection-points  
   - id: Somalia Ethiopia Interconnection
     name: Somalia Ethiopia Interconnection
     category: input
     mbLayer: Somalia Ethiopia Interconnection
-    visible: false
+    visible: true
     info: The dataset contains the location of Ethiopia and Somalia interconnection lines.
     source:
       name: energydata.info
@@ -68,7 +59,7 @@ layers:
     name: Ethiopia Interconnection
     category: input
     mbLayer: Ethiopia Interconnection
-    visible: false
+    visible: true
     info: The dataset contains the location of Ethiopia interconnection lines.
     source:
       name: energydata.info
@@ -77,7 +68,7 @@ layers:
     name: Somalia Interconnection
     category: input
     mbLayer: Somalia Interconnection
-    visible: false
+    visible: true
     info: The dataset contains the location of Somalia interconnection lines.
     source:
       name: energydata.info
@@ -86,7 +77,7 @@ layers:
     name: Distribution Lines - Hargeysa 33kv/15kv/11kv 
     category: input
     mbLayer: Distribution Lines - Hargeysa 33kv/15kv/11kv 
-    visible: false
+    visible: true
     info: The dataset contains the location of 33kv/15kv/11kv Distribution lines in Hargeysa (Somaliland).
     source:
       name: energydata.info
@@ -100,24 +91,15 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/berbera-somaliland-11kv-distribution-line  
-  - id: Mini-Grid Locations
-    name: Mini-Grid Locations
-    category: outcome
-    mbLayer: Mini-Grid Locations
-    visible: true
-    info: The dataset contains the location(point) of mini-grids in Somaliland
+  - id: Water Data Collection Points
+    name: Water Data Collection Points
+    category: input
+    mbLayer: Water Data Collection Points
+    visible: false
+    info: This dataset, used by SESRP project, contains water data collection points in Somaliland.
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/somaliland-minigrids  
-  - id: Hydro Potential Sites
-    name: Hydro Potential Sites
-    category: outcome
-    mbLayer: Hydro Potential Sites
-    visible: true
-    info: The dataset contains location of small scale hydro-potential points in Somaliland.
-    source:
-      name: energydata.info
-      url: https://energydata.info/dataset/somaliland-small-scale-hydrological-power
+      url: https://energydata.info/dataset/somaliland-water-data-collection-points  
   - id: Health Facilities
     name: Health Facilities
     category: input
@@ -136,11 +118,38 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/somaliland-education-facilities
+  - id: PV Diesel MG
+    name: PV Diesel MG
+    category: outcome
+    mbLayer: PV Diesel MG
+    visible: true
+    info: Population clusters that would be suitable for connection to PV Diesel MG
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-population-cluster-with-electrification-scenarios
+  - id: Hydro MG
+    name: Hydro MG
+    category: outcome
+    mbLayer: Hydro MG
+    visible: true
+    info: Population clusters that would be suitable for connection to Hydro MG
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-population-cluster-with-electrification-scenarios  
+  - id: SHS
+    name: SHS
+    category: outcome
+    mbLayer: SHS
+    visible: true
+    info: Population clusters that would be suitable for connection to SHS
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-population-cluster-with-electrification-scenarios         
   - id: Health Facilities w/o Adequate Access To Elec
     name: Health Facilities w/o Adequate Access To Elec
     category: outcome
     mbLayer: Health Facilities w/o Adequate Access To Elec
-    visible: true
+    visible: false
     info: This dataset,used for the SESRP project, contains the information on health facilities lacking adequate access to electricity in Somalia
     source:
       name: energydata.info
@@ -149,8 +158,28 @@ layers:
     name: Water Points w/o Adequate Access To Elec
     category: outcome
     mbLayer: Water Points w/o Adequate Access To Elec
-    visible: true
+    visible: false
     info: This dataset was used for SESRP project, which contains the water points lacking adequate access to electricity in Somalia
     source:
       name: energydata.info
       url: https://energydata.info/dataset/somalia-water-points-lacking-adequate-access-to-electricity
+  - id: Mini-Grid Locations
+    name: Mini-Grid Locations
+    category: outcome
+    mbLayer: Mini-Grid Locations
+    visible: false
+    info: The dataset contains the location(point) of mini-grids in Somaliland
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-minigrids  
+  - id: Hydro Potential Sites
+    name: Hydro Potential Sites
+    category: outcome
+    mbLayer: Hydro Potential Sites
+    visible: false
+    info: The dataset contains location of small scale hydro-potential points in Somaliland.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/somaliland-small-scale-hydrological-power
+ 
+      

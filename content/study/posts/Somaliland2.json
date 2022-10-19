@@ -48,6 +48,18 @@
 	"Water Points w/o Adequate Access To Elec":{
 		 "data":"https://energydata.info/dataset/3600dbae-b976-431d-bc57-9eadc8a8d809/resource/f60c149e-1208-4c58-9f45-35ac8617ce52/download/somalia20-20water20points20lacking20adequate20access20to20electricity.geojson",
 		 "type":"geojson"
+	},
+	"PV Diesel MG":{	
+		"data":"https://energydata.info/dataset/c6ee5b1e-c81e-4d1f-b85a-54099c5e5c62/resource/8ac7a041-b100-435d-9010-1d54b58a1a6a/download/somaliland_popclusters_4.geojson",
+		"type":"geojson" 
+	},
+	"Hydro MG":{	
+		"data":"https://energydata.info/dataset/c6ee5b1e-c81e-4d1f-b85a-54099c5e5c62/resource/2e5a4a0f-3287-4ac4-abda-804e5e88027e/download/somaliland_popclusters_6.geojson",
+		"type":"geojson" 
+	},
+	"SHS":{	
+		"data":"https://energydata.info/dataset/c6ee5b1e-c81e-4d1f-b85a-54099c5e5c62/resource/7cf7fe9c-5db8-42c5-a819-c7e99c62113e/download/somaliland_popclusters_7.geojson",
+		"type":"geojson" 
 	}
   },  
   "layers": [
@@ -59,6 +71,30 @@
         "line-color": "#FFB10A"
       }
     },
+	{
+	  "id": "SHS",
+      "type": "fill",
+      "source": "SHS",
+      "paint": {
+        "fill-color": "#ff3333"
+      }
+	},
+	{
+	  "id": "PV Diesel MG",
+      "type": "fill",
+      "source": "PV Diesel MG",
+      "paint": {
+        "fill-color": "#660000"		
+      }
+	},
+	{
+	  "id": "Hydro MG",
+      "type": "fill",
+      "source": "Hydro MG",
+      "paint": {
+        "fill-color": "#3ca1ff"
+      }
+	},
 	{
       "id": "Ethiopia Interconnection",
       "type": "line",
