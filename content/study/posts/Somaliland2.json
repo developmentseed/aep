@@ -84,7 +84,7 @@
       "type": "fill",
       "source": "PV Diesel MG",
       "paint": {
-        "fill-color": "#660000"		
+        "fill-color": "#FFFF01"		
       }
 	},
 	{
@@ -92,7 +92,7 @@
       "type": "fill",
       "source": "Hydro MG",
       "paint": {
-        "fill-color": "#3ca1ff"
+        "fill-color": "#52F915"
       }
 	},
 	{

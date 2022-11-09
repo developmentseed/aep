@@ -56,7 +56,7 @@
       "type": "fill",
       "source": "MG Hydro",
       "paint": {
-        "fill-color": "#3399ff"
+        "fill-color": "#52F915"
       }
 	},
 	{
@@ -64,7 +64,7 @@
       "type": "fill",
       "source": "PV Diesel",
       "paint": {
-        "fill-color": "#660000"
+        "fill-color": "#FFFF01"
       }
 	},
 	{
@@ -72,7 +72,7 @@
       "type": "fill",
       "source": "Grid Connection",
       "paint": {
-        "fill-color": "#a0a0a0"
+        "fill-color": "#7F00FF"
       }
 	},
 	{
