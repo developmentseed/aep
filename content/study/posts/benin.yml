@@ -16,9 +16,9 @@ charts:
       - name: Grid
         value: 6.80
       - name: Standalone PV
-        value: 2.50
+        value: 2.4
       - name: Mini-grid PV
-        value: 1.90
+        value: 1.9
   - name: New Capacity per technology (MW)
     type: donut
     data:
