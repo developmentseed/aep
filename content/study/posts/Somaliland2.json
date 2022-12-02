@@ -1,0 +1,187 @@
+{
+  "version": 8,
+  "sources": {
+	 "Distribution Lines - Hargeysa 33kv/15kv/11kv": {
+      "data": "https://energydata.info/dataset/9bbbebbe-391a-4c21-ab52-dd9380657db6/resource/af0c5e80-78e6-43da-a84f-d02fe4b768f6/download/hargeysa20somaliland20-2033kv15kv11kv20distribution20lines.geojson",
+      "type": "geojson"
+    },
+    "Distribution Lines - Berbera 11kv": {
+      "data": "https://energydata.info/dataset/277bee1e-8fbf-43cd-b579-e82c4b1631c2/resource/3813af67-2da5-4916-ba21-2a17dbd1053a/download/distribution_line_berbera_11kv.geojson",
+      "type": "geojson"
+    },
+	"Mini-Grid Locations":{
+		"data":"https://energydata.info/dataset/12bdcc78-f5bf-47c4-ad81-c74a507334ff/resource/936ff0ca-f250-4e7c-8d5e-c0830d92e2a5/download/somaliland20-20minigrids.geojson",
+		"type":"geojson"
+	},
+	"Education Facilities":{	
+		"data":"https://energydata.info/dataset/2665177a-69a4-428c-b585-ef057e0af77d/resource/d879e552-b166-4d29-97d7-be411e3af386/download/somaliland_unicef_education_facilities.geojson",
+		"type":"geojson"
+	},
+	"Health Facilities":{	
+		"data":"https://energydata.info/dataset/447aa749-965e-45e7-ab97-24ff3d9a49af/resource/1ec892d8-634d-494e-ace9-0bfd94a65bad/download/somaliland_health_facilities.geojson",
+		"type":"geojson"
+	},
+	"Hydro Potential Sites":{	
+		"data":"https://energydata.info/dataset/69dfdf03-0541-493f-af65-fcbd38d156e8/resource/004424ab-189a-4429-8ef5-b6010349bc34/download/somaliland20-20small20scale20hydrological20power.geojson",
+		"type":"geojson"
+	},
+	"Water Data Collection Points":{	
+		"data":"https://energydata.info/dataset/1dad249b-7650-470c-8326-09a0558dcbf6/resource/623fd599-34dc-4d5e-8bcc-b3b48345cab8/download/somaliland20-20water20data20collection20points.geojson",
+		"type":"geojson"
+	},
+	"Somalia Ethiopia Interconnection":{	
+		"data":"https://energydata.info/dataset/ec664cb5-d894-4039-b1cd-2d425fae5c3c/resource/21875136-2287-436a-b8b7-84991ca3ace8/download/ethiopia20somalia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Ethiopia Interconnection":{	
+		"data":"https://energydata.info/dataset/2e541f4b-7c64-49dd-8476-af56798bff28/resource/1d05b2b1-db6f-42c3-b5ac-97f810aa77fc/download/ethiopia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Somalia Interconnection":{	
+		"data":"https://energydata.info/dataset/48955d36-6212-4ba3-b935-3f578ab0339a/resource/030717ab-0016-4eda-af46-27a3434a8fcb/download/somalia20interconnection.geojson",
+		"type":"geojson" 
+	},
+	"Health Facilities w/o Adequate Access To Elec":{
+		 "data":"https://energydata.info/dataset/2771829a-dccc-4a08-9ffe-554d6d137ae9/resource/472d1d17-f387-4513-beca-c53c44db2767/download/somalia20-20health20facilities20lacking20adequate20access20to20electricity.geojson",
+		 "type":"geojson"
+	},
+	"Water Points w/o Adequate Access To Elec":{
+		 "data":"https://energydata.info/dataset/3600dbae-b976-431d-bc57-9eadc8a8d809/resource/f60c149e-1208-4c58-9f45-35ac8617ce52/download/somalia20-20water20points20lacking20adequate20access20to20electricity.geojson",
+		 "type":"geojson"
+	},
+	"PV Diesel MG":{	
+		"data":"https://energydata.info/dataset/c6ee5b1e-c81e-4d1f-b85a-54099c5e5c62/resource/8ac7a041-b100-435d-9010-1d54b58a1a6a/download/somaliland_popclusters_4.geojson",
+		"type":"geojson" 
+	},
+	"Hydro MG":{	
+		"data":"https://energydata.info/dataset/c6ee5b1e-c81e-4d1f-b85a-54099c5e5c62/resource/2e5a4a0f-3287-4ac4-abda-804e5e88027e/download/somaliland_popclusters_6.geojson",
+		"type":"geojson" 
+	},
+	"SHS":{	
+		"data":"https://energydata.info/dataset/c6ee5b1e-c81e-4d1f-b85a-54099c5e5c62/resource/7cf7fe9c-5db8-42c5-a819-c7e99c62113e/download/somaliland_popclusters_7.geojson",
+		"type":"geojson" 
+	}
+  },  
+  "layers": [
+	{
+      "id": "Distribution Lines - Hargeysa 33kv/15kv/11kv",
+      "type": "line",
+      "source": "Distribution Lines - Hargeysa 33kv/15kv/11kv",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
+    },
+	{
+	  "id": "SHS",
+      "type": "fill",
+      "source": "SHS",
+      "paint": {
+        "fill-color": "#ff3333"
+      }
+	},
+	{
+	  "id": "PV Diesel MG",
+      "type": "fill",
+      "source": "PV Diesel MG",
+      "paint": {
+        "fill-color": "#FFFF01"		
+      }
+	},
+	{
+	  "id": "Hydro MG",
+      "type": "fill",
+      "source": "Hydro MG",
+      "paint": {
+        "fill-color": "#52F915"
+      }
+	},
+	{
+      "id": "Ethiopia Interconnection",
+      "type": "line",
+      "source": "Ethiopia Interconnection",
+      "paint": {
+        "line-color": "#808080"
+      }	  
+    },
+	{
+	  "id": "Health Facilities w/o Adequate Access To Elec",
+      "type": "circle",
+      "source": "Health Facilities w/o Adequate Access To Elec",
+      "paint": {
+        "circle-color": "#ff0000"
+      }
+	},
+	{
+	  "id": "Water Points w/o Adequate Access To Elec",
+      "type": "circle",
+      "source": "Water Points w/o Adequate Access To Elec",
+      "paint": {
+        "circle-color": "#aa0114"
+      }
+	},
+	{
+      "id": "Somalia Interconnection",
+      "type": "line",
+      "source": "Somalia Interconnection",
+      "paint": {
+        "line-color": "#5a5a5a"
+      }
+    },
+	{
+      "id": "Somalia Ethiopia Interconnection",
+      "type": "line",
+      "source": "Somalia Ethiopia Interconnection",
+      "paint": {
+        "line-color": "#bfbfbf"
+      }
+    },
+	  {
+      "id": "Distribution Lines - Berbera 11kv",
+      "type": "line",
+      "source": "Distribution Lines - Berbera 11kv",
+      "paint": {
+        "line-color": "#FE6A27"
+      }
+    },
+	{
+	  "id": "Mini-Grid Locations",
+      "type": "circle",
+      "source": "Mini-Grid Locations",
+      "paint": {
+        "circle-color": "#e58f25"
+      }
+	},
+	{
+	  "id": "Hydro Potential Sites",
+      "type": "circle",
+      "source": "Hydro Potential Sites",
+      "paint": {
+        "circle-color": "#3c54a3"
+      }
+	},
+	{
+	  "id": "Health Facilities",
+      "type": "circle",
+      "source": "Health Facilities",
+      "paint": {
+        "circle-color": "#3ca1ff"
+      }
+	},
+	{
+	  "id": "Education Facilities",
+      "type": "circle",
+      "source": "Education Facilities",
+      "paint": {
+        "circle-color": "#6c11ff"
+      }
+	},
+	{
+	  "id": "Water Data Collection Points",
+      "type": "circle",
+      "source": "Water Data Collection Points",
+      "paint": {
+        "circle-color": "#85b6a3"
+      }
+	}
+  ]
+}

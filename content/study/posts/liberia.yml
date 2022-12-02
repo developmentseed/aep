@@ -9,6 +9,21 @@ study:
 platform:
   title: Liberia National Electrification Analysis
   url: https://liberianea.com/
+charts:
+  - name: Investment Costs (million USD)
+    type: donut
+    data:
+      - name: Densification
+        value: 54.8
+      - name: Grid Expansion
+        value: 346
+      - name: Large mini-grids
+        value: 87
+      - name: Smaller mini-grids
+        value: 81
+      - name: Tier 1 solar
+        value: 38
+      
 layers:
   - id: Electric Transmission Network
     name: Electric Transmission Network
