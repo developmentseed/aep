@@ -1,0 +1,140 @@
+{
+  "version": 8,
+  "sources": {
+    "Hydro Power Plants": {
+      "data": "https://energydata.info/dataset/252353c2-6c40-492e-b8d0-9f17759948d4/resource/400b30f8-a7ed-4b68-89c7-82bc9ecd6b4d/download/zambia20-20geothermal20potential.geojson",
+      "type": "geojson"
+	},
+	"Health Facilities":{	
+		"data":"https://energydata.info/dataset/ea959a50-9e30-45a4-a1a7-e3229b63aa99/resource/c8f5bcc8-eef5-4cfd-b830-0e5f8282757a/download/healthcenters.geojson",
+		"type":"geojson"
+	},
+	"Education Facilities":{	
+		"data":"https://energydata.info/dataset/bb81f426-4687-4b4c-87d6-0424f090a4bd/resource/aa28b920-f0d9-4da7-84ef-5acb6e5a123b/download/basicschools.geojson",
+		"type":"geojson"
+	},
+	"HV Electricity Network": {
+      "data": "https://energydata.info/dataset/d2fb81f0-cc62-4cab-b3d9-7da37cdab00d/resource/45e1eff1-fdd1-4f27-a511-a33a2f0fae31/download/zambia20-20hvlines.geojson",
+      "type": "geojson"
+	},
+	"MV Electricity Network": {
+      "data": "https://energydata.info/dataset/d2fb81f0-cc62-4cab-b3d9-7da37cdab00d/resource/cec987e9-bf2b-4314-ac2d-d87557cb9940/download/zambia20-20distribution20mv20underground20line.geojson",
+      "type": "geojson"
+	},
+	"Microgrids sites": {
+      "data": "https://energydata.info/dataset/6f2cc7d2-6419-45f9-97cb-2250b63518d9/resource/8ce36dc7-50a2-4e7d-be4f-e131febbb16f/download/zambia20-20microgrids.geojson",
+      "type": "geojson"
+	},
+	"Grid Connection": {
+      "data": "https://energydata.info/dataset/37f2e879-5d91-4794-aa43-6dd7cd0687a1/resource/a72c8fab-3c3b-44dd-8d6b-bc4cb676c42c/download/basecase_grid_extension.geojson",
+      "type": "geojson"
+	},
+	"Grid Lines": {
+      "data": "https://energydata.info/dataset/5e12ec4a-9789-410f-b5bf-5a964d758497/resource/0f75081d-eda4-4091-a6d9-9a0c99c5bf14/download/mv-lines-extensions.geojson",
+      "type": "geojson"
+	},
+	"Mini_Grids": {
+      "data": "https://energydata.info/dataset/f81ebb0a-2642-4860-9101-90a035ce9c47/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29/download/basecase_mini_grids.geojson",
+      "type": "geojson"
+	},
+	"Grid Densification": {
+      "data": "https://energydata.info/dataset/7e812413-0ef5-4260-a1de-897d2362a550/resource/16906d78-e045-4c12-b7a0-9bbcdb7e4351/download/basecase_grid_densification.geojson",
+      "type": "geojson"
+	},
+	"SHS": {
+      "data": "https://energydata.info/dataset/f03a8f3f-1cde-41f6-bfda-3ae289d012d1/resource/cbd86fa3-1546-473c-aac5-71e3c42ab717/download/basecase_individual_shs.geojson",
+      "type": "geojson"
+	}
+    },  
+  "layers": [
+	{
+	  "id": "SHS",
+      "type": "circle",
+      "source": "SHS",
+      "paint": {
+        "circle-color": "#ce8736"
+      }
+	},
+	{
+	  "id": "Mini_Grids ",
+      "type": "circle",
+      "source": "Mini_Grids",
+      "paint": {
+        "circle-color": "#3399ff"
+      }
+	},
+	{
+	  "id": "Grid Densification",
+      "type": "circle",
+      "source": "Grid Densification",
+      "paint": {
+        "circle-color": "#660000"
+      }
+	},
+	{
+	  "id": "Grid Connection",
+      "type": "circle",
+      "source": "Grid Connection",
+      "paint": {
+        "circle-color": "#a0a0a0"
+      }
+	},
+	{
+	  "id": "Health Facilities",
+      "type": "circle",
+      "source": "Health Facilities",
+      "paint": {
+        "circle-color": "#3ca1ff"
+      }
+	},
+	{
+	  "id": "Hydro Power Plants",
+      "type": "circle",
+      "source": "Hydro Power Plants",
+      "paint": {
+        "circle-color": "#3c54a3"
+      }
+	},
+	{
+	  "id": "HV Electricity Network",
+      "type": "line",
+      "source": "HV Electricity Network",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
+	},
+	{
+	  "id": "MV Electricity Network",
+      "type": "line",
+      "source": "MV Electricity Network",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
+	},
+	{
+	  "id": "Grid Lines",
+      "type": "line",
+      "source": "Grid Lines",
+      "paint": {
+        "line-color": "#FF0000"
+      }
+	},
+	{
+	  "id": "Microgrids sites",
+      "type": "circle",
+      "source": "Microgrids sites",
+      "paint": {
+        "circle-color": "#ce8736"
+      }
+	},
+	{
+	  "id": "Education Facilities",
+      "type": "circle",
+      "source": "Education Facilities",
+      "paint": {
+        "circle-color": "#6c11ff"
+           }
+	}
+
+	]
+}
