@@ -1,0 +1,159 @@
+title: Zambia 
+bbox: [[21.887842645, -17.9612289364], [33.4856876971, -8.23825652429]]
+mapConfig: ./zambia-mb.json
+country: Zambia
+study:
+  consultant: Tractabel
+  period: 2020 to 2022
+  content: ./zambia.md
+platform:
+  title: Zambia Electrification Pathways
+  url:
+charts:
+  - name: Least-cost technology split by 2030 (Million People)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 0.30
+      - name: Solar Home Systems
+        value: 8.00
+      - name: Mini-grids
+        value: 4.80
+      - name: Grid Densification
+        value: 4.70
+  - name: Investment cost per customer (USD)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 859
+      - name: Solar Home Systems
+        value: 120
+      - name: Mini-grids
+        value: 2420
+      - name: Grid Densification
+        value: 360
+  - name: Investment cost per technology (Million USD)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 52
+      - name: Solar Home Systems
+        value: 205
+      - name: Mini-grids
+        value: 2344
+      - name: Grid Densification
+        value: 329
+layers:
+
+  - id: HV Electricity Network
+    name: HV Electricity Network
+    category: input
+    mbLayer: HV Electricity Network
+    visible: true
+    info: The HV transmission network for Zambia
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-electrical-lines
+
+  - id: MV Electricity Network
+    name: MV Electricity Network
+    category: input
+    mbLayer: MV Electricity Network
+    visible: true
+    info: The MV Electricity Distribution Network for Zambia
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-electrical-lines/resource/cec987e9-bf2b-4314-ac2d-d87557cb9940f
+
+  - id: Hydro Power Plants
+    name: Hydro Power Plants
+    category: input
+    mbLayer: Hydro Power Plants
+    visible: false
+    info: Location of existing Hydro Power Plants in Zambia
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-renewable-energy
+
+  - id: Microgrids sites
+    name: Microgrids sites
+    category: input
+    mbLayer: Microgrids sites
+    visible: false
+    info: Location of microgrids in Zambia.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-microgrids
+
+  - id: Health Facilities
+    name: Health Facilities
+    category: input
+    mbLayer: Health Facilities
+    visible: false
+    info: Location of Health Facilities in Zambia
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-health-center-facilites
+
+  - id: Education Facilities
+    name: Education Facilities
+    category: input
+    mbLayer: Education Facilities
+    visible: false
+    info: Location of Education Facilities in Zambia.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-education-facility
+
+  - id: Grid Lines
+    name: Proposed Grid Extension Lines
+    category: outcome
+    mbLayer: Grid Lines
+    visible: true
+    info: Least-cost scenario - proposed MV grid extension lines for settlements recommended for grid
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-mv-line-extension/resource/0f75081d-eda4-4091-a6d9-9a0c99c5bf14     
+
+  - id: Grid Connection
+    name: Grid Connections
+    category: outcome
+    mbLayer: Grid Connection
+    visible: true
+    info: Least-cost scenario - settlements recommended for grid connections
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-base-case-grid-extensions/resource/a72c8fab-3c3b-44dd-8d6b-bc4cb676c42c
+
+  - id: Grid Densification
+    name: Grid Densification
+    category: outcome
+    mbLayer: Grid Densification
+    visible: true
+    info: Least-cost scenario - settlements recommended for grid densification options
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-nep-base-case-grid-densification-options/resource/16906d78-e045-4c12-b7a0-9bbcdb7e4351
+
+  - id: SHS
+    name: Solar Home Systems
+    category: outcome
+    mbLayer: SHS
+    visible: true
+    info: Least-cost scenario - settlements recommended for individual Solar Home Systems
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-nep-base-case-individual-shs/resource/cbd86fa3-1546-473c-aac5-71e3c42ab717
+
+  - id: Mini_Grids
+    name: Mini-Grid Systems
+    category: outcome
+    mbLayer: Mini_Grids
+    visible: true
+    info: Least-cost scenario - settlements recommended  for mini-grid systems 
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-nep-base-case-mini-grid/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29?view_id=df466579-1803-4815-80f3-09e8573555d3
+
+
+  
