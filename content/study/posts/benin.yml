@@ -1,7 +1,130 @@
-title: Benin Electrification Platform 
+title: Benin Electrification Pathways
 bbox: [[0.7723,6.1421], [3.7971,12.2356]]
-external: https://benin.gep.kartoza.com/gep/
+mapConfig: ./benin-mb.json
 country: Benin
 study:
+  consultant: NRECA
   period: 2020
-
+  content: ./benin.md
+platform:
+  title: Benin Electrification Pathways
+  url: https://benin.gep.kartoza.com/gep/
+charts:
+  - name: Least-cost technology split by 2030 (Million People)
+    type: donut
+    data:
+      - name: Grid
+        value: 6.80
+      - name: Standalone PV
+        value: 2.4
+      - name: Mini-grid PV
+        value: 1.9
+  - name: New Capacity per technology (MW)
+    type: donut
+    data:
+      - name: Grid
+        value: 211
+      - name: Standalone PV
+        value: 25
+      - name: Mini-grid PV
+        value: 93
+  - name: Investment cost per technology (Million USD)
+    type: donut
+    data:
+      - name: Grid
+        value: 1115
+      - name: Standalone PV
+        value: 260
+      - name: Mini-grid PV
+        value: 630
+layers:
+  - id: Hydro Power Plants
+    name: Hydro Power Plants
+    category: input
+    mbLayer: Hydro Power Plants
+    visible: false
+    info: Location of existing Hydro Power Plants in Benin
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-an-indicative-least-cost-geospatial-electrification-plan/resource/b0f3b6f5-0681-4167-80b6-a0f19eb74c05
+  - id: HV Electricity Network
+    name: HV Electricity Network
+    category: input
+    mbLayer: HV Electricity Network
+    visible: true
+    info: Used to identify and spatially calibrate the currently electrified/non-electrified population.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-an-indicative-least-cost-geospatial-electrification-plan/resource/ce9c3415-1cc8-44dd-916c-09c7df8e2e35
+  - id: MV Electricity Network
+    name: MV Electricity Network
+    category: input
+    mbLayer: MV Electricity Network
+    visible: true
+    info: The MV Electricity Network for Benin
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-an-indicative-least-cost-geospatial-electrification-plan/resource/2475576b-6c91-4738-9d1d-e0e2bf3fd713 
+  - id: Solar sites
+    name: Solar sites
+    category: input
+    mbLayer: Solar sites
+    visible: false
+    info: Location of solar sites in Benin.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-an-indicative-least-cost-geospatial-electrification-plan/resource/2ff1de8c-547b-48b3-b2ab-8b00861eb284
+  - id: Health Facilities
+    name: Health Facilities
+    category: input
+    mbLayer: Health Facilities
+    visible: false
+    info: Location of Health Facilities in Benin
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-an-indicative-least-cost-geospatial-electrification-plan/resource/8fdbac75-501e-4666-9000-3b457d5f6688
+  - id: Education Facilities
+    name: Education Facilities
+    category: input
+    mbLayer: Education Facilities
+    visible: false
+    info: Location of Education Facilities in Benin.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-an-indicative-least-cost-geospatial-electrification-plan/resource/b0a8689b-37a4-47db-813c-87314aa54afa
+  - id: Grid Connection
+    name: Pop Clusters - Grid Connection
+    category: outcome
+    mbLayer: Grid Connection
+    visible: true
+    info: Least-cost scenario - population connected to the Grid
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-population-cluster-with-the-electrification-scenarios/resource/c5eec2c3-e452-4ca2-a143-5ce84d0caeb1
+  - id: MG Hydro
+    name: Pop Clusters - MG Hydro
+    category: outcome
+    mbLayer: MG Hydro
+    visible: true
+    info: Least-cost scenario - population connected to the Mini Grids - Hydro
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-population-cluster-with-the-electrification-scenarios/resource/d7e51139-5ea0-4d36-bebb-f634571bd07d
+  - id: PV Diesel
+    name: Pop Clusters - PV Diesel
+    category: outcome
+    mbLayer: PV Diesel
+    visible: true
+    info: Least-cost scenario - population connected to the PV Diesel
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-population-cluster-with-the-electrification-scenarios/resource/974f8d00-cd78-453e-835e-efd797c820d3   
+  - id: SHS
+    name: Pop Clusters - Solar Home Systems
+    category: outcome
+    mbLayer: SHS
+    visible: true
+    info: Least-cost scenario - population connected to Solar Home Systems
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/benin-population-cluster-with-the-electrification-scenarios/resource/bff4b7af-ca88-4f47-bc67-9396d414aadc        
