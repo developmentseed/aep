@@ -18,8 +18,10 @@
       "type": "geojson"
 	},
 	"MV Electricity Network": {
-      "data": "https://energydata.info/dataset/d2fb81f0-cc62-4cab-b3d9-7da37cdab00d/resource/cec987e9-bf2b-4314-ac2d-d87557cb9940/download/zambia20-20distribution20mv20underground20line.geojson",
-      "type": "geojson"
+       "tiles": [
+        "https://energydata-tiles-bk.s3.amazonaws.com/tiles/a67d098c-84a0-41c7-9bd1-70a9e144ad32/{z}/{x}/{y}.pbf"
+      ],
+      "type": "vector"
 	},
 	"Microgrids sites": {
       "data": "https://energydata.info/dataset/6f2cc7d2-6419-45f9-97cb-2250b63518d9/resource/8ce36dc7-50a2-4e7d-be4f-e131febbb16f/download/zambia20-20microgrids.geojson",
@@ -60,7 +62,7 @@
       "type": "circle",
       "source": "Mini_Grids",
       "paint": {
-        "circle-color": "#3399ff"
+        "circle-color": "#BF360C"
       }
 	},
 	{
@@ -107,6 +109,7 @@
 	  "id": "MV Electricity Network",
       "type": "line",
       "source": "MV Electricity Network",
+      "source-layer": "data_layer",
       "paint": {
         "line-color": "#FFB10A"
       }

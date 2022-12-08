@@ -153,7 +153,5 @@ layers:
     info: Least-cost scenario - settlements recommended  for mini-grid systems 
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/zambia-nep-base-case-mini-grid/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29?view_id=df466579-1803-4815-80f3-09e8573555d3
-
-
+      url: https://energydata.info/dataset/zambia-nep-base-case-mini-grid/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29
   
