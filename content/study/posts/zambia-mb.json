@@ -58,7 +58,7 @@
       }
 	},
 	{
-	  "id": "Mini_Grids ",
+	 "id": "Mini_Grids ",
       "type": "circle",
       "source": "Mini_Grids",
       "paint": {
