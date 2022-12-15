@@ -35,7 +35,7 @@
       "data": "https://energydata.info/dataset/5e12ec4a-9789-410f-b5bf-5a964d758497/resource/0f75081d-eda4-4091-a6d9-9a0c99c5bf14/download/mv-lines-extensions.geojson",
       "type": "geojson"
 	},
-	"Mini_Grids": {
+	"MGS": {
       "data": "https://energydata.info/dataset/f81ebb0a-2642-4860-9101-90a035ce9c47/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29/download/basecase_mini_grids.geojson",
       "type": "geojson"
 	},
@@ -49,6 +49,7 @@
 	}
     },  
   "layers": [
+	
 	{
 	  "id": "SHS",
       "type": "circle",
@@ -57,14 +58,16 @@
         "circle-color": "#ce8736"
       }
 	},
+
 	{
-	 "id": "Mini_Grids ",
+	 "id": "MGS",
       "type": "circle",
-      "source": "Mini_Grids",
+      "source": "MGS",
       "paint": {
         "circle-color": "#BF360C"
       }
 	},
+
 	{
 	  "id": "Grid Densification",
       "type": "circle",
