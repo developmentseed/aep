@@ -104,26 +104,28 @@ layers:
     source:
       name: energydata.info
       url: https://energydata.info/dataset/zambia-education-facility
-
-  - id: Grid Lines
-    name: Proposed Grid Extension Lines
+  
+  - id: SHS
+    name: Solar Home Systems
     category: outcome
-    mbLayer: Grid Lines
+    mbLayer: SHS
     visible: true
-    info: Least-cost scenario - proposed MV grid extension lines for settlements recommended for grid
+    info: Least-cost scenario - settlements recommended for individual Solar Home Systems
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/zambia-mv-line-extension/resource/0f75081d-eda4-4091-a6d9-9a0c99c5bf14     
+      url: https://energydata.info/dataset/zambia-nep-base-case-individual-shs/resource/cbd86fa3-1546-473c-aac5-71e3c42ab717
 
-  - id: Grid Connection
-    name: Grid Connections
+  
+  - id: MGS
+    name: Mini-Grid Systems
     category: outcome
-    mbLayer: Grid Connection
+    mbLayer: MGS
     visible: true
-    info: Least-cost scenario - settlements recommended for grid connections
+    info: Least-cost scenario - settlements recommended  for mini-grid systems 
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/zambia-base-case-grid-extensions/resource/a72c8fab-3c3b-44dd-8d6b-bc4cb676c42c
+      url: https://energydata.info/dataset/zambia-nep-base-case-mini-grid/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29
+  
 
   - id: Grid Densification
     name: Grid Densification
@@ -135,23 +137,25 @@ layers:
       name: energydata.info
       url: https://energydata.info/dataset/zambia-nep-base-case-grid-densification-options/resource/16906d78-e045-4c12-b7a0-9bbcdb7e4351
 
-  - id: SHS
-    name: Solar Home Systems
+  - id: Grid Connection
+    name: Grid Connections
     category: outcome
-    mbLayer: SHS
+    mbLayer: Grid Connection
     visible: true
-    info: Least-cost scenario - settlements recommended for individual Solar Home Systems
+    info: Least-cost scenario - settlements recommended for grid connections
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/zambia-nep-base-case-individual-shs/resource/cbd86fa3-1546-473c-aac5-71e3c42ab717
+      url: https://energydata.info/dataset/zambia-base-case-grid-extensions/resource/a72c8fab-3c3b-44dd-8d6b-bc4cb676c42c
 
-  - id: Mini_Grids
-    name: Mini-Grid Systems
+
+  - id: Grid Lines
+    name: Proposed Grid Extension Lines
     category: outcome
-    mbLayer: Mini_Grids
+    mbLayer: Grid Lines
     visible: true
-    info: Least-cost scenario - settlements recommended  for mini-grid systems 
+    info: Least-cost scenario - proposed MV grid extension lines for settlements recommended for grid
     source:
       name: energydata.info
-      url: https://energydata.info/dataset/zambia-nep-base-case-mini-grid/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29
+      url: https://energydata.info/dataset/zambia-mv-line-extension/resource/0f75081d-eda4-4091-a6d9-9a0c99c5bf14   
+
   
