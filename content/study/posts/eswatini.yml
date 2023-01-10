@@ -1,0 +1,125 @@
+title: Eswatini Assessment of Electrification Options - National Electrification Analysis
+bbox: [[30.7908,-27.3175201], [ 32.1349923,-25.71876]]
+mapConfig: ./eswatini-mb.json
+country: Eswatini
+study:
+  consultant: Economic Consulting Associates / Waya Energy
+  period: 2021 to 2022
+  content: ./eswatini.md
+platform:
+  title: Eswatini National Electrification Analysis 
+  url: https://universalaccess.mit.edu/rem-viz/eswatini/#/
+charts:
+  - name: Least-cost technology split by 2030 (% Population)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 77
+      - name: Solar Home Systems
+        value: 23
+      - name: Mini-grids
+        value: 0
+  - name: Cost of Energy (USD/kWh)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 0.41
+      - name: Solar Home Systems
+        value: 0.8
+      - name: Mini-grids
+        value: 0
+  - name: Investment cost per technology (Million USD)
+    type: donut
+    data:
+      - name: Grid Extension
+        value: 62.2
+      - name: Solar Home Systems
+        value: 30.2
+      - name: Mini-grids
+        value: 0
+      
+layers:
+
+  - id: HV Electricity Network
+    name: Existing Distribution Network
+    category: input
+    mbLayer: HV Electricity Network
+    visible: true
+    info: This is the existing distribution network (11/0.4 kV) for Eswatini
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/eswatini-grid-network
+ 
+  - id: Health Facilities
+    name: Health Facilities
+    category: input
+    mbLayer: Health Facilities
+    visible: false
+    info: Location of Health Facilities in eSwatini. The dataset was obtained from the Surveyor General Office of eSwatini.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/eswatini-education-facilities-from-surveyor-general-s-office
+
+  - id: Education Facilities
+    name: Education Facilities
+    category: input
+    mbLayer: Education Facilities
+    visible: false
+    info: Location of Education Facilities in eSwatini. The dataset was obtained from Surveyor General's Office, contains education facilities in eSwatini.
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/eswatini-education-facilities-from-surveyor-general-s-office
+  
+  - id: SHS
+    name: Solar Home Systems
+    category: outcome
+    mbLayer: SHS
+    visible: true
+    info: Least-cost base-case scenario - settlements recommended for individual Solar Home Systems
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/eswatini-grid-network 
+  
+  - id: MGS
+    name: Mini-Grid Systems
+    category: outcome
+    mbLayer: MGS
+    visible: true
+    info: Least-cost base-case scenario - settlements recommended  for mini-grid systems 
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-nep-base-case-mini-grid/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29
+  
+
+  - id: Grid Densification
+    name: Grid Densification
+    category: outcome
+    mbLayer: Grid Densification
+    visible: true
+    info: Least-cost base-case scenario - settlements recommended for grid densification options
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/zambia-nep-base-case-grid-densification-options/resource/16906d78-e045-4c12-b7a0-9bbcdb7e4351
+
+  - id: Grid Connection
+    name: Grid Connections
+    category: outcome
+    mbLayer: Grid Connection
+    visible: true
+    info: Least-cost base-case scenario - settlements recommended for grid connections
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/eswatini-grid-network 
+
+
+  - id: Grid Lines
+    name: Proposed Grid Extension Lines
+    category: outcome
+    mbLayer: Grid Lines
+    visible: true
+    info: Least-cost base-case scenario - proposed MV and LV distribution grid extension lines for settlements recommended for grid
+    source:
+      name: energydata.info
+      url: https://energydata.info/dataset/eswatini-grid-network  
+
+  
