@@ -1,0 +1,149 @@
+{
+  "version": 8,
+  "sources": {
+    "Hydro Power Plants": {
+      "data": "https://energydata.info/dataset/252353c2-6c40-492e-b8d0-9f17759948d4/resource/400b30f8-a7ed-4b68-89c7-82bc9ecd6b4d/download/zambia20-20geothermal20potential.geojson",
+      "type": "geojson"
+	},
+	"Health Facilities":{	
+		"data":"https://energydata.info/dataset/455512c1-b40c-49b0-acca-9bff950565b2/resource/f75ff597-b1bc-498b-9c6d-83fd2cd7323a/download/eswatini-health-facilities-from-surveyor-generals-office.geojson",
+		"type":"geojson"
+	},
+	"Education Facilities":{	
+		"data":"https://energydata.info/dataset/6ff50558-a8ca-461f-b2af-a5fe3167f033/resource/55b3a379-ea09-483a-a651-d4bff915dd1b/download/eswatini-education-facilities-from-surveyor-generals-office.geojson",
+		"type":"geojson"
+	},
+	"HV Electricity Network": {
+      "data": "https://energydata.info/dataset/5cb6139b-abb5-4795-a267-2d760dd7cfd2/resource/3ddf8024-f3d2-48e5-a9c1-0eafdf59ae00/download/eec_data_powerlines_info.geojson",
+      "type": "geojson"
+	},
+	"MV Electricity Network": {
+       "tiles": [
+        "https://energydata-tiles-bk.s3.amazonaws.com/tiles/3ddf8024-f3d2-48e5-a9c1-0eafdf59ae00/{z}/{x}/{y}.pbf"
+      ],
+      "type": "vector"
+	},
+	"Microgrids sites": {
+      "data": "https://energydata.info/dataset/6f2cc7d2-6419-45f9-97cb-2250b63518d9/resource/8ce36dc7-50a2-4e7d-be4f-e131febbb16f/download/zambia20-20microgrids.geojson",
+      "type": "geojson"
+	},
+	"Grid Connection": {
+      "data": "https://energydata.info/dataset/5cb6139b-abb5-4795-a267-2d760dd7cfd2/resource/beb757e5-c870-4381-9d4f-cc11c45b2523/download/all_centroids.geojson",
+      "type": "geojson"
+	},
+	"Grid Lines": {
+      "tiles": [
+        "https://energydata-tiles-bk.s3.amazonaws.com/tiles/4f859439-41f8-43db-9cee-dd7a74cf7d40/{z}/{x}/{y}.pbf"
+      ],
+      "type": "vector"
+	},
+	"MGS": {
+      "data": "https://energydata.info/dataset/f81ebb0a-2642-4860-9101-90a035ce9c47/resource/91134f35-d74a-4944-9c6e-d1aef55f8a29/download/basecase_mini_grids.geojson",
+      "type": "geojson"
+	},
+	"Grid Densification": {
+      "data": "https://energydata.info/dataset/7e812413-0ef5-4260-a1de-897d2362a550/resource/16906d78-e045-4c12-b7a0-9bbcdb7e4351/download/basecase_grid_densification.geojson",
+      "type": "geojson"
+	},
+	"SHS": {
+      "data": "https://energydata.info/dataset/5cb6139b-abb5-4795-a267-2d760dd7cfd2/resource/ff5b407d-b6d2-49fe-8ea6-01de6034048a/download/all_isolated.geojson",
+      "type": "geojson"
+	}
+    },  
+  "layers": [
+	
+	{
+	  "id": "SHS",
+      "type": "circle",
+      "source": "SHS",
+      "paint": {
+        "circle-color": "#ce8736"
+      }
+	},
+
+	{
+	 "id": "MGS",
+      "type": "circle",
+      "source": "MGS",
+      "paint": {
+        "circle-color": "#BF360C"
+      }
+	},
+
+	{
+	  "id": "Grid Densification",
+      "type": "circle",
+      "source": "Grid Densification",
+      "paint": {
+        "circle-color": "#660000"
+      }
+	},
+	{
+	  "id": "Grid Connection",
+      "type": "circle",
+      "source": "Grid Connection",
+      "paint": {
+        "circle-color": "#a0a0a0"
+      }
+	},
+	{
+	  "id": "Health Facilities",
+      "type": "circle",
+      "source": "Health Facilities",
+      "paint": {
+        "circle-color": "#3ca1ff"
+      }
+	},
+	{
+	  "id": "Hydro Power Plants",
+      "type": "circle",
+      "source": "Hydro Power Plants",
+      "paint": {
+        "circle-color": "#3c54a3"
+      }
+	},
+	{
+	  "id": "HV Electricity Network",
+      "type": "line",
+      "source": "HV Electricity Network",
+      "paint": {
+        "line-color": "#FE6F27"
+      }
+	},
+	{
+	  "id": "MV Electricity Network",
+      "type": "line",
+      "source": "MV Electricity Network",
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FFB10A"
+      }
+	},
+	{
+	  "id": "Grid Lines",
+      "type": "line",
+      "source": "Grid Lines",
+      "source-layer": "data_layer",
+      "paint": {
+        "line-color": "#FF0000"
+      }
+	},
+	{
+	  "id": "Microgrids sites",
+      "type": "circle",
+      "source": "Microgrids sites",
+      "paint": {
+        "circle-color": "#ce8736"
+      }
+	},
+	{
+	  "id": "Education Facilities",
+      "type": "circle",
+      "source": "Education Facilities",
+      "paint": {
+        "circle-color": "#6c11ff"
+           }
+	}
+
+	]
+}

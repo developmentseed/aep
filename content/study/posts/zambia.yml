@@ -21,6 +21,7 @@ charts:
         value: 4.80
       - name: Grid Densification
         value: 4.70
+      
   - name: Investment cost per customer (USD)
     type: donut
     data:
